@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hermès Reisner · Systems, ML & Embedded Engineering</title>
+  <meta name="description" content="Portfolio and engineering project hub of Hermès Reisner — Computer Science student at University of Basel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: [""Plus Jakarta Sans"", "system-ui", "sans-serif"],
+            mono: [""JetBrains Mono"", "monospace"],
+          },
+          colors: {
+            brand: {
+              50: "#f0fdf4",
+              500: "#22c55e",
+              600: "#16a34a",
+            },
+            accent: {
+              400: "#38bdf8",
+              500: "#0ea5e9",
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background: #090d16;
+      color: #e2e8f0;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.07) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(34, 197, 94, 0.05) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(51, 65, 85, 0.6);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 12px 30px -10px rgba(14, 165, 233, 0.15);
+    }
+    .badge {
+      font-family: ""JetBrains Mono"", monospace;
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-bold text-lg tracking-tight text-white flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Hermès Reisner
+      </a>
+      <div class="flex items-center gap-4 text-sm font-medium">
+        <a href="#projects" class="text-slate-400 hover:text-white transition">Projects</a>
+        <a href="#skills" class="text-slate-400 hover:text-white transition">Tech Stack</a>
+        <a href="https://github.com/HerRei" target="_blank" rel="noreferrer" class="text-slate-400 hover:text-white transition">GitHub</a>
+        <a href="https://www.linkedin.com/in/hermes-nathan-reisner-171143353" target="_blank" rel="noreferrer" class="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition shadow-sm shadow-sky-600/30">Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
+
+    <!-- Hero Section -->
+    <header class="py-10 md:py-16">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-sky-400 text-xs font-mono mb-6">
+        <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+        CS @ University of Basel &middot; Switzerland
+      </div>
+      <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white max-w-3xl leading-[1.15]">
+        Engineering zero-overhead tools, local ML & embedded systems.
+      </h1>
+      <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
+        I build high-performance terminal software in pure C, deep learning pipelines in PyTorch, 
+        real-time embedded IoT hardware, and networked systems.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a href="https://github.com/HerRei" target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm border border-slate-700 transition flex items-center gap-2">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
+        </a>
+        <a href="https://www.linkedin.com/in/hermes-nathan-reisner-171143353" target="_blank" rel="noreferrer" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm transition flex items-center gap-2 shadow-lg shadow-sky-600/20">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:hermesnathanheiniger@gmail.com" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-semibold text-sm border border-slate-700 transition">
+          Email Me
+        </a>
+      </div>
+    </header>
+
+    <!-- Project Filter / Section Bar -->
+    <section id="projects" class="pt-6 pb-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Interactive Showcases & Projects</h2>
+          <p class="text-slate-400 text-sm mt-1">Live web demonstrations, hardware builds, and open-source tooling.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 text-xs" id="filter-container">
+          <button onclick="filterCategory('all')" class="filter-btn active px-3 py-1.5 rounded-lg bg-sky-600 text-white font-medium transition" data-cat="all">All</button>
+          <button onclick="filterCategory('systems')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="systems">Systems & C</button>
+          <button onclick="filterCategory('ai')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="ai">AI & ML</button>
+          <button onclick="filterCategory('embedded')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="embedded">Embedded</button>
+          <button onclick="filterCategory('java')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="java">Java & Distributed</button>
+        </div>
+      </div>
+
+      <!-- Project Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
+
+        <!-- 1. train-tui -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="systems ai">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">⚡</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">train-tui</h3>
+              </div>
+              <span class="badge bg-emerald-950/80 text-emerald-300 border border-emerald-800">Pure C &middot; Zero Dep</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Lightweight, dependency-free terminal UI dashboard for monitoring AI training runs. 
+              Parses training progress and reads multi-GPU hardware telemetry directly from AMD <code class="text-xs bg-slate-800 px-1 py-0.5 rounded text-sky-300">sysfs</code> and NVIDIA <code class="text-xs bg-slate-800 px-1 py-0.5 rounded text-sky-300">nvidia-smi</code>.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">C</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Linux Sysfs</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">GPU Telemetry</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">ANSI / TUI</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/train-tui/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Live Terminal Demo <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/train-tui" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/train-tui
+            </a>
+          </div>
+        </article>
+
+        <!-- 2. LocalSR -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="ai systems">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🔍</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">LocalSR</h3>
+              </div>
+              <span class="badge bg-blue-950/80 text-blue-300 border border-blue-800">PySide6 &middot; PyTorch</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Cross-platform desktop application for running local image super-resolution models on consumer hardware. 
+              Engineered with safe tiled inference, memory pressure guards, color profile (ICC) preservation, and native macOS Finder & Windows shell actions.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Python</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">PySide6 / Qt</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">PyTorch MPS/CUDA</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Spandrel</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <span class="text-xs text-amber-400 font-mono flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Desktop App Engine
+            </span>
+            <a href="https://github.com/HerRei/local-upscale" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/local-upscale
+            </a>
+          </div>
+        </article>
+
+        <!-- 3. GPT-2 Piano -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="ai">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🎹</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">GPT-2 Piano MPS 12k</h3>
+              </div>
+              <span class="badge bg-purple-950/80 text-purple-300 border border-purple-800">Transformers &middot; Audio</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Symbolic piano continuation pipeline trained on 12k MIDI files with Miditok REMI tokenization on Apple Silicon (MPS). 
+              Features bounded transposition data augmentation, checkpoint generation manifests, and MIDI sample playback.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">PyTorch</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Transformers</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Miditok</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Apple Silicon MPS</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/gpt2-piano-mps-12k/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Listen to AI Samples <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/gpt2-piano-mps-12k" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/gpt2-piano-mps-12k
+            </a>
+          </div>
+        </article>
+
+        <!-- 4. ESP32 SBB Tracker -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="embedded systems">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🚆</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">ESP32 SBB Tracker</h3>
+              </div>
+              <span class="badge bg-amber-950/80 text-amber-300 border border-amber-800">C++ &middot; Embedded</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-3">
+              Hardware Swiss transit departure display powered by an ESP32 and ST7789 TFT screen. 
+              Implements hardware Task Watchdog Timer (WDT) recovery, filtered JSON stream parsing (<code class="text-xs bg-slate-800 px-1 py-0.5 rounded text-amber-300">ArduinoJson</code>), and live OpenData API updates.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">ESP32</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">C++ / Arduino</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">ST7789 Display</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Task WDT</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/Sbb_Tracker_Sissach/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Hardware Showcase <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/Sbb_Tracker_Sissach" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/Sbb_Tracker_Sissach
+            </a>
+          </div>
+        </article>
+
+        <!-- 5. PhantomHunt -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="java systems">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">👻</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">PhantomHunt</h3>
+              </div>
+              <span class="badge bg-red-950/80 text-red-300 border border-red-800">Java &middot; Multiplayer</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Asymmetric 3-vs-1 networked multiplayer game developed for CS108 at University of Basel. 
+              Engineered client-server socket protocol, state synchronization, lobby management, chat/whisper parser, sound synchronization, and automated test coverage (JaCoCo).
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Java</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">JavaFX</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">TCP Socket Networking</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Gradle / JUnit</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/PhantomHunt/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Play Mockup & Trailer <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/PhantomHunt" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/PhantomHunt
+            </a>
+          </div>
+        </article>
+
+        <!-- 6. TSP ACO Visualizer -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="java systems">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🐜</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Ant Colony TSP Solver</h3>
+              </div>
+              <span class="badge bg-cyan-950/80 text-cyan-300 border border-cyan-800">Algorithms &middot; Java</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Interactive visualization application for the Traveling Salesperson Problem using Ant Colony Optimization (ACO). 
+              Features real-time tour convergence rendering, adjustable pheromone decay parameters, and real-world city coordinate datasets.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Java Swing</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Meta-Heuristics</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Optimization</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Maven</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/tsp_aco_gui/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Interactive ACO Demo <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/tsp_aco_gui" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/tsp_aco_gui
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="skills" class="py-14 border-t border-slate-800/80 mt-12">
+      <div class="mb-8">
+        <h2 class="text-2xl font-bold text-white tracking-tight">Technical Disciplines</h2>
+        <p class="text-slate-400 text-sm mt-1">Core languages, frameworks, and architecture patterns used across projects.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass-card p-5 rounded-xl">
+          <h3 class="text-sm font-bold text-sky-400 mb-3 flex items-center gap-2">
+            <span>⚙️</span> Systems & Low-Level
+          </h3>
+          <ul class="text-xs text-slate-300 space-y-2 font-mono">
+            <li>&bull; C / C++</li>
+            <li>&bull; Linux Kernel <code class="text-slate-400">sysfs</code></li>
+            <li>&bull; ANSI Terminal Graphics</li>
+            <li>&bull; Zero-Dependency TUIs</li>
+            <li>&bull; POSIX / Makefiles</li>
+          </ul>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl">
+          <h3 class="text-sm font-bold text-purple-400 mb-3 flex items-center gap-2">
+            <span>🧠</span> Deep Learning & ML
+          </h3>
+          <ul class="text-xs text-slate-300 space-y-2 font-mono">
+            <li>&bull; PyTorch & MPS Acceleration</li>
+            <li>&bull; Transformers (GPT-2)</li>
+            <li>&bull; Super-Resolution (HAT / Spandrel)</li>
+            <li>&bull; Tiled Inference Engines</li>
+            <li>&bull; Miditok REMI Tokenization</li>
+          </ul>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl">
+          <h3 class="text-sm font-bold text-amber-400 mb-3 flex items-center gap-2">
+            <span>📟</span> Embedded & IoT
+          </h3>
+          <ul class="text-xs text-slate-300 space-y-2 font-mono">
+            <li>&bull; ESP32 & Arduino Framework</li>
+            <li>&bull; ST7789 TFT Driver SPI</li>
+            <li>&bull; Hardware Task Watchdog (WDT)</li>
+            <li>&bull; ArduinoJson Stream Parsing</li>
+            <li>&bull; OpenData REST APIs</li>
+          </ul>
+        </div>
+
+        <div class="glass-card p-5 rounded-xl">
+          <h3 class="text-sm font-bold text-emerald-400 mb-3 flex items-center gap-2">
+            <span>🌐</span> Distributed & UI
+          </h3>
+          <ul class="text-xs text-slate-300 space-y-2 font-mono">
+            <li>&bull; Java & JavaFX</li>
+            <li>&bull; PySide6 / Qt Desktop</li>
+            <li>&bull; Client-Server Protocols</li>
+            <li>&bull; JUnit 5 & JaCoCo Coverage</li>
+            <li>&bull; Git & Automated CI</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-8 text-center text-xs text-slate-500">
+    <p>&copy; 2026 Hermès Reisner &middot; Basel, Switzerland &middot; Built with modern static architecture.</p>
+  </footer>
+
+  <script>
+    function filterCategory(cat) {
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        if(btn.dataset.cat === cat) {
+          btn.classList.add("bg-sky-600", "text-white");
+          btn.classList.remove("bg-slate-800", "text-slate-400");
+        } else {
+          btn.classList.remove("bg-sky-600", "text-white");
+          btn.classList.add("bg-slate-800", "text-slate-400");
+        }
+      });
+
+      const cards = document.querySelectorAll("#projects-grid > article");
+      cards.forEach(card => {
+        const categories = card.dataset.category || "";
+        if (cat === "all" || categories.includes(cat)) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+</body>
+</html>

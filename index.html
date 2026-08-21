@@ -93,7 +93,7 @@
       </h1>
       <p class="mt-6 text-lg text-slate-400 max-w-2xl leading-relaxed">
         I build high-performance terminal software in pure C, deep learning pipelines in PyTorch, 
-        real-time embedded IoT hardware, and networked systems.
+        real-time embedded IoT hardware, and distributed systems.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -115,15 +115,16 @@
     <section id="projects" class="pt-6 pb-4">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5 mb-8">
         <div>
-          <h2 class="text-2xl font-bold text-white tracking-tight">Interactive Showcases & Projects</h2>
-          <p class="text-slate-400 text-sm mt-1">Live web demonstrations, hardware builds, and open-source tooling.</p>
+          <h2 class="text-2xl font-bold text-white tracking-tight">Project Hub & Repositories</h2>
+          <p class="text-slate-400 text-sm mt-1">Explore all software projects, hardware builds, and interactive showcases.</p>
         </div>
         <div class="flex flex-wrap gap-2 text-xs" id="filter-container">
-          <button onclick="filterCategory('all')" class="filter-btn active px-3 py-1.5 rounded-lg bg-sky-600 text-white font-medium transition" data-cat="all">All</button>
+          <button onclick="filterCategory('all')" class="filter-btn active px-3 py-1.5 rounded-lg bg-sky-600 text-white font-medium transition" data-cat="all">All (10)</button>
           <button onclick="filterCategory('systems')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="systems">Systems & C</button>
           <button onclick="filterCategory('ai')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="ai">AI & ML</button>
           <button onclick="filterCategory('embedded')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="embedded">Embedded</button>
           <button onclick="filterCategory('java')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="java">Java & Distributed</button>
+          <button onclick="filterCategory('automation')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white font-medium transition" data-cat="automation">Tools & Automation</button>
         </div>
       </div>
 
@@ -167,7 +168,7 @@
             <div class="flex justify-between items-start mb-3">
               <div class="flex items-center gap-2">
                 <span class="text-xl">🔍</span>
-                <h3 class="text-xl font-bold text-white tracking-tight">LocalSR</h3>
+                <h3 class="text-xl font-bold text-white tracking-tight">LocalSR (local-upscale)</h3>
               </div>
               <span class="badge bg-blue-950/80 text-blue-300 border border-blue-800">PySide6 &middot; PyTorch</span>
             </div>
@@ -312,6 +313,121 @@
             </a>
             <a href="https://github.com/HerRei/tsp_aco_gui" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
               HerRei/tsp_aco_gui
+            </a>
+          </div>
+        </article>
+
+        <!-- 7. Nature Inventory Delta -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="ai automation">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🌿</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Nature Inventory Delta AI</h3>
+              </div>
+              <span class="badge bg-lime-950/80 text-lime-300 border border-lime-800">FastAPI &middot; Streamlit</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Local geospatial analysis interface and assistant for querying and visualizing changes across versions of the Canton of Basel-Stadt nature inventory. 
+              Combines read-only SQL, maps, charts, and LLM-assisted query planning.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Python</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">FastAPI</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Streamlit</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Geodata / SQL</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <span class="text-xs text-slate-400 font-mono">Proprietary Open-Data Tool</span>
+            <a href="https://github.com/HerRei/nature-inventory-delta-ai" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/nature-inventory-delta-ai
+            </a>
+          </div>
+        </article>
+
+        <!-- 8. Google Sheets Automation -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="automation">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">📊</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Google Sheets Bookkeeping</h3>
+              </div>
+              <span class="badge bg-emerald-950/80 text-emerald-300 border border-emerald-800">Python API &middot; Automation</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Automated Python toolkit for streamlining Google Sheets bookkeeping workflows, eliminating manual Excel entry with tested, robust data pipeline scripts.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Python</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Google Sheets API</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Spreadsheet Automation</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/google_sheets_automation/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Showcase Page <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/google_sheets_automation" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/google_sheets_automation
+            </a>
+          </div>
+        </article>
+
+        <!-- 9. Telegram YouTube Player -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="systems automation">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">📺</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">Telegram YouTube Player</h3>
+              </div>
+              <span class="badge bg-indigo-950/80 text-indigo-300 border border-indigo-800">Linux &middot; Telegram Bot</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Telegram-controlled fullscreen media playback system targeting specific displays on multi-monitor Linux setups.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Python</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Linux Multi-Monitor</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Telegram Bot API</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <span class="text-xs text-slate-400 font-mono">Linux Remote Media</span>
+            <a href="https://github.com/HerRei/telegram-youtube-player" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/telegram-youtube-player
+            </a>
+          </div>
+        </article>
+
+        <!-- 10. PhantomHunt HTML5 Canvas Mockup -->
+        <article class="glass-card rounded-2xl p-6 flex flex-col justify-between" data-category="java systems">
+          <div>
+            <div class="flex justify-between items-start mb-3">
+              <div class="flex items-center gap-2">
+                <span class="text-xl">🕹️</span>
+                <h3 class="text-xl font-bold text-white tracking-tight">PhantomHunt Canvas Mockup</h3>
+              </div>
+              <span class="badge bg-amber-950/80 text-amber-300 border border-amber-800">HTML5 Canvas &middot; Jest</span>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Interactive browser-based tile prototype built to validate game mechanics and test pathfinding algorithms (A*, BFS, and ACO) before the full Java multiplayer build.
+            </p>
+            <div class="flex flex-wrap gap-1.5 mb-6">
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">JavaScript</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">HTML5 Canvas</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">A* Pathfinding</span>
+              <span class="badge bg-slate-800/80 text-slate-300 border border-slate-700">Jest</span>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-slate-800">
+            <a href="https://herrei.github.io/mockup/" class="text-sm font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1.5 transition">
+              Play In Browser <span>&rarr;</span>
+            </a>
+            <a href="https://github.com/HerRei/mockup" target="_blank" rel="noreferrer" class="text-xs font-mono text-slate-400 hover:text-white transition">
+              HerRei/mockup
             </a>
           </div>
         </article>

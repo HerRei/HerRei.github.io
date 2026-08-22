@@ -1,246 +1,185 @@
+#!/usr/bin/env python3
 """
-Adversarial Empirical Challenge Suite for HerRei.github.io Interactive JavaScript Engines.
-Audits:
-- Web Audio API synthesizer: AudioContext initialization, note frequencies, envelope decay, oscillator cleanup.
-- ANSI terminal simulator: Telemetry loop ticker, pause/resume state toggling, buffer limits.
-- Modal lightbox: Open/close event handling, ESC key handler, backdrop click.
-- Staged media and asset byte integrity.
+Adversarial tests for the three specimens and the index line.
+
+These execute nothing — they read the shipped script and assert the
+properties that would be expensive to discover in a browser: that the
+nocturne's frequencies really are the notes it names, that the telemetry
+figure cannot drift into nonsense, that the departure panel is honest
+about being a redrawing.
+
+    python3 -m unittest tests.test_adversarial_interactive_engines -v
 """
+
+from __future__ import annotations
 
 import math
-import os
 import re
-import subprocess
 import unittest
 from pathlib import Path
-from tests.dom_parser import DOMNode
-from tests.test_base import BaseE2ETestCase
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+DOC = (PROJECT_ROOT / "index.html").read_text(encoding="utf-8")
+JS = re.search(r"<script>(.*?)</script>", DOC, re.S).group(1)
+
+# Equal temperament, A4 = 440 Hz
+SEMITONES = {"C": -9, "C♯": -8, "D": -7, "E♭": -6, "E": -5, "F": -4,
+             "F♯": -3, "G": -2, "A♭": -1, "A": 0, "B♭": 1, "B": 2}
 
 
-class TestAdversarialInteractiveEngines(BaseE2ETestCase):
-    """Adversarial Interactive Engine & Media Verification Test Suite."""
+def expected_hz(note: str) -> float:
+    match = re.fullmatch(r"([A-G][♯♭]?)(\d)", note)
+    pitch, octave = match.group(1), int(match.group(2))
+    return 440.0 * 2 ** (SEMITONES[pitch] / 12 + (octave - 4))
 
-    # -------------------------------------------------------------------------
-    # 1. Web Audio API Acoustic Piano Synthesizer Verification
-    # -------------------------------------------------------------------------
-    def test_webaudio_piano_frequencies_and_envelope(self):
-        """Audits Web Audio API piano synthesizer frequencies, envelope, and AudioContext safety."""
-        # 1. Verify AudioContext construction with webkit fallback
-        has_audio_ctx = "AudioContext" in self.raw_html
-        has_webkit_fallback = "webkitAudioContext" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-CTX", "AudioContext with WebKit Fallback",
-            has_audio_ctx and has_webkit_fallback,
-            "AudioContext uses standard constructor with webkitAudioContext fallback"
+
+class TestNocturne(unittest.TestCase):
+    """The score must be the music it claims to be."""
+
+    def setUp(self):
+        self.score = re.findall(
+            r'\{ f: ([\d.]+), n: "([^"]+)",\s*d: ([\d.]+), c: "([^"]+)" \}', JS
         )
 
-        # 2. Verify Autoplay policy handling (context resume on user gesture)
-        has_resume = "resume" in self.raw_html and "suspended" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-AUTOPLAY", "AudioContext Suspended State Resumption",
-            bool(has_resume),
-            "Synthesizer checks for suspended AudioContext state and calls resume()"
-        )
+    def test_score_is_present_and_finite(self):
+        self.assertEqual(len(self.score), 20, "the nocturne is twenty notes long")
 
-        # 3. Verify Multi-harmonic additive synthesis (Fundamental + 2nd + 3rd harmonics)
-        has_harmonics = "freq * 2" in self.raw_html and "freq * 3" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-HARMONICS", "Additive Multi-Harmonic Overtone Synthesis",
-            bool(has_harmonics),
-            "Synthesizer generates fundamental, 2nd (2x), and 3rd (3x) overtone harmonics"
-        )
+    def test_every_frequency_matches_its_note_name(self):
+        for freq, note, _dur, _chord in self.score:
+            with self.subTest(note=note):
+                self.assertAlmostEqual(
+                    float(freq), expected_hz(note), delta=0.6,
+                    msg=f"{note} is written as {freq} Hz, but {note} is {expected_hz(note):.2f} Hz",
+                )
 
-        # 4. Verify Acoustic soundboard biquad filter & exponential decay
-        has_biquad = "createBiquadFilter" in self.raw_html or "lowpass" in self.raw_html
-        has_exp_decay = "exponentialRampToValueAtTime" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-ENVELOPE", "Lowpass Filter Soundboard & Exponential Decay",
-            has_biquad and has_exp_decay,
-            "Piano engine shapes timbre with lowpass filter sweep and exponential decay envelope"
-        )
+    def test_every_note_lies_within_a_piano(self):
+        for freq, note, _d, _c in self.score:
+            with self.subTest(note=note):
+                self.assertTrue(27.5 <= float(freq) <= 4186.0,
+                                f"{note} at {freq} Hz is off the keyboard")
 
-        # 5. Verify Non-zero exponential ramp safety (target value strictly > 0 to prevent Web Audio crash)
-        has_safe_floor = "0.0001" in self.raw_html or "0.001" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-RAMP-SAFETY", "Strictly Positive Exponential Ramp Floor (>0)",
-            bool(has_safe_floor),
-            "Exponential gain decay ramps to positive non-zero floor (0.0001) preventing RangeError"
-        )
+    def test_durations_are_sane(self):
+        for freq, note, dur, _c in self.score:
+            with self.subTest(note=note):
+                self.assertTrue(0.2 <= float(dur) <= 3.0, f"{note} lasts {dur}s")
 
-        # 6. Verify Note frequency mathematical accuracy against Equal Temperament (A4 = 440 Hz)
-        # Extract score frequencies from HTML
-        freq_matches = re.findall(r"f:\s*([0-9]+\.[0-9]+)", self.raw_html)
-        freqs = [float(f) for f in freq_matches]
-        self.record_assertion(
-            1, "ADV-AUDIO-SCORE-COUNT", "D Minor Nocturne Score Completeness (20 Notes)",
-            len(freqs) >= 15,
-            f"Extracted {len(freqs)} score note frequencies from piano synthesizer definition"
-        )
+    def test_it_opens_and_closes_on_the_tonic(self):
+        self.assertEqual(self.score[0][1], "D3", "the nocturne opens on D")
+        self.assertEqual(self.score[-1][1], "D3", "and resolves back to D")
+        self.assertIn("resolution", self.score[-1][3])
 
-        # Check known anchor frequencies: A4 = 440.0, A3 = 220.0, D3 = 146.83
-        has_a4 = any(abs(f - 440.0) < 0.1 for f in freqs)
-        has_a3 = any(abs(f - 220.0) < 0.1 for f in freqs)
-        has_d3 = any(abs(f - 146.83) < 0.1 for f in freqs)
-        self.record_assertion(
-            1, "ADV-AUDIO-EQUAL-TEMP", "Equal Temperament Physical Pitch Accuracy",
-            has_a4 and has_a3 and has_d3,
-            "Score note frequencies match equal temperament physical pitch standards"
-        )
+    def test_harmonics_are_integer_multiples(self):
+        partials = re.findall(r'\{ type: "(\w+)",\s+mult: (\d), level: ([\d.]+) \}', JS)
+        self.assertEqual(len(partials), 3, "fundamental plus two partials")
+        multipliers = [int(m) for _t, m, _l in partials]
+        self.assertEqual(multipliers, [1, 2, 3], "partials are the first three harmonics")
+        levels = [float(l) for _t, _m, l in partials]
+        self.assertEqual(levels, sorted(levels, reverse=True),
+                         "higher harmonics are quieter, as on a string")
 
-        # 7. Verify Oscillator scheduled stop and cleanup
-        has_osc_stop = ".stop(now + duration)" in self.raw_html or ".stop(" in self.raw_html
-        self.record_assertion(
-            1, "ADV-AUDIO-OSC-CLEANUP", "Oscillator Lifetime Scheduling & Cleanup",
-            bool(has_osc_stop),
-            "Oscillators are scheduled to stop cleanly at tone duration end"
-        )
+    def test_the_envelope_cannot_click_or_clip(self):
+        self.assertIn("gain.gain.setValueAtTime(0.0001, now)", JS, "it starts from silence")
+        self.assertIn("exponentialRampToValueAtTime(0.0001", JS, "and decays to silence")
+        peak = float(re.search(r"linearRampToValueAtTime\((0\.\d+), now \+ 0\.014\)", JS).group(1))
+        self.assertLess(peak * 3, 1.0, "three partials at peak stay below full scale")
 
-    # -------------------------------------------------------------------------
-    # 2. ANSI Terminal Telemetry Simulator Verification
-    # -------------------------------------------------------------------------
-    def test_ansi_terminal_telemetry_simulator(self):
-        """Audits ANSI terminal telemetry ticker, pause/resume, and step controls."""
-        # 8. Verify Terminal DOM elements exist
-        has_term_box = len(self.dom.select("#train-tui-terminal, .terminal-simulator")) >= 1
-        has_term_toggle = len(self.dom.select("#term-toggle-btn")) >= 1
-        has_term_tick = len(self.dom.select("#term-tick-btn")) >= 1
-        self.record_assertion(
-            2, "ADV-TERM-DOM", "Terminal Simulator Dashboard & Interactive Controls",
-            has_term_box and has_term_toggle and has_term_tick,
-            "Terminal simulator container, pause/resume toggle, and step button exist in DOM"
-        )
+    def test_audio_is_never_started_without_a_click(self):
+        calls = [m.start() for m in re.finditer(r"\bnocturne\.play\(", JS)]
+        self.assertEqual(len(calls), 1, "the nocturne is started from exactly one place")
+        handler = JS.index('playBtn.addEventListener("click"')
+        self.assertGreater(calls[0], handler,
+                           "the only call to play() sits inside the click handler")
 
-        # 9. Verify Telemetry metrics elements (VRAM, TEMP, PWR, LOSS, TPS, ETA)
-        metrics_present = all([
-            len(self.dom.select("#term-vram")) >= 1,
-            len(self.dom.select("#term-temp")) >= 1,
-            len(self.dom.select("#term-pwr")) >= 1,
-            len(self.dom.select("#term-loss-graph")) >= 1,
-            len(self.dom.select("#term-tps")) >= 1,
-            len(self.dom.select("#term-eta")) >= 1,
-        ])
-        self.record_assertion(
-            2, "ADV-TERM-METRICS", "All 6 Telemetry Metric Readout Nodes Present",
-            metrics_present,
-            "VRAM, Temp, Power, Loss graph, TPS throughput, and ETA countdown nodes exist"
-        )
 
-        # 10. Verify Ticker interval and pause/resume logic
-        has_interval_lifecycle = "setInterval" in self.raw_html and "clearInterval" in self.raw_html
-        has_toggle_listener = "term-toggle-btn" in self.raw_html and "addEventListener" in self.raw_html
-        self.record_assertion(
-            2, "ADV-TERM-TICKER", "Telemetry Ticker Lifecycle & Pause/Resume Control",
-            has_interval_lifecycle and has_toggle_listener,
-            "Terminal simulator implements interval timer with start/stop lifecycle"
-        )
+class TestTelemetrySpecimen(unittest.TestCase):
+    """Fig. 1 must stay inside plausible hardware limits, forever."""
 
-        # 11. Verify Counter rollover boundary protection
-        has_step_rollover = "termStep < totalSteps" in self.raw_html or "termStep =" in self.raw_html
-        self.record_assertion(
-            2, "ADV-TERM-ROLLOVER", "Training Step Wraparound & Invariant Protection",
-            bool(has_step_rollover),
-            "Terminal ticker implements bounds checking and wraparound when total steps reached"
-        )
+    def test_loss_is_bounded_below(self):
+        self.assertIn("Math.max(0.94, loss", JS, "loss cannot decay towards zero")
 
-    # -------------------------------------------------------------------------
-    # 3. ESP32 Hardware Showcase & Lightbox Modal Verification
-    # -------------------------------------------------------------------------
-    def test_modal_lightbox_and_tft_display(self):
-        """Audits modal lightbox open/close, backdrop click, tabs, and ST7789 TFT display."""
-        # 12. Verify Dialog modal element & close button
-        modals = self.dom.select("#hardware-modal")
-        close_btns = self.dom.select("#close-modal-btn")
-        open_btns = self.dom.select("#open-hardware-modal-btn")
-        self.record_assertion(
-            3, "ADV-MODAL-DOM", "Hardware Lightbox Modal Dialog & Trigger Controls",
-            bool(modals and close_btns and open_btns),
-            "Dialog element, open trigger button, and close button exist in DOM"
-        )
+    def test_step_counter_wraps_instead_of_overflowing(self):
+        self.assertIn("step = step < total ? step + 1 : 1;", JS)
 
-        # 13. Verify ST7789 TFT Live Clock element & updater
-        tft_clocks = self.dom.select("#tft-live-clock")
-        has_clock_timer = "updateTftClock" in self.raw_html or "tft-live-clock" in self.raw_html
-        self.record_assertion(
-            3, "ADV-TFT-CLOCK", "ST7789 TFT Display Real-Time Clock Simulation",
-            bool(tft_clocks and has_clock_timer),
-            "ST7789 departure board includes live ticking clock element and interval"
-        )
+    def test_reported_values_stay_within_the_card(self):
+        vram_base, vram_jitter = 21800, 90
+        self.assertIn(f"({vram_base} + Math.floor(Math.random() * {vram_jitter}))", JS)
+        self.assertLess(vram_base + vram_jitter, 24564, "VRAM used never exceeds VRAM present")
 
-        # 14. Verify Backdrop click detection logic
-        has_backdrop_click = "e.target === hwModal" in self.raw_html or "target === modal" in self.raw_html
-        self.record_assertion(
-            3, "ADV-MODAL-BACKDROP", "Backdrop Click Target Discrimination",
-            bool(has_backdrop_click),
-            "Lightbox modal listener checks e.target === hwModal before closing on backdrop click"
-        )
+        temp = re.search(r"\((\d+) \+ Math\.floor\(Math\.random\(\) \* (\d+)\)\) \+ \" °C\"", JS)
+        self.assertLess(int(temp.group(1)) + int(temp.group(2)), 95, "temperature stays sane")
 
-        # 15. Verify Modal tab asset data binding
-        modal_tabs = self.dom.select(".modal-tab")
-        tab_sources = [t.get("data-img") for t in modal_tabs if t.has_attr("data-img")]
-        self.record_assertion(
-            3, "ADV-MODAL-TABS", "Modal Showcase Tab Image Source Attributes",
-            len(tab_sources) == 3,
-            f"Found {len(tab_sources)} tabs with valid data-img attributes"
-        )
+        power = re.search(r"\((\d+) \+ Math\.floor\(Math\.random\(\) \* (\d+)\)\) \+ \" W\"", JS)
+        self.assertLess(int(power.group(1)) + int(power.group(2)), 600, "power draw stays sane")
 
-    # -------------------------------------------------------------------------
-    # 4. Physical Asset & Media Binary Integrity Verification
-    # -------------------------------------------------------------------------
-    def test_physical_media_assets_integrity(self):
-        """Audits physical media assets in assets/ for existence, format headers, and non-zero size."""
-        required_assets = [
-            ("assets/profilbild.png", b"\x89PNG\r\n\x1a\n", "PNG image header"),
-            ("assets/lebenslauf.pdf", b"%PDF-", "PDF document header"),
-            ("assets/board-closeup.svg", b"<svg", "SVG XML markup header"),
-            ("assets/board-installed.svg", b"<svg", "SVG XML markup header"),
-            ("assets/IMG_1591_q85.jpg", b"\xff\xd8\xff", "JPEG image header")
-        ]
+    def test_eta_cannot_go_negative(self):
+        self.assertIn("Math.max(0, Math.floor((total - step) * 0.8))", JS)
 
-        for rel_path, expected_magic, desc in required_assets:
-            abs_path = self.project_root / rel_path
-            exists = abs_path.exists()
-            size = abs_path.stat().st_size if exists else 0
-            
-            # Check magic bytes header
-            magic_ok = False
-            if exists and size > 0:
-                with open(abs_path, "rb") as f:
-                    header = f.read(len(expected_magic))
-                    magic_ok = header.startswith(expected_magic) or expected_magic in header
+    def test_the_figure_admits_what_it_is(self):
+        self.assertIn("invented numbers", DOC,
+                      "the caption must not imply a live GPU")
 
-            self.record_assertion(
-                4, f"ADV-ASSET-{abs_path.stem.upper()[:8]}", f"Asset Integrity: {rel_path} ({desc})",
-                exists and size > 100 and magic_ok,
-                f"Asset {rel_path} verified on disk ({size:,} bytes, valid {desc})"
-            )
 
-    # -------------------------------------------------------------------------
-    # 5. Node.js Empirical Stress-Test Execution Bridge
-    # -------------------------------------------------------------------------
-    def test_nodejs_empirical_stress_execution(self):
-        """Executes Node.js adversarial stress-test script and verifies 100% pass."""
-        stress_script = self.project_root / "tests" / "test_interactive_engine_stress.js"
-        self.record_assertion(
-            5, "ADV-STRESS-SCRIPT-EXISTS", "Node.js Stress-Test Script Existence",
-            stress_script.exists(),
-            f"Node.js stress-test script located at {stress_script}"
-        )
+class TestDeparturePanel(unittest.TestCase):
+    """Fig. 3 is a redrawing of a real panel, and says so."""
 
-        # Run Node.js stress runner
-        proc = subprocess.run(
-            ["node", str(stress_script)],
-            capture_output=True,
-            text=True,
-            cwd=str(self.project_root)
-        )
+    def test_clock_is_zero_padded(self):
+        self.assertIn('pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds())', JS)
+        self.assertIn('String(n).padStart(2, "0")', JS)
 
-        passed = (proc.returncode == 0) and ("12/12 Passed" in proc.stdout)
-        self.record_assertion(
-            5, "ADV-NODE-STRESS-EXEC", "Node.js Empirical Stress Test Suite (12/12)",
-            passed,
-            f"Node.js stress suite executed with exit code {proc.returncode}"
-        )
+    def test_rows_are_plausible_swiss_services(self):
+        rows = re.findall(r'<span class="panel-line">([^<]+)</span>'
+                          r'<span class="panel-dest">([^<]+)</span>', DOC)
+        self.assertEqual(len(rows), 3)
+        for line, destination in rows:
+            with self.subTest(line=line):
+                self.assertRegex(line, r"^(S\d+|IC\d+|IR\d+|RE\d*)$")
+                self.assertTrue(destination.strip())
+
+    def test_departure_times_are_ordered(self):
+        times = [t for t in re.findall(r'<span class="panel-time">(\d\d):(\d\d)</span>', DOC)]
+        minutes = [int(h) * 60 + int(m) for h, m in times]
+        self.assertEqual(minutes, sorted(minutes), "a departure board is ordered by time")
+
+    def test_the_figure_admits_what_it_is(self):
+        self.assertIn("not a photograph of it", DOC)
+
+
+class TestIndexLine(unittest.TestCase):
+    """The filter is the only thing on the page that hides content."""
+
+    def test_categories_are_compared_as_tokens(self):
+        self.assertIn('(entry.getAttribute("data-category") || "").split(/\\s+/)', JS)
+        self.assertIn('cats.indexOf(cat) !== -1', JS)
+
+    def test_state_is_mirrored_into_aria(self):
+        self.assertIn('btn.setAttribute("aria-pressed"', JS)
+
+    def test_filtering_is_reversible(self):
+        self.assertIn('entry.classList.toggle("is-hidden", !show)', JS,
+                      "hiding uses a class that 'all' removes again")
+
+    def test_the_function_is_exposed_for_scripting(self):
+        self.assertIn("window.filterCategory = filterCategory;", JS)
+
+
+class TestCanvasGeometry(unittest.TestCase):
+    """The oscilloscope must not be drawn into a squashed backing store."""
+
+    def test_backing_store_follows_the_element(self):
+        self.assertIn("canvas.width = Math.round(cssW * dpr)", JS)
+        self.assertIn("canvas.height = Math.round(cssH * dpr)", JS)
+        self.assertIn("pen.setTransform(dpr, 0, 0, dpr, 0, 0)", JS)
+
+    def test_the_trace_is_plotted_in_css_pixels(self):
+        self.assertIn("var slice = cssW / bins", JS)
+        self.assertIn("var y = (data[i] / 128.0) * cssH / 2", JS)
+
+    def test_the_stave_has_five_lines(self):
+        self.assertIn("for (var i = -2; i <= 2; i++)", JS)
+
+    def test_it_redraws_when_the_window_changes(self):
+        self.assertIn('window.addEventListener("resize"', JS)
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(verbosity=2)

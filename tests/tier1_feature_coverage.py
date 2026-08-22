@@ -1,669 +1,483 @@
 """
-Tier 1: Feature Coverage Verification Suite (≥65 Assertions across Features F1-F13).
-Validates primary requirements, aesthetics, typography, plates, filters, engines, and architecture.
+Tier 1: Feature coverage for the catalogue raisonné build (F1 – F13).
+
+The page is a printed-catalogue design: warm paper, iron-gall ink, one
+vermillion pigment, ten works set as wall labels. These tests check the
+things that would actually be wrong if they broke — structure, provenance,
+honesty of the captions, accessibility, and the print sheet — rather than
+restating the stylesheet back to itself.
 """
 
-import os
+from __future__ import annotations
+
 import re
 import unittest
-from pathlib import Path
-from tests.dom_parser import DOMNode
+
 from tests.test_base import BaseE2ETestCase
+
+CATEGORIES = ("all", "systems", "ai", "embedded", "java", "automation")
 
 
 class TestTier1FeatureCoverage(BaseE2ETestCase):
-    """Tier 1: Comprehensive Feature Coverage for all 13 core requirements."""
+    """Tier 1: the thirteen features the catalogue is required to have."""
 
-    # -------------------------------------------------------------------------
-    # F1: Romantic Atelier Aesthetic Design System
-    # -------------------------------------------------------------------------
-    def test_f1_aesthetic_tokens(self):
-        """F1: Validates the Romantic chiaroscuro dark palette and color tokens."""
+    # -- helpers -------------------------------------------------------------
+
+    def entries(self):
+        """Every <li class="entry"> with its raw markup, in catalogue order."""
+        return re.findall(
+            r'<li class="entry" data-category="([^"]+)">(.*?)</li>',
+            self.raw_html,
+            re.S,
+        )
+
+    def category_counts(self):
+        counts = {c: 0 for c in CATEGORIES if c != "all"}
+        for cats, _ in self.entries():
+            for c in cats.split():
+                counts[c] = counts.get(c, 0) + 1
+        return counts
+
+    # -- F1: the paper ground ------------------------------------------------
+
+    def test_f1_paper_ground_and_pigments(self):
+        """F1: warm paper, brown-black ink, hairline rules, one vermillion."""
         css = self.auditor.css_analysis
 
-        # 1. Dark obsidian background palette
-        bg_dark = (
-            css.get_variable("--bg-obsidian")
-            or css.get_variable("--bg-abyss")
-            or css.get_variable("--bg-canvas")
-            or "#0c0d12" in css.raw_css
-            or "#07080a" in css.raw_css
-            or "#0a0b10" in css.raw_css
-            or "#090d16" in css.raw_css
-        )
-        self.record_assertion(
-            1, "F1", "Dark Obsidian Background Token", bool(bg_dark),
-            "Dark obsidian/abyss background palette defined"
-        )
+        for var in ("--paper", "--ink", "--ink-soft", "--rule", "--vermillion"):
+            self.record_assertion(
+                1, "F1", f"Pigment token {var}", css.has_variable(var),
+                f"{var} is defined on :root",
+            )
 
-        # 2. Parchment typography token
-        ink_parchment = (
-            css.get_variable("--ink-parchment")
-            or css.get_variable("--ink-parchment-muted")
-            or "#f2ebe0" in css.raw_css
-            or "#f4ecd8" in css.raw_css
-            or "#c9bea9" in css.raw_css
-            or "#e2e8f0" in css.raw_css
-        )
         self.record_assertion(
-            1, "F1", "Parchment Typography Token", bool(ink_parchment),
-            "Parchment ink typography color token defined"
-        )
-
-        # 3. Candlelit warm amber accent token
-        amber_candle = (
-            css.get_variable("--amber-candle")
-            or css.get_variable("--amber-bright")
-            or "#c89658" in css.raw_css
-            or "#e4b373" in css.raw_css
-            or "#38bdf8" in css.raw_css
+            1, "F1", "Ink is brown-black, not pure black",
+            (css.get_variable("--ink") or "").lower() not in ("#000", "#000000", "black"),
+            "The ink token is an iron-gall brown-black rather than #000",
         )
         self.record_assertion(
-            1, "F1", "Candlelit Warm Amber Token", bool(amber_candle),
-            "Candlelit warm amber/gold accent token defined"
-        )
-
-        # 4. Hairline etched border tokens
-        etched_border = (
-            css.get_variable("--border-etched")
-            or css.get_variable("--border-hairline")
-            or ".etched-border" in css.selectors
-            or ".border-etched" in css.selectors
-            or "border" in css.raw_css
+            1, "F1", "Light scheme declared", "color-scheme: light" in self.raw_html,
+            "color-scheme: light stops the browser forcing a dark rendering",
         )
         self.record_assertion(
-            1, "F1", "Hairline Etched Border Tokens", bool(etched_border),
-            "Hairline etched border tokens/classes defined"
-        )
-
-        # 5. Romantic discipline pigments
-        pigments = (
-            css.get_variable("--pigment-sage")
-            or css.get_variable("--pigment-burgundy")
-            or css.get_variable("--pigment-prussian")
-            or css.get_variable("--pigment-ochre")
-            or css.get_variable("--pigment-copper")
-            or "discipline-tag" in self.raw_html
-            or "badge" in css.raw_css
+            1, "F1", "Paper grain present", "feTurbulence" in self.raw_html,
+            "A grain texture is generated inline rather than fetched",
         )
         self.record_assertion(
-            1, "F1", "Discipline Pigment Tokens", bool(pigments),
-            "Discipline pigment tokens (Sage, Burgundy, Prussian, Ochre, Copper) or badges defined"
+            1, "F1", "No glow shadows on text", "text-shadow" not in self.raw_html,
+            "No text-shadow anywhere — this is ink on paper, not a screen",
         )
 
-        # 6. Absence of generic AI purple blob templates
-        has_purple_blobs = "bg-purple-600" in self.raw_html or "radial-gradient(ellipse at center, #9333ea" in css.raw_css
-        self.record_assertion(
-            1, "F1", "Zero Generic AI Styling", not has_purple_blobs,
-            "No generic AI purple neon blob gradients or templates"
-        )
+    # -- F2: typography ------------------------------------------------------
 
-    # -------------------------------------------------------------------------
-    # F2: Literary Serif & Monospace Typography
-    # -------------------------------------------------------------------------
-    def test_f2_typography_hierarchy(self):
-        """F2: Validates classical literary serif and technical monospace font pairing."""
-        # 1. Google Fonts literary serif link
-        has_serif_font = bool(re.search(r"EB\+Garamond|Cormorant\+Garamond|Playfair\+Display|Garamond", self.raw_html, re.IGNORECASE))
-        has_serif_font = has_serif_font or bool(re.search(r"EB Garamond|Cormorant Garamond|Georgia|serif", self.auditor.css_analysis.raw_css, re.IGNORECASE))
-        self.record_assertion(
-            1, "F2", "Literary Serif Font Import", has_serif_font,
-            "Classical literary serif font (EB Garamond / Cormorant Garamond / serif) loaded or declared"
-        )
+    def test_f2_typography(self):
+        """F2: Bodoni Moda for display, EB Garamond for text, mono for specimens."""
+        html = self.raw_html
+        for family in ("Bodoni+Moda", "EB+Garamond", "JetBrains+Mono"):
+            self.record_assertion(
+                1, "F2", f"Typeface requested: {family}", family in html,
+                f"{family.replace('+', ' ')} is loaded from the font stylesheet",
+            )
+        for var in ("--didone", "--serif", "--mono"):
+            self.record_assertion(
+                1, "F2", f"Type token {var}", self.auditor.css_analysis.has_variable(var),
+                f"{var} names a stack with real fallbacks",
+            )
 
-        # 2. Monospace font link/declaration
-        has_mono_font = bool(re.search(r"JetBrains\+Mono|Fira\+Code|monospace", self.raw_html, re.IGNORECASE))
-        has_mono_font = has_mono_font or bool(re.search(r"JetBrains Mono|Courier|monospace", self.auditor.css_analysis.raw_css, re.IGNORECASE))
         self.record_assertion(
-            1, "F2", "Technical Monospace Font Import", has_mono_font,
-            "Technical monospace font (JetBrains Mono / monospace) loaded or declared"
+            1, "F2", "Old-style figures in running text",
+            "oldstyle-nums" in html,
+            "Body copy uses old-style numerals, as a book would",
         )
-
-        # 3. Heading serif styling
-        has_heading_serif = bool(re.search(r"(h1|h2|h3|header|\.folio-title|\.atelier-title)[^{]*\{[^}]*(serif|Garamond|Georgia)", self.auditor.css_analysis.raw_css, re.IGNORECASE))
-        has_heading_serif = has_heading_serif or ("font-serif" in self.raw_html) or ("EB Garamond" in self.raw_html)
         self.record_assertion(
-            1, "F2", "Headings Typographic Styling", bool(has_heading_serif),
-            "Heading typography styling configured with classical literary serif"
+            1, "F2", "Drop cap on the opening paragraph",
+            ".lede::first-letter" in html,
+            "The lede opens with a drop cap rather than a plain paragraph",
         )
-
-        # 4. Monospace badges/telemetry styling
-        has_mono_badge = bool(re.search(r"(\.badge|code|\.folio-num|\.terminal|font-mono|\.tech-pill|\.term-text)[^{]*\{[^}]*(monospace|Mono)", self.auditor.css_analysis.raw_css, re.IGNORECASE))
-        has_mono_badge = has_mono_badge or ("font-mono" in self.raw_html) or ("JetBrains Mono" in self.raw_html)
         self.record_assertion(
-            1, "F2", "Monospace Badges & Code Styling", bool(has_mono_badge),
-            "Monospace font applied to technical tags, code, and folios"
+            1, "F2", "Measure is bounded", "--measure" in html and "max-width: var(--measure)" in html,
+            "Prose is held to a readable measure instead of the full column",
         )
-
-        # 5. Preconnect resource hints for Google Fonts
-        preconnects = self.dom.find_all("link", attrs={"rel": "preconnect"})
-        has_font_preconnect = any("fonts.googleapis.com" in link.get("href", "") or "fonts.gstatic.com" in link.get("href", "") for link in preconnects)
         self.record_assertion(
-            1, "F2", "Font Preconnect Performance Hints", has_font_preconnect,
-            "Preconnect hints present for Google Fonts CDNs"
+            1, "F2", "Optical sizing driven deliberately",
+            html.count('font-variation-settings: "opsz"') >= 4,
+            "Bodoni's optical size axis is set per role, not left at default",
         )
 
-    # -------------------------------------------------------------------------
-    # F3: Classical Foliation & Ornamentation
-    # -------------------------------------------------------------------------
-    def test_f3_classical_ornamentation(self):
-        """F3: Validates Roman numeral foliation [I]-[X] and classical glyph accents."""
-        # 1. Roman numerals presence
-        roman_numerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"]
-        text = self.dom.text_content()
-        found_romans = [r for r in roman_numerals if f"[{r}]" in text or f"Plate {r}" in text or f"Folio {r}" in text or f"{r}." in text]
-        has_all_romans = len(found_romans) >= 8
-        self.record_assertion(
-            1, "F3", "Roman Numeral Foliation", has_all_romans,
-            f"Found {len(found_romans)}/10 Roman numeral folios ({', '.join(found_romans)})"
-        )
+    # -- F3: the catalogue ---------------------------------------------------
 
-        # 2. Classical glyph accents (✦, §, ❖, ◈, ❦, etc.)
-        glyphs = ["✦", "§", "❖", "◈", "❦", "⁘", "·", "⚡", "🔍", "🎹", "🚆", "👻", "🐜", "🌿", "📊", "📺", "🎮"]
-        found_glyphs = [g for g in glyphs if g in text or g in self.raw_html]
+    def test_f3_ten_entries_as_wall_labels(self):
+        """F3: ten works, each with medium, date, and where it is kept."""
+        entries = self.entries()
         self.record_assertion(
-            1, "F3", "Classical Engraving Glyphs", len(found_glyphs) >= 2,
-            f"Found decorative engraving glyphs: {' '.join(found_glyphs)}"
+            1, "F3", "Ten works catalogued", len(entries) == 10,
+            f"The catalogue holds {len(entries)} entries",
         )
-
-        # 3. Etched border / frame styling
-        has_frame_classes = bool(re.search(r"(\.etched-border|\.glass-card|\.folio-plate|\.plate-card|\.folio-card)", self.auditor.css_analysis.raw_css)) or "folio-card" in self.raw_html
         self.record_assertion(
-            1, "F3", "Etched Plate Frame Styling", bool(has_frame_classes),
-            "Etched plate frame and border styling rules present"
+            1, "F3", "Entries are an ordered list", '<ol class="entries" id="entries">' in self.raw_html,
+            "The catalogue is an <ol>, so the numbering is real to a screen reader",
         )
 
-        # 4. Floriated / filigree divider element
-        has_divider = bool(re.search(r"(\.floriated-divider|hr|\.floriated-rule|border-b)", self.auditor.css_analysis.raw_css)) or self.dom.find("hr") is not None
+        for index, (_cats, body) in enumerate(entries, start=1):
+            missing = [f for f in ("<dt>Medium</dt>", "<dt>Begun</dt>", "<dt>Kept</dt>") if f not in body]
+            self.record_assertion(
+                1, "F3", f"Entry {index} carries a full wall label", not missing,
+                f"Entry {index} states medium, date and location",
+                f"Missing fields: {missing}",
+            )
+
+        titles = re.findall(r"<h3>([^<]+)</h3>", self.raw_html)
         self.record_assertion(
-            1, "F3", "Filigree Divider Element", bool(has_divider),
-            "Brass filigree or section divider markup present"
+            1, "F3", "Every entry is titled", len(titles) == 10,
+            f"{len(titles)} entry titles found",
         )
-
-        # 5. Header Monogram / Title Banner
-        has_monogram = "Hermès Reisner" in text or "Hermes Reisner" in text
         self.record_assertion(
-            1, "F3", "Author Header Banner & Identity", has_monogram,
-            "Author header banner and identity clearly rendered"
+            1, "F3", "Catalogue numbers run I to X",
+            re.findall(r'<span class="cat-no" aria-hidden="true">([IVX]+)</span>', self.raw_html)
+            == ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"],
+            "Roman numerals I–X appear in order and are hidden from screen readers",
         )
 
-    # -------------------------------------------------------------------------
-    # F4: 10-Project Compendium Plates
-    # -------------------------------------------------------------------------
-    def test_f4_project_compendium(self):
-        """F4: Validates the presence and metadata of all 10 curated project plates."""
-        required_projects = [
-            ("train-tui", ["train-tui"]),
-            ("LocalSR", ["localsr", "local-upscale"]),
-            ("GPT-2 Piano", ["gpt-2 piano", "gpt2-piano", "piano mps"]),
-            ("ESP32 SBB Tracker", ["esp32", "sbb tracker", "sbb_tracker"]),
-            ("PhantomHunt", ["phantomhunt"]),
-            ("Ant Colony TSP Solver", ["ant colony", "tsp", "tsp_aco_gui"]),
-            ("Nature Inventory Delta AI", ["nature inventory", "nature-inventory", "delta ai"]),
-            ("Google Sheets Bookkeeping", ["google sheets", "bookkeeping", "google_sheets_automation"]),
-            ("Telegram YouTube Player", ["telegram youtube", "telegram-youtube-player", "youtube player"]),
-            ("PhantomHunt Canvas Mockup", ["mockup", "canvas mockup", "prototype"])
-        ]
+    # -- F4: the index line --------------------------------------------------
 
-        text_lower = self.dom.text_content().lower()
-        found_projects = []
-        for name, aliases in required_projects:
-            match = any(alias in text_lower for alias in aliases)
-            if match:
-                found_projects.append(name)
-
-        # 1. All 10 projects present
-        self.record_assertion(
-            1, "F4", "All 10 Projects Present", len(found_projects) == 10,
-            f"Found {len(found_projects)}/10 projects: {', '.join(found_projects)}"
-        )
+    def test_f4_index_line(self):
+        """F4: six filters, each tallying what it will actually show."""
+        html = self.raw_html
+        buttons = re.findall(
+            r'<button class="filter" type="button" data-cat="(\w+)" aria-pressed="(\w+)">'
+            r'([^<]+)<span class="tally">(\d+)</span>',
+            html,
+        )
+        self.record_assertion(
+            1, "F4", "Six filters offered", len(buttons) == 6,
+            f"{len(buttons)} filters in the index line",
+        )
+        self.record_assertion(
+            1, "F4", "Exactly one filter starts pressed",
+            sum(1 for _, pressed, _, _ in buttons if pressed == "true") == 1,
+            "'all works' is the only filter pressed on load",
+        )
+
+        counts = self.category_counts()
+        for cat, _pressed, label, tally in buttons:
+            expected = len(self.entries()) if cat == "all" else counts.get(cat, 0)
+            self.record_assertion(
+                1, "F4", f"Tally for '{label.strip()}' is honest", int(tally) == expected,
+                f"{label.strip()} claims {tally}, filter yields {expected}",
+                f"category={cat}",
+            )
 
-        # 2. Project card elements in DOM
-        articles = self.dom.find_all("article") or self.dom.select(".folio-plate, .folio-card, .glass-card, .project-card")
-        self.record_assertion(
-            1, "F4", "Project Card Container Elements", len(articles) >= 10,
-            f"Found {len(articles)} project plate article/card elements (expected >= 10)"
-        )
+    # -- F5: provenance ------------------------------------------------------
 
-        # 3. Project titles
-        headings = self.dom.find_all("h3") or self.dom.select(".folio-title, .plate-title")
-        self.record_assertion(
-            1, "F4", "Project Title Elements", len(headings) >= 10,
-            f"Found {len(headings)} project heading elements (expected >= 10)"
-        )
+    def test_f5_provenance_links(self):
+        """F5: every work either links to its repository or says it is private."""
+        for index, (_cats, body) in enumerate(self.entries(), start=1):
+            kept = re.search(r'<dd class="kept">(.*?)</dd>', body, re.S)
+            self.record_assertion(
+                1, "F5", f"Entry {index} states where it is kept", kept is not None,
+                f"Entry {index} carries a 'Kept' field",
+            )
+            if not kept:
+                continue
+            held = "github.com/HerRei/" in kept.group(1)
+            private = "Private collection" in kept.group(1)
+            self.record_assertion(
+                1, "F5", f"Entry {index} provenance resolves", held or private,
+                "Links to a repository, or is declared a private collection",
+                kept.group(1).strip()[:90],
+            )
 
-        # 4. Project description prose
-        paragraphs = self.dom.find_all("p")
         self.record_assertion(
-            1, "F4", "Project Descriptive Treatises", len(paragraphs) >= 10,
-            f"Found {len(paragraphs)} descriptive paragraphs across project plates"
+            1, "F5", "No link to the private local-upscale repository",
+            "github.com/HerRei/local-upscale" not in self.raw_html,
+            "LocalSR is not linked, because that repository is not public",
         )
-
-        # 5. Technical tags and badges
-        badges = self.dom.select(".badge, .tag, .folio-tag, .tech-pill, .discipline-tag, code")
         self.record_assertion(
-            1, "F4", "Technical Discipline Badges", len(badges) >= 20,
-            f"Found {len(badges)} technical badges/tags across project plates"
+            1, "F5", "Demonstrations point at published pages",
+            all(
+                url.rstrip("/").split("/")[-1]
+                in {
+                    "train-tui", "gpt2-piano-mps-12k", "Sbb_Tracker_Sissach",
+                    "PhantomHunt", "tsp_aco_gui", "google_sheets_automation", "mockup",
+                }
+                for url in re.findall(r'href="(https://herrei\.github\.io/[^"]+)"', self.raw_html)
+            ),
+            "Every demonstration link addresses a project page that exists",
         )
 
-    # -------------------------------------------------------------------------
-    # F5: Instant Category Filtering
-    # -------------------------------------------------------------------------
-    def test_f5_category_filtering(self):
-        """F5: Validates 6-category instant filtering engine."""
-        # 1. Filter container in DOM
-        filter_container = (
-            self.dom.find(id="filter-container")
-            or self.dom.find(id="filter-tabs")
-            or self.dom.select(".filter-tabs, .filter-engine, #filters, [role='tablist']")
-        )
-        self.record_assertion(
-            1, "F5", "Filter Container Present", bool(filter_container),
-            "Category filter tab container found in DOM"
-        )
+    # -- F6: the specimens ---------------------------------------------------
 
-        # 2. All 6 categories present
-        buttons = self.dom.find_all("button") or self.dom.select(".filter-btn, .filter-tab")
-        button_texts = " ".join(b.text_content() for b in buttons).lower()
-        cats = ["all", "systems", "ai", "embedded", "java", "automation"]
-        found_cats = [c for c in cats if c in button_texts or any(c in b.get("data-cat", "") or c in b.get("data-filter", "") or c in b.get("onclick", "") for b in buttons)]
-        self.record_assertion(
-            1, "F5", "6 Category Filter Options", len(found_cats) == 6,
-            f"Found {len(found_cats)}/6 filter categories: {', '.join(found_cats)}"
-        )
+    def test_f6_specimens(self):
+        """F6: three figures that run — telemetry, nocturne, departure panel."""
+        html = self.raw_html
+        for element_id in ("specimen-terminal", "term-toggle-btn", "term-tick-btn",
+                           "term-vram", "term-loss-graph", "term-eta"):
+            self.record_assertion(
+                1, "F6", f"Telemetry specimen node #{element_id}", f'id="{element_id}"' in html,
+                f"#{element_id} exists for the Fig. 1 specimen",
+            )
+        for element_id in ("oscilloscope", "play-btn", "play-status"):
+            self.record_assertion(
+                1, "F6", f"Nocturne node #{element_id}", f'id="{element_id}"' in html,
+                f"#{element_id} exists for the Fig. 2 specimen",
+            )
+        for element_id in ("departure-panel", "panel-clock"):
+            self.record_assertion(
+                1, "F6", f"Departure panel node #{element_id}", f'id="{element_id}"' in html,
+                f"#{element_id} exists for the Fig. 3 specimen",
+            )
 
-        # 3. Active filter button initialized
-        has_active_btn = any("active" in b.classes or "active" in b.get("class", "") for b in buttons)
+        js = self.auditor.js_analysis
         self.record_assertion(
-            1, "F5", "Active Filter Button Initialization", has_active_btn,
-            "Default active filter button is properly marked with active class"
+            1, "F6", "Nocturne uses the Web Audio API", js.has_webaudio and js.has_oscillator,
+            "Tone is synthesised, not fetched as an audio file",
         )
-
-        # 4. JavaScript filter function defined
-        has_filter_func = (
-            "filterCategory" in self.auditor.js_analysis.function_names
-            or "filterCategory" in self.raw_html
-            or "setCategory" in self.auditor.js_analysis.function_names
-            or "filter-tab" in self.raw_html
-        )
         self.record_assertion(
-            1, "F5", "Filter JavaScript Logic", bool(has_filter_func),
-            "JavaScript category filtering function or event handler is configured in script"
+            1, "F6", "Oscilloscope reads the analyser", js.has_analyser_node and js.has_canvas_2d,
+            "The trace is drawn from real analyser data on a 2D canvas",
         )
-
-        # 5. Data-category attributes on cards
-        cards_with_cat = [n for n in self.dom.find_all() if n.has_attr("data-category") or n.has_attr("data-cat") or n.has_attr("data-disciplines")]
         self.record_assertion(
-            1, "F5", "Project Card Data-Category Attributes", len(cards_with_cat) >= 10,
-            f"Found {len(cards_with_cat)} project cards with data-category attributes (expected >= 10)"
+            1, "F6", "Canvas sized to its box at device pixel ratio",
+            "devicePixelRatio" in html and "setTransform" in html,
+            "The backing store matches the element, so the trace is not squashed",
         )
 
-    # -------------------------------------------------------------------------
-    # F6: Live Demo & GitHub Links
-    # -------------------------------------------------------------------------
-    def test_f6_links_and_repositories(self):
-        """F6: Validates GitHub repository URLs and live demo links."""
-        links = self.dom.find_all("a")
-        hrefs = [a.get("href", "") for a in links if a.get("href")]
+    # -- F7: honesty ---------------------------------------------------------
 
-        # 1. Author GitHub Profile link
-        has_gh_profile = any("github.com/HerRei" in h for h in hrefs)
+    def test_f7_captions_do_not_overclaim(self):
+        """F7: the figures say what they are, and the colophon says how dates were set."""
+        html = self.raw_html
         self.record_assertion(
-            1, "F6", "Author GitHub Profile Link", has_gh_profile,
-            "Direct link to https://github.com/HerRei present"
+            1, "F7", "Telemetry figure admits invented numbers",
+            "invented numbers" in html,
+            "Fig. 1 does not pretend to be a live GPU",
         )
-
-        # 2. GitHub repository links for projects
-        gh_repo_links = [h for h in hrefs if "github.com/HerRei/" in h and h != "https://github.com/HerRei"]
         self.record_assertion(
-            1, "F6", "Project GitHub Repository Links", len(gh_repo_links) >= 8,
-            f"Found {len(gh_repo_links)} project GitHub repository links (expected >= 8)"
+            1, "F7", "Nocturne figure credits its author",
+            "Written by hand rather than by the model" in html,
+            "Fig. 2 is not passed off as the model's output",
         )
-
-        # 3. Live demo showcase links
-        demo_links = [h for h in hrefs if "herrei.github.io/" in h and not h.endswith("herrei.github.io/")]
         self.record_assertion(
-            1, "F6", "Live Project Showcase Links", len(demo_links) >= 5,
-            f"Found {len(demo_links)} live demo URLs (e.g. train-tui, piano, sbb tracker)"
+            1, "F7", "Panel figure is marked a redrawing",
+            "not a photograph of it" in html,
+            "Fig. 3 is not passed off as a photograph of the hardware",
         )
-
-        # 4. External link target attributes
-        external_links = [a for a in links if a.get("href", "").startswith("http")]
-        has_targets = all(a.get("target") == "_blank" for a in external_links)
         self.record_assertion(
-            1, "F6", "External Links Target Blank", has_targets,
-            "All external project and profile links specify target='_blank'"
+            1, "F7", "Colophon explains the dates",
+            "first appeared publicly" in html,
+            "Dates are attributed to the repositories, not invented",
         )
-
-        # 5. Security rel attributes (noreferrer / noopener)
-        secured_links = [a for a in external_links if "noreferrer" in a.get("rel", "") or "noopener" in a.get("rel", "")]
         self.record_assertion(
-            1, "F6", "External Link Security Rel Attributes", len(secured_links) == len(external_links),
-            f"{len(secured_links)}/{len(external_links)} external links secured with rel='noreferrer' or rel='noopener'"
+            1, "F7", "Colophon explains the numbering",
+            "rather than chronology" in html,
+            "The arrangement is declared as the author's, not chronological",
         )
-
-    # -------------------------------------------------------------------------
-    # F7: Bundled Assets & Media Integration
-    # -------------------------------------------------------------------------
-    def test_f7_staged_media_assets(self):
-        """F7: Validates local assets, portrait, CV, and hardware illustrations."""
-        # 1. Personal portrait reference
-        imgs = self.dom.find_all("img")
-        srcs = [i.get("src", "") for i in imgs if i.get("src")]
-        has_portrait = any("profilbild" in s or "portrait" in s or "photo" in s or "IMG_1591" in s for s in srcs)
-        has_portrait = has_portrait or any("profilbild" in self.raw_html or "lebenslauf" in self.raw_html for _ in [1])
         self.record_assertion(
-            1, "F7", "Personal Portrait Integration", bool(has_portrait),
-            "Personal portrait image referenced in portfolio"
+            1, "F7", "No unphotographed work claims a photograph",
+            "photographed at home" not in html,
+            "The mislabelled hardware photograph is gone",
         )
 
-        # 2. CV PDF reference
-        links = self.dom.find_all("a")
-        hrefs = [a.get("href", "") for a in links if a.get("href")]
-        has_cv = any("lebenslauf.pdf" in h or "cv" in h.lower() for h in hrefs) or "lebenslauf.pdf" in self.raw_html
-        self.record_assertion(
-            1, "F7", "Curriculum Vitae (CV) PDF Access", bool(has_cv),
-            "Curriculum Vitae PDF link configured in portfolio"
-        )
+    # -- F8: accessibility ---------------------------------------------------
 
-        # 3. Hardware graphics / illustrations referenced
-        has_hw_graphic = (
-            any("board" in s or "esp32" in s or "IMG_1591" in s for s in srcs)
-            or any("board-closeup.svg" in self.raw_html or "board-installed.svg" in self.raw_html or "IMG_1591" in self.raw_html for _ in [1])
-            or bool(self.dom.select(".hardware-preview, .tft-display, #sbb-display, .board-frame"))
-        )
+    def test_f8_accessibility(self):
+        """F8: one h1, ordered headings, a skip link, labelled sections, visible focus."""
+        html = self.raw_html
+        levels = [int(n) for n in re.findall(r"<h([1-6])[^>]*>", html)]
         self.record_assertion(
-            1, "F7", "ESP32 Hardware Media Integration", bool(has_hw_graphic),
-            "ESP32 hardware photo/graphic referenced or simulated"
+            1, "F8", "Exactly one h1", levels.count(1) == 1,
+            f"The document has {levels.count(1)} first-level heading(s)",
         )
-
-        # 4. Asset directory check
-        assets_dir = self.auditor.assets_dir
+        skips = [(a, b) for a, b in zip(levels, levels[1:]) if b > a + 1]
         self.record_assertion(
-            1, "F7", "Local Assets Directory Structure", assets_dir.exists() and assets_dir.is_dir(),
-            f"Assets directory exists at {assets_dir}"
+            1, "F8", "No skipped heading levels", not skips,
+            "Heading levels descend one at a time",
+            f"Skips: {skips}",
         )
-
-        # 5. Asset readability
-        asset_files = list(assets_dir.glob("*")) if assets_dir.exists() else []
         self.record_assertion(
-            1, "F7", "Staged Media File System Verification", len(asset_files) >= 0,
-            f"Verified {len(asset_files)} asset files staged in assets directory"
+            1, "F8", "Skip link present", 'class="skip-link"' in html,
+            "Keyboard users can jump straight to the catalogue",
         )
-
-    # -------------------------------------------------------------------------
-    # F8: Web Audio Piano Synthesizer
-    # -------------------------------------------------------------------------
-    def test_f8_webaudio_piano_synth(self):
-        """F8: Validates Web Audio API piano synthesizer & dynamic oscilloscope visualizer."""
-        # 1. Piano preview trigger button
-        buttons = self.dom.find_all("button") or self.dom.find_all("a")
-        has_audio_trigger = any("piano" in b.text_content().lower() or "audio" in b.text_content().lower() or "play" in b.text_content().lower() or "synth" in b.text_content().lower() or "synth" in b.id for b in buttons)
-        has_audio_trigger = has_audio_trigger or "piano" in self.raw_html.lower()
         self.record_assertion(
-            1, "F8", "Piano Synthesizer UI Control", bool(has_audio_trigger),
-            "Interactive piano audio audition button/trigger present"
+            1, "F8", "Sections are named", html.count("aria-labelledby=") >= 4,
+            "Each section is announced by its own heading",
         )
-
-        # 2. Oscilloscope canvas element
-        canvases = self.dom.find_all("canvas")
-        has_canvas = len(canvases) >= 1 or "canvas" in self.raw_html
         self.record_assertion(
-            1, "F8", "Audio Waveform Canvas Element", bool(has_canvas),
-            "Waveform/Oscilloscope <canvas> visualizer element present"
+            1, "F8", "Focus is visible", ":focus-visible" in html,
+            "Focus rings are styled rather than suppressed",
         )
-
-        # 3. Web Audio API usage
-        has_audio_ctx = self.auditor.js_analysis.has_webaudio or "AudioContext" in self.raw_html
         self.record_assertion(
-            1, "F8", "Web Audio API Context Initialization", bool(has_audio_ctx),
-            "Standard Web Audio AudioContext API referenced in script"
+            1, "F8", "Filters expose their state", 'aria-pressed="' in html,
+            "Filter buttons report pressed state to assistive technology",
         )
-
-        # 4. Oscillator and Gain nodes
-        has_osc = self.auditor.js_analysis.has_oscillator or "createOscillator" in self.raw_html
-        has_gain = self.auditor.js_analysis.has_gain_node or "createGain" in self.raw_html
+        imgs = re.findall(r"<img\b[^>]*>", html)
         self.record_assertion(
-            1, "F8", "Additive Synthesis & Envelope Nodes", bool(has_osc or has_gain or has_audio_ctx),
-            "Oscillator and Gain envelope synthesis nodes configured"
-        )
-
-        # 5. Canvas 2D rendering / requestAnimationFrame
-        has_anim = (
-            self.auditor.js_analysis.has_canvas_2d
-            or self.auditor.js_analysis.has_animation_frame
-            or "requestAnimationFrame" in self.raw_html
-            or "canvas" in self.raw_html
+            1, "F8", "Every image is described",
+            all("alt=" in tag for tag in imgs), f"{len(imgs)} image(s), all carrying alt text",
         )
         self.record_assertion(
-            1, "F8", "Real-Time Visualizer Animation Loop", bool(has_anim),
-            "Visualizer canvas animation loop configured"
+            1, "F8", "Buttons declare their type",
+            all('type="button"' in tag for tag in re.findall(r"<button\b[^>]*>", html)),
+            "No button can accidentally submit anything",
         )
 
-    # -------------------------------------------------------------------------
-    # F9: Live ANSI Terminal Simulator
-    # -------------------------------------------------------------------------
-    def test_f9_ansi_terminal_simulator(self):
-        """F9: Validates train-tui live ANSI terminal telemetry monitor."""
-        # 1. Terminal window container
-        terminal = self.dom.select(".terminal, #terminal, .telemetry-window, .terminal-window, .term-window, pre")
-        has_terminal = len(terminal) >= 1 or "sysfs" in self.raw_html.lower() or "train-tui" in self.raw_html.lower()
-        self.record_assertion(
-            1, "F9", "ANSI Terminal Container Element", bool(has_terminal),
-            "Terminal UI telemetry container element found in Plate I"
-        )
+    # -- F9: responsive ------------------------------------------------------
 
-        # 2. Hardware telemetry fields (VRAM, temp, power, tokens/sec)
-        text = self.dom.text_content().lower()
-        has_metrics = ("sysfs" in text or "gpu" in text or "telemetry" in text or "vram" in text or "power" in text or "temp" in text)
+    def test_f9_responsive(self):
+        """F9: the sheet reflows, and the gutter survives."""
+        css = self.auditor.css_analysis
+        widths = [q["query"] for q in css.media_queries if q["has_max_width"]]
         self.record_assertion(
-            1, "F9", "GPU Hardware Telemetry Indicators", bool(has_metrics),
-            "GPU memory, temperature, power, and sysfs metrics rendered"
+            1, "F9", "Breakpoints defined", len(widths) >= 3,
+            f"{len(widths)} max-width breakpoints: {widths}",
         )
-
-        # 3. Interactive stream controls (Pause/Resume or Demo)
-        buttons = self.dom.find_all("button")
-        has_controls = any("pause" in b.text_content().lower() or "resume" in b.text_content().lower() or "stream" in b.text_content().lower() or "term" in b.id for b in buttons)
-        has_controls = has_controls or ("train-tui" in self.raw_html)
         self.record_assertion(
-            1, "F9", "Terminal Telemetry Stream Controls", bool(has_controls),
-            "Terminal interactive telemetry controls configured"
+            1, "F9", "Entries collapse to one column",
+            "grid-template-columns: minmax(0, 1fr);" in self.raw_html,
+            "The label column stacks above the entry on a narrow screen",
         )
+        # Regression: `.section { padding: <v> 0 }` silently cancelled the
+        # horizontal gutter that .sheet sets, flattening every section against
+        # the viewport edge below 62rem.
+        for name in ("section", "title-page"):
+            block = re.search(r"\n\.%s\s*\{([^}]*)\}" % re.escape(name), self.raw_html)
+            body = block.group(1) if block else ""
+            self.record_assertion(
+                1, "F9", f"Gutter survives .{name}",
+                bool(block) and not re.search(r"\bpadding\s*:", body),
+                f".{name} sets padding on one axis, leaving .sheet's gutter intact",
+                body.strip()[:120],
+            )
+
+    # -- F10: the print sheet ------------------------------------------------
 
-        # 4. Monospace terminal font styling
-        css = self.auditor.css_analysis.raw_css
-        has_term_style = "monospace" in css or "JetBrains Mono" in css or "font-mono" in self.raw_html
+    def test_f10_print_sheet(self):
+        """F10: it prints as a catalogue, filters and all."""
+        block = re.search(r"@media print\s*\{(.*)\}\s*</style>", self.raw_html, re.S)
         self.record_assertion(
-            1, "F9", "Terminal Monospace Typography", bool(has_term_style),
-            "Crisp monospace typography applied to terminal stream"
+            1, "F10", "Print stylesheet present", block is not None,
+            "The page carries a print sheet",
         )
-
-        # 5. Live demo link for train-tui
-        links = self.dom.find_all("a")
-        has_tui_demo = any("herrei.github.io/train-tui" in a.get("href", "") for a in links)
+        body = block.group(1) if block else ""
         self.record_assertion(
-            1, "F9", "train-tui Live Showcase Link", has_tui_demo,
-            "Direct link to live train-tui terminal demo present"
+            1, "F10", "Running head withheld from print", ".running-head" in body,
+            "Navigation furniture is dropped on paper",
         )
-
-    # -------------------------------------------------------------------------
-    # F10: ESP32 Hardware Showcase
-    # -------------------------------------------------------------------------
-    def test_f10_esp32_hardware_showcase(self):
-        """F10: Validates ST7789 TFT display layout and lightbox modal."""
-        # 1. SBB Departure Board display simulation
-        text = self.dom.text_content()
-        has_sbb = "SBB" in text or "Sissach" in text or "Tracker" in text or "Departure" in text
         self.record_assertion(
-            1, "F10", "ST7789 TFT Departure Board Layout", bool(has_sbb),
-            "Swiss SBB transit departure board layout simulated"
+            1, "F10", "Filtered entries are restored on paper",
+            ".entry.is-hidden" in body and "display: grid !important" in body,
+            "Printing yields the whole catalogue, not the current filter",
         )
-
-        # 2. Hardware specifications mentioned
-        has_specs = "ESP32" in text and ("ST7789" in text or "SPI" in text or "Watchdog" in text or "WDT" in text or "Arduino" in text)
         self.record_assertion(
-            1, "F10", "ESP32 Hardware Specifications", bool(has_specs),
-            "ESP32, SPI, ST7789, and Watchdog hardware specifications documented"
+            1, "F10", "Link targets are printed", 'content: " (" attr(href) ")"' in body,
+            "URLs are spelled out where they cannot be clicked",
         )
-
-        # 3. Lightbox modal or hardware preview trigger
-        modal = self.dom.select(".modal, #lightbox, #modal, .hardware-preview, #esp32-modal, #hardware-modal")
-        has_modal = len(modal) >= 1 or "modal" in self.raw_html.lower() or "lightbox" in self.raw_html.lower() or "Sbb_Tracker_Sissach" in self.raw_html
         self.record_assertion(
-            1, "F10", "Hardware Showcase Lightbox Modal", bool(has_modal),
-            "Hardware lightbox modal or interactive preview present"
+            1, "F10", "Entries are not broken across pages", "break-inside: avoid" in body,
+            "A work stays on one page",
         )
+
+    # -- F11: assets ---------------------------------------------------------
 
-        # 4. Live showcase link to Sbb_Tracker_Sissach
-        links = self.dom.find_all("a")
-        has_sbb_link = any("Sbb_Tracker_Sissach" in a.get("href", "") for a in links)
+    def test_f11_assets(self):
+        """F11: everything referenced exists; nothing misattributed is referenced."""
+        referenced = sorted(set(re.findall(r'(?:src|href|data-img)="(assets/[^"]+)"', self.raw_html)))
         self.record_assertion(
-            1, "F10", "ESP32 SBB Tracker Showcase Link", has_sbb_link,
-            "Direct link to ESP32 SBB Tracker repository/showcase present"
+            1, "F11", "Assets are referenced", len(referenced) >= 2,
+            f"{len(referenced)} local asset(s) referenced: {referenced}",
         )
-
-        # 5. Physical board illustration/photo link
-        has_board_img = "board" in self.raw_html or "IMG_1591" in self.raw_html or "sbb" in self.raw_html.lower()
+        for path in referenced:
+            exists, size = self.auditor.check_asset_exists(path)
+            self.record_assertion(
+                1, "F11", f"Asset present: {path}", exists and size > 0,
+                f"{path} exists ({size} bytes)",
+            )
         self.record_assertion(
-            1, "F10", "Physical Board Imagery Integration", bool(has_board_img),
-            "Physical board graphic, SVG, or photo integrated in plate"
+            1, "F11", "Portrait is the web-sized file",
+            "assets/profilbild_web.jpg" in self.raw_html and "assets/profilbild.png" not in self.raw_html,
+            "The 1.8 MB original is not served to visitors",
         )
+        for banned, why in (
+            ("IMG_1591", "the photograph is not of the hardware"),
+            ("board-closeup.svg", "the cartoon rendering is not the hardware"),
+            ("board-installed.svg", "the cartoon rendering is not the hardware"),
+        ):
+            self.record_assertion(
+                1, "F11", f"Withdrawn asset absent: {banned}", banned not in self.raw_html,
+                f"{banned} is not published — {why}",
+            )
 
-    # -------------------------------------------------------------------------
-    # F11: Academic Dossier & Contacts
-    # -------------------------------------------------------------------------
-    def test_f11_academic_dossier(self):
-        """F11: Validates University of Basel credentials, 4 pillars, and contact channels."""
-        text = self.dom.text_content()
+    # -- F12: motion ---------------------------------------------------------
 
-        # 1. University of Basel affiliation
-        has_unibas = "University of Basel" in text or "Universität Basel" in text
+    def test_f12_motion_is_restrained(self):
+        """F12: little moves, and what moves can be stopped."""
+        html = self.raw_html
         self.record_assertion(
-            1, "F11", "University of Basel Affiliation", has_unibas,
-            "Academic credentials at University of Basel prominently stated"
+            1, "F12", "Reduced motion honoured", "prefers-reduced-motion" in html,
+            "Animation is disabled for readers who ask for that",
         )
-
-        # 2. Computer Science curriculum
-        has_cs = "Computer Science" in text or "Informatik" in text or "CS @" in text
         self.record_assertion(
-            1, "F11", "Computer Science Discipline Focus", bool(has_cs),
-            "Computer science discipline and study focus documented"
-        )
-
-        # 3. Four technical discipline pillars
-        has_pillars = (
-            "Systems" in text
-            and ("Machine Learning" in text or "AI" in text or "ML" in text)
-            and ("Embedded" in text or "Hardware" in text or "IoT" in text)
-            and ("Distributed" in text or "Java" in text or "Algorithms" in text)
+            1, "F12", "Reduced motion reaches the script", "reduceMotion" in html,
+            "The ticker does not start by itself when motion is unwelcome",
         )
         self.record_assertion(
-            1, "F11", "4 Technical Discipline Pillars", has_pillars,
-            "Four classical engineering pillars (Systems, ML, Embedded, Distributed) presented"
+            1, "F12", "Ticker stops in a hidden tab", "visibilitychange" in html,
+            "A background tab does not keep the specimen running",
         )
-
-        # 4. Professional contact links (GitHub, LinkedIn, Email)
-        links = self.dom.find_all("a")
-        hrefs = [a.get("href", "") for a in links if a.get("href")]
-        has_gh = any("github.com/HerRei" in h for h in hrefs)
-        has_li = any("linkedin.com/in/" in h for h in hrefs)
-        has_mail = any("mailto:" in h for h in hrefs)
         self.record_assertion(
-            1, "F11", "Triple Contact Channels", has_gh and has_li and has_mail,
-            "Direct links to GitHub, LinkedIn, and Email mailto contact present"
+            1, "F12", "One keyframe animation at most",
+            len(self.auditor.css_analysis.keyframes) <= 1,
+            f"Keyframes declared: {self.auditor.css_analysis.keyframes}",
         )
-
-        # 5. Curriculum Vitae access
-        has_cv_button = any("cv" in a.text_content().lower() or "lebenslauf" in a.get("href", "").lower() for a in links) or "lebenslauf" in self.raw_html
         self.record_assertion(
-            1, "F11", "Academic CV Access Button", bool(has_cv_button),
-            "Direct download/access button for Academic CV present"
+            1, "F12", "No parallax or scroll-jacking",
+            "scroll-behavior: smooth" in html and "onscroll" not in html,
+            "Scrolling is the browser's, apart from smooth anchor jumps",
         )
 
-    # -------------------------------------------------------------------------
-    # F12: Full Responsive Layout
-    # -------------------------------------------------------------------------
-    def test_f12_responsive_layout(self):
-        """F12: Validates viewport meta tag and multi-tier CSS media queries."""
-        # 1. Viewport meta tag
-        viewport_meta = self.dom.find("meta", attrs={"name": "viewport"})
-        has_viewport = viewport_meta is not None and "width=device-width" in viewport_meta.get("content", "")
-        self.record_assertion(
-            1, "F12", "Responsive Viewport Meta Tag", has_viewport,
-            "Standard HTML5 responsive viewport meta tag configured"
-        )
+    # -- F13: architecture ---------------------------------------------------
 
-        # 2. Mobile and tablet CSS media queries
-        mqs = self.auditor.css_analysis.media_queries
-        has_media_queries = len(mqs) >= 1 or "md:" in self.raw_html or "sm:" in self.raw_html
-        self.record_assertion(
-            1, "F12", "CSS Media Query Breakpoints", bool(has_media_queries),
-            f"Found {len(mqs)} responsive CSS media query rules"
-        )
+    def test_f13_architecture(self):
+        """F13: one file, no framework, nothing fetched but the typefaces."""
+        html = self.raw_html
+        css = self.auditor.css_analysis
 
-        # 3. Responsive grid columns
-        css = self.auditor.css_analysis.raw_css
-        has_grid = "grid" in css or "grid-cols" in self.raw_html or "flex-wrap" in self.raw_html
         self.record_assertion(
-            1, "F12", "Responsive Compendium Grid Layout", bool(has_grid),
-            "Compendium grid implements fluid responsive layout"
+            1, "F13", "Stylesheet parses", not css.parse_errors,
+            "Braces balance and the stylesheet is well formed",
+            str(css.parse_errors),
         )
-
-        # 4. Fluid typography / sizing
-        has_fluid_scaling = bool(re.search(r"(rem|vw|%|clamp)", css)) or "text-sm" in self.raw_html or "text-4xl" in self.raw_html
         self.record_assertion(
-            1, "F12", "Fluid Typography & Sizing", bool(has_fluid_scaling),
-            "Typography and containers scale fluidly across device viewports"
+            1, "F13", "One inline stylesheet", html.count("<style>") == 1,
+            "All styling lives in a single block",
         )
-
-        # 5. Touch targets and responsive button spacing
-        buttons = self.dom.find_all("button") + self.dom.find_all("a")
         self.record_assertion(
-            1, "F12", "Interactive Responsive Elements", len(buttons) >= 15,
-            f"Found {len(buttons)} interactive buttons/links with responsive touch targets"
+            1, "F13", "One inline script", html.count("<script>") == 1,
+            "All behaviour lives in a single block",
         )
-
-    # -------------------------------------------------------------------------
-    # F13: Zero-Error Static Quality & Architecture
-    # -------------------------------------------------------------------------
-    def test_f13_static_quality_architecture(self):
-        """F13: Validates pure static architecture, HTML5 doctype, zero JS syntax errors."""
-        # 1. Valid HTML5 Doctype
-        has_doctype = self.raw_html.strip().startswith("<!DOCTYPE html>") or self.raw_html.strip().startswith("<!doctype html>")
         self.record_assertion(
-            1, "F13", "Valid HTML5 Doctype Declaration", has_doctype,
-            "Document begins with standard <!DOCTYPE html>"
+            1, "F13", "Script is not a global spill", '(function () {' in html and '"use strict"' in html,
+            "Behaviour runs inside one strict-mode closure",
         )
-
-        # 2. HTML lang attribute
-        html_tag = self.dom.find("html")
-        has_lang = html_tag is not None and html_tag.get("lang") == "en"
         self.record_assertion(
-            1, "F13", "HTML Document Language Attribute", has_lang,
-            "HTML root element has lang='en' specified"
+            1, "F13", "No inline event attributes", not re.search(r"\son[a-z]+\s*=", html),
+            "Handlers are bound in script, not sprayed through the markup",
         )
-
-        # 3. Descriptive title and meta tags
-        title = self.dom.find("title")
-        meta_desc = self.dom.find("meta", attrs={"name": "description"})
-        has_seo = title is not None and len(title.text_content()) > 5 and meta_desc is not None
+        hosts = set(re.findall(r"https?://([a-z0-9.\-]+)", html))
+        allowed = {"fonts.googleapis.com", "fonts.gstatic.com", "github.com",
+                   "herrei.github.io", "www.linkedin.com", "www.w3.org"}
         self.record_assertion(
-            1, "F13", "Document Title & Meta Description", has_seo,
-            "Document has informative <title> and <meta name='description'>"
+            1, "F13", "No third-party runtime dependencies", hosts <= allowed,
+            f"External hosts referenced: {sorted(hosts)}",
+            f"Unexpected: {sorted(hosts - allowed)}",
         )
-
-        # 4. Zero external JS framework bundlers (No React / Vue / Angular / jQuery)
-        scripts = self.dom.find_all("script")
-        ext_scripts = [s.get("src", "") for s in scripts if s.get("src")]
-        prohibited = [s for s in ext_scripts if any(lib in s.lower() for lib in ["react", "vue", "angular", "jquery", "bootstrap"])]
+        ids = re.findall(r'\bid="([^"]+)"', html)
         self.record_assertion(
-            1, "F13", "Pure Static Zero-Framework Architecture", len(prohibited) == 0,
-            f"Zero prohibited heavy JS framework scripts loaded: {prohibited}"
+            1, "F13", "Identifiers are unique", len(ids) == len(set(ids)),
+            f"{len(ids)} ids, all distinct",
+            f"Duplicates: {[i for i in ids if ids.count(i) > 1]}",
         )
 
-        # 5. Inline JavaScript syntax balance
-        js_errors = self.auditor.js_analysis.syntax_errors
-        self.record_assertion(
-            1, "F13", "Inline JavaScript Syntax Integrity", len(js_errors) == 0,
-            "Zero JavaScript syntax balance errors detected in embedded scripts" if not js_errors else f"JS errors: {js_errors}"
-        )
+
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

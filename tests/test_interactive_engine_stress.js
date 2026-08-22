@@ -1,778 +1,500 @@
+#!/usr/bin/env node
 /**
- * Adversarial Empirical Stress-Test Suite for HerRei.github.io Interactive JavaScript Engines
- * Tests:
- * 1. Web Audio API Piano Synthesizer & Canvas Oscilloscope
- * 2. ANSI Terminal Telemetry Simulator
- * 3. Modal Lightbox & Tab Controller
- * 4. Category Filtering Engine
- * 5. Full Browser Context Simulation with Zero Console/Runtime Exceptions
+ * Executes the script that ships inside index.html against a stub DOM and a
+ * virtual clock, then drives it hard.
+ *
+ * Unlike the Python suites, which read the page, this one runs it: filters are
+ * really clicked, the nocturne is really played through to its last note, and
+ * the telemetry specimen is really ticked ten thousand times.
+ *
+ *     node tests/test_interactive_engine_stress.js
  */
 
-const fs = require('fs');
-const path = require('path');
-const assert = require('assert');
+"use strict";
 
-console.log("===============================================================================");
-console.log("   ADVERSARIAL EMPIRICAL STRESS-TEST HARNESS (INTERACTIVE ENGINES)           ");
-console.log("===============================================================================\n");
+const fs = require("fs");
+const path = require("path");
+const vm = require("vm");
+const assert = require("assert");
 
-// Read index.html
-const indexPath = path.resolve(__dirname, '../index.html');
-const indexHtml = fs.readFileSync(indexPath, 'utf8');
+const INDEX = path.resolve(__dirname, "../index.html");
+const DOC = fs.readFileSync(INDEX, "utf8");
+const SCRIPT = DOC.match(/<script>([\s\S]*?)<\/script>/)[1];
 
-// Extract Script Content
-const scriptMatch = indexHtml.match(/<script>([\s\S]*?)<\/script>/);
-if (!scriptMatch) {
-  console.error("FATAL: Could not extract <script> tag from index.html");
-  process.exit(1);
-}
-const scriptContent = scriptMatch[1];
+const GREEN = "\x1b[92m", RED = "\x1b[91m", DIM = "\x1b[2m", RULE = "\x1b[38;2;168;61;40m", OFF = "\x1b[0m";
 
-// Extract AtelierPianoAudioEngine class specifically for direct isolated unit tests
-const classMatch = scriptContent.match(/class AtelierPianoAudioEngine\s*\{[\s\S]*?\n\s{6}\}/);
-if (!classMatch) {
-  console.error("FATAL: Could not extract AtelierPianoAudioEngine class from script");
-  process.exit(1);
-}
-const classDefCode = classMatch[0];
-
-let totalTests = 0;
-let passedTests = 0;
-let failedTests = 0;
-
-function runTest(name, fn) {
-  totalTests++;
+let passed = 0, failed = 0;
+function check(name, fn) {
   try {
     fn();
-    console.log(`  [PASS] ${name}`);
-    passedTests++;
+    passed++;
+    console.log(`  ${GREEN}✓${OFF} ${name}`);
   } catch (err) {
-    console.error(`  [FAIL] ${name}: ${err.message}`);
-    if (err.stack) console.error(err.stack);
-    failedTests++;
+    failed++;
+    console.log(`  ${RED}✗${OFF} ${name}`);
+    console.log(`    ${DIM}${err.message.split("\n")[0]}${OFF}`);
   }
 }
-
-// -----------------------------------------------------------------------------
-// SECTION 1: Mock DOM and Web Audio API Engine
-// -----------------------------------------------------------------------------
-
-class MockAudioParam {
-  constructor(defaultValue = 0) {
-    this.value = defaultValue;
-    this.events = [];
-  }
-  setValueAtTime(val, time) {
-    this.value = val;
-    this.events.push({ type: 'setValueAtTime', val, time });
-  }
-  linearRampToValueAtTime(val, time) {
-    this.value = val;
-    this.events.push({ type: 'linearRampToValueAtTime', val, time });
-  }
-  exponentialRampToValueAtTime(val, time) {
-    if (val <= 0) {
-      throw new RangeError("exponentialRampToValueAtTime target value must be strictly positive (> 0)");
-    }
-    this.value = val;
-    this.events.push({ type: 'exponentialRampToValueAtTime', val, time });
-  }
+function section(title) {
+  console.log(`\n${RULE}${title}${OFF}`);
 }
 
-class MockAudioNode {
-  constructor(context) {
-    this.context = context;
-    this.connections = [];
-  }
-  connect(dest) {
-    this.connections.push(dest);
-    return dest;
-  }
-  disconnect() {
-    this.connections = [];
-  }
+/* ---------------------------------------------------------------------------
+   A DOM just large enough for the page's script, and a clock we control.
+   ------------------------------------------------------------------------ */
+
+function makeElement(attrs) {
+  const listeners = {};
+  const classes = new Set();
+  return {
+    attrs: Object.assign({}, attrs),
+    textContent: "",
+    offsetWidth: 100,
+    classList: {
+      add: (c) => classes.add(c),
+      remove: (c) => classes.delete(c),
+      contains: (c) => classes.has(c),
+      toggle: (c, force) => (force ? classes.add(c) : classes.delete(c)),
+      _set: classes,
+    },
+    getAttribute(name) {
+      return Object.prototype.hasOwnProperty.call(this.attrs, name) ? this.attrs[name] : null;
+    },
+    setAttribute(name, value) { this.attrs[name] = String(value); },
+    addEventListener(type, fn) { (listeners[type] = listeners[type] || []).push(fn); },
+    dispatch(type, event) { (listeners[type] || []).forEach((fn) => fn(event || {})); },
+    click() { this.dispatch("click"); },
+    getBoundingClientRect() { return { width: 600, height: 68, left: 0, top: 0 }; },
+    hidden() { return classes.has("is-hidden"); },
+  };
 }
 
-class MockOscillatorNode extends MockAudioNode {
-  constructor(context) {
-    super(context);
-    this.type = 'sine';
-    this.frequency = new MockAudioParam(440);
-    this.started = false;
-    this.stopped = false;
-    this.startTime = null;
-    this.stopTime = null;
-  }
-  start(time = 0) {
-    this.started = true;
-    this.startTime = time;
-    this.context.activeOscillators.push(this);
-  }
-  stop(time = 0) {
-    this.stopped = true;
-    this.stopTime = time;
-    this.context.stoppedOscillators.push(this);
-  }
+function makeClock() {
+  let now = 0, nextId = 1;
+  const timers = new Map();
+  return {
+    now: () => now,
+    setTimeout(fn, delay) { timers.set(nextId, { fn, at: now + delay, every: null }); return nextId++; },
+    setInterval(fn, every) { timers.set(nextId, { fn, at: now + every, every }); return nextId++; },
+    clear(id) { timers.delete(id); },
+    pending: () => timers.size,
+    /** Advance the clock, firing whatever falls due. */
+    advance(ms) {
+      const target = now + ms;
+      let guard = 0;
+      for (;;) {
+        let soonest = null, soonestId = null;
+        for (const [id, t] of timers) {
+          if (t.at <= target && (soonest === null || t.at < soonest.at)) { soonest = t; soonestId = id; }
+        }
+        if (!soonest || ++guard > 200000) break;
+        now = soonest.at;
+        if (soonest.every === null) timers.delete(soonestId);
+        else soonest.at = now + soonest.every;
+        soonest.fn();
+      }
+      now = target;
+    },
+  };
 }
 
-class MockGainNode extends MockAudioNode {
-  constructor(context) {
-    super(context);
-    this.gain = new MockAudioParam(1);
+function makeAudioStub(log) {
+  function param() {
+    return {
+      setValueAtTime: (v, t) => log.params.push(["set", v, t]),
+      linearRampToValueAtTime: (v, t) => log.params.push(["linear", v, t]),
+      exponentialRampToValueAtTime: (v, t) => log.params.push(["exp", v, t]),
+    };
   }
-}
-
-class MockBiquadFilterNode extends MockAudioNode {
-  constructor(context) {
-    super(context);
-    this.type = 'lowpass';
-    this.frequency = new MockAudioParam(350);
-  }
-}
-
-class MockAnalyserNode extends MockAudioNode {
-  constructor(context) {
-    super(context);
-    this.fftSize = 256;
-    this.smoothingTimeConstant = 0.8;
-    this.frequencyBinCount = 128;
-  }
-  getByteTimeDomainData(array) {
-    for (let i = 0; i < array.length; i++) {
-      array[i] = Math.floor(128 + 64 * Math.sin((i / array.length) * 2 * Math.PI));
-    }
-  }
-}
-
-class MockAudioContext {
-  constructor() {
+  function AudioContextStub() {
+    this.state = "suspended";
     this.currentTime = 0;
-    this.state = 'suspended';
-    this.destination = new MockAudioNode(this);
-    this.activeOscillators = [];
-    this.stoppedOscillators = [];
+    this.destination = { kind: "destination" };
+    this.resume = () => { this.state = "running"; log.resumed++; };
+    this.createGain = () => ({ gain: param(), connect: () => {} });
+    this.createBiquadFilter = () => ({ type: "", frequency: param(), connect: () => {} });
+    this.createAnalyser = () => ({
+      fftSize: 0,
+      smoothingTimeConstant: 0,
+      frequencyBinCount: 256,
+      connect: () => {},
+      getByteTimeDomainData: (arr) => { for (let i = 0; i < arr.length; i++) arr[i] = 128; },
+    });
+    this.createOscillator = () => {
+      const osc = {
+        type: "",
+        frequency: {
+          setValueAtTime: (hz) => { osc._hz = hz; },
+        },
+        connect: () => {},
+        start: () => { log.notes.push(osc._hz); log.started++; },
+        stop: () => { log.stopped++; },
+      };
+      return osc;
+    };
   }
-  resume() {
-    this.state = 'running';
-    return Promise.resolve();
-  }
-  suspend() {
-    this.state = 'suspended';
-    return Promise.resolve();
-  }
-  createOscillator() {
-    return new MockOscillatorNode(this);
-  }
-  createGain() {
-    return new MockGainNode(this);
-  }
-  createBiquadFilter() {
-    return new MockBiquadFilterNode(this);
-  }
-  createAnalyser() {
-    return new MockAnalyserNode(this);
-  }
+  return AudioContextStub;
 }
 
-class MockClassList {
-  constructor(classes = []) {
-    this._set = new Set(classes);
-  }
-  add(cls) {
-    this._set.add(cls);
-  }
-  remove(cls) {
-    this._set.delete(cls);
-  }
-  contains(cls) {
-    return this._set.has(cls);
-  }
-  toggle(cls) {
-    if (this._set.has(cls)) this._set.delete(cls);
-    else this._set.add(cls);
-  }
-  toString() {
-    return Array.from(this._set).join(' ');
-  }
-}
+function buildEnvironment(options) {
+  options = options || {};
+  const clock = makeClock();
+  const audioLog = { notes: [], params: [], started: 0, stopped: 0, resumed: 0 };
+  const canvasOps = [];
 
-class MockCanvasRenderingContext2D {
-  constructor(canvas) {
-    this.canvas = canvas;
-    this.fillStyle = '';
-    this.strokeStyle = '';
-    this.lineWidth = 1;
-    this.shadowColor = '';
-    this.shadowBlur = 0;
-    this.drawCalls = 0;
-    this.path = [];
-  }
-  fillRect(x, y, w, h) { this.drawCalls++; }
-  beginPath() { this.path = []; }
-  moveTo(x, y) { this.path.push(['M', x, y]); }
-  lineTo(x, y) { this.path.push(['L', x, y]); }
-  stroke() { this.drawCalls++; }
-}
+  const entries = [...DOC.matchAll(/<li class="entry" data-category="([^"]+)">/g)]
+    .map((m) => makeElement({ "data-category": m[1] }));
+  const filters = [...DOC.matchAll(/<button class="filter" type="button" data-cat="(\w+)"/g)]
+    .map((m) => makeElement({ "data-cat": m[1] }));
 
-class MockElement {
-  constructor(tagName, id = '', className = '') {
-    this.tagName = tagName.toUpperCase();
-    this.id = id;
-    this.classList = new MockClassList(className.split(' ').filter(Boolean));
-    this.attributes = {};
-    this.style = {};
-    this.textContent = '';
-    this.innerHTML = '';
-    this.listeners = {};
-    this.children = [];
-    this.src = '';
-    this.open = false;
-    this.width = 400;
-    this.height = 48;
-    this._ctx2d = null;
-  }
-  get className() {
-    return this.classList.toString();
-  }
-  set className(val) {
-    this.classList = new MockClassList(val.split(' ').filter(Boolean));
-  }
-  setAttribute(key, val) {
-    this.attributes[key] = String(val);
-  }
-  getAttribute(key) {
-    return this.attributes[key] || null;
-  }
-  addEventListener(event, handler) {
-    if (!this.listeners[event]) this.listeners[event] = [];
-    this.listeners[event].push(handler);
-  }
-  removeEventListener(event, handler) {
-    if (this.listeners[event]) {
-      this.listeners[event] = this.listeners[event].filter(h => h !== handler);
-    }
-  }
-  dispatchEvent(eventObj) {
-    const handlers = this.listeners[eventObj.type] || [];
-    eventObj.target = eventObj.target || this;
-    handlers.forEach(h => h(eventObj));
-  }
-  click() {
-    this.dispatchEvent({ type: 'click', target: this });
-  }
-  showModal() {
-    this.open = true;
-  }
-  close() {
-    this.open = false;
-  }
-  getContext(type) {
-    if (type === '2d') {
-      if (!this._ctx2d) this._ctx2d = new MockCanvasRenderingContext2D(this);
-      return this._ctx2d;
-    }
-    return null;
-  }
-}
-
-function createDOMEnvironment() {
-  const elements = new Map();
-  const allElements = [];
-
-  function register(el) {
-    if (el.id) elements.set(el.id, el);
-    allElements.push(el);
-    return el;
-  }
-
-  // Create standard elements in index.html
-  const filterContainer = register(new MockElement('div', 'filter-container', 'filter-engine'));
-  const filterTabs = [
-    register(new MockElement('button', '', 'filter-tab filter-btn active')),
-    register(new MockElement('button', '', 'filter-tab filter-btn')),
-    register(new MockElement('button', '', 'filter-tab filter-btn')),
-    register(new MockElement('button', '', 'filter-tab filter-btn')),
-    register(new MockElement('button', '', 'filter-tab filter-btn')),
-    register(new MockElement('button', '', 'filter-tab filter-btn'))
-  ];
-  const cats = ['all', 'systems', 'ai', 'embedded', 'java', 'automation'];
-  filterTabs.forEach((tab, i) => {
-    tab.setAttribute('data-filter', cats[i]);
-    tab.setAttribute('data-cat', cats[i]);
-    filterContainer.children.push(tab);
+  const byId = {};
+  [...DOC.matchAll(/\bid="([^"]+)"/g)].forEach((m) => {
+    const el = makeElement({ id: m[1] });
+    el.id = m[1];                       // the script compares target.id, as the DOM would
+    byId[m[1]] = el;
   });
 
-  const compendiumGrid = register(new MockElement('div', 'compendium-grid'));
-  const plateConfigs = [
-    { id: 'plate-1', cat: 'systems ai' },
-    { id: 'plate-2', cat: 'ai systems' },
-    { id: 'plate-3', cat: 'ai systems' },
-    { id: 'plate-4', cat: 'embedded systems' },
-    { id: 'plate-5', cat: 'java systems' },
-    { id: 'plate-6', cat: 'java systems' },
-    { id: 'plate-7', cat: 'ai automation' },
-    { id: 'plate-8', cat: 'automation systems' },
-    { id: 'plate-9', cat: 'systems automation' },
-    { id: 'plate-10', cat: 'java systems ai' }
-  ];
-  const plates = plateConfigs.map(cfg => {
-    const pl = register(new MockElement('article', cfg.id, 'folio-plate project-card'));
-    pl.setAttribute('data-category', cfg.cat);
-    compendiumGrid.children.push(pl);
-    return pl;
-  });
+  byId["oscilloscope"].getContext = (kind) => {
+    if (kind !== "2d") return null;
+    const record = (op) => (...args) => canvasOps.push([op, ...args]);
+    return {
+      clearRect: record("clearRect"), beginPath: record("beginPath"),
+      moveTo: record("moveTo"), lineTo: record("lineTo"), stroke: record("stroke"),
+      setTransform: record("setTransform"),
+      set strokeStyle(v) { canvasOps.push(["strokeStyle", v]); },
+      set lineWidth(v) { canvasOps.push(["lineWidth", v]); },
+      set lineJoin(v) { canvasOps.push(["lineJoin", v]); },
+    };
+  };
 
-  // Terminal elements
-  const vramEl = register(new MockElement('span', 'term-vram'));
-  const tempEl = register(new MockElement('span', 'term-temp'));
-  const pwrEl = register(new MockElement('span', 'term-pwr'));
-  const lossGraphEl = register(new MockElement('div', 'term-loss-graph'));
-  const tpsEl = register(new MockElement('span', 'term-tps'));
-  const etaEl = register(new MockElement('span', 'term-eta'));
-  const termToggleBtn = register(new MockElement('button', 'term-toggle-btn'));
-  const termTickBtn = register(new MockElement('button', 'term-tick-btn'));
-
-  // Piano synth elements
-  const synthPlayBtn = register(new MockElement('button', 'synth-play-btn'));
-  const synthBtnText = register(new MockElement('span', 'synth-btn-text'));
-  const synthBtnIcon = register(new MockElement('span', 'synth-btn-icon'));
-  const synthNoteStatus = register(new MockElement('span', 'synth-note-status'));
-  const synthChordStatus = register(new MockElement('span', 'synth-chord-status'));
-  const oscCanvas = register(new MockElement('canvas', 'synth-oscilloscope'));
-
-  // SBB TFT elements
-  const tftClock = register(new MockElement('span', 'tft-live-clock'));
-  const hwModal = register(new MockElement('dialog', 'hardware-modal', 'atelier-modal'));
-  const openHwBtn = register(new MockElement('button', 'open-hardware-modal-btn'));
-  const closeHwBtn = register(new MockElement('button', 'close-modal-btn'));
-  const modalImg = register(new MockElement('img', 'modal-display-img'));
-  modalImg.src = 'assets/board-closeup.svg';
-
-  const modalTabs = [
-    register(new MockElement('button', '', 'modal-tab active')),
-    register(new MockElement('button', '', 'modal-tab')),
-    register(new MockElement('button', '', 'modal-tab'))
-  ];
-  modalTabs[0].setAttribute('data-img', 'assets/board-closeup.svg');
-  modalTabs[1].setAttribute('data-img', 'assets/board-installed.svg');
-  modalTabs[2].setAttribute('data-img', 'assets/IMG_1591_q85.jpg');
-
-  const docListeners = {};
-  const doc = {
-    getElementById: (id) => elements.get(id) || null,
+  const documentListeners = {};
+  const documentStub = {
+    hidden: false,
+    documentElement: makeElement({}),
+    getElementById: (id) => byId[id] || null,
     querySelectorAll: (selector) => {
-      if (selector.includes('filter-btn') || selector.includes('filter-tab')) {
-        return filterTabs;
-      }
-      if (selector.includes('compendium-grid') || selector.includes('folio-plate') || selector.includes('article')) {
-        return plates;
-      }
-      if (selector.includes('.modal-tab')) {
-        return modalTabs;
-      }
+      if (selector === "#entries .entry") return entries;
+      if (selector === "#index-line .filter") return filters;
       return [];
     },
-    addEventListener: (event, handler) => {
-      if (!docListeners[event]) docListeners[event] = [];
-      docListeners[event].push(handler);
+    addEventListener: (type, fn) => { (documentListeners[type] = documentListeners[type] || []).push(fn); },
+    dispatch: (type) => (documentListeners[type] || []).forEach((fn) => fn({})),
+  };
+
+  const observed = [];
+  const sandbox = {
+    document: documentStub,
+    window: {
+      matchMedia: () => ({ matches: Boolean(options.reduceMotion) }),
+      AudioContext: makeAudioStub(audioLog),
+      devicePixelRatio: options.dpr || 2,
+      addEventListener: () => {},
     },
-    dispatchEvent: (eventObj) => {
-      const handlers = docListeners[eventObj.type] || [];
-      handlers.forEach(h => h(eventObj));
-    }
+    getComputedStyle: () => ({ getPropertyValue: () => " #a83d28 " }),
+    IntersectionObserver: function (cb) {
+      this.observe = (el) => { observed.push(el); cb([{ isIntersecting: true, target: el }]); };
+    },
+    requestAnimationFrame: () => 0,
+    setTimeout: clock.setTimeout.bind(clock),
+    clearTimeout: clock.clear.bind(clock),
+    setInterval: clock.setInterval.bind(clock),
+    clearInterval: clock.clear.bind(clock),
+    Uint8Array, Math, Date, String, Array, Object, Number, JSON, console,
   };
+  sandbox.window.IntersectionObserver = sandbox.IntersectionObserver;   // the script looks for it on window
+  sandbox.window.window = sandbox.window;
+  vm.createContext(sandbox);
+  vm.runInContext(SCRIPT, sandbox, { filename: "index.html#script" });
 
-  const win = {
-    AudioContext: MockAudioContext,
-    webkitAudioContext: MockAudioContext,
-    requestAnimationFrame: (cb) => {},
-    document: doc
-  };
-
-  return {
-    win,
-    doc,
-    elements,
-    filterTabs,
-    plates,
-    termToggleBtn,
-    termTickBtn,
-    synthPlayBtn,
-    synthBtnText,
-    synthBtnIcon,
-    synthNoteStatus,
-    synthChordStatus,
-    oscCanvas,
-    hwModal,
-    openHwBtn,
-    closeHwBtn,
-    modalImg,
-    modalTabs
-  };
+  return { sandbox, clock, entries, filters, byId, audioLog, canvasOps, observed, documentStub };
 }
 
-// Global setup for evaluation
-global.AudioContext = MockAudioContext;
-global.webkitAudioContext = MockAudioContext;
-global.requestAnimationFrame = (cb) => {};
+/* ---------------------------------------------------------------------------
+   1 · The index line
+   ------------------------------------------------------------------------ */
 
-function getAtelierPianoClass() {
-  const sandbox = new Function('window', 'AudioContext', `${classDefCode}; return AtelierPianoAudioEngine;`);
-  return sandbox(global.window, MockAudioContext);
-}
+section("1 · The index line, clicked for real");
 
-// -----------------------------------------------------------------------------
-// SECTION 2: Empirical Stress Tests
-// -----------------------------------------------------------------------------
+const env = buildEnvironment();
 
-console.log("▶ TIER 1: WEB AUDIO API SYNTHESIZER EMPIRICAL STRESS TESTS");
+check("The script evaluates and exports its entry point", () => {
+  assert.strictEqual(typeof env.sandbox.window.filterCategory, "function");
+});
 
-runTest("1.1 Web Audio: Equal Temperament Frequency & Score Precision", () => {
-  const AtelierPianoAudioEngine = getAtelierPianoClass();
-  const engine = new AtelierPianoAudioEngine();
+check("Ten entries and six filters are bound", () => {
+  assert.strictEqual(env.entries.length, 10);
+  assert.strictEqual(env.filters.length, 6);
+});
 
-  const expectedNotes = [
-    { note: 'D3', f: 146.83, theoretical: 440 * Math.pow(2, -19/12) },
-    { note: 'A3', f: 220.00, theoretical: 440 * Math.pow(2, -12/12) },
-    { note: 'D4', f: 293.66, theoretical: 440 * Math.pow(2, -7/12) },
-    { note: 'F4', f: 349.23, theoretical: 440 * Math.pow(2, -4/12) },
-    { note: 'A4', f: 440.00, theoretical: 440 },
-    { note: 'F3', f: 174.61, theoretical: 440 * Math.pow(2, -16/12) },
-    { note: 'C4', f: 261.63, theoretical: 440 * Math.pow(2, -9/12) },
-    { note: 'C5', f: 523.25, theoretical: 440 * Math.pow(2, 3/12) },
-    { note: 'Bb2', f: 116.54, theoretical: 440 * Math.pow(2, -23/12) },
-    { note: 'Bb3', f: 233.08, theoretical: 440 * Math.pow(2, -11/12) },
-    { note: 'Bb4', f: 466.16, theoretical: 440 * Math.pow(2, 1/12) },
-    { note: 'A2', f: 110.00, theoretical: 440 * Math.pow(2, -24/12) },
-    { note: 'C#4', f: 277.18, theoretical: 440 * Math.pow(2, -8/12) },
-    { note: 'E4', f: 329.63, theoretical: 440 * Math.pow(2, -5/12) }
-  ];
+check("Every entry is visible before anything is clicked", () => {
+  assert.strictEqual(env.entries.filter((e) => e.hidden()).length, 0);
+});
 
-  for (const n of expectedNotes) {
-    const diff = Math.abs(n.f - n.theoretical);
-    assert(diff < 0.1, `Note ${n.note} frequency ${n.f} deviates from theoretical ${n.theoretical.toFixed(2)}`);
-  }
+check("Clicking a filter hides exactly the works it excludes", () => {
+  const embedded = env.filters.find((f) => f.getAttribute("data-cat") === "embedded");
+  embedded.click();
+  const shown = env.entries.filter((e) => !e.hidden());
+  assert.strictEqual(shown.length, 1, `expected 1 embedded work, saw ${shown.length}`);
+  assert.ok(shown[0].getAttribute("data-category").split(" ").includes("embedded"));
+});
 
-  // Validate entire score
-  assert.strictEqual(engine.score.length, 20, "Score must contain exactly 20 notes in D minor nocturne motif");
-  for (const item of engine.score) {
-    assert(item.f > 20 && item.f < 5000, `Frequency ${item.f} must be within audible piano range`);
-    assert(item.dur > 0 && item.dur <= 5.0, `Duration ${item.dur} must be positive`);
-    assert(typeof item.note === 'string' && item.note.length > 0, "Note name must be string");
-    assert(typeof item.chord === 'string' && item.chord.length > 0, "Chord description must be string");
+check("The pressed filter is the only one pressed", () => {
+  const pressed = env.filters.filter((f) => f.getAttribute("aria-pressed") === "true");
+  assert.strictEqual(pressed.length, 1);
+  assert.strictEqual(pressed[0].getAttribute("data-cat"), "embedded");
+});
+
+check("Returning to 'all' restores every work", () => {
+  env.filters.find((f) => f.getAttribute("data-cat") === "all").click();
+  assert.strictEqual(env.entries.filter((e) => e.hidden()).length, 0);
+});
+
+check("Each filter yields the count it advertises", () => {
+  const tallies = [...DOC.matchAll(/data-cat="(\w+)"[^>]*>[^<]+<span class="tally">(\d+)<\/span>/g)];
+  for (const [, cat, claimed] of tallies) {
+    env.filters.find((f) => f.getAttribute("data-cat") === cat).click();
+    const shown = env.entries.filter((e) => !e.hidden()).length;
+    assert.strictEqual(shown, Number(claimed), `'${cat}' claims ${claimed}, showed ${shown}`);
   }
 });
 
-runTest("1.2 Web Audio: Context Initialization & Autoplay Resume Lifecycle", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const AtelierPianoAudioEngine = getAtelierPianoClass();
-  const engine = new AtelierPianoAudioEngine();
-  assert.strictEqual(engine.ctx, null, "Context should be uninitialized on construction");
-  assert.strictEqual(engine.isPlaying, false, "isPlaying should initially be false");
-
-  engine.initContext();
-  assert(engine.ctx !== null, "Context must be initialized");
-  assert.strictEqual(engine.ctx.state, 'running', "Suspended context must be resumed on init");
-  const firstCtx = engine.ctx;
-
-  // Idempotency check
-  engine.initContext();
-  assert.strictEqual(engine.ctx, firstCtx, "AudioContext must be reused without leaking new contexts");
+check("'ai' does not select works that are merely 'automation'", () => {
+  env.sandbox.window.filterCategory("ai");
+  const shown = env.entries.filter((e) => !e.hidden());
+  assert.ok(shown.every((e) => e.getAttribute("data-category").split(" ").includes("ai")));
 });
 
-runTest("1.3 Web Audio: Synthesis Envelope & Exponential Decay Non-Zero Safety", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const AtelierPianoAudioEngine = getAtelierPianoClass();
-  const engine = new AtelierPianoAudioEngine();
-  engine.initContext();
-  engine.playPianoTone(440, 1.0);
-
-  assert.strictEqual(engine.ctx.activeOscillators.length, 3, "Must create 3 oscillators (fundamental, 2nd, 3rd harmonics)");
-  assert.strictEqual(engine.ctx.stoppedOscillators.length, 3, "All 3 oscillators must be scheduled to stop");
-
-  const [osc1, osc2, osc3] = engine.ctx.activeOscillators;
-  assert.strictEqual(osc1.type, 'triangle');
-  assert.strictEqual(osc2.type, 'sine');
-  assert.strictEqual(osc3.type, 'sine');
-
-  assert.strictEqual(osc1.frequency.value, 440);
-  assert.strictEqual(osc2.frequency.value, 880);
-  assert.strictEqual(osc3.frequency.value, 1320);
-
-  assert.strictEqual(osc1.stopTime, 1.0);
-  assert.strictEqual(osc2.stopTime, 1.0);
-  assert.strictEqual(osc3.stopTime, 1.0);
+check("An unknown category falls back to the whole catalogue", () => {
+  env.sandbox.window.filterCategory("");
+  assert.strictEqual(env.entries.filter((e) => e.hidden()).length, 0);
+  env.sandbox.window.filterCategory("no-such-category");
+  assert.strictEqual(env.entries.filter((e) => !e.hidden()).length, 0,
+    "an unknown but non-empty category simply matches nothing");
+  env.sandbox.window.filterCategory("all");
 });
 
-runTest("1.4 Web Audio: Stress-Test Rapid Start/Stop Toggling (500 iterations)", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const AtelierPianoAudioEngine = getAtelierPianoClass();
-  const engine = new AtelierPianoAudioEngine();
-
-  for (let i = 0; i < 500; i++) {
-    engine.startSequence();
-    assert.strictEqual(engine.isPlaying, true);
-    engine.stopSequence();
-    assert.strictEqual(engine.isPlaying, false);
-    assert.strictEqual(engine.timer, null, "Timer must be cleared upon stopSequence");
-  }
-});
-
-runTest("1.5 Web Audio: Multi-Cycle Full Sequence Stress Run (1,000 notes played)", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const AtelierPianoAudioEngine = getAtelierPianoClass();
-  const engine = new AtelierPianoAudioEngine();
-  engine.initContext();
-
-  for (let i = 0; i < 1000; i++) {
-    const scoreItem = engine.score[i % engine.score.length];
-    engine.playPianoTone(scoreItem.f, scoreItem.dur);
-  }
-
-  assert.strictEqual(engine.ctx.activeOscillators.length, 3000);
-  assert.strictEqual(engine.ctx.stoppedOscillators.length, 3000);
-});
-
-runTest("1.6 Canvas Oscilloscope: Render Frame Lifecycle & Visualizer Baseline", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `${scriptContent};`);
-  sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const canvas = env.oscCanvas;
-  const ctx = canvas.getContext('2d');
-  assert(ctx !== null, "Canvas 2D context must be acquired");
-  assert(ctx.drawCalls > 0, "Canvas should have executed draw calls for initial resting line");
-
-  // Trigger synth button to play
-  env.synthPlayBtn.click();
-  assert(env.synthBtnText.textContent.includes('Pause'), "Button text must update to Pause");
-  assert.strictEqual(env.synthBtnIcon.textContent, '❚❚', "Button icon must update to pause symbol");
-
-  // Pause synth button
-  env.synthPlayBtn.click();
-  assert(env.synthBtnText.textContent.includes('Play'), "Button text must revert to Play");
-  assert.strictEqual(env.synthBtnIcon.textContent, '▶', "Button icon must revert to play symbol");
-});
-
-console.log("\n▶ TIER 2: ANSI TERMINAL SIMULATOR EMPIRICAL STRESS TESTS");
-
-runTest("2.1 ANSI Terminal: Counter Wraparound & Mathematical Invariants (50,000 steps)", () => {
-  let termStep = 11480;
-  const totalSteps = 12000;
-  const graphPatterns = [
-    'LOSS [1.428] ──█▓▒░───░▒▓█───█▓▒░──',
-    'LOSS [1.419] ───░▒▓█───█▓▒░───░▒▓█─',
-    'LOSS [1.412] ────█▓▒░───░▒▓█───█▓▒░',
-    'LOSS [1.407] ─░▒▓█───█▓▒░───░▒▓█───',
-    'LOSS [1.398] ──█▓▒░───░▒▓█───█▓▒░──'
-  ];
-  let patternIdx = 0;
-
-  for (let i = 0; i < 50000; i++) {
-    if (termStep < totalSteps) {
-      termStep += 1;
-    } else {
-      termStep = 1;
-    }
-
-    assert(termStep >= 1 && termStep <= totalSteps, `termStep ${termStep} out of bounds [1, ${totalSteps}]`);
-
-    const remSteps = totalSteps - termStep;
-    const remSecs = Math.max(0, Math.floor(remSteps * 0.8));
-    const mins = String(Math.floor(remSecs / 60)).padStart(2, '0');
-    const secs = String(remSecs % 60).padStart(2, '0');
-
-    assert(!isNaN(remSecs), "remSecs must not be NaN");
-    assert(mins.length >= 2, `mins must be at least 2 digits, got ${mins}`);
-    assert(secs.length === 2, `secs must be 2 digits, got ${secs}`);
-
-    patternIdx = (patternIdx + 1) % graphPatterns.length;
-    assert(patternIdx >= 0 && patternIdx < graphPatterns.length);
-    assert(graphPatterns[patternIdx] !== undefined);
-  }
-});
-
-runTest("2.2 ANSI Terminal: Pause/Resume Ticker Lifecycle & Leak Prevention (5,000 toggles)", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `${scriptContent};`);
-  sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const toggleBtn = env.termToggleBtn;
-  const tickBtn = env.termTickBtn;
-
-  // Toggle 5000 times
-  for (let i = 0; i < 5000; i++) {
-    toggleBtn.click();
-    if (i % 2 === 0) {
-      assert.strictEqual(toggleBtn.textContent, 'Resume');
-    } else {
-      assert.strictEqual(toggleBtn.textContent, 'Pause');
-    }
-  }
-
-  // Manual step clicks
-  for (let i = 0; i < 100; i++) {
-    tickBtn.click();
-  }
-});
-
-console.log("\n▶ TIER 3: MODAL LIGHTBOX EMPIRICAL STRESS TESTS");
-
-runTest("3.1 Modal Lightbox: Open, Close, Backdrop Click & Active Class Invariants", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `${scriptContent};`);
-  sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const modal = env.hwModal;
-  const openBtn = env.openHwBtn;
-  const closeBtn = env.closeHwBtn;
-
-  assert(!modal.classList.contains('active'), "Modal should not be active initially");
-  assert.strictEqual(modal.open, false, "Modal dialog should be closed initially");
-
-  // Open
-  openBtn.click();
-  assert(modal.classList.contains('active'), "Modal must have 'active' class when opened");
-  assert.strictEqual(modal.open, true, "Modal dialog must be open");
-
-  // Backdrop click
-  modal.dispatchEvent({ type: 'click', target: modal });
-  assert(!modal.classList.contains('active'), "Backdrop click must close modal");
-  assert.strictEqual(modal.open, false);
-
-  // Open again, then close button
-  openBtn.click();
-  assert(modal.classList.contains('active'));
-  closeBtn.click();
-  assert(!modal.classList.contains('active'), "Close button must close modal");
-  assert.strictEqual(modal.open, false);
-});
-
-runTest("3.2 Modal Lightbox: Tab Switching & Asset Target Source Synchrony (10,000 switches)", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `${scriptContent};`);
-  sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const tabs = env.modalTabs;
-  const modalImg = env.modalImg;
-
+check("10,000 random filter changes never corrupt the catalogue", () => {
+  const cats = ["all", "systems", "ai", "embedded", "java", "automation"];
+  let seed = 20260822;
+  const rand = () => (seed = (seed * 1103515245 + 12345) & 0x7fffffff) / 0x7fffffff;
   for (let i = 0; i < 10000; i++) {
-    const selectedIdx = i % tabs.length;
-    tabs[selectedIdx].click();
-
-    tabs.forEach((t, idx) => {
-      if (idx === selectedIdx) {
-        assert(t.classList.contains('active'), `Tab ${idx} must be active`);
-      } else {
-        assert(!t.classList.contains('active'), `Tab ${idx} must NOT be active`);
-      }
-    });
-
-    const expectedSrc = tabs[selectedIdx].getAttribute('data-img');
-    assert.strictEqual(modalImg.src, expectedSrc, `modalImg src must match data-img`);
+    const cat = cats[Math.floor(rand() * cats.length)];
+    env.sandbox.window.filterCategory(cat);
+    const shown = env.entries.filter((e) => !e.hidden());
+    const expected = env.entries.filter(
+      (e) => cat === "all" || e.getAttribute("data-category").split(" ").includes(cat)
+    );
+    assert.strictEqual(shown.length, expected.length, `iteration ${i}, category '${cat}'`);
   }
+  env.sandbox.window.filterCategory("all");
 });
 
-console.log("\n▶ TIER 4: CATEGORY FILTERING ENGINE EMPIRICAL STRESS TESTS");
+/* ---------------------------------------------------------------------------
+   2 · The telemetry specimen
+   ------------------------------------------------------------------------ */
 
-runTest("4.1 Filter Engine: Exact Categorical Plate Partitioning", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
+section("2 · Fig. 1, ticked ten thousand times");
 
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `
-    ${scriptContent};
-    return filterCategory;
-  `);
-  const filterCategory = sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const plates = env.plates;
-
-  // 'all'
-  filterCategory('all');
-  assert.strictEqual(plates.filter(p => !p.classList.contains('is-hidden')).length, 10);
-
-  // 'systems'
-  filterCategory('systems');
-  assert.strictEqual(plates.filter(p => !p.classList.contains('is-hidden')).length, 9);
-
-  // 'ai'
-  filterCategory('ai');
-  assert.strictEqual(plates.filter(p => !p.classList.contains('is-hidden')).length, 5);
-
-  // 'embedded'
-  filterCategory('embedded');
-  const embeddedPlates = plates.filter(p => !p.classList.contains('is-hidden'));
-  assert.strictEqual(embeddedPlates.length, 1);
-  assert.strictEqual(embeddedPlates[0].id, 'plate-4');
-
-  // 'java'
-  filterCategory('java');
-  assert.strictEqual(plates.filter(p => !p.classList.contains('is-hidden')).length, 3);
-
-  // 'automation'
-  filterCategory('automation');
-  assert.strictEqual(plates.filter(p => !p.classList.contains('is-hidden')).length, 3);
+check("It starts by itself and reports its state", () => {
+  assert.strictEqual(env.byId["term-toggle-btn"].textContent, "");
+  env.clock.advance(1800);
+  assert.match(env.byId["term-loss-graph"].textContent, /^loss \d\.\d{3}/);
 });
 
-runTest("4.2 Filter Engine: Rapid Random Category Permutations (10,000 cycles)", () => {
-  const env = createDOMEnvironment();
-  global.window = env.win;
-  global.document = env.doc;
-
-  const sandbox = new Function('window', 'document', 'AudioContext', 'requestAnimationFrame', `
-    ${scriptContent};
-    return filterCategory;
-  `);
-  const filterCategory = sandbox(env.win, env.doc, MockAudioContext, global.requestAnimationFrame);
-  env.doc.dispatchEvent({ type: 'DOMContentLoaded' });
-
-  const categories = ['all', 'systems', 'ai', 'embedded', 'java', 'automation'];
-  const plates = env.plates;
-
+check("Ten thousand ticks keep every field within the hardware", () => {
   for (let i = 0; i < 10000; i++) {
-    const cat = categories[Math.floor(Math.random() * categories.length)];
-    filterCategory(cat);
-    const visibleCount = plates.filter(p => !p.classList.contains('is-hidden')).length;
-    assert(visibleCount >= 1 && visibleCount <= 10, `Visible count ${visibleCount} out of bounds`);
+    env.clock.advance(1800);
+    const vram = Number(env.byId["term-vram"].textContent.split(" ")[0].replace(/,/g, ""));
+    const temp = Number(env.byId["term-temp"].textContent.split(" ")[0]);
+    const power = Number(env.byId["term-pwr"].textContent.split(" ")[0]);
+    assert.ok(vram >= 21800 && vram < 24564, `VRAM ${vram} outside the card`);
+    assert.ok(temp >= 60 && temp <= 90, `temperature ${temp}`);
+    assert.ok(power >= 370 && power <= 500, `power ${power}`);
   }
 });
 
-console.log("\n===============================================================================");
-console.log(`STRESS-TEST SUMMARY: ${passedTests}/${totalTests} Passed (${failedTests} Failed)`);
-console.log("===============================================================================");
+check("Loss decays but never falls through its floor", () => {
+  const loss = Number(env.byId["term-loss-graph"].textContent.match(/loss ([\d.]+)/)[1]);
+  assert.ok(loss >= 0.94 && loss <= 1.428, `loss ${loss}`);
+});
 
-if (failedTests > 0) {
+check("The step counter wraps rather than running past the total", () => {
+  const step = Number(env.byId["term-loss-graph"].textContent.match(/step ([\d,]+)/)[1].replace(/,/g, ""));
+  assert.ok(step >= 1 && step <= 12000, `step ${step}`);
+});
+
+check("The estimate is never negative", () => {
+  assert.match(env.byId["term-eta"].textContent, /^00:[0-5]\d:[0-5]\d$/);
+});
+
+check("Pause stops the clock; resume restarts it", () => {
+  const toggle = env.byId["term-toggle-btn"];
+  toggle.click();
+  assert.strictEqual(toggle.textContent, "Resume");
+  const frozen = env.byId["term-loss-graph"].textContent;
+  env.clock.advance(1800 * 20);
+  assert.strictEqual(env.byId["term-loss-graph"].textContent, frozen, "nothing moves while paused");
+  toggle.click();
+  assert.strictEqual(toggle.textContent, "Pause");
+  env.clock.advance(1800);
+  assert.notStrictEqual(env.byId["term-loss-graph"].textContent, frozen);
+});
+
+check("Stepping by hand advances exactly one step", () => {
+  env.byId["term-toggle-btn"].click();                    // pause
+  const before = Number(env.byId["term-loss-graph"].textContent.match(/step ([\d,]+)/)[1].replace(/,/g, ""));
+  env.byId["term-tick-btn"].click();
+  const after = Number(env.byId["term-loss-graph"].textContent.match(/step ([\d,]+)/)[1].replace(/,/g, ""));
+  assert.strictEqual(after - before, 1);
+});
+
+check("Pausing twice does not leave two tickers running", () => {
+  const toggle = env.byId["term-toggle-btn"];
+  toggle.click(); toggle.click(); toggle.click();
+  const pending = env.clock.pending();
+  toggle.click(); toggle.click();
+  assert.ok(env.clock.pending() <= pending + 1, "no ticker is ever left orphaned");
+});
+
+check("A hidden tab stops the ticker", () => {
+  const fresh = buildEnvironment();
+  fresh.documentStub.hidden = true;
+  fresh.documentStub.dispatch("visibilitychange");
+  const frozen = fresh.byId["term-loss-graph"].textContent;
+  fresh.clock.advance(1800 * 10);
+  assert.strictEqual(fresh.byId["term-loss-graph"].textContent, frozen);
+  assert.strictEqual(fresh.byId["term-toggle-btn"].textContent, "Resume");
+});
+
+/* ---------------------------------------------------------------------------
+   3 · The nocturne
+   ------------------------------------------------------------------------ */
+
+section("3 · Fig. 2, played to the last note");
+
+const music = buildEnvironment();
+
+check("Nothing sounds until the button is pressed", () => {
+  music.clock.advance(60000);
+  assert.strictEqual(music.audioLog.notes.length, 0);
+});
+
+check("Pressing play sounds the first chord", () => {
+  music.byId["play-btn"].click();
+  assert.strictEqual(music.byId["play-btn"].textContent, "Stop");
+  assert.strictEqual(music.audioLog.notes.length, 3, "one note, three partials");
+  assert.strictEqual(music.audioLog.resumed, 1, "the context is resumed on the gesture");
+});
+
+check("It plays twenty notes and stops of its own accord", () => {
+  music.clock.advance(60000);
+  assert.strictEqual(music.audioLog.notes.length, 60, "20 notes × 3 partials");
+  assert.strictEqual(music.byId["play-btn"].textContent, "Play the nocturne");
+});
+
+check("Every note is voiced as fundamental, octave, and twelfth", () => {
+  for (let i = 0; i < music.audioLog.notes.length; i += 3) {
+    const [f1, f2, f3] = music.audioLog.notes.slice(i, i + 3);
+    assert.ok(Math.abs(f2 / f1 - 2) < 1e-9, `partial 2 of note ${i / 3}`);
+    assert.ok(Math.abs(f3 / f1 - 3) < 1e-9, `partial 3 of note ${i / 3}`);
+  }
+});
+
+check("Every fundamental lies on a piano", () => {
+  for (let i = 0; i < music.audioLog.notes.length; i += 3) {
+    const hz = music.audioLog.notes[i];
+    assert.ok(hz >= 27.5 && hz <= 4186, `${hz} Hz is off the keyboard`);
+  }
+});
+
+check("It opens and resolves on the same D", () => {
+  const first = music.audioLog.notes[0];
+  const last = music.audioLog.notes[music.audioLog.notes.length - 3];
+  assert.ok(Math.abs(first - last) < 0.01, `${first} Hz vs ${last} Hz`);
+});
+
+check("Every oscillator that starts is also stopped", () => {
+  assert.strictEqual(music.audioLog.started, music.audioLog.stopped);
+});
+
+check("Stopping midway silences it and leaves no timer behind", () => {
+  const second = buildEnvironment();
+  second.byId["play-btn"].click();
+  second.clock.advance(3000);
+  const soundedSoFar = second.audioLog.notes.length;
+  second.byId["play-btn"].click();                        // stop
+  assert.strictEqual(second.byId["play-btn"].textContent, "Play the nocturne");
+  second.clock.advance(60000);
+  assert.strictEqual(second.audioLog.notes.length, soundedSoFar, "nothing sounds after stopping");
+});
+
+check("Playing again after it finishes starts from the beginning", () => {
+  const before = music.audioLog.notes.length;
+  music.byId["play-btn"].click();
+  assert.strictEqual(music.audioLog.notes.length, before + 3);
+  assert.ok(Math.abs(music.audioLog.notes[before] - music.audioLog.notes[0]) < 0.01);
+});
+
+check("A browser without Web Audio is told, not left hanging", () => {
+  const mute = buildEnvironment();
+  mute.sandbox.window.AudioContext = undefined;
+  mute.sandbox.window.webkitAudioContext = undefined;
+  mute.byId["play-btn"].click();
+  assert.strictEqual(mute.byId["play-status"].textContent, "no audio available in this browser");
+  assert.notStrictEqual(mute.byId["play-btn"].textContent, "Stop");
+});
+
+/* ---------------------------------------------------------------------------
+   4 · The canvas and the clock
+   ------------------------------------------------------------------------ */
+
+section("4 · The stave, the clock, and reduced motion");
+
+check("The backing store is scaled by the device pixel ratio", () => {
+  const scaled = buildEnvironment({ dpr: 3 });
+  assert.strictEqual(scaled.byId["oscilloscope"].width, 1800, "600 CSS px × 3");
+  assert.strictEqual(scaled.byId["oscilloscope"].height, 204, "68 CSS px × 3");
+  const transform = scaled.canvasOps.find((op) => op[0] === "setTransform");
+  assert.deepStrictEqual(transform.slice(1), [3, 0, 0, 3, 0, 0]);
+});
+
+check("Reduced motion draws the stave once instead of animating", () => {
+  const still = buildEnvironment({ reduceMotion: true });
+  const strokes = still.canvasOps.filter((op) => op[0] === "stroke").length;
+  assert.strictEqual(strokes, 5, "five ruled lines, drawn once");
+});
+
+check("Reduced motion leaves the telemetry specimen at rest", () => {
+  const still = buildEnvironment({ reduceMotion: true });
+  const frozen = still.byId["term-loss-graph"].textContent;
+  still.clock.advance(1800 * 50);
+  assert.strictEqual(still.byId["term-loss-graph"].textContent, frozen);
+  assert.strictEqual(still.byId["term-toggle-btn"].textContent, "Resume");
+});
+
+check("The departure clock is zero-padded and ticks every second", () => {
+  const fresh = buildEnvironment();
+  assert.match(fresh.byId["panel-clock"].textContent, /^\d\d:\d\d:\d\d$/);
+  const before = fresh.byId["panel-clock"].textContent;
+  fresh.clock.advance(1000);
+  assert.match(fresh.byId["panel-clock"].textContent, /^\d\d:\d\d:\d\d$/);
+  assert.ok(typeof before === "string" && before.length === 8);
+});
+
+check("The running head names the section in view", () => {
+  const fresh = buildEnvironment();
+  assert.ok(["The Catalogue", "Index of Methods", "The Author", "Correspondence"]
+    .includes(fresh.byId["running-chapter"].textContent),
+    `running head said "${fresh.byId["running-chapter"].textContent}"`);
+});
+
+/* ------------------------------------------------------------------------ */
+
+const total = passed + failed;
+console.log(`\n${RULE}${"=".repeat(72)}${OFF}`);
+if (failed) {
+  console.log(`${RED}✖ ${failed} of ${total} executed assertions failed.${OFF}`);
   process.exit(1);
-} else {
-  process.exit(0);
 }
+console.log(`${GREEN}❧ All ${total} executed assertions held.${OFF}`);
+console.log(`${RULE}${"=".repeat(72)}${OFF}`);

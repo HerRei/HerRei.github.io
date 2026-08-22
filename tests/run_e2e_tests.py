@@ -44,8 +44,8 @@ C_DIM = "\033[2m"
 
 def print_banner():
     print(f"{C_AMBER}{C_BOLD}╔═══════════════════════════════════════════════════════════════════════════════╗{C_RESET}")
-    print(f"{C_AMBER}{C_BOLD}║       EX LIBRIS HERMÈS REISNER · ROMANTIC ATELIER E2E TEST RUNNER             ║{C_RESET}")
-    print(f"{C_AMBER}{C_BOLD}║       4-Tier Opaque-Box Verification & Static Quality Assurance               ║{C_RESET}")
+    print(f"{C_AMBER}{C_BOLD}║       HERMÈS REISNER · CATALOGUE OF WORKS · END-TO-END TEST RUNNER            ║{C_RESET}")
+    print(f"{C_AMBER}{C_BOLD}║       Four tiers · features, boundaries, combinations, whole journeys         ║{C_RESET}")
     print(f"{C_AMBER}{C_BOLD}╚═══════════════════════════════════════════════════════════════════════════════╝{C_RESET}\n")
 
 
@@ -97,10 +97,10 @@ def main():
         print_banner()
 
     tiers_to_run = [
-        (1, "Tier 1: Feature Coverage (F1 - F13)", TestTier1FeatureCoverage),
-        (2, "Tier 2: Boundary & Corner Cases", TestTier2BoundaryCorner),
-        (3, "Tier 3: Cross-Feature Combinations", TestTier3CrossFeature),
-        (4, "Tier 4: Real-World Workload Scenarios", TestTier4RealWorldScenarios)
+        (1, "Tier 1: Feature coverage (F1 – F13)", TestTier1FeatureCoverage),
+        (2, "Tier 2: Boundaries & corner cases", TestTier2BoundaryCorner),
+        (3, "Tier 3: Feature combinations", TestTier3CrossFeature),
+        (4, "Tier 4: Whole journeys", TestTier4RealWorldScenarios)
     ]
 
     if args.tier:
@@ -195,19 +195,19 @@ def main():
     # Feature Checklist Matrix
     print(f"\n{C_GOLD}{C_BOLD}═══ 13-FEATURE VERIFICATION CHECKLIST ═══{C_RESET}")
     features = [
-        ("F1", "Romantic Atelier Aesthetic", "Chiaroscuro obsidian canvas, parchment ink, candlelit amber"),
-        ("F2", "Literary Typography", "EB Garamond / Cormorant Garamond + JetBrains Mono"),
-        ("F3", "Classical Foliation", "Roman numerals [I]-[X], classical glyphs ✦ § ❖ ◈"),
-        ("F4", "10-Project Compendium", "10 curated plates with tags, titles, and descriptions"),
-        ("F5", "6 Category Filtering", "All, Systems & C, AI & ML, Embedded, Java, Automation"),
-        ("F6", "Live Demo & GitHub URLs", "Verified links to herrei.github.io and github.com/HerRei"),
-        ("F7", "Staged Media & Assets", "Local portrait, CV PDF, and ESP32 vector graphics"),
-        ("F8", "Web Audio Piano Synth", "Harmonic piano synthesizer with <canvas> oscilloscope"),
-        ("F9", "Live ANSI Terminal", "train-tui sysfs telemetry monitor with stream controls"),
-        ("F10", "ESP32 Hardware Showcase", "ST7789 TFT departure display simulation & lightbox modal"),
-        ("F11", "Academic Dossier", "University of Basel CS profile & 4 engineering pillars"),
-        ("F12", "Responsive Layout", "Mobile (<640px), tablet, and desktop CSS media queries"),
-        ("F13", "Static Quality & Architecture", "Pure static HTML5/CSS3/JS with zero runtime errors")
+        ("F1", "Paper ground & pigments", "Warm laid paper, iron-gall ink, hairline rules, one vermillion"),
+        ("F2", "Typography", "Bodoni Moda + EB Garamond + JetBrains Mono, old-style figures, drop cap"),
+        ("F3", "The catalogue", "Ten works as wall labels: medium, date, where it is kept"),
+        ("F4", "The index line", "Six filters whose tallies match what they will show"),
+        ("F5", "Provenance", "Every work links to its repository or is declared private"),
+        ("F6", "Specimens", "Telemetry readout, synthesised nocturne, departure panel"),
+        ("F7", "Honest captions", "Figures declare what they are; colophon explains the dates"),
+        ("F8", "Accessibility", "One h1, ordered headings, skip link, named sections, visible focus"),
+        ("F9", "Responsive sheet", "Breakpoints, single-column entries, gutter preserved"),
+        ("F10", "The print sheet", "Filters dropped, hidden entries restored, URLs spelled out"),
+        ("F11", "Assets", "Everything referenced exists; nothing misattributed is published"),
+        ("F12", "Restrained motion", "Reduced-motion honoured, ticker pauses in a hidden tab"),
+        ("F13", "Architecture", "One file, one style block, one script, no third-party runtime"),
     ]
 
     f_headers = ["#", "Feature", "Specification", "Status"]
@@ -224,10 +224,10 @@ def main():
     # Final Verdict
     print(f"\n{C_PARCHMENT}{C_BOLD}Total Assertions: {total_assertions} | Passed: {total_passed} | Failed: {total_failed} | Time: {total_elapsed:.3f}s{C_RESET}")
     if not has_failures:
-        print(f"\n{C_GREEN}{C_BOLD}✦ ALL 4 TIERS PASSED WITH ZERO ERRORS. ATELIER CERTIFIED READY. ✦{C_RESET}\n")
+        print(f"\n{C_GREEN}{C_BOLD}❧ All four tiers passed. The catalogue is ready to be impressed. ❧{C_RESET}\n")
         sys.exit(0)
     else:
-        print(f"\n{C_RED}{C_BOLD}✖ FAILURES DETECTED IN TEST SUITE. CHECK REPORT ABOVE. ✖{C_RESET}\n")
+        print(f"\n{C_RED}{C_BOLD}✖ Failures detected. See the report above. ✖{C_RESET}\n")
         sys.exit(1)
 
 

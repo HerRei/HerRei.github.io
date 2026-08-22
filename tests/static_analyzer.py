@@ -10,12 +10,39 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 from urllib.parse import urlparse
 
 
+def _strip_at_blocks(css: str) -> str:
+    """Remove @media / @supports blocks, braces balanced, leaving top-level rules."""
+    out = []
+    i = 0
+    while i < len(css):
+        if css[i] == "@":
+            head_end = css.find("{", i)
+            if head_end == -1:
+                break
+            depth = 0
+            j = head_end
+            while j < len(css):
+                if css[j] == "{":
+                    depth += 1
+                elif css[j] == "}":
+                    depth -= 1
+                    if depth == 0:
+                        break
+                j += 1
+            i = j + 1
+            continue
+        out.append(css[i])
+        i += 1
+    return "".join(out)
+
+
 class CSSAnalysis:
     """Encapsulates parsed CSS stylesheet rules, custom properties, and media queries."""
 
     def __init__(self, raw_css: str):
         self.raw_css = raw_css
         self.custom_properties: Dict[str, str] = {}
+        self.conditional_properties: Dict[str, List[str]] = {}
         self.media_queries: List[Dict[str, Any]] = []
         self.selectors: Set[str] = set()
         self.font_families: List[str] = []
@@ -33,12 +60,20 @@ class CSSAnalysis:
         if open_braces != close_braces:
             self.parse_errors.append(f"Unbalanced braces in CSS: {open_braces} open vs {close_braces} close")
 
-        # 3. Extract :root custom properties
-        root_blocks = re.findall(r":root\s*\{([^}]+)\}", clean, flags=re.DOTALL)
-        for block in root_blocks:
+        # 3. Extract :root custom properties.
+        #    Only from top-level :root blocks — a :root inside @media print is an
+        #    override for one medium, and folding it in here would report the
+        #    printed palette as if it were the screen's.
+        for block in re.findall(r":root\s*\{([^}]+)\}", _strip_at_blocks(clean), flags=re.DOTALL):
             props = re.findall(r"(--[a-zA-Z0-9_-]+)\s*:\s*([^;]+);", block)
             for name, val in props:
                 self.custom_properties[name.strip()] = val.strip()
+
+        # 3b. Conditional overrides, kept apart so tests can inspect them.
+        for block in re.findall(r":root\s*\{([^}]+)\}", clean, flags=re.DOTALL):
+            for name, val in re.findall(r"(--[a-zA-Z0-9_-]+)\s*:\s*([^;]+);", block):
+                if self.custom_properties.get(name.strip()) != val.strip():
+                    self.conditional_properties.setdefault(name.strip(), []).append(val.strip())
 
         # 4. Extract font-family rules
         fonts = re.findall(r"font-family\s*:\s*([^;]+);", clean, flags=re.IGNORECASE)

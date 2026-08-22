@@ -1,168 +1,149 @@
 """
-Tier 3: Cross-Feature Combinations & State Integrations Suite (≥15 Assertions).
-Validates interactions between filters, plates, audio synthesis, terminal simulation, modals, and responsive styling.
+Tier 3: combinations.
+
+Features rarely break alone. These check the seams: filtering against
+printing, provenance against the index tallies, the specimens against the
+reduced-motion rules, the design tokens against the places they are used.
 """
 
-import os
+from __future__ import annotations
+
 import re
 import unittest
-from pathlib import Path
-from tests.dom_parser import DOMNode
+
 from tests.test_base import BaseE2ETestCase
 
 
 class TestTier3CrossFeature(BaseE2ETestCase):
-    """Tier 3: Cross-Feature State & Module Integration Test Cases."""
+    """Tier 3: where two features meet."""
 
-    # -------------------------------------------------------------------------
-    # 1. Category Filtering Cross-Checks across all 10 Plates
-    # -------------------------------------------------------------------------
-    def test_filter_matching_all_plates(self):
-        """Cross-Feature 1: Validates that category filtering partitions all 10 plates correctly."""
-        articles = self.dom.find_all("article") or self.dom.select(".folio-plate, .folio-card, .glass-card")
-
-        def get_categories_for_plate(article: DOMNode) -> set:
-            cat_str = article.get("data-category") or article.get("data-cat") or article.get("data-disciplines") or ""
-            return set(cat_str.lower().split())
-
-        # 1. Category 'all' covers all 10 plates
-        self.record_assertion(
-            3, "X-FILT-ALL", "Filter 'all' Selects All 10 Plates", len(articles) == 10,
-            f"Filter category 'all' selects all {len(articles)}/10 plates"
+    def entries(self):
+        return re.findall(
+            r'<li class="entry" data-category="([^"]+)">(.*?)</li>',
+            self.raw_html,
+            re.S,
         )
 
-        # 2. Category 'systems' plate matching
-        systems_plates = [a for a in articles if "systems" in get_categories_for_plate(a)]
-        self.record_assertion(
-            3, "X-FILT-SYS", "Filter 'systems' Matches Systems Plates", len(systems_plates) >= 1,
-            f"Found {len(systems_plates)} plates tagged with 'systems'"
-        )
+    # -- filtering × printing ------------------------------------------------
 
-        # 3. Category 'ai' plate matching
-        ai_plates = [a for a in articles if "ai" in get_categories_for_plate(a)]
+    def test_filter_state_does_not_survive_into_print(self):
+        print_block = re.search(r"@media print\s*\{(.*)\}\s*</style>", self.raw_html, re.S)
+        body = print_block.group(1) if print_block else ""
         self.record_assertion(
-            3, "X-FILT-AI", "Filter 'ai' Matches AI & ML Plates", len(ai_plates) >= 1,
-            f"Found {len(ai_plates)} plates tagged with 'ai'"
-        )
-
-        # 4. Category 'embedded' plate matching
-        embedded_plates = [a for a in articles if "embedded" in get_categories_for_plate(a)]
-        self.record_assertion(
-            3, "X-FILT-EMB", "Filter 'embedded' Matches Embedded & IoT Plates", len(embedded_plates) >= 1,
-            f"Found {len(embedded_plates)} plates tagged with 'embedded'"
-        )
-
-        # 5. Category 'java' plate matching
-        java_plates = [a for a in articles if "java" in get_categories_for_plate(a)]
-        self.record_assertion(
-            3, "X-FILT-JAVA", "Filter 'java' Matches Java & Distributed Plates", len(java_plates) >= 1,
-            f"Found {len(java_plates)} plates tagged with 'java'"
-        )
-
-        # 6. Category 'automation' plate matching
-        auto_plates = [a for a in articles if "automation" in get_categories_for_plate(a) or "tools" in get_categories_for_plate(a)]
-        self.record_assertion(
-            3, "X-FILT-AUTO", "Filter 'automation' Matches Tools & Automation Plates", len(auto_plates) >= 1,
-            f"Found {len(auto_plates)} plates tagged with 'automation'"
-        )
-
-        # 7. Filter Buttons ↔ Filter JavaScript handler linkage
-        filter_buttons = self.dom.find_all("button") or self.dom.select(".filter-btn, .filter-tab")
-        has_click_handlers = any(
-            b.has_attr("onclick")
-            or b.has_attr("data-cat")
-            or b.has_attr("data-filter")
-            or b.has_class("filter-tab")
-            for b in filter_buttons
+            3, "X1", "Hidden entries return on paper",
+            ".entry.is-hidden" in body and "!important" in body,
+            "Whatever is filtered on screen, the printed catalogue is complete",
         )
         self.record_assertion(
-            3, "X-FILT-BIND", "Filter UI Buttons Bound to Filter Logic", has_click_handlers,
-            "Filter buttons contain onclick, data-filter, or filter-tab event bindings"
+            3, "X1", "The index line is not printed", ".index-line" in body,
+            "Controls that cannot be pressed are not printed",
         )
 
-    # -------------------------------------------------------------------------
-    # 2. Interactive Engines ↔ Plate DOM Cross-Checks
-    # -------------------------------------------------------------------------
-    def test_interactive_engines_cross_checks(self):
-        """Cross-Feature 2: Validates Web Audio, Terminal, and Lightbox linkage with plates."""
-        # 8. Plate III (GPT-2 Piano) ↔ Web Audio Engine linkage
-        text_piano = "gpt-2 piano" in self.raw_html.lower() or "piano" in self.raw_html.lower()
-        has_webaudio = self.auditor.js_analysis.has_webaudio or "AudioContext" in self.raw_html
+    # -- filtering × the specimens -------------------------------------------
+
+    def test_hiding_an_entry_hides_its_specimen(self):
         self.record_assertion(
-            3, "X-PIANO-AUDIO", "Plate III & Web Audio Synth Linkage", text_piano and bool(has_webaudio),
-            "Plate III (GPT-2 Piano) connected to Web Audio tone synthesizer"
+            3, "X2", "Hiding removes the entry from layout",
+            ".entry.is-hidden { display: none; }" in self.raw_html,
+            "A filtered entry takes its figures with it",
+        )
+        self.record_assertion(
+            3, "X2", "The clock keeps time regardless of the filter",
+            "setInterval(showTime, 1000)" in self.raw_html,
+            "The departure panel is not driven by the filter",
         )
 
-        # 9. Audio Visualizer ↔ Canvas DOM Linkage
-        has_canvas = len(self.dom.find_all("canvas")) >= 1 or "canvas" in self.raw_html
-        has_analyser = self.auditor.js_analysis.has_analyser_node or "createAnalyser" in self.raw_html or "getContext" in self.raw_html
+    # -- provenance × the index ----------------------------------------------
+
+    def test_every_filter_yields_reachable_work(self):
+        entries = self.entries()
+        for cat in ("systems", "ai", "embedded", "java", "automation"):
+            selected = [b for c, b in entries if cat in c.split()]
+            reachable = all(
+                "github.com/HerRei/" in b or "Private collection" in b for b in selected
+            )
+            self.record_assertion(
+                3, "X3", f"Filter '{cat}' yields works with provenance", reachable,
+                f"All {len(selected)} work(s) under '{cat}' state where they are kept",
+            )
+
+    # -- tokens × usage ------------------------------------------------------
+
+    def test_declared_tokens_are_the_ones_used(self):
+        css = self.auditor.css_analysis
+        declared = set(css.custom_properties)
+        used = set(re.findall(r"var\((--[a-z0-9-]+)", self.raw_html))
+        undefined = used - declared
         self.record_assertion(
-            3, "X-AUDIO-CANVAS", "Audio Analyser & Oscilloscope Canvas Linkage", bool(has_canvas and has_analyser),
-            "Web Audio AnalyserNode connected to oscilloscope <canvas> element"
+            3, "X4", "No colour is used before it is defined", not undefined,
+            f"{len(used)} tokens referenced, all declared",
+            f"Undefined: {sorted(undefined)}",
+        )
+        unused = declared - used
+        self.record_assertion(
+            3, "X4", "The palette carries no dead weight", len(unused) <= 3,
+            f"Unused tokens: {sorted(unused)}",
         )
 
-        # 10. Plate I (train-tui) ↔ ANSI Terminal Simulation Linkage
-        has_tui = "train-tui" in self.raw_html.lower()
-        has_sysfs_metrics = "sysfs" in self.raw_html.lower() or "gpu" in self.raw_html.lower() or "tui" in self.raw_html.lower()
+    # -- motion × the specimens ----------------------------------------------
+
+    def test_reduced_motion_reaches_every_moving_part(self):
+        html = self.raw_html
         self.record_assertion(
-            3, "X-TUI-TERMINAL", "Plate I & Terminal Telemetry Linkage", has_tui and has_sysfs_metrics,
-            "Plate I (train-tui) connected to live ANSI terminal telemetry stream"
+            3, "X5", "The ticker respects reduced motion",
+            "if (reduceMotion) {" in html and "startTicker();" in html,
+            "The telemetry specimen waits to be started",
+        )
+        self.record_assertion(
+            3, "X5", "The oscilloscope respects reduced motion",
+            "if (reduceMotion) drawStave(); else trace();" in html,
+            "The trace is drawn once rather than animated",
+        )
+        self.record_assertion(
+            3, "X5", "Entry transitions respect reduced motion",
+            "animation-duration: .001ms !important" in html,
+            "The settle animation is suppressed with everything else",
+        )
+        self.record_assertion(
+            3, "X5", "The nocturne is never automatic",
+            "playBtn.addEventListener" in html and "nocturne.play(" in html,
+            "Audio only ever begins on a click",
         )
 
-        # 11. Terminal Controls ↔ Telemetry Simulation State Linkage
-        has_tui_controls = bool(re.search(r"(pause|resume|train-tui|terminal|stream|term-toggle)", self.raw_html, re.IGNORECASE))
+    # -- headings × sections --------------------------------------------------
+
+    def test_each_section_is_named_by_its_own_heading(self):
+        for section_id, heading_id in (
+            ("catalogue", "catalogue-title"),
+            ("methods", "methods-title"),
+            ("notice", "notice-title"),
+            ("correspondence", "corr-title"),
+        ):
+            linked = f'id="{section_id}" aria-labelledby="{heading_id}"' in self.raw_html
+            present = f'id="{heading_id}"' in self.raw_html
+            self.record_assertion(
+                3, "X6", f"Section '{section_id}' is announced", linked and present,
+                f"#{section_id} is labelled by #{heading_id}",
+            )
+
+    # -- running head × sections ---------------------------------------------
+
+    def test_running_head_tracks_the_sections_that_exist(self):
+        watched = re.findall(r'\{ id: "([a-z]+)", name: "[^"]+" \}', self.raw_html)
         self.record_assertion(
-            3, "X-TERM-CTRL", "Terminal Interactive Stream Controls Linkage", has_tui_controls,
-            "Interactive control mechanisms linked to terminal simulation"
+            3, "X7", "The running head watches real sections",
+            all(f'id="{s}"' in self.raw_html for s in watched) and len(watched) == 4,
+            f"Watched sections: {watched}",
+        )
+        self.record_assertion(
+            3, "X7", "Section anchors all resolve",
+            all(
+                f'id="{href[1:]}"' in self.raw_html
+                for href in re.findall(r'href="(#[a-z-]+)"', self.raw_html)
+            ),
+            "Every in-page link lands on an element that exists",
         )
 
-        # 12. Plate IV (ESP32 SBB Tracker) ↔ Hardware Lightbox Modal Linkage
-        has_sbb = "sbb_tracker" in self.raw_html.lower() or "sbb tracker" in self.raw_html.lower() or "esp32" in self.raw_html.lower()
-        has_modal = "modal" in self.raw_html.lower() or "lightbox" in self.raw_html.lower() or "display" in self.raw_html.lower()
-        self.record_assertion(
-            3, "X-ESP32-MODAL", "Plate IV & Hardware Lightbox Modal Linkage", has_sbb and bool(has_modal),
-            "Plate IV (ESP32 SBB Tracker) connected to hardware TFT preview / lightbox modal"
-        )
 
-    # -------------------------------------------------------------------------
-    # 3. Aesthetics & Architecture Cross-Checks
-    # -------------------------------------------------------------------------
-    def test_aesthetics_and_architecture_cross_checks(self):
-        """Cross-Feature 3: Validates styling token inheritance, responsive typography, and assets."""
-        # 13. Romantic Atelier CSS Variables ↔ Folio Plate Card Styling
-        css = self.auditor.css_analysis.raw_css
-        has_theme_vars = "--bg-" in css or "--ink-" in css or "--amber-" in css or "bg-" in self.raw_html
-        self.record_assertion(
-            3, "X-THEME-CARDS", "Folio Plates Inherit Romantic Atelier Tokens", bool(has_theme_vars),
-            "Project folio plates inherit chiaroscuro palette and etched border styling"
-        )
-
-        # 14. Typographic Pairing ↔ Hierarchy Cross-Check
-        has_serif_and_mono = bool(re.search(r"serif", css, re.IGNORECASE)) or bool(re.search(r"mono", css, re.IGNORECASE)) or "font-mono" in self.raw_html
-        self.record_assertion(
-            3, "X-TYPO-PAIRING", "Serif Headings & Monospace Badges Pairing", bool(has_serif_and_mono),
-            "Literary serif applied to headings paired with crisp monospace metadata"
-        )
-
-        # 15. Responsive Breakpoints ↔ Compendium Grid Layout
-        has_responsive_grid = bool(self.auditor.css_analysis.media_queries) or "grid" in css or "grid-cols" in self.raw_html
-        self.record_assertion(
-            3, "X-GRID-RESPONSIVE", "Compendium Grid Responsive Transitions", bool(has_responsive_grid),
-            "Project compendium grid smoothly transitions from mobile single-column to desktop multi-column"
-        )
-
-        # 16. Academic Dossier ↔ CV Asset Linkage
-        has_cv_link = any("lebenslauf.pdf" in a.get("href", "") for a in self.dom.find_all("a")) or "lebenslauf.pdf" in self.raw_html
-        self.record_assertion(
-            3, "X-DOSSIER-CV", "Academic Dossier Direct CV Asset Linkage", bool(has_cv_link),
-            "Academic dossier provides direct download link to staged CV PDF"
-        )
-
-        # 17. Ex Libris Header ↔ Navigation Links Linkage
-        links = self.dom.find_all("a")
-        has_nav_gh = any("github.com/HerRei" in a.get("href", "") for a in links)
-        has_nav_li = any("linkedin.com/in/" in a.get("href", "") for a in links)
-        self.record_assertion(
-            3, "X-HEADER-NAV", "Ex Libris Header & External Channel Linkage", has_nav_gh and has_nav_li,
-            "Header and navigation bar provide direct access to verified external channels"
-        )
+if __name__ == "__main__":
+    unittest.main(verbosity=2)

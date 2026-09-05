@@ -85,8 +85,9 @@ class TestTier2BoundaryCorner(BaseE2ETestCase):
             )
             self.record_assertion(
                 2, "B3", "The private work offers no broken link",
-                "<a " not in body.split('class="entry-links"')[-1],
-                "Its links block explains the absence instead of linking nowhere",
+                re.findall(r'href="([^"]+)"', body.split('class="entry-links"')[-1]) == ["localsr/"]
+                and (self.project_root / "localsr" / "index.html").is_file(),
+                "LocalSR links to its public showcase; its private source repository is not linked",
             )
 
     def test_entries_without_figures_are_still_complete(self):

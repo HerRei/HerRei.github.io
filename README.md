@@ -6,18 +6,25 @@ wall label — medium, date, where it is kept.
 
 Live at **<https://herrei.github.io/>**.
 
+LocalSR has a dedicated [showcase](https://herrei.github.io/localsr/) with a real image
+comparison, alpha downloads, and release notes. Its [design study](docs/localsr-design-study.md)
+and [maintenance notes](localsr/README.md) live in this repository.
+
 ## What is here
 
 ```
-index.html   the whole site — one file, no framework, no build step
+index.html   the portfolio — one file, no framework, no build step
 assets/      the portrait and the curriculum vitae
+localsr/     LocalSR showcase, comparison images, downloads, and alpha notes
+docs/        the LocalSR design study and social artwork brief
 tests/       four suites; see TESTS.md
 ```
 
-Nothing is fetched at runtime except two typefaces from Google Fonts
+The portfolio fetches its typefaces from Google Fonts
 (Bodoni Moda for display, EB Garamond for text, JetBrains Mono for the
 specimens). There is no bundler, no package.json, no CI step: GitHub Pages
-serves `index.html` as it is committed.
+serves the static files as they are committed. The LocalSR showcase self-hosts its fonts
+and comparison images.
 
 ## Working on it
 

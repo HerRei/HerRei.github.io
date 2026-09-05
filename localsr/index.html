@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f1e9">
+  <title>LocalSR — Give your images a little more room.</title>
+  <meta name="description" content="Upscale, denoise, and deblur images on your own computer. Explore a real LocalSR comparison and download the alpha for macOS, Windows, or Linux.">
+  <link rel="canonical" href="https://herrei.github.io/localsr/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LocalSR">
+  <meta property="og:title" content="Give your images a little more room.">
+  <meta property="og:description" content="Image restoration. On your computer. Explore LocalSR and download the desktop alpha.">
+  <meta property="og:url" content="https://herrei.github.io/localsr/">
+  <meta property="og:image" content="https://herrei.github.io/localsr/assets/og.png">
+  <meta property="og:image:alt" content="LocalSR. Give your images a little more room. Image restoration, on your computer. Alpha 0.0.11.">
+  <meta property="og:image:width" content="1738">
+  <meta property="og:image:height" content="905">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://herrei.github.io/localsr/assets/og.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preload" as="font" href="assets/fonts/dm-sans-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="preload" as="font" href="assets/fonts/newsreader-italic-latin.woff2" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="showcase.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="wordmark" href="./" aria-label="LocalSR home"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a>
+      <span class="masthead-description">A little more in every pixel.</span>
+      <nav aria-label="Main navigation">
+        <a href="#results">The results</a>
+        <a href="#workflow">How it works</a>
+        <a class="nav-download" href="#download">Download <span aria-hidden="true">↓</span></a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-topline micro"><span>Image restoration, kept local</span><a class="release-marker" href="release-notes/"><span class="status-dot" aria-hidden="true"></span><span data-version>v0.0.11-alpha</span></a></div>
+        <div class="hero-layout">
+          <h1 id="hero-title">Give your images<br><em>a little more room.</em></h1>
+          <div class="hero-intro">
+            <p>That photo you kept. The scan you found. The image that deserves a second look.</p>
+            <p class="secondary">Enlarge it, soften the noise, or work on the blur. LocalSR runs the models on your own computer.</p>
+            <a class="button button-ink" href="#download">Download the alpha <span aria-hidden="true">↘</span></a>
+            <span class="hero-platforms micro">macOS · Windows · Linux</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="results-section" id="results" aria-labelledby="results-title">
+        <div class="section-rule">
+          <h2 class="micro" id="results-title"><span class="section-number">01</span> On the light table</h2>
+          <div class="view-switch comparison-enhancement" role="group" aria-label="Image view" hidden>
+            <button type="button" data-view="frame" aria-pressed="true">The frame</button>
+            <button type="button" data-view="detail" aria-pressed="false">A closer look <span aria-hidden="true">↗</span></button>
+          </div>
+        </div>
+        <div class="image-study">
+          <div class="study-margin">
+            <span class="study-index" aria-hidden="true">01<span>/</span></span>
+            <div><p class="micro">Marseille, France</p><p class="study-subject">Concrete.<br>Color.<br>A little detail.</p></div>
+            <span class="study-scale">4<span>×</span><small class="micro">Enlargement</small></span>
+          </div>
+          <figure class="study-main">
+            <div class="comparison" id="comparison" style="--split: 50%">
+              <img id="comparison-before" class="before-image" src="assets/marseille-input.png" width="480" height="240" alt="Low-resolution photograph of colored balconies and concrete railings in Marseille." decoding="async">
+              <img id="comparison-after" class="after-image" src="assets/marseille-output.webp" width="1920" height="960" alt="The same photograph enlarged four times by LocalSR’s SPAN NomosUni model." fetchpriority="high" decoding="async">
+              <div class="image-labels comparison-enhancement" aria-hidden="true" hidden><span>Input <b>480 × 240</b></span><span>LocalSR <b>1920 × 960</b></span></div>
+              <div class="comparison-line comparison-enhancement" aria-hidden="true" hidden><span>↔</span></div>
+              <label class="sr-only" for="comparison-range">Compare the original image with the LocalSR result</label>
+              <input class="comparison-range comparison-enhancement" id="comparison-range" type="range" min="0" max="100" value="50" aria-describedby="comparison-help" hidden>
+            </div>
+            <div class="comparison-toolbar comparison-enhancement" hidden>
+              <p class="micro" id="comparison-help">Drag to inspect <span aria-hidden="true">↔</span> or use the arrow keys</p>
+              <div class="compare-presets" role="group" aria-label="Show a comparison side">
+                <button type="button" data-split="100" aria-pressed="false">Input</button>
+                <button type="button" data-split="50" aria-pressed="true">Split</button>
+                <button type="button" data-split="0" aria-pressed="false">LocalSR 4×</button>
+              </div>
+            </div>
+            <noscript><p class="image-note">Showing the LocalSR result. Enable JavaScript for the interactive comparison, or <a href="assets/marseille-input.png">view the input image</a>.</p></noscript>
+            <p class="sr-only" id="view-status" role="status"></p>
+            <figcaption class="study-caption">
+              <p><span class="micro">A real run, with room to inspect.</span> This photograph was cropped and reduced to 480 × 240 pixels, then enlarged to 1920 × 960 with LocalSR’s Quick Start model. No extra blur was added to the input.</p>
+              <p class="caption-credit">Photo: <a href="https://unsplash.com/photos/modern-apartment-building-with-colorful-balconies-against-blue-sky-n4bofMDUS_Y">Tim Ziegelbaum</a><br>Model: SPAN NomosUni, Philip Hofmann<br><a href="about-the-image/">How this example was made <span aria-hidden="true">↗</span></a></p>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="workflow-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="section-rule section-rule-dark"><p class="micro"><span class="section-number">02</span> At your own desk</p><span class="micro">Local by design</span></div>
+        <div class="workflow-layout">
+          <div class="workflow-intro">
+            <h2 id="workflow-title">Your images.<br><em>Your machine.</em></h2>
+            <p>A desktop workspace for a patient second look. Choose a model, check the result, keep what works.</p>
+            <figure class="work-print">
+              <img src="assets/marseille-print.webp" alt="A work print of the processed Marseille photograph." width="960" height="480" loading="lazy" decoding="async">
+              <figcaption class="micro"><span>Marseille / Study 01</span><span>LocalSR · 4×</span></figcaption>
+            </figure>
+          </div>
+          <ol class="workflow-steps">
+            <li><span class="step-number micro" aria-hidden="true">01 /</span><div><h3>Start with what you have.</h3><p>Open a photograph, screenshot, illustration, or scan. Work on a single image or build a batch queue.</p><span class="step-detail micro">JPEG · PNG · WebP · TIFF · DNG</span></div></li>
+            <li><span class="step-number micro" aria-hidden="true">02 /</span><div><h3>Choose the treatment.</h3><p>Quick Start gives you a place to begin. Choose a different model for photo enlargement, illustration, denoising, or deblurring.</p><span class="step-detail micro">Models download when you choose them</span></div></li>
+            <li><span class="step-number micro" aria-hidden="true">03 /</span><div><h3>Look closely. Then save.</h3><p>Inspect the preview and save a separate result. The processing happens here, on your computer. Your source image stays yours.</p><span class="step-detail micro">No cloud processing · No app analytics</span></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="particulars-section" aria-labelledby="particulars-title">
+        <div class="particulars-intro"><p class="micro"><span class="section-number">03</span> Useful particulars</p><h2 id="particulars-title">A few things<br><em>worth a closer look.</em></h2><p>SR stands for super-resolution. It estimates a larger image from the pixels you already have. The result is a model’s interpretation, so the final judgment is yours.</p></div>
+        <dl class="particulars-list">
+          <div><dt><span class="particular-symbol" aria-hidden="true">2 · 3 · 4<span>×</span></span><span class="particular-name">Room to go larger.</span></dt><dd>Choose 2×, 3×, or 4× output dimensions. Large images are processed in overlapping tiles to work within available memory.</dd></div>
+          <div><dt><span class="particular-symbol" aria-hidden="true">1<span>×</span></span><span class="particular-name">Restoration, at the same size.</span></dt><dd>Dedicated models can work on image noise, JPEG artifacts, or motion blur without enlarging the image.</dd></div>
+          <div><dt><span class="particular-symbol type-symbol" aria-hidden="true">ICC</span><span class="particular-name">Color deserves care.</span></dt><dd>ICC-aware image output and support for common photo formats, including DNG input. Metadata handling depends on the format and settings.</dd></div>
+          <div><dt><span class="labs-label micro">Labs</span><span class="particular-name">Video is an experiment.</span></dt><dd>Local video upscaling and optional SeedVR2 models are available to explore. Video remains experimental during alpha and beta.</dd></div>
+        </dl>
+      </section>
+
+      <section class="download-section" id="download" aria-labelledby="download-title">
+        <div class="section-rule"><p class="micro"><span class="section-number">04</span> Get LocalSR</p><span class="micro">A desktop application</span></div>
+        <div class="download-layout">
+          <div class="download-intro"><h2 id="download-title">Take it<br><em>from here.</em></h2><p>Choose the installer for your computer.<br>Bring an image you’d like to revisit.</p><div class="alpha-stamp"><strong>ALPHA</strong><span>Still taking shape.<br>Made for early testing.</span></div><p class="release-date micro"><span data-version>v0.0.11-alpha</span><br>Released <time datetime="2026-09-05">5 September 2026</time></p></div>
+          <div class="download-options">
+            <!-- downloads:start -->
+            <article class="download-row" aria-labelledby="download-macos">
+              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 12+</p><span class="platform-size micro">MPS backend · 283 MB</span></div>
+              <a class="download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.0.11-alpha/LocalSR-v0.0.11-alpha-macOS-arm64.dmg" aria-label="Download LocalSR v0.0.11-alpha for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
+            </article>
+            <article class="download-row" aria-labelledby="download-windows">
+              <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64</p><span class="platform-size micro">CPU backend · 189 MB</span></div>
+              <a class="download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Windows-x86_64.exe" aria-label="Download LocalSR v0.0.11-alpha for Windows"><span>Download .exe</span><span aria-hidden="true">↓</span></a>
+            </article>
+            <article class="download-row" aria-labelledby="download-linux">
+              <div><h3 id="download-linux">Linux</h3><p class="platform-detail">Linux · x86-64</p><span class="platform-size micro">CPU backend · 457 MB</span></div>
+              <a class="download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage" aria-label="Download LocalSR v0.0.11-alpha for Linux"><span>Download .AppImage</span><span aria-hidden="true">↓</span></a>
+            </article>
+            <!-- downloads:end -->
+            <p class="download-caveat">These are unsigned test builds. macOS or Windows may show a security warning or prevent installation. Hardware validation is still in progress.</p>
+            <div class="download-resources"><a href="release-notes/">Read the alpha notes <span aria-hidden="true">↗</span></a><a href="SHA256SUMS">Checksums <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="questions-section" aria-labelledby="questions-title">
+        <div><p class="micro">Before you begin</p><h2 id="questions-title">A few good questions.</h2></div>
+        <div class="questions-list">
+          <details><summary>Do my images leave my computer?<span aria-hidden="true">+</span></summary><div><p>The desktop app processes media locally. It has no cloud inference or analytics. You need an internet connection to download models; after that, those models run on your computer.</p></div></details>
+          <details><summary>What does “alpha” mean here?<span aria-hidden="true">+</span></summary><div><p>This is an early testing release. Installers exist for three platforms, but production signing, broader hardware testing, and other release checks are still in progress. Expect rough edges. <a href="release-notes/">The release notes</a> spell out the current limitations.</p></div></details>
+          <details><summary>Will it use my graphics card?<span aria-hidden="true">+</span></summary><div><p>The current macOS installer includes the Apple Silicon MPS backend. The Windows and Linux installers use CPU processing. Additional GPU engine packages are future work; they are not included in this alpha.</p></div></details>
+          <details><summary>Can it recover the original detail?<span aria-hidden="true">+</span></summary><div><p>Super-resolution estimates plausible detail from an image. It cannot guarantee the recovery of information that was lost, and results vary by source and model. Inspect small text, faces, and fine patterns carefully.</p></div></details>
+          <details><summary>Are the models included?<span aria-hidden="true">+</span></summary><div><p>Models download separately, when selected. LocalSR checks curated downloads against their expected size and SHA-256 checksum. Model sizes and licenses vary; some commercial-use terms still need clarification. See <a href="release-notes/#models">the model notes</a> before using a particular model commercially.</p></div></details>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><div class="footer-top"><a class="wordmark" href="#top">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a href="#top" class="back-top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermès Reisner</a></span><span>Photography by <a href="https://unsplash.com/@absun">Tim Ziegelbaum</a></span><a href="about-the-image/">Image &amp; model credits <span aria-hidden="true">↗</span></a></div></footer>
+  </div>
+</body>
+</html>

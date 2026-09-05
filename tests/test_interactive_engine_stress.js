@@ -250,7 +250,8 @@ check("Returning to 'all' restores every work", () => {
 });
 
 check("Each filter yields the count it advertises", () => {
-  const tallies = [...DOC.matchAll(/data-cat="(\w+)"[^>]*>[^<]+<span class="tally">(\d+)<\/span>/g)];
+  const tallies = [...DOC.matchAll(/data-cat="(\w+)"[^>]*>[^<]+<span class="tally"[^>]*>(\d+)<\/span>/g)];
+  assert.strictEqual(tallies.length, env.filters.length, "every filter has an advertised count");
   for (const [, cat, claimed] of tallies) {
     env.filters.find((f) => f.getAttribute("data-cat") === cat).click();
     const shown = env.entries.filter((e) => !e.hidden()).length;
@@ -483,7 +484,7 @@ check("The departure clock is zero-padded and ticks every second", () => {
 
 check("The running head names the section in view", () => {
   const fresh = buildEnvironment();
-  assert.ok(["The Catalogue", "Index of Methods", "The Author", "Correspondence"]
+  assert.ok(["Selected work", "What I work with", "About", "Contact"]
     .includes(fresh.byId["running-chapter"].textContent),
     `running head said "${fresh.byId["running-chapter"].textContent}"`);
 });

@@ -1,53 +1,63 @@
-# Tests
+# Portfolio verification
 
-Four suites, no third-party dependencies — Python 3.10+ and Node for the last
-one. They read (and, in one case, execute) the shipped `index.html`; there is
-nothing to build first.
+The current checks exercise the static content, the existing interactive engines,
+and the rendered botanical portfolio.
 
-| Suite | Run it with | What it covers |
-|---|---|---|
-| Four-tier E2E | `python3 tests/run_e2e_tests.py` | Features, boundaries, feature combinations, whole visitor journeys |
-| Adversarial stress | `python3 tests/challenger1_stress_suite.py` | Strict markup parse, hostile viewports, filter fuzzing, asset signatures, scripts assuming nothing exists |
-| Engine assertions | `PYTHONPATH=. python3 -m unittest tests.test_adversarial_interactive_engines` | The music theory, the telemetry bounds, the panel's plausibility |
-| Executed script | `node tests/test_interactive_engine_stress.js` | Runs the page's own script against a stub DOM and a virtual clock |
+## Fast checks
 
-Useful flags on the E2E runner: `--tier {1,2,3,4}`, `--verbose` (prints every
-assertion), `--json` (machine-readable).
+```sh
+python3 tests/run_e2e_tests.py
+node tests/test_interactive_engine_stress.js
+```
 
-## The four tiers
+The Python runner checks document nesting, duplicate IDs, local assets, local
+fragments, artwork provenance, and the existing 25 music, telemetry, filter, and
+canvas assertions. `tests/challenger1_stress_suite.py` is a compatibility entry
+point for the current structural checks.
 
-**Tier 1 — features (F1–F13).** Paper and pigments; typography; the ten wall
-labels; the index line; provenance; the three specimens; honest captions;
-accessibility; the responsive sheet; the print sheet; assets; restrained
-motion; architecture.
+The Node suite executes the actual inline script with a stub DOM and a virtual
+clock. It tests filtering and counts, 10,000 randomized filter changes, 10,000
+telemetry ticks, pause/resume, audio scheduling, canvas sizing, and reduced motion.
 
-**Tier 2 — boundaries.** The sparsest filter, the work with no public
-repository, entries without figures, date formats, page and asset weight, long
-strings, the narrowest screen.
+## Browser checks
 
-**Tier 3 — combinations.** Filtering against printing, filtering against the
-specimens, provenance against the index, declared tokens against the ones
-actually used, reduced motion against every moving part, headings against
-sections.
+Install test-only dependencies outside the site:
 
-**Tier 4 — journeys.** An engineer looking for source; someone hiring, reading
-and printing; a reader on a phone with no audio; someone on a keyboard with a
-screen reader.
+```sh
+npm install --prefix /tmp/herrei-portfolio-qa --no-save playwright @axe-core/playwright
+node /tmp/herrei-portfolio-qa/node_modules/playwright/cli.js install chromium
+NODE_PATH=/tmp/herrei-portfolio-qa/node_modules node tests/portfolio_browser.cjs
+```
 
-## The shared machinery
+The test opens the local HTML by default. Set `PORTFOLIO_BASE_URL` to test a hosted
+copy. Set `PORTFOLIO_QA_DIR` to choose where screenshots, the accessibility reports,
+the print PDF, and the JSON summary are written; the default is a directory inside
+the operating system's temporary folder.
 
-`tests/dom_parser.py` is a small standalone HTML parser and selector engine.
-`tests/static_analyzer.py` parses the inline CSS and JS — note that it reads
-custom properties only from top-level `:root` blocks, keeping `@media print`
-overrides separate in `conditional_properties`, so the printed palette is never
-reported as the screen's. `tests/test_base.py` records assertions so the runner
-can tabulate them.
+It checks 320, 390, 768, 1440, and 1920 pixel widths, text/container overflow,
+all loaded images, automated WCAG A/AA rules at desktop and mobile widths,
+every filter and result count, keyboard navigation, the display disclosure,
+telemetry stepping, real Web Audio start/stop, nonblank canvas pixels,
+200% text resizing, print after filtering, and no-JavaScript reading.
 
-## What the suites are for
+Automated accessibility checks are not a conformance certification. Inspect the
+screenshots as well; these tests cannot decide whether artwork and typography
+are well composed. Audio scheduling tests do not evaluate musical quality.
 
-They exist to catch the things that are cheap to get wrong and expensive to
-notice: a tally that no longer matches the works it filters, a link to a
-repository that has gone private, a caption that starts claiming a photograph
-is of hardware it never depicted, a padding shorthand that cancels the page
-gutter. Every assertion should be one you would actually want to be told about.
-Assertions that merely read the stylesheet back to itself are not worth having.
+## Replaced catalogue expectations
+
+The earlier `tier1_*` through `tier4_*` modules and their parser helpers describe
+the previous printed-catalogue design. They assert intentionally removed choices
+such as paper grain, Google-hosted Bodoni/Garamond, Roman wall labels, and one
+inline stylesheet. They are retained as historical reference but are not called
+by the current runner. The new browser suite replaces their layout and visitor
+journey coverage, and the relevant engine assertions remain active.
+
+## LocalSR
+
+```sh
+python3 localsr/tools/validate_site.py
+node --test localsr/tests/comparison.test.cjs
+```
+
+The portfolio refresh preserves the existing LocalSR pages and release assets.

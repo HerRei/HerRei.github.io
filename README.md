@@ -1,59 +1,54 @@
 # herrei.github.io
 
-A catalogue of ten works in software and hardware, set as a printed exhibition
-catalogue: warm paper, iron-gall ink, one vermillion pigment, each work given a
-wall label — medium, date, where it is kept.
+[Hermès Reisner's portfolio](https://herrei.github.io/): software, systems, and
+experiments, with a botanical visual direction and ten curated projects.
 
-Live at **<https://herrei.github.io/>**.
+The [design study](docs/portfolio-design-study.md) documents the source research,
+content audit, alternatives, and decisions. The [validation record](docs/portfolio-validation.md)
+records the release checks.
 
-LocalSR has a dedicated [showcase](https://herrei.github.io/localsr/) with a real image
-comparison, alpha downloads, and release notes. Its [design study](docs/localsr-design-study.md)
-and [maintenance notes](localsr/README.md) live in this repository.
+## Structure
 
-## What is here
+- `index.html`: project content, navigation, and the small interactive specimens.
+- `assets/portfolio/`: stylesheet, compressed artwork, project images, and Lucide icons.
+- `assets/portfolio/provenance.json`: image sources, rights, and transformations.
+- `assets/`: the existing portrait and CV.
+- `localsr/`: the dedicated LocalSR showcase, maintained independently.
+- `tests/`: current content, engine, and browser verification; see [TESTS.md](TESTS.md).
 
-```
-index.html   the portfolio — one file, no framework, no build step
-assets/      the portrait and the curriculum vitae
-localsr/     LocalSR showcase, comparison images, downloads, and alpha notes
-docs/        the LocalSR design study and social artwork brief
-tests/       four suites; see TESTS.md
-```
+There is no framework or build step. GitHub Pages serves the root of `main`.
+Open `index.html` locally to preview it. The portfolio reuses the existing
+self-hosted DM Sans, Newsreader, and IBM Plex Mono files in `localsr/assets/fonts/`.
+Images and fonts require no third-party runtime requests.
 
-The portfolio fetches its typefaces from Google Fonts
-(Bodoni Moda for display, EB Garamond for text, JetBrains Mono for the
-specimens). There is no bundler, no package.json, no CI step: GitHub Pages
-serves the static files as they are committed. The LocalSR showcase self-hosts its fonts
-and comparison images.
+## Updating projects
 
-## Working on it
+Edit the entries in `index.html`. Project descriptions should match their current
+READMEs, state team contributions and development status, and link to public
+destinations. LocalSR intentionally links to its showcase and release notes;
+its application repository is not currently listed publicly.
 
-Open `index.html` in a browser. That is the whole loop.
+Keep category names aligned with the filter buttons. The script calculates their
+counts from `data-category`; update the HTML fallback tallies too. The complete
+catalogue is readable without JavaScript. The Work, About, Contact, and Methods
+section IDs preserve the old bookmark destinations.
 
-Before pushing:
+The telemetry uses invented values, the piano sample is hand-written, and the
+expandable departure specimen uses sample services. Their captions must continue
+to distinguish these specimens from real project output. The hardware photograph
+and game screenshot are actual project media.
+
+For images, add source and license information to the provenance file. Keep
+dimensions explicit and prefer compressed local assets. The woodland painting is
+Gustav Klimt's *Beech Grove I*, credited and linked on the page.
+
+## Before publishing
 
 ```sh
-python3 tests/run_e2e_tests.py                    # 210 assertions, four tiers
-python3 tests/challenger1_stress_suite.py         # adversarial static checks
-PYTHONPATH=. python3 -m unittest tests.test_adversarial_interactive_engines
-node tests/test_interactive_engine_stress.js      # runs the page's own script
+python3 tests/run_e2e_tests.py
+node tests/test_interactive_engine_stress.js
 ```
 
-## Conventions worth knowing
-
-**The three figures are re-creations, and say so.** Fig. 1 draws invented
-telemetry, Fig. 2 plays a hand-written motif rather than the model's output,
-Fig. 3 redraws the ST7789 layout rather than photographing it. If a caption
-ever stops saying that, the tests fail.
-
-**Dates are the day each repository first appeared publicly**, not the day the
-work began. The colophon states this. A work with no public repository is dated
-`n.d.` and marked *private collection* rather than linked to a 404.
-
-**The index line's tallies are checked against reality.** Adding a work means
-adding its `data-category` and correcting the `<span class="tally">` counts —
-four separate suites will refuse the change otherwise.
-
-**Horizontal padding belongs to `.sheet`.** Setting a `padding` shorthand on
-`.section` or `.title-page` silently cancels the page gutter and flattens every
-section against the viewport edge below 62rem. There is a regression test.
+Run the browser checks described in [TESTS.md](TESTS.md) for visual or interaction
+changes. Commit and push to `main`; confirm the GitHub Pages build completes.
+The LocalSR showcase has its own [maintenance notes](localsr/README.md) and checks.

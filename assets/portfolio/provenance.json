@@ -1,0 +1,48 @@
+{
+  "reviewed_at": "2026-09-05",
+  "assets": [
+    {
+      "files": ["beech-grove-800.webp", "beech-grove-1600.webp", "beech-grove-social.jpg"],
+      "title": "Beech Grove I",
+      "creator": "Gustav Klimt",
+      "date": "circa 1902",
+      "collection": "Galerie Neue Meister, Staatliche Kunstsammlungen Dresden",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gustav_Klimt_-_Beech_Grove_I_-_Google_Art_Project.jpg",
+      "source_image": "https://upload.wikimedia.org/wikipedia/commons/a/a3/Gustav_Klimt_-_Beech_Grove_I_-_Google_Art_Project.jpg",
+      "rights": "Public domain; PD-Art / PD-old-100-expired as recorded on the source file page",
+      "changes": "Resized and compressed; the homepage uses a responsive CSS crop. No recoloring or generated additions."
+    },
+    {
+      "files": ["sbb-board.webp"],
+      "title": "ESP32 departure display photograph",
+      "creator": "Hermes Reisner / Sbb_Tracker_Sissach repository",
+      "source_image": "https://raw.githubusercontent.com/HerRei/Sbb_Tracker_Sissach/main/docs/assets/board-closeup.jpg",
+      "rights": "Existing media in the owner's project, reused for its portfolio entry",
+      "changes": "Resized and compressed; no invented hardware."
+    },
+    {
+      "files": ["phantomhunt.webp"],
+      "title": "PhantomHunt gameplay screenshot",
+      "creator": "CS108 ProgrammierLoewen team; game artwork credited to Ismail Djemaili in the project README",
+      "source_image": "https://raw.githubusercontent.com/HerRei/PhantomHunt/main/outreach/screenshot.png",
+      "rights": "Existing media in the owner's MIT-licensed team-project repository, reused with team attribution",
+      "changes": "Resized and compressed."
+    },
+    {
+      "files": ["localsr-result.webp"],
+      "title": "LocalSR worked example: Unite d'Habitation, Marseille",
+      "creator": "Photograph by Tim Ziegelbaum; LocalSR inference example documented in the showcase",
+      "source": "../../localsr/assets/marseille-output.webp",
+      "provenance": "../../localsr/assets/image-provenance.json",
+      "rights": "Unsplash License; see the existing image provenance and /localsr/about-the-image/",
+      "changes": "Resized and compressed for the portfolio preview."
+    },
+    {
+      "files": ["trees.svg", "arrow-up-right.svg", "arrow-down.svg", "play.svg", "pause.svg", "square.svg", "step-forward.svg"],
+      "creator": "Lucide contributors",
+      "source": "https://github.com/lucide-icons/lucide/tree/0.468.0/icons",
+      "license": "ISC; see lucide-LICENSE.txt",
+      "changes": "Unmodified library icons. Dark-surface controls invert the icons in CSS."
+    }
+  ]
+}

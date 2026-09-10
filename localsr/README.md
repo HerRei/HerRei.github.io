@@ -9,6 +9,7 @@ visual direction, page structure, and evidence policy.
 ## Files
 
 - `index.html`, `styles.css`, `showcase.js`: the showcase and its real image comparison.
+- `models/`: HAT-S/HAT-L face-model evidence, manual import, and later-release availability.
 - `release-notes/`: public, readable development and installation notes.
 - `about-the-image/`: source photography, model credit, and image preparation.
 - `release.json`: authoritative application release metadata.

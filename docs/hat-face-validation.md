@@ -53,3 +53,22 @@ Application checks: 557 Python passed / 2 skipped, 68 frontend passed, 48 Rust
 passed, Svelte checks clean, native macOS debug build passed. The five-page site
 validator and six comparison JavaScript tests passed. The website changes are
 text updates within the existing page layout; no new browser rendering claim is made.
+
+## AMD and platform follow-up — 2026-09-12
+
+The preview notes now describe AMD ROCm support, real GPU/RAM diagnostics,
+upstream block offloading and small-tile memory controls. They distinguish
+short successful 4K/720p SeedVR2 checks from long-video and restoration-quality
+acceptance, and explicitly retain the visible VAE seam limitation.
+
+The installed Linux application passed playback and returning to a completed
+video while another job ran. Packaged CPU and AMD workers passed real image,
+video, trim/audio, tile/ETA, cancellation and retry checks. Native Windows tests
+and the frozen CPU worker also passed on a disposable hosted VM. These findings
+are preview evidence; Windows GPU and signed-installer acceptance remain open.
+
+Static validation passed for all five pages, along with six comparison tests,
+30 portfolio content tests and 34 interactive-engine assertions. This is a prose
+update in the existing layout. No browser was opened on the user's current Mac,
+and no new rendered-layout claim is made. Release metadata, downloads and the
+v0.0.12 release process were left unchanged.

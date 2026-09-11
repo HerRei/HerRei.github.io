@@ -72,3 +72,7 @@ Static validation passed for all five pages, along with six comparison tests,
 update in the existing layout. No browser was opened on the user's current Mac,
 and no new rendered-layout claim is made. Release metadata, downloads and the
 v0.0.12 release process were left unchanged.
+
+The preview explicitly marks the final Windows rerun of the later timing fixes
+as outstanding. Earlier successful native/worker checks do not certify that
+follow-up, Windows GPU drivers or signed installation.

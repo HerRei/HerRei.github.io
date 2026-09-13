@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f3f1e9">
+  <title>Model guide — LocalSR</title>
+  <meta name="description" content="What every LocalSR model is, what it is best at, and the license terms that apply before you download or use results commercially.">
+  <link rel="canonical" href="https://herrei.github.io/localsr/models/guide/">
+  <link rel="icon" type="image/png" href="../../assets/favicon.png"><link rel="stylesheet" href="../../styles.css">
+  <style>.model-table{width:100%;border-collapse:collapse;font-size:.9rem}.model-table td,.model-table th{text-align:left;vertical-align:top;border-bottom:1px solid #d9d7ce;padding:.7rem .35rem}.table-wrap{overflow:auto}.model-table code{white-space:normal;overflow-wrap:anywhere}.badge{display:inline-block;font-size:11px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:5px}.badge-labs{border-color:#b33d26;color:#b33d26}.document-body{min-width:0}.document-body a{overflow-wrap:anywhere}</style>
+</head>
+<body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
+  <header class="masthead"><a class="wordmark" href="../../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../../">The showcase</a><a href="../">Model studies</a><a href="../../#download" class="nav-download">Download <span aria-hidden="true">↓</span></a></nav></header>
+  <main id="main">
+    <header class="document-hero"><p class="micro">Model guide / 14 September 2026</p><h1>Every model,<br><em>in plain words.</em></h1><p>What each LocalSR model does, what it is genuinely good at, and what to check before you download it or use its results for anything commercial.</p></header>
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#start">Start here</a><a href="#before-download">Before you download</a><a href="#upscale">Making images bigger</a><a href="#denoise">Noisy photos</a><a href="#deblur-jpeg">Blurry or JPEG-damaged</a><a href="#anime">Anime &amp; illustration</a><a href="#faces">Faces</a><a href="#video">Video (Labs)</a><a href="#licenses">License table</a><a href="#verify">How LocalSR verifies</a></nav></aside><div class="document-body">
+
+      <section id="start"><h2>Start here</h2><p>A model is a large trained network file, not a program. LocalSR runs it on your computer; no model is needed to browse, and nothing is sent anywhere. Each model is built for one job at one scale — that is why the catalog is a short list, not a wall of options.</p>
+        <p><strong>Not sure which to pick?</strong> Start with the <strong>Quick Start</strong> preset: <a href="#upscale">SPAN 4x NomosUni</a>. It downloads in seconds, runs on modest hardware, and its results cover most photos. Move to a bigger model only when you can name what the quick one is missing.</p>
+        <p>Pick by what you want to fix:</p>
+        <ul>
+          <li><em>“Make it bigger and sharper”</em> — <a href="#upscale">upscaling models</a>. Choose by scale (2×, 4×) and by how much quality you need.</li>
+          <li><em>“It’s grainy / noisy”</em> — <a href="#denoise">denoise models</a>. 1× models; they keep the size and remove noise.</li>
+          <li><em>“It’s blurry, or an old JPEG”</em> — <a href="#deblur-jpeg">deblur and JPEG restoration</a>. Also 1×; chain them <em>before</em> an upscaler.</li>
+          <li><em>“It’s anime or a drawing”</em> — <a href="#anime">one dedicated model</a>, faster and cleaner on line art than photo models.</li>
+          <li><em>“Recover a face”</em> — <a href="#faces">optional face models</a>. Stronger terms apply; read the warning first.</li>
+          <li><em>“Restore a whole video”</em> — <a href="#video">SeedVR2, Labs</a>. Experimental, heavy, hours-to-days per clip.</li>
+        </ul>
+      </section>
+
+      <section id="before-download"><h2>Before you download</h2>
+        <p class="document-callout"><strong>Read this once before downloading any model.</strong></p>
+        <ul>
+          <li><strong>Models are third-party files with their own terms.</strong> LocalSR’s application is MIT-licensed; the models are not. Each model’s license and commercial-use status is listed in the <a href="#licenses">table below</a>. Personal, private use is broadly fine; publishing or selling outputs may require more.</li>
+          <li><strong>Two models have unclear rights.</strong> The face-restoration checkpoints were fine-tuned for this project, but their training-data and weight rights are unresolved. LocalSR does not auto-download them. If you supply a copy, you are responsible for having the right to use it. <strong>No commercial-use claim is made</strong> for any face model.</li>
+          <li><strong>Results are reconstructions, not recovered truth.</strong> These networks invent plausible texture. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — LocalSR never overwrites them — and inspect results before you rely on or republish them.</li>
+          <li><strong>Download sizes are large.</strong> From 5 MB (SPAN) to 6.8 GB per SeedVR2 file. LocalSR downloads only from the pinned source, over HTTPS, and verifies the exact size and SHA-256 hash before a model is installed (see <a href="#verify">how verification works</a>).</li>
+        </ul>
+      </section>
+
+      <section id="upscale"><h2>Making images bigger</h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>SPAN 4x NomosUni</strong><br><span class="micro">Quick Start</span></th><td>4×</td><td>The default first choice. Tiny download, very fast, good general photo quality. Also the model behind the website’s worked example.</td><td>Very low · ~5 MB · ~0.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>RealPLKSR 4x NomosWebPhoto</strong><br><span class="micro">Best Quality preset</span></th><td>4×</td><td>When the quick result visibly falls short: finer texture in photos, better fidelity on faces and fabric. Slower than SPAN, still moderate.</td><td>Medium · ~30 MB · ~1.2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>Real-ESRGAN ×2</strong></th><td>2×</td><td>You genuinely want 2× — for a webpage, a print at modest enlargement, or a 4× model’s jump being too much. Native 2× avoids the downsample a 4× model needs.</td><td>Medium · ~67 MB · ~1.8 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-S ×4</strong></th><td>4×</td><td>A stronger, slower alternative for photos; the lightest of the HAT family and the base of the face-aware pair.</td><td>High · ~81 MB · ~2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-L ×4 ImageNet</strong></th><td>4×</td><td>Maximum quality stills on capable hardware — the largest official HAT variant. Roughly 3× slower than HAT-S; needs a strong GPU and patience.</td><td>Very high · ~166 MB · ~6 GB VRAM</td></tr>
+          </tbody>
+        </table></div>
+        <p>A practical path: <strong>SPAN</strong> first; if a specific image deserves more, try <strong>NomosWebPhoto</strong>; reserve <strong>HAT-L</strong> for hero shots. For 2× outputs, <strong>Real-ESRGAN ×2</strong> beats running a 4× model and shrinking.</p>
+      </section>
+
+      <section id="denoise"><h2>Noisy photos</h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>RealPLKSR Denoise</strong></th><td>1×</td><td>Fast, light cleanup of grainy snapshots — evening phone photos, high-ISO shots. Cleans while keeping size and character.</td><td>Low · ~30 MB · ~1 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>NAFNet SIDD Width64</strong></th><td>1×</td><td>The strongest denoise option: trained on real smartphone camera noise (SIDD). Highest-fidelity preset; large download, noticeably slower.</td><td>High · ~464 MB · ~4 GB VRAM</td></tr>
+          </tbody>
+        </table></div>
+        <p>Both are 1×: they don’t enlarge. Denoise <em>first</em>, then upscale — clean input makes every upscaler better. Two-stage jobs (denoise → HAT/SPAN) are a normal LocalSR workflow.</p>
+      </section>
+
+      <section id="deblur-jpeg"><h2>Blurry or JPEG-damaged</h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>NAFNet GoPro Deblur</strong></th><td>1×</td><td>Camera-shake blur from moving subjects or long handheld exposures. Trained on the GoPro motion set; won’t fix a missed focus point, but handles motion well.</td><td>Medium · ~272 MB · ~1.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>FBCNN Color</strong></th><td>1×</td><td>Old or re-shared JPEGs: blocking, ringing, mosquito noise. A restoration pass, not an upscaler — chain it before upscaling old downloads and forwarded images.</td><td>Medium · ~288 MB · ~2.5 GB VRAM</td></tr>
+          </tbody>
+        </table></div>
+        <p>For 2004-era camera clips and heavily compressed files, FBCNN → SPAN is the workhorse order.</p>
+      </section>
+
+      <section id="anime"><h2>Anime &amp; illustration</h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>RealPLKSR 4x HFA2k — Anime</strong></th><td>4×</td><td>Anime cels, manga scans, illustrations, clean line art. Photo models soften lines; this one keeps them crisp. Fast enough for batches.</td><td>Low · ~30 MB · ~0.8 GB VRAM</td></tr>
+          </tbody>
+        </table></div>
+        <p>Its upstream release uses a non-standard license identifier; the intended commercial terms still need clarification — treat outputs like the unclear-license face models until confirmed.</p>
+      </section>
+
+      <section id="faces"><h2>Faces</h2>
+        <p class="document-callout"><strong>Warning — unresolved rights.</strong> The face-restoration checkpoints below were fine-tuned for this project, but their training-data and weight rights are not established. LocalSR does <strong>not</strong> download them automatically; you must supply a copy you are permitted to use, which LocalSR verifies by size and SHA-256. No commercial-use claim is made for either model or its outputs. Full details and measured trade-offs are on the <a href="../">face model studies page</a>.</p>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>HAT-S ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td>4× face pass</td><td>Small, damaged, or degraded faces within photos. Runs as a companion to stock HAT-S: non-face regions keep the primary model’s output. Blended to recover damaged faces without regressing clean ones.</td><td>High · ~40 MB · ~2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-L ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td>4× face pass</td><td>The same idea on the larger base — more recovery power, more cost. Also a companion; also SDR-trained (HDR quality unverified).</td><td>Very high · ~166 MB · ~6 GB VRAM</td></tr>
+          </tbody>
+        </table></div>
+        <p>Both are experimental blends, not magic: they can smooth texture or alter fine features. Inspect eyes, teeth, and hair before keeping a result.</p>
+      </section>
+
+      <section id="video"><h2>Video <span class="badge badge-labs">Labs</span></h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>SeedVR2-3B</strong> (FP16 and FP8 variants)</th><td>Whole-clip video restoration and upscaling. The FP8 variant trades a little fidelity for a smaller download on NVIDIA CUDA / AMD ROCm. Requires its own supported GPU backend — it does not run through the image models’ paths.</td><td>Extreme · 6.8 GB + 0.5 GB per file · 16 GB+ memory · hours to days per clip</td></tr>
+          </tbody>
+        </table></div>
+        <p>Experimental: SDR output only, memory use depends on clip length and output size, and 16 GB does not guarantee a fit. Test on a short segment before committing an evening. Everyday video upscaling in LocalSR uses the image models frame-by-frame — this family is the separate, heavier Labs route.</p>
+      </section>
+
+      <section id="licenses"><h2>License table</h2>
+        <p>Every downloadable model, in one place. “Personal use” means private restoration of your own media; “commercial” means selling or publishing outputs as part of a product or service.</p>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Author</th><th scope="col">License</th><th scope="col">Commercial use</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">SPAN 4x NomosUni</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
+            <tr><th scope="row">RealPLKSR 4x NomosWebPhoto</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
+            <tr><th scope="row">RealPLKSR 4x HFA2k — Anime</th><td>Philip Hofmann</td><td>Upstream uses a non-standard identifier</td><td><strong>Unclear — verify before commercial use</strong></td></tr>
+            <tr><th scope="row">RealPLKSR Denoise</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
+            <tr><th scope="row">Real-ESRGAN ×2</th><td>Xintao Wang et&nbsp;al.</td><td>BSD-3-Clause</td><td>Allowed under BSD terms</td></tr>
+            <tr><th scope="row">HAT-S ×4 / HAT-L ×4 ImageNet</th><td>XPixel Group</td><td>Apache-2.0 (code); weights as published</td><td>Generally allowed — code license; weight terms as released</td></tr>
+            <tr><th scope="row">HAT-S ×4 Face / HAT-L ×4 Face</th><td>HerRei / XPixel Group</td><td><strong>Checkpoint rights unverified</strong></td><td><strong>Unclear — user-supplied; no commercial claim</strong></td></tr>
+            <tr><th scope="row">NAFNet SIDD / GoPro Deblur</th><td>Liangyu Chen et&nbsp;al. (megvii-research)</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
+            <tr><th scope="row">FBCNN Color</th><td>Jiaxi Jiang et&nbsp;al.</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
+            <tr><th scope="row">SeedVR2-3B (FP16/FP8)</th><td>ByteDance Seed · numz</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
+            <tr><th scope="row">YuNet face detector <span class="micro">(helper, not a picker model)</span></th><td>Shiqi Yu · OpenCV Zoo</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
+          </tbody>
+        </table></div>
+        <p>Licenses cover the models, not your photos: your media stays yours in every case. When in doubt — especially before commercial use of the unclear rows — check the linked source page for each model in the app’s catalog, or get advice. This guide is plain-language orientation, not legal advice.</p>
+      </section>
+
+      <section id="verify"><h2>How LocalSR verifies downloads</h2>
+        <p>Every model the app offers is pinned: an exact source URL, an exact file size, and an exact SHA-256 hash recorded before release. Downloads are HTTPS-only, checked against those pins, and installed atomically — a partial or altered file never becomes selectable. Files you import yourself are verified against the same hashes where a model is curated; unverified pickle or TorchScript checkpoints are blocked by default rather than loaded.</p>
+        <p>That protects you from corrupted and tampered downloads. It is <em>not</em> a rights check: a verified file is still governed by its license.</p>
+      </section>
+
+    </div></div>
+  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermès Reisner</a></span><span>Model guide · 14 September 2026</span></div></footer>
+</div></body></html>

@@ -85,10 +85,18 @@ def main():
 
     release = json.loads((site / "release.json").read_text())
     check({p["id"] for p in release["platforms"]} == {"macos", "windows", "linux"}, "Incomplete platform selection")
-    for platform in release["platforms"]:
+    for platform in release["platforms"] + release.get("archives", []):
+        if not platform.get("available"):
+            continue
         check(re.fullmatch(r"[a-f0-9]{64}", platform["sha256"]), "Invalid release checksum")
-        check(release["version"] in platform["filename"], "Installer version mismatch")
+        check(platform.get("version", release["version"]) in platform["filename"], "Installer version mismatch")
         check(platform["size_bytes"] > 0, "Missing installer size")
+        url = platform.get("download_url")
+        if platform.get("available"):
+            check(bool(url) and urlsplit(url).scheme == "https", "Available artifact requires HTTPS")
+            check(bool(url) and unquote(urlsplit(url).path).endswith("/" + platform["filename"]), "Download filename mismatch")
+        else:
+            check(not url, "Unavailable artifact must not advertise a download URL")
     subprocess.run([sys.executable, str(site / "tools/sync_release.py"), "--check"], check=True)
 
     if failures:

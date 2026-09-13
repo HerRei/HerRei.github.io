@@ -1,18 +1,21 @@
 {
-  "version": "v0.0.11-alpha",
-  "date": "2026-09-05",
+  "version": "v0.0.13-alpha",
+  "date": "2026-09-13",
   "repository": "HerRei/local-upscale",
-  "release_url": "https://github.com/HerRei/local-upscale/releases/tag/v0.0.11-alpha",
+  "release_url": "https://herrei.github.io/localsr/release-notes/",
+  "download_host": "https://macmini-ci.tail34a4e0.ts.net",
   "platforms": [
     {
       "id": "macos",
       "name": "macOS",
-      "requirements": "Apple Silicon · macOS 12+",
-      "backend": "MPS backend",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.0.11-alpha-macOS-arm64.dmg",
-      "size_bytes": 282671268,
-      "sha256": "a6bb566d43e5ca112138649d8ad2e027f4e6d34d5528794a177c1b9b1e84de52"
+      "filename": "LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
+      "size_bytes": 380931254,
+      "sha256": "033054726e77deffa135c0c706880cc29831436a19bc2369b6b909356f0d9dea",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.13-alpha/LocalSR-v0.0.13-alpha-macOS-arm64.dmg"
     },
     {
       "id": "windows",
@@ -20,9 +23,11 @@
       "requirements": "Windows 10 / 11 · x86-64",
       "backend": "CPU backend",
       "extension": ".exe",
-      "filename": "LocalSR-v0.0.11-alpha-Windows-x86_64.exe",
-      "size_bytes": 189010338,
-      "sha256": "a5bf250a77a179dc41639b6a0ee41139eb41bfb5f7a846be7e84b62539a98227"
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "0.0.13 Windows build in preparation"
     },
     {
       "id": "linux",
@@ -30,9 +35,53 @@
       "requirements": "Linux · x86-64",
       "backend": "CPU backend",
       "extension": ".AppImage",
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "0.0.13 Linux build in preparation"
+    }
+  ],
+  "archives": [
+    {
+      "id": "macos-011",
+      "name": "macOS",
+      "version": "v0.0.11-alpha",
+      "requirements": "Apple Silicon · macOS 12+",
+      "backend": "MPS backend · unsigned test build",
+      "extension": ".dmg",
+      "filename": "LocalSR-v0.0.11-alpha-macOS-arm64.dmg",
+      "size_bytes": 282671268,
+      "sha256": "a6bb566d43e5ca112138649d8ad2e027f4e6d34d5528794a177c1b9b1e84de52",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-macOS-arm64.dmg"
+    },
+    {
+      "id": "windows-011",
+      "name": "Windows",
+      "version": "v0.0.11-alpha",
+      "requirements": "Windows 10 / 11 · x86-64",
+      "backend": "CPU backend · unsigned test build",
+      "extension": ".exe",
+      "filename": "LocalSR-v0.0.11-alpha-Windows-x86_64.exe",
+      "size_bytes": 189010338,
+      "sha256": "a5bf250a77a179dc41639b6a0ee41139eb41bfb5f7a846be7e84b62539a98227",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Windows-x86_64.exe"
+    },
+    {
+      "id": "linux-011",
+      "name": "Linux",
+      "version": "v0.0.11-alpha",
+      "requirements": "Linux · x86-64",
+      "backend": "CPU backend · unsigned test build",
+      "extension": ".AppImage",
       "filename": "LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage",
       "size_bytes": 456522232,
-      "sha256": "fdb6678f53b6589c6498c714b4af92b18e6ba0f85be7e04afe1a87a85a952792"
+      "sha256": "fdb6678f53b6589c6498c714b4af92b18e6ba0f85be7e04afe1a87a85a952792",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage"
     }
-  ]
+  ],
+  "sources_note": "Complete source and build materials are published next to the installers: LocalSR-v0.0.13-alpha-macOS-sources.tar.gz (SHA-256 d500ceb1640e1f8f090d998c96ca91fd93ece5f6a69de63ebcea0686a7ab5ee3) and LocalSR-v0.0.11-alpha-sources.tar.gz (SHA-256 2ec985e27b44c2c6d8160a8bc712093d6e9694e320714de49d84c16e6813666f) at the same download host; checksums in each release directory's SHA256SUMS."
 }

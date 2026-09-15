@@ -64,3 +64,25 @@ node --test localsr/tests/comparison.test.cjs
 The Pages repository publishes
 from the root of `main`. Website releases use a `localsr-site-v…` tag to distinguish them from
 application releases. There is no separate hosting service or build framework.
+
+## Publishing an app update
+
+Installed LocalSR apps (v0.1.0-beta and later) check
+`https://herrei.github.io/localsr/updates/<channel>.json` at launch. The Beta
+channel reads `updates/beta.json`; Stable reads `updates/stable.json` and ignores
+pre-releases.
+
+1. Build, sign and notarize the new version in the LocalSR repository
+   (`build/release-<version>/release_macos.sh`). It also writes the signed
+   `.app.tar.gz` update archive, its `.sig`, the source bundle and `release.json`.
+2. Upload those files to the Mac mini under
+   `/mnt/hdd/localsr-downloads/public/releases/v<version>/`.
+3. Edit `updates/beta.json`: raise `version`, update `notes` and `pub_date`, and
+   in `platforms["darwin-aarch64-mps-native"]` set the new `url`, the contents of
+   the `.sig` file as `signature`, and the `localsr` contract (`engine_id`, `size`,
+   `unpacked_size`, `sha256` from the release's `release.json` and `SHA256SUMS`).
+4. Update `release.json` for the download page, run `python3 tools/sync_release.py`
+   and `python3 tools/validate_site.py`, then commit and push.
+
+Apps pick the update up the next time they start. Never publish a feed entry
+before the exact files it names are uploaded and downloadable.

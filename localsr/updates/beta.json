@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0-beta",
+  "pub_date": "2026-09-15T16:00:00Z",
+  "notes": "First public beta. Royalty-free media runtime with AV1/VP9/FFV1 export; H.264/HEVC through an FFmpeg you install yourself. New drop-to-add preview, update notices, model library fixes and the new LocalSR icon.",
+  "platforms": {
+    "darwin-aarch64-mps-native": {
+      "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlJaE5sZTlwN0NnQnZRV3ZaRVREZ1I4UEE0b1loVVhqZWVFL0ozQThZc00wZzM3WTcranh0WlQra29jOVZSZjVaUDZ3VUhNRFRjbzE4UjhMcm1RYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDgwNTE3CWZpbGU6TG9jYWxTUi12MC4xLjAtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6ClNzdUJsMmZBZmM2ZDA5TjRuMnJOWlcwWEFSWkEwMmhEeDB0ZGdWaFRuQmw3V1VLVUdyMk9iMmFVa2JVS2dHT0c1WE91MWd5VUV3VjhDTWpTWlo5eENBPT0K",
+      "localsr": {
+        "channel": "beta",
+        "backend": "mps",
+        "kind": "native",
+        "protocol": 1,
+        "engine_id": "macos-arm64-mps-ad13516afb5b",
+        "size": 346477669,
+        "unpacked_size": 1166061580,
+        "sha256": "46efb6244a21b52134e85e15d047e9fbb57dba7fc1aa65eeca30834ccd31f27e"
+      }
+    }
+  }
+}

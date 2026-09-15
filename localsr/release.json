@@ -1,6 +1,6 @@
 {
-  "version": "v0.0.13-alpha",
-  "date": "2026-09-13",
+  "version": "v0.1.0-beta",
+  "date": "2026-09-15",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -11,11 +11,12 @@
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
-      "size_bytes": 380931254,
-      "sha256": "033054726e77deffa135c0c706880cc29831436a19bc2369b6b909356f0d9dea",
+      "filename": "LocalSR-v0.1.0-beta-macOS-arm64.dmg",
+      "size_bytes": 412284916,
+      "sha256": "f06eebfd38b908e37f16645eb67f7a2f5bcf3fb91b6f11bb9676cb640316f78c",
       "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.13-alpha/LocalSR-v0.0.13-alpha-macOS-arm64.dmg"
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg",
+      "version": "v0.1.0-beta"
     },
     {
       "id": "windows",
@@ -27,7 +28,7 @@
       "size_bytes": 0,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "available": false,
-      "status": "0.0.13 Windows build in preparation"
+      "status": "0.1.0 Windows build in preparation"
     },
     {
       "id": "linux",
@@ -39,10 +40,23 @@
       "size_bytes": 0,
       "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
       "available": false,
-      "status": "0.0.13 Linux build in preparation"
+      "status": "0.1.0 Linux build in preparation"
     }
   ],
   "archives": [
+    {
+      "id": "macos-013",
+      "name": "macOS",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · signed alpha",
+      "extension": ".dmg",
+      "filename": "LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
+      "size_bytes": 380931254,
+      "sha256": "033054726e77deffa135c0c706880cc29831436a19bc2369b6b909356f0d9dea",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.13-alpha/LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
+      "version": "v0.0.13-alpha"
+    },
     {
       "id": "macos-011",
       "name": "macOS",
@@ -83,5 +97,17 @@
       "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage"
     }
   ],
-  "sources_note": "Complete source and build materials are published next to the installers: LocalSR-v0.0.13-alpha-macOS-sources.tar.gz (SHA-256 d500ceb1640e1f8f090d998c96ca91fd93ece5f6a69de63ebcea0686a7ab5ee3) and LocalSR-v0.0.11-alpha-sources.tar.gz (SHA-256 2ec985e27b44c2c6d8160a8bc712093d6e9694e320714de49d84c16e6813666f) at the same download host; checksums in each release directory's SHA256SUMS."
+  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.0-beta build: LocalSR-v0.1.0-beta-source-and-notices.tar.gz (SHA-256 19f2a83a89ca890aa2b5f64b74a0f4f4cb419613f94a9f6b5cdbbd9fa321d851) next to the installer. Earlier alpha sources remain in their release directories.",
+  "sources": [
+    {
+      "id": "sources-010",
+      "name": "Source and notices",
+      "version": "v0.1.0-beta",
+      "filename": "LocalSR-v0.1.0-beta-source-and-notices.tar.gz",
+      "size_bytes": 267870348,
+      "sha256": "19f2a83a89ca890aa2b5f64b74a0f4f4cb419613f94a9f6b5cdbbd9fa321d851",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-source-and-notices.tar.gz"
+    }
+  ]
 }

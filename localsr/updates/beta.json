@@ -1,20 +1,39 @@
 {
-  "version": "0.1.0-beta",
-  "pub_date": "2026-09-15T16:00:00Z",
-  "notes": "First public beta. Royalty-free media runtime with AV1/VP9/FFV1 export; H.264/HEVC through an FFmpeg you install yourself. New drop-to-add preview, update notices, model library fixes and the new LocalSR icon.",
+  "version": "0.1.1-beta",
+  "pub_date": "2026-09-15T16:35:23Z",
+  "notes": "Adds the FFmpeg notice: when a phone or camera video (H.264/HEVC) is added, or such an export is started, LocalSR explains that it ships only royalty-free formats, shows the install command for FFmpeg with a copy button, links to ffmpeg.org, and can find or choose the installed program and re-inspect the videos. Everything else from 0.1.0-beta is unchanged.",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlJaE5sZTlwN0NnQnZRV3ZaRVREZ1I4UEE0b1loVVhqZWVFL0ozQThZc00wZzM3WTcranh0WlQra29jOVZSZjVaUDZ3VUhNRFRjbzE4UjhMcm1RYVFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDgwNTE3CWZpbGU6TG9jYWxTUi12MC4xLjAtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6ClNzdUJsMmZBZmM2ZDA5TjRuMnJOWlcwWEFSWkEwMmhEeDB0ZGdWaFRuQmw3V1VLVUdyMk9iMmFVa2JVS2dHT0c1WE91MWd5VUV3VjhDTWpTWlo5eENBPT0K",
+      "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTA3UE1YMHZCZklsT0lqV3ZMMGcxNS8zODZxRy9xajlnZGZtTEpDMXZKMU4xRmY1MkY4L0N2cnBkV2JzNzgxTTlXalFwV01hUk5tUnI4ejN3SFI1NHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMDk5CWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CklFYmx2M2VXM3Bwc0tTNnNPTk1yV3UvZFk4Vldlc1E3MFVOeFl3ckZYK0pLclhteXpxS2M5emkzWGdpS3pUeHgyOTdYaytwOURsbzQyRGVkMzNha0FBPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "macos-arm64-mps-ad13516afb5b",
-        "size": 346477669,
-        "unpacked_size": 1166061580,
-        "sha256": "46efb6244a21b52134e85e15d047e9fbb57dba7fc1aa65eeca30834ccd31f27e"
+        "engine_id": "macos-arm64-mps-63e0f1cf0cbd",
+        "size": 346484393,
+        "unpacked_size": 2305596691,
+        "sha256": "bf531119be95567298fa5ccbd7c64c654dc92cd9759a222a1b919ced1ac114f2",
+        "engine": {
+          "id": "macos-arm64-mps-63e0f1cf0cbd",
+          "manifest": {
+            "name": "LocalSR-v0.1.1-beta-macOS-arm64.engine-payload.json",
+            "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.engine-payload.json",
+            "size": 343,
+            "sha256": "14f4eaaeea3e6efa155e139728e3f5175cd9437536a78568cf7273400212393d",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFHUkxPcUZ2N2pqNG1oUFI0SDNyRkFQSmxVTTd2NXlCaUtIYUhaY2NwdVh1eW9oMmVkVXBzT3BuV0Z1S1FSK1BYVmd4eVFIM3VKb2VLdThFMXA3N3dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMTEwCWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCk9QaEFxSkJIOVRHN3dzWkZMRkkxWnBITTRQUnNZQmhtdW5sNWxkZnhnWWtWamdBaVd2SGthTGhBdlB1MGlzTjN3WVY1czJhRzJyM3YxSmtPVlRLT0RnPT0K"
+          },
+          "parts": [
+            {
+              "name": "LocalSR-v0.1.1-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "size": 381609931,
+              "sha256": "a30604d7fc46fc51d91afcf66bccb1e2ab943b5155d0841a381559b67077355b",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXdLYk9pL01wMGtCMGJ3ZlJOOUJIdDNMOXRwQXROQWcvVHZHY2JOR0ErbGx0MDEzYy9SQmIrVURONTRRQ1U4MUxkMEQrSGR2WG5IOFZDNlltbFBTOXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMTExCWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpkcG9ybWFlZjI1SE93NzY1elJOaXlVMnU1RlZqMmhJTTNkc3haZVBmSSs5U2QvNXVWSHVPQzcxZ3ZuK3VWcjgrazRPOCszYndteFhIY1VOVWdwWHhBUT09Cg=="
+            }
+          ]
+        }
       }
     }
   }

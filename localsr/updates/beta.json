@@ -1,36 +1,36 @@
 {
-  "version": "0.1.1-beta",
-  "pub_date": "2026-09-15T18:30:51Z",
-  "notes": "Adds the FFmpeg notice: when a phone or camera video (H.264/HEVC) is added, or such an export is started, LocalSR explains that it ships only royalty-free formats, shows the install command for FFmpeg with a copy button, links to ffmpeg.org, and can find or choose the installed program and re-inspect the videos. Everything else from 0.1.0-beta is unchanged.",
+  "version": "0.1.2-beta",
+  "pub_date": "2026-09-15T22:38:05Z",
+  "notes": "Phone and camera videos now open on a Mac without installing anything: H.264, HEVC and AAC go through the codecs that ship with macOS, and H.264/HEVC exports (including 10-bit HDR HEVC) are written by the system encoder into MP4. An FFmpeg found on this computer is used automatically for the formats macOS cannot read. Also fixes a crash when opening a file with LocalSR while it was not running.",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZStQMjduS1loLzhLcWx3dmM3NjZxaU9rbHpPaG9QK253V2I5TDdFVVZSVHVxeDlqZi9qSXNqUXhUU2RlR202VmlWUUJjcS9GL0xqeWJDeFZtUHFpOHdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDk3MDQ4CWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CkgyL1pVU0g4d2JTbTZ1L0l5UDhpUFV1WUZ6cUxZbEY0R3RCdlIwaGJxUkxkM3VjR0xkN3Fidm1EaEtJVVlCTCtmSDZvSTNXblZWMjE1MUZYUUl6Z0FRPT0K",
+      "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpMT2V4dnFUSlphcmlCT1BOblIycmNsclZKRkZZbHUyeEh4Sk0wK3BkNi9wcmh5NWkvempKYzNKV09JRk5rRzNDQ2lwSkRTNDU3cmhyMlFUQmU5N3cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTExNzUzCWZpbGU6TG9jYWxTUi12MC4xLjItYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CnBDWFVhRktFRWY4T1dHQ09paWZHSVVZRk41alFGZnpTT1ZqSEc2aWlIMFI2d3V0c1gyMmNGOGNOMVFvTmFXNjZSQWYvWFJNd0FoSE5adjg1M1lHc0NnPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "macos-arm64-mps-63e0f1cf0cbd",
-        "size": 345999259,
-        "unpacked_size": 2304962195,
-        "sha256": "812a7f9d1c34dd1536a981ee92c2da7fc648a04e894218d9555fb555417d6aba",
+        "engine_id": "macos-arm64-mps-700be473190f",
+        "size": 346134832,
+        "unpacked_size": 2305682926,
+        "sha256": "9810834ac89155520dde020bfa5ff7e056256cf43fe23e28d032ab65df567c90",
         "engine": {
-          "id": "macos-arm64-mps-63e0f1cf0cbd",
+          "id": "macos-arm64-mps-700be473190f",
           "manifest": {
-            "name": "LocalSR-v0.1.1-beta-macOS-arm64.engine-payload.json",
-            "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.engine-payload.json",
+            "name": "LocalSR-v0.1.2-beta-macOS-arm64.engine-payload.json",
+            "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.engine-payload.json",
             "size": 343,
-            "sha256": "14f4eaaeea3e6efa155e139728e3f5175cd9437536a78568cf7273400212393d",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFHUkxPcUZ2N2pqNG1oUFI0SDNyRkFQSmxVTTd2NXlCaUtIYUhaY2NwdVh1eW9oMmVkVXBzT3BuV0Z1S1FSK1BYVmd4eVFIM3VKb2VLdThFMXA3N3dvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMTEwCWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCk9QaEFxSkJIOVRHN3dzWkZMRkkxWnBITTRQUnNZQmhtdW5sNWxkZnhnWWtWamdBaVd2SGthTGhBdlB1MGlzTjN3WVY1czJhRzJyM3YxSmtPVlRLT0RnPT0K"
+            "sha256": "90da69adaf46b73bffd7db3433a540dd2c75752f131ff3d31c42a660a5dd193b",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlLK3hDaTBUTXhDQ01WN0dqd2tweUJkOVppTW1ZYjg5cTVCMDBDTk9mL29TaENEMm1JZ1U3VVY4cVZqaG9jalNJTWJnNzFXYXdwQUVkN0VZWGZkc2dBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTExNzY0CWZpbGU6TG9jYWxTUi12MC4xLjItYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCmcyZTh3SlN5UGo5Ym9aeFllSXNKek16M3hCRjZ0dzRoV2NrNjFMZ0xBNVNzWmtTcXhUNG5zYVl1WHJNUUNxaERrbmw4dUNyMFJSRGxaY1BDYXJuUkF3PT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.1.1-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "size": 381609931,
-              "sha256": "a30604d7fc46fc51d91afcf66bccb1e2ab943b5155d0841a381559b67077355b",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXdLYk9pL01wMGtCMGJ3ZlJOOUJIdDNMOXRwQXROQWcvVHZHY2JOR0ErbGx0MDEzYy9SQmIrVURONTRRQ1U4MUxkMEQrSGR2WG5IOFZDNlltbFBTOXdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMTExCWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpkcG9ybWFlZjI1SE93NzY1elJOaXlVMnU1RlZqMmhJTTNkc3haZVBmSSs5U2QvNXVWSHVPQzcxZ3ZuK3VWcjgrazRPOCszYndteFhIY1VOVWdwWHhBUT09Cg=="
+              "name": "LocalSR-v0.1.2-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "size": 381749533,
+              "sha256": "7af257040d0f173be0a923acd4852792187ed37ec8c0612beabec8145f3caf31",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZThRL0lRdWlLeEFmOFp4d1ZrRTU0TXQyeHRGSlV1MUpIRUpEajI1RmFJWkNPbk5henExZjFOQUxWK0Q3Ylh6dml3UzlyTHM0Mk5UcUY2Ynp3bEk3UkFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NTExNzY0CWZpbGU6TG9jYWxTUi12MC4xLjItYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpDaXlxUmR1blkxeG1RYmJBVUtNemFRU0NQTGpZWDErQVZ6VXpCNEZmRndsNUN1dHpUQWFxWFBMQVRQYVlRRURTb29ub2UwMkk3T1lxbUNLcGl5dDhEZz09Cg=="
             }
           ]
         }

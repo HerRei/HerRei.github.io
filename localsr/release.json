@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.1-beta",
-  "date": "2026-09-15",
+  "version": "v0.1.2-beta",
+  "date": "2026-09-16",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -8,8 +8,47 @@
     {
       "id": "macos",
       "name": "macOS",
-      "requirements": "Apple Silicon \u00b7 macOS 14+",
-      "backend": "MPS backend \u00b7 CPU fallback",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · CPU fallback",
+      "extension": ".dmg",
+      "filename": "LocalSR-v0.1.2-beta-macOS-arm64.dmg",
+      "size_bytes": 415349210,
+      "sha256": "89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
+      "version": "v0.1.2-beta"
+    },
+    {
+      "id": "windows",
+      "name": "Windows",
+      "requirements": "Windows 10 / 11 · x86-64",
+      "backend": "CPU backend",
+      "extension": ".exe",
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "0.1.2 Windows build in preparation"
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "requirements": "Linux · x86-64",
+      "backend": "CPU backend",
+      "extension": ".AppImage",
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "0.1.2 Linux build in preparation"
+    }
+  ],
+  "archives": [
+    {
+      "id": "macos-011",
+      "name": "macOS",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
       "filename": "LocalSR-v0.1.1-beta-macOS-arm64.dmg",
       "size_bytes": 414250517,
@@ -19,36 +58,10 @@
       "version": "v0.1.1-beta"
     },
     {
-      "id": "windows",
-      "name": "Windows",
-      "requirements": "Windows 10 / 11 \u00b7 x86-64",
-      "backend": "CPU backend",
-      "extension": ".exe",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "0.1.1 Windows build in preparation"
-    },
-    {
-      "id": "linux",
-      "name": "Linux",
-      "requirements": "Linux \u00b7 x86-64",
-      "backend": "CPU backend",
-      "extension": ".AppImage",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "0.1.1 Linux build in preparation"
-    }
-  ],
-  "archives": [
-    {
       "id": "macos-010",
       "name": "macOS",
-      "requirements": "Apple Silicon \u00b7 macOS 14+",
-      "backend": "MPS backend \u00b7 CPU fallback",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
       "filename": "LocalSR-v0.1.0-beta-macOS-arm64.dmg",
       "size_bytes": 412284916,
@@ -60,8 +73,8 @@
     {
       "id": "macos-013",
       "name": "macOS",
-      "requirements": "Apple Silicon \u00b7 macOS 14+",
-      "backend": "MPS backend \u00b7 signed alpha",
+      "requirements": "Apple Silicon · macOS 14+",
+      "backend": "MPS backend · signed alpha",
       "extension": ".dmg",
       "filename": "LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
       "size_bytes": 380931254,
@@ -71,24 +84,11 @@
       "version": "v0.0.13-alpha"
     },
     {
-      "id": "macos-011",
-      "name": "macOS",
-      "version": "v0.0.11-alpha",
-      "requirements": "Apple Silicon \u00b7 macOS 12+",
-      "backend": "MPS backend \u00b7 unsigned test build",
-      "extension": ".dmg",
-      "filename": "LocalSR-v0.0.11-alpha-macOS-arm64.dmg",
-      "size_bytes": 282671268,
-      "sha256": "a6bb566d43e5ca112138649d8ad2e027f4e6d34d5528794a177c1b9b1e84de52",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-macOS-arm64.dmg"
-    },
-    {
       "id": "windows-011",
       "name": "Windows",
       "version": "v0.0.11-alpha",
-      "requirements": "Windows 10 / 11 \u00b7 x86-64",
-      "backend": "CPU backend \u00b7 unsigned test build",
+      "requirements": "Windows 10 / 11 · x86-64",
+      "backend": "CPU backend · unsigned test build",
       "extension": ".exe",
       "filename": "LocalSR-v0.0.11-alpha-Windows-x86_64.exe",
       "size_bytes": 189010338,
@@ -100,8 +100,8 @@
       "id": "linux-011",
       "name": "Linux",
       "version": "v0.0.11-alpha",
-      "requirements": "Linux \u00b7 x86-64",
-      "backend": "CPU backend \u00b7 unsigned test build",
+      "requirements": "Linux · x86-64",
+      "backend": "CPU backend · unsigned test build",
       "extension": ".AppImage",
       "filename": "LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage",
       "size_bytes": 456522232,
@@ -110,8 +110,18 @@
       "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage"
     }
   ],
-  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.1-beta build: LocalSR-v0.1.1-beta-source-and-notices.tar.gz (SHA-256 2b21523ac1b3bd976c98a874af25500d3ec4e6b19e65d20e1b46572b9ab7f343) next to the installer. The v0.1.0-beta sources and earlier alpha sources remain in their release directories.",
+  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.2-beta build: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer. The v0.1.1-beta, v0.1.0-beta and earlier alpha sources remain in their release directories.",
   "sources": [
+    {
+      "id": "sources-012",
+      "name": "Source and notices",
+      "version": "v0.1.2-beta",
+      "filename": "LocalSR-v0.1.2-beta-source-and-notices.tar.gz",
+      "size_bytes": 268410558,
+      "sha256": "1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37",
+      "available": true,
+      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
+    },
     {
       "id": "sources-011",
       "name": "Source and notices",

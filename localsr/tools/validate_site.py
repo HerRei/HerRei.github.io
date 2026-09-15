@@ -48,7 +48,13 @@ def main():
         if not condition:
             failures.append(message)
 
+    counter = site / "count.js"
+    check(counter.is_file(), "Missing visit counter script count.js")
     for path, doc in documents.items():
+        check(
+            any(counter == (path.parent / urlsplit(ref).path).resolve() for ref in doc.refs if ref.endswith("count.js")),
+            f"{path}: missing visit counter script count.js",
+        )
         check(doc.h1_count == 1, f"{path.name}: expected one main heading")
         check(all(count == 1 for count in Counter(doc.ids).values()), f"{path}: duplicate IDs")
         check(all("alt" in image and image.get("width") and image.get("height") for image in doc.images), f"{path}: missing image alternatives/dimensions")

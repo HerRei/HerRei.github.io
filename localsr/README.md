@@ -38,6 +38,15 @@ point to the existing application's versioned release assets. Anonymous download
 the application repository to become public, or the manifest to point to a public distribution
 repository. Publishing this site does not change application repository access.
 
+## Visit counting
+
+Every page loads `count.js`, which sends
+`GET https://macmini-ci.tail34a4e0.ts.net/hit?p=<page path>&r=<external referrer host>` to the
+LocalSR stats collector on the Mac mini (the same Caddy host that serves `/releases/`). It skips
+Do Not Track, Global Privacy Control, and anything not served from `https://herrei.github.io`.
+The server keeps only daily totals; see `privacy/index.html` for the public description, which must
+change whenever the counting changes. `tools/validate_site.py` fails if a page lacks the script.
+
 ## Reproducing the image
 
 Use LocalSR's Python environment with its verified Quick Start model already installed:

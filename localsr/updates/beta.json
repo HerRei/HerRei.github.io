@@ -1,20 +1,20 @@
 {
   "version": "0.1.1-beta",
-  "pub_date": "2026-09-15T16:35:23Z",
+  "pub_date": "2026-09-15T18:30:51Z",
   "notes": "Adds the FFmpeg notice: when a phone or camera video (H.264/HEVC) is added, or such an export is started, LocalSR explains that it ships only royalty-free formats, shows the install command for FFmpeg with a copy button, links to ffmpeg.org, and can find or choose the installed program and re-inspect the videos. Everything else from 0.1.0-beta is unchanged.",
   "platforms": {
     "darwin-aarch64-mps-native": {
       "url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTA3UE1YMHZCZklsT0lqV3ZMMGcxNS8zODZxRy9xajlnZGZtTEpDMXZKMU4xRmY1MkY4L0N2cnBkV2JzNzgxTTlXalFwV01hUk5tUnI4ejN3SFI1NHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDkwMDk5CWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CklFYmx2M2VXM3Bwc0tTNnNPTk1yV3UvZFk4Vldlc1E3MFVOeFl3ckZYK0pLclhteXpxS2M5emkzWGdpS3pUeHgyOTdYaytwOURsbzQyRGVkMzNha0FBPT0K",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZStQMjduS1loLzhLcWx3dmM3NjZxaU9rbHpPaG9QK253V2I5TDdFVVZSVHVxeDlqZi9qSXNqUXhUU2RlR202VmlWUUJjcS9GL0xqeWJDeFZtUHFpOHdvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzg5NDk3MDQ4CWZpbGU6TG9jYWxTUi12MC4xLjEtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CkgyL1pVU0g4d2JTbTZ1L0l5UDhpUFV1WUZ6cUxZbEY0R3RCdlIwaGJxUkxkM3VjR0xkN3Fidm1EaEtJVVlCTCtmSDZvSTNXblZWMjE1MUZYUUl6Z0FRPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
         "engine_id": "macos-arm64-mps-63e0f1cf0cbd",
-        "size": 346484393,
-        "unpacked_size": 2305596691,
-        "sha256": "bf531119be95567298fa5ccbd7c64c654dc92cd9759a222a1b919ced1ac114f2",
+        "size": 345999259,
+        "unpacked_size": 2304962195,
+        "sha256": "812a7f9d1c34dd1536a981ee92c2da7fc648a04e894218d9555fb555417d6aba",
         "engine": {
           "id": "macos-arm64-mps-63e0f1cf0cbd",
           "manifest": {

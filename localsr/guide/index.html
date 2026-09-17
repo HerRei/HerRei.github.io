@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f3f1e9">
+<title>User guide — LocalSR</title><meta name="description" content="How to use LocalSR: install it, upscale or restore your first image, run batches and videos, find your results, and fix common problems.">
+<link rel="canonical" href="https://herrei.github.io/localsr/guide/">
+<link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
+</head><body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
+<header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot">.</span></a><nav aria-label="Main navigation"><a href="../#download">Downloads</a><a href="../models/">Model guide</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav></header>
+<main id="main"><header class="document-hero"><p class="micro">User guide · LocalSR beta for macOS · 17 September 2026</p><h1>From first photo<br><em>to finished result.</em></h1><p>Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p></header>
+<div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#install">Install</a><a href="#window">The window</a><a href="#first-image">Your first image</a><a href="#results">Where results go</a><a href="#compare">Compare before and after</a><a href="#batch">Many files at once</a><a href="#models">Models, presets and recipes</a><a href="#video">Video</a><a href="#settings">Output and hardware settings</a><a href="#updates">Updates and privacy</a><a href="#finder">Finder and the command line</a><a href="#troubleshooting">Troubleshooting</a></nav></aside><div class="document-body">
+
+<section id="install"><h2>Install</h2>
+<ol>
+<li>You need a Mac with Apple Silicon (M1 or newer) and macOS 14 or later. More memory lets you use the larger models and bigger outputs.</li>
+<li>Download the DMG from the <a href="../download/">download page</a>, open it and drag <strong>LocalSR</strong> into <strong>Applications</strong>.</li>
+<li>Open LocalSR from Applications. The app is signed and notarized by Apple, so macOS only asks you to confirm that you want to open something downloaded from the internet.</li>
+</ol>
+<p>On the first launch a short welcome appears. It links back to this guide and mentions the anonymous update-check count, which you can turn off right there.</p>
+</section>
+
+<section id="window"><h2>The window</h2>
+<ul>
+<li><strong>Media</strong> on the left: everything you added, with its status. Switch between <strong>Single</strong> and <strong>Batch</strong> at the top.</li>
+<li><strong>The preview</strong> in the middle: drop files here. After processing it shows the before-and-after comparison.</li>
+<li><strong>Enhance</strong> on the right: what to do (the task), how (quality, content, what to fix first) and, under <strong>Advanced</strong>, output and hardware settings.</li>
+<li><strong>The status bar</strong> at the bottom: progress, time estimates, the start button, and <strong>Reveal</strong> and <strong>Open</strong> for the selected item’s result.</li>
+<li><strong>The toolbar</strong> at the top: <strong>Model library</strong>, <strong>Performance</strong> and the <strong>…</strong> menu (updates, the user guide, diagnostics, system integrations).</li>
+</ul>
+<p>In a narrow window the three panels become tabs: <strong>Media</strong>, <strong>Preview</strong> and <strong>Enhance</strong>.</p>
+</section>
+
+<section id="first-image"><h2>Your first image</h2>
+<ol>
+<li><strong>Add a photo.</strong> Drop it onto the preview, or click the preview to choose files. JPEG, PNG, WebP, TIFF and DNG camera RAW work.</li>
+<li><strong>Choose a task</strong> under Enhance: <strong>Upscale</strong> makes photos and artwork 2×, 3× or 4× larger; <strong>Restore</strong> removes noise, blur or JPEG artifacts without enlarging; <strong>Upscale Video</strong> is for clips.</li>
+<li><strong>Choose the quality.</strong> <strong>Quick</strong> is fast and good for most photos. <strong>Best</strong> is slower and keeps finer texture. Models are not included in the installer: the first time, press <strong>Get Quick</strong> (a few megabytes) or <strong>Quick + Best</strong>. They download once, are checked, and stay on your Mac.</li>
+<li><strong>Say what the image is.</strong> Pick <strong>Photo</strong> or <strong>Illustration</strong>, and under <strong>Fix first</strong> choose problems to clean up before enlarging, such as noise, JPEG artifacts or blur. The plan card underneath shows which model runs at each step, its license, its size and whether it fits your hardware.</li>
+<li><strong>Start</strong> with the blue button at the bottom right. It says <strong>Upscale selected</strong> or <strong>Restore selected</strong>, depending on the task.</li>
+<li><strong>Check the result</strong> in the comparison, then press <strong>Open</strong> to view the file or <strong>Reveal</strong> to show it in Finder.</li>
+</ol>
+<p class="document-callout">Upscaling models invent plausible detail. Text, faces, eyes and fine patterns can look convincing and still be wrong, so look closely before you rely on a result. LocalSR never overwrites your original.</p>
+</section>
+
+<section id="results"><h2>Where results go</h2>
+<p>Results are always saved as new files. By default they go to your <strong>Desktop</strong>; change the folder under <strong>Advanced → Save to</strong>. <strong>File → Open Output Folder</strong> opens it.</p>
+<p>The name tells you what happened: <code>photo_upscaled_4x.png</code>, <code>scan_denoised.png</code> or <code>clip_video_2x.mp4</code>. If a file with that name exists, a number is added instead of replacing it.</p>
+<p><strong>Open</strong> and <strong>Reveal</strong> always act on the item selected in the Media list. Select a different finished item to open its result; the buttons are hidden while the selected item has no result yet.</p>
+</section>
+
+<section id="compare"><h2>Compare before and after</h2>
+<p>When the selected item has a result, the preview shows the original and the enhanced version side by side. Drag the divider, or focus it and use the arrow keys. <strong>View → Actual Pixels (1:1)</strong> shows real pixels, which is the honest way to judge detail; <strong>View → Fit to Window</strong> zooms back out. For videos, both versions play in sync.</p>
+</section>
+
+<section id="batch"><h2>Many files at once</h2>
+<ol>
+<li>Switch the Media list to <strong>Batch</strong>, or use <strong>Add Folder…</strong>: a folder becomes a batch.</li>
+<li>Choose the task and quality once. The start button now says <strong>Start 12 items</strong> (or however many there are).</li>
+<li>While the queue runs, the status bar shows an estimate for the current item and the whole queue, measured from items already finished. You can keep adding files with <strong>Add selected to queue</strong>, or stop with <strong>Cancel queue</strong>.</li>
+</ol>
+<p>Images and videos need separate runs, because they use different tasks. Try one representative file first before processing a large folder.</p>
+</section>
+
+<section id="models"><h2>Models, presets and recipes</h2>
+<p><strong>Model library</strong> in the toolbar lists every model with what it is good at, its size, author, license and source. Download or remove models there, or pin a model to the Quick or Best preset for a task. The <a href="../models/">model guide</a> explains each model in plain words.</p>
+<p>If you often use the same setup, press <strong>Save current setup as recipe</strong>. Recipes appear next to Quick and Best and in the <strong>Presets</strong> menu.</p>
+<p>You can also use your own model: in the library, under <strong>Your own file</strong>, choose a checkpoint. <code>.safetensors</code> files are strongly recommended. The two optional HAT face models are only available as copies you supply yourself, because their rights are unresolved.</p>
+</section>
+
+<section id="video"><h2>Video</h2>
+<ul>
+<li>Choose <strong>Upscale Video</strong>, add a clip and press <strong>Start selected video</strong>. Every frame goes through the image model, and the original timing, rotation and audio are kept.</li>
+<li>iPhone and camera videos (H.264, HEVC, AAC) open directly on a Mac. WMV, DivX, FLV and a few older formats need FFmpeg; LocalSR shows the install command when a file needs it and uses an installed FFmpeg automatically.</li>
+<li>Exports use AV1 by default. Under <strong>Advanced → Video format</strong> you can choose VP9, lossless FFV1, or H.264 and HEVC. macOS writes H.264 and HEVC with its own encoders into MP4, and those files play almost everywhere.</li>
+<li><strong>Video is slow on any computer.</strong> Minutes of footage can take hours. Start with a few seconds, check the result, then run the whole clip.</li>
+<li>HDR preservation, de-flicker and the SeedVR2 video models are marked <strong>Labs</strong>: they work, but their quality is not established yet.</li>
+</ul>
+</section>
+
+<section id="settings"><h2>Output and hardware settings</h2>
+<p>Open <strong>Advanced</strong> at the bottom of the Enhance panel.</p>
+<ul>
+<li><strong>Output scale</strong> and <strong>Format</strong> (PNG, JPEG, TIFF or WebP) for images; <strong>Save to</strong> for the output folder.</li>
+<li><strong>Preserve safe metadata and color profile</strong> converts colors to sRGB with a matching profile and copies only the date, artist and copyright. Location, camera serial numbers and similar details are never copied.</li>
+<li><strong>Hardware</strong> chooses the Apple GPU (Metal) or the CPU. The GPU is usually much faster.</li>
+<li><strong>Tile</strong>, <strong>Halo</strong> and <strong>Precision</strong> control how large images are split to fit in memory. Leave them alone unless you run out of memory; <strong>Safe memory mode</strong> is the simple switch for that.</li>
+<li><strong>Interface text</strong> makes the whole window larger.</li>
+</ul>
+</section>
+
+<section id="updates"><h2>Updates and privacy</h2>
+<p>LocalSR checks for a newer beta each time it starts. When one is available, a notice offers <strong>Update Now</strong>: the update is downloaded, verified against LocalSR’s signing key, installed, and the app restarts. It waits until a running queue has finished. Settings, recipes and models are kept. <strong>… → Check for Updates…</strong> checks by hand.</p>
+<p>Your photos and videos never leave your Mac. The update check sends an anonymous count (app version, platform and release channel, no identifiers). Turn it off in the welcome notice or in <strong>Software Update</strong>. The <a href="../privacy/">privacy page</a> describes every connection the app makes.</p>
+</section>
+
+<section id="finder"><h2>Finder and the command line</h2>
+<p><strong>… → System Integrations…</strong> installs an <strong>Enhance with LocalSR</strong> Quick Action for Finder, so you can right-click photos, videos or folders and send them to LocalSR with the Quick or Best preset. It also adds a <code>localsr-next</code> command for scripts. Move LocalSR to Applications first; both can be removed from the same dialog.</p>
+</section>
+
+<section id="troubleshooting"><h2>Troubleshooting</h2>
+<ul>
+<li><strong>Open or Reveal is missing.</strong> Select an item in the Media list that has finished. The buttons belong to the selected item.</li>
+<li><strong>It is slow.</strong> Check that <strong>Hardware</strong> is the Apple GPU, try <strong>Quick</strong>, use a smaller output scale, and close other heavy apps. <strong>Performance</strong> runs a short benchmark to compare the GPU and CPU on your Mac.</li>
+<li><strong>It stopped with a memory error.</strong> Turn on <strong>Safe memory mode</strong> or choose a smaller model. Very large images and 4× video need a lot of memory.</li>
+<li><strong>A video will not open.</strong> The format probably needs FFmpeg; follow the install command LocalSR shows. If it still fails, report the format.</li>
+<li><strong>The result looks plastic or wrong.</strong> Try another model or Photo instead of Illustration, and turn off fixes you do not need. Some damage cannot be recovered.</li>
+<li><strong>The app says the model does not fit.</strong> The plan card compares the model with your free memory; pick a smaller model or close other apps.</li>
+</ul>
+<p>Still stuck? <strong>… → Copy Diagnostics</strong> copies a hardware and app summary without file names or media. Paste it into a report on <a href="https://github.com/HerRei/local-upscale/issues">GitHub Issues</a>, or email it; the <a href="../support/">support page</a> says what else helps.</p>
+</section>
+
+</div></div></main>
+<footer class="footer"><div class="footer-top"><p>A little more detail.<br><em>On your own computer.</em></p><a class="back-top" href="#top">Back to top ↑</a></div><div class="footer-bottom micro"><span>LocalSR · HerRei</span><span><a href="../support/">Support</a> · <a href="../privacy/">Privacy</a></span></div></footer>
+</div><script src="../count.js" defer></script></body></html>

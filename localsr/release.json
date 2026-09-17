@@ -1,6 +1,6 @@
 {
   "version": "v0.1.2-beta",
-  "date": "2026-09-17",
+  "date": "2026-09-16",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -15,7 +15,7 @@
       "size_bytes": 415349210,
       "sha256": "89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f",
       "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
       "version": "v0.1.2-beta"
     },
     {
@@ -24,12 +24,11 @@
       "requirements": "Windows 10 / 11 · x86-64",
       "backend": "CPU backend",
       "extension": ".exe",
-      "filename": "LocalSR-v0.1.2-beta-Windows-x86_64.exe",
-      "size_bytes": 182518367,
-      "sha256": "24d32f3daddca9439e7e60e13c0f9045cda7595737677f5b9e7b79928905e6b6",
-      "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Windows-x86_64.exe",
-      "version": "v0.1.2-beta"
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "Not available yet — LocalSR is macOS-only for now"
     },
     {
       "id": "linux",
@@ -37,12 +36,11 @@
       "requirements": "Linux · x86-64",
       "backend": "CPU backend",
       "extension": ".AppImage",
-      "filename": "LocalSR-v0.1.2-beta-Linux-x86_64.AppImage",
-      "size_bytes": 613550584,
-      "sha256": "496f9851a61c8b34d89484585f8985591a5ae6c742489590fc5907be409344b1",
-      "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Linux-x86_64.AppImage",
-      "version": "v0.1.2-beta"
+      "filename": "",
+      "size_bytes": 0,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "available": false,
+      "status": "Not available yet — LocalSR is macOS-only for now"
     }
   ],
   "archives": [
@@ -71,48 +69,9 @@
       "available": true,
       "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg",
       "version": "v0.1.0-beta"
-    },
-    {
-      "id": "macos-013",
-      "name": "macOS",
-      "requirements": "Apple Silicon · macOS 14+",
-      "backend": "MPS backend · signed alpha",
-      "extension": ".dmg",
-      "filename": "LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
-      "size_bytes": 380931254,
-      "sha256": "033054726e77deffa135c0c706880cc29831436a19bc2369b6b909356f0d9dea",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.13-alpha/LocalSR-v0.0.13-alpha-macOS-arm64.dmg",
-      "version": "v0.0.13-alpha"
-    },
-    {
-      "id": "windows-011",
-      "name": "Windows",
-      "version": "v0.0.11-alpha",
-      "requirements": "Windows 10 / 11 · x86-64",
-      "backend": "CPU backend · unsigned test build",
-      "extension": ".exe",
-      "filename": "LocalSR-v0.0.11-alpha-Windows-x86_64.exe",
-      "size_bytes": 189010338,
-      "sha256": "a5bf250a77a179dc41639b6a0ee41139eb41bfb5f7a846be7e84b62539a98227",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Windows-x86_64.exe"
-    },
-    {
-      "id": "linux-011",
-      "name": "Linux",
-      "version": "v0.0.11-alpha",
-      "requirements": "Linux · x86-64",
-      "backend": "CPU backend · unsigned test build",
-      "extension": ".AppImage",
-      "filename": "LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage",
-      "size_bytes": 456522232,
-      "sha256": "fdb6678f53b6589c6498c714b4af92b18e6ba0f85be7e04afe1a87a85a952792",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage"
     }
   ],
-  "sources_note": "Corresponding source, build instructions and license notices for the macOS, Windows and Linux v0.1.2-beta builds: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer. The v0.1.1-beta, v0.1.0-beta and earlier alpha sources remain in their release directories.",
+  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.2-beta build: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer on GitHub. The v0.1.1-beta and v0.1.0-beta sources remain in their release directories.",
   "sources": [
     {
       "id": "sources-012",
@@ -122,7 +81,7 @@
       "size_bytes": 268410558,
       "sha256": "1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37",
       "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
     },
     {
       "id": "sources-011",

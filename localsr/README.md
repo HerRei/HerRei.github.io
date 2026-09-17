@@ -9,8 +9,11 @@ visual direction, page structure, and evidence policy.
 ## Files
 
 - `index.html`, `styles.css`, `showcase.js`: the showcase and its real image comparison.
-- `models/`: HAT-S/HAT-L face-model evidence, manual import, and later-release availability.
-- `release-notes/`: public, readable development and installation notes.
+- `guide/`: the user guide the app opens from Help → LocalSR User Guide.
+- `models/`: every catalog model in plain words, the license table and the face-model evidence.
+- `release-notes/`: public, readable release notes for the current beta.
+- `download/`, `support/`, `privacy/`: download page, support, and the privacy page that must
+  describe every count the site, the app and the download hosts make.
 - `about-the-image/`: source photography, model credit, and image preparation.
 - `release.json`: authoritative application release metadata.
 - `SHA256SUMS`: installer checksums generated from that metadata.
@@ -21,7 +24,9 @@ visual direction, page structure, and evidence policy.
 ## Updating the app release
 
 Update `release.json` with verified GitHub release asset names, sizes, checksums, platform
-requirements, and the version. Then run:
+requirements, and the version. Installers and source bundles are downloaded from the GitHub
+release (`https://github.com/HerRei/local-upscale/releases/download/<tag>/<file>`), which a
+home connection could not serve to many people at once. Then run:
 
 ```sh
 python3 localsr/tools/sync_release.py
@@ -32,11 +37,6 @@ The script updates the download rows, version labels, and checksums. Update the 
 date and prose in `index.html` and `release-notes/index.html` to match actual release acceptance.
 Refresh social-preview text when the version changes. Do not carry forward claims about a new
 backend, signing, or physical testing without release evidence.
-
-The owner requested real download buttons in advance of public repository access. These links
-point to the existing application's versioned release assets. Anonymous downloads will require
-the application repository to become public, or the manifest to point to a public distribution
-repository. Publishing this site does not change application repository access.
 
 ## Visit counting
 
@@ -84,8 +84,9 @@ pre-releases.
 1. Build, sign and notarize the new version in the LocalSR repository
    (`build/release-<version>/release_macos.sh`). It also writes the signed
    `.app.tar.gz` update archive, its `.sig`, the source bundle and `release.json`.
-2. Upload those files to the Mac mini under
-   `/mnt/hdd/localsr-downloads/public/releases/v<version>/`.
+2. Upload the update archive, its `.sig` and the engine payload files to the Mac mini under
+   `/mnt/hdd/localsr-downloads/public/releases/v<version>/`, and publish the DMG, the source
+   bundle and `SHA256SUMS` as assets of the GitHub release `v<version>`.
 3. Edit `updates/beta.json`: raise `version`, update `notes` and `pub_date`, and
    in `platforms["darwin-aarch64-mps-native"]` set the new `url`, the contents of
    the `.sig` file as `signature`, and the `localsr` contract (`engine_id`, `size`,

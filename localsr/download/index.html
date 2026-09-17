@@ -9,48 +9,50 @@
   <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
 </head>
 <body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-  <header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../">The showcase</a><a href="../models/">Model guide</a><a href="../release-notes/">Alpha notes</a></nav></header>
+  <header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../">The showcase</a><a href="../guide/">User guide</a><a href="../models/">Model guide</a><a href="../release-notes/">Beta notes</a></nav></header>
   <main id="main">
-    <header class="document-hero"><p class="micro">Before you download / 15 September 2026</p><h1>One minute<br><em>before the beta.</em></h1><p>LocalSR is early software and its models are reconstructions. Here is what that means — then take the installer straight from this page.</p></header>
+    <header class="document-hero"><p class="micro">Before you download / 17 September 2026</p><h1>One minute<br><em>before the beta.</em></h1><p>LocalSR is early software and its models are reconstructions. Here is what that means — then take the installer straight from this page.</p></header>
     <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#know">What to know</a><a href="#links">Direct downloads</a><a href="#verify">Verify your file</a></nav></aside><div class="document-body">
 
       <section id="know"><h2>What to know first</h2>
         <ul>
-          <li><strong>This is a beta.</strong> Features can still change, and some hardware is untested. The macOS v0.1.2-beta installer is Developer&nbsp;ID signed and notarized by Apple, and it notifies you when a newer beta is available. The Windows and Linux builds are <strong>unsigned</strong> — your system may warn or refuse to open them.</li>
+          <li><strong>This is a beta.</strong> Features can still change, and some hardware is untested. LocalSR runs on Apple Silicon Macs with macOS 14 or later; Windows and Linux builds are not published yet. The macOS installer is Developer&nbsp;ID signed and notarized by Apple, and the app tells you when a newer beta is available.</li>
           <li><strong>Phone and camera videos open on a Mac.</strong> LocalSR itself includes only royalty-free video formats (AV1, VP9, FFV1 and more); on macOS it hands H.264, HEVC and AAC to the codecs that ship with the system, so iPhone and camera recordings open and export without extra software. Formats macOS cannot read (WMV, DivX, FLV) use an FFmpeg you install yourself; LocalSR finds it automatically and shows the install command when a file needs it.</li>
           <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — the app never overwrites them — and inspect results before you rely on or republish them.</li>
-          <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Most allow personal use broadly, some allow commercial use with attribution, and a few are unclear. Read the <a href="../models/#licenses">model license table</a> before downloading models or using results commercially.</li>
-          <li><strong>Nothing leaves your computer.</strong> Media is processed locally. Model downloads contact their pinned source (GitHub / Hugging&nbsp;Face) and are hash-verified; there is no account, no analytics, no cloud inference.</li>
+          <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Every model LocalSR downloads for you is published under Apache-2.0, MIT, BSD-3-Clause or CC&nbsp;BY&nbsp;4.0, which allow personal and commercial use (CC&nbsp;BY with attribution). Only the two optional face models, which you have to supply yourself, have unresolved rights. The <a href="../models/#licenses">model license table</a> lists each one.</li>
+          <li><strong>Your media stays on your computer.</strong> Photos and videos are processed locally and never uploaded; there is no account. Model downloads contact their pinned source (GitHub or Hugging&nbsp;Face) and are hash-verified. At launch the app checks for updates and sends an anonymous count with that check: app version, platform and channel, with no identifiers. You can turn it off in the welcome notice or under Software Update. This website counts visits without cookies. The <a href="../privacy/">privacy page</a> explains all of it.</li>
+          <li><strong>No warranty.</strong> LocalSR is free software provided as is under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>, without warranty of any kind. It is a beta: keep backups of anything that matters.</li>
         </ul>
-        <p>More detail: the <a href="../models/">model guide</a> explains every model in plain words, and the <a href="../release-notes/">beta notes</a> cover what ships and what is still in development.</p>
+        <p>More detail: the <a href="../guide/">user guide</a> walks through the app, the <a href="../models/">model guide</a> explains every model in plain words, and the <a href="../release-notes/">beta notes</a> cover what ships and what is still in development.</p>
       </section>
 
       <section id="links"><h2>Direct downloads</h2>
         <p>Choose your installer — these are the same files the main page links:</p>
         <!-- downloads:start -->
             <article class="download-row" aria-labelledby="download-macos">
-              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.dmg">v0.1.1-beta (414 MB)</a> · Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg">v0.1.0-beta (412 MB)</a> · Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.13-alpha/LocalSR-v0.0.13-alpha-macOS-arm64.dmg">v0.0.13-alpha (381 MB)</a></p><span class="platform-size micro">v0.1.2-beta · MPS backend · CPU fallback · 415 MB</span></div>
-              <a class="download-link" data-download="macos" href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.1.2-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
+              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.dmg">v0.1.1-beta (414 MB)</a> · Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg">v0.1.0-beta (412 MB)</a></p><span class="platform-size micro">v0.1.2-beta · MPS backend · CPU fallback · 415 MB</span></div>
+              <a class="download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.1.2-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
             </article>
             <article class="download-row" aria-labelledby="download-windows">
-              <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64<br>Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Windows-x86_64.exe">v0.0.11-alpha (189 MB)</a></p><span class="platform-size micro">v0.1.2-beta · CPU backend · 183 MB</span></div>
-              <a class="download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Windows-x86_64.exe" aria-label="Download LocalSR v0.1.2-beta for Windows"><span>Download .exe</span><span aria-hidden="true">↓</span></a>
+              <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64</p></div>
+              <span class="platform-detail">Not available yet — LocalSR is macOS-only for now</span>
             </article>
             <article class="download-row" aria-labelledby="download-linux">
-              <div><h3 id="download-linux">Linux</h3><p class="platform-detail">Linux · x86-64<br>Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage">v0.0.11-alpha (457 MB)</a></p><span class="platform-size micro">v0.1.2-beta · CPU backend · 614 MB</span></div>
-              <a class="download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Linux-x86_64.AppImage" aria-label="Download LocalSR v0.1.2-beta for Linux"><span>Download .AppImage</span><span aria-hidden="true">↓</span></a>
+              <div><h3 id="download-linux">Linux</h3><p class="platform-detail">Linux · x86-64</p></div>
+              <span class="platform-detail">Not available yet — LocalSR is macOS-only for now</span>
             </article>
         <!-- downloads:end -->
-        <p class="micro">Checksums for every file: <a href="../SHA256SUMS">SHA256SUMS</a>. Source and build materials are published next to each release.</p>
+        <p class="micro">Installers are served by GitHub Releases. Checksums for every file: <a href="../SHA256SUMS">SHA256SUMS</a>. Source, build instructions and license notices: <a href="https://github.com/HerRei/local-upscale/releases/latest">the release page on GitHub</a>.</p>
       </section>
 
       <section id="verify"><h2>Verify your file</h2>
         <p>Compare the SHA-256 digest of your download with the published checksum:</p>
         <pre><code>shasum -a 256 LocalSR-v0.1.2-beta-macOS-arm64.dmg</code></pre>
-        <p>A matching checksum confirms the file is the listed release asset. The macOS v0.0.13 installer additionally carries a verifiable Apple notarization ticket.</p>
+        <p>A matching checksum confirms the file is the listed release asset. The installer is also notarized by Apple; this should report <code>accepted</code> and <code>Notarized Developer ID</code>:</p>
+        <pre><code>spctl -a -vv -t open --context context:primary-signature LocalSR-v0.1.2-beta-macOS-arm64.dmg</code></pre>
         <a class="button button-ink" href="../#download">Back to the showcase <span aria-hidden="true">↗</span></a>
       </section>
 
     </div></div>
-  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermès Reisner</a></span><span>Before you download · 14 September 2026</span></div></footer>
+  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermès Reisner</a></span><span><a href="../guide/">Guide</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a></span></div></footer>
 </div><script src="../count.js" defer></script></body></html>

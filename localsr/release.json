@@ -22,25 +22,27 @@
       "id": "windows",
       "name": "Windows",
       "requirements": "Windows 10 / 11 · x86-64",
-      "backend": "CPU backend",
+      "backend": "CPU backend · unsigned installer",
       "extension": ".exe",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "Not available yet — LocalSR is macOS-only for now"
+      "filename": "LocalSR-v0.1.3-beta-Windows-CPU-x86_64.exe",
+      "size_bytes": 167589169,
+      "sha256": "35de758aa7a7b0b5c169cd13f424e6860943ad1bf21faf04c9c9f4b8d1ab568a",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CPU-x86_64.exe",
+      "version": "v0.1.3-beta"
     },
     {
       "id": "linux",
       "name": "Linux",
       "requirements": "Linux · x86-64",
-      "backend": "CPU backend",
+      "backend": "CPU backend · AppImage",
       "extension": ".AppImage",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "Not available yet — LocalSR is macOS-only for now"
+      "filename": "LocalSR-v0.1.3-beta-Linux-CPU-x86_64.AppImage",
+      "size_bytes": 612760056,
+      "sha256": "29b0788d8db4eccefbb73b8b35a6cd16513dcd5b84d95530af9752f25d5991ee",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CPU-x86_64.AppImage",
+      "version": "v0.1.3-beta"
     }
   ],
   "archives": [
@@ -58,7 +60,7 @@
       "version": "v0.1.2-beta"
     }
   ],
-  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.3-beta build: LocalSR-v0.1.3-beta-source-and-notices.tar.gz (SHA-256 cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f) next to the installer on GitHub. The v0.1.2-beta source is published with that release.",
+  "sources_note": "Corresponding source, build instructions and license notices are published with each installer on GitHub: one bundle per package, each built from that package's own contents.",
   "sources": [
     {
       "id": "sources-013",
@@ -69,6 +71,26 @@
       "sha256": "cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f",
       "available": true,
       "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-linux",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Linux-CPU-source-and-notices.tar.gz",
+      "size_bytes": 699120150,
+      "sha256": "314aff36372287f6b93a9f5015fe61cd73b3a4f36827a9e3f105d601e8f5ce6f",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CPU-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-windows",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Windows-CPU-source-and-notices.tar.gz",
+      "size_bytes": 220059511,
+      "sha256": "cbc042a381df7cfd0003940ffb30e38d40be570a5b45227df092ca16b313c2bf",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CPU-source-and-notices.tar.gz"
     },
     {
       "id": "sources-012",

@@ -36,26 +36,39 @@ def render_rows(release, *, direct):
             version = current.get("version", release["version"])
             size = round(current["size_bytes"] / 1_000_000)
             href = values["download_url"] if direct else "download/"
+            # A download too large for one release asset is published in parts; the button
+            # then points at the download page, which explains how to join them.
+            parts = current.get("parts") or []
+            label = (
+                f'Download {values["extension"]} · {len(parts)} parts'
+                if parts
+                else f'Download {values["extension"]}'
+            )
+            if parts and direct:
+                href = "#parts"
             action = (
                 f'<a class="download-link" data-download="{values["id"]}" '
                 f'href="{href}" '
                 f'aria-label="Download LocalSR {html.escape(version)} for {values["name"]}">'
-                f'<span>Download {values["extension"]}</span><span aria-hidden="true">↓</span></a>'
+                f'<span>{label}</span><span aria-hidden="true">↓</span></a>'
             )
             meta = f'{html.escape(version)} · {values["backend"]} · {size} MB'
             notes = []
             for older in entry["older"]:
-                o_version = older.get("version", release["version"])
+                # An older version, or another edition of this version (such as a GPU
+                # build split into parts for GitHub's asset size limit).
+                o_label = html.escape(older.get("label") or older.get("version", release["version"]))
                 o_size = round(older["size_bytes"] / 1_000_000)
-                o_label = f'v0.0.11-alpha' if o_version in current.get("version", "") else o_version
+                parts = older.get("parts") or []
+                o_detail = f"{o_size:,} MB in {len(parts)} parts" if parts else f"{o_size} MB"
                 if direct:
                     o_href = html.escape(older["download_url"], quote=True)
                     notes.append(
-                        f'Also available: <a href="{o_href}">{o_version} ({o_size} MB)</a>'
+                        f'Also available: <a href="{o_href}">{o_label} ({o_detail})</a>'
                     )
                 else:
                     notes.append(
-                        f'Also available: {o_version} ({o_size} MB) — see the download page'
+                        f'Also available: {o_label} ({o_detail}) — see the download page'
                     )
             if pending is not None:
                 p_version = pending.get("version", release["version"])

@@ -100,7 +100,13 @@ def main():
         url = platform.get("download_url")
         if platform.get("available"):
             check(bool(url) and urlsplit(url).scheme == "https", "Available artifact requires HTTPS")
-            check(bool(url) and unquote(urlsplit(url).path).endswith("/" + platform["filename"]), "Download filename mismatch")
+            if platform.get("parts"):
+                # Split downloads link the release page; every part must be the named file's.
+                for part in platform["parts"]:
+                    check(urlsplit(part).scheme == "https", "Download part requires HTTPS")
+                    check(re.search(r"/" + re.escape(platform["filename"]) + r"\.part-\d{4}$", unquote(urlsplit(part).path)) is not None, "Download part filename mismatch")
+            else:
+                check(bool(url) and unquote(urlsplit(url).path).endswith("/" + platform["filename"]), "Download filename mismatch")
         else:
             check(not url, "Unavailable artifact must not advertise a download URL")
     subprocess.run([sys.executable, str(site / "tools/sync_release.py"), "--check"], check=True)

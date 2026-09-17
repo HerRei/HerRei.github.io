@@ -20,7 +20,7 @@
           <li><strong>Phone and camera videos open on a Mac.</strong> LocalSR itself includes only royalty-free video formats (AV1, VP9, FFV1 and more); on macOS it hands H.264, HEVC and AAC to the codecs that ship with the system, so iPhone and camera recordings open and export without extra software. Formats macOS cannot read (WMV, DivX, FLV) use an FFmpeg you install yourself; LocalSR finds it automatically and shows the install command when a file needs it.</li>
           <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — the app never overwrites them — and inspect results before you rely on or republish them.</li>
           <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Every model LocalSR downloads for you is published under Apache-2.0, MIT, BSD-3-Clause or CC&nbsp;BY&nbsp;4.0, which allow personal and commercial use (CC&nbsp;BY with attribution). Only the two optional face models, which you have to supply yourself, have unresolved rights. The <a href="../models/#licenses">model license table</a> lists each one.</li>
-          <li><strong>Your media stays on your computer.</strong> Photos and videos are processed locally and never uploaded; there is no account. Model downloads contact their pinned source (GitHub or Hugging&nbsp;Face) and are hash-verified. At launch the app checks for updates and sends an anonymous count with that check: app version, platform and channel, with no identifiers. You can turn it off in the welcome notice or under Software Update. This website counts visits without cookies. The <a href="../privacy/">privacy page</a> explains all of it.</li>
+          <li><strong>Your media stays on your computer.</strong> Photos and videos are processed locally and never uploaded; there is no account. Model downloads contact their pinned source (GitHub or Hugging&nbsp;Face) and are hash-verified. At launch the app checks for updates and sends an anonymous count with that check: app version, platform and channel, with no identifiers. You can turn it off under Check for Updates in the app’s … menu. This website counts visits without cookies. The <a href="../privacy/">privacy page</a> explains all of it.</li>
           <li><strong>No warranty.</strong> LocalSR is free software provided as is under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>, without warranty of any kind. It is a beta: keep backups of anything that matters.</li>
         </ul>
         <p>More detail: the <a href="../guide/">user guide</a> walks through the app, the <a href="../models/">model guide</a> explains every model in plain words, and the <a href="../release-notes/">beta notes</a> cover what ships and what is still in development.</p>
@@ -30,8 +30,8 @@
         <p>Choose your installer — these are the same files the main page links:</p>
         <!-- downloads:start -->
             <article class="download-row" aria-labelledby="download-macos">
-              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.dmg">v0.1.1-beta (414 MB)</a> · Also available: <a href="https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg">v0.1.0-beta (412 MB)</a></p><span class="platform-size micro">v0.1.2-beta · MPS backend · CPU fallback · 415 MB</span></div>
-              <a class="download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.1.2-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
+              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: <a href="https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg">v0.1.2-beta (415 MB)</a></p><span class="platform-size micro">v0.1.3-beta · MPS backend · CPU fallback · 414 MB</span></div>
+              <a class="download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.1.3-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
             </article>
             <article class="download-row" aria-labelledby="download-windows">
               <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64</p></div>
@@ -47,9 +47,9 @@
 
       <section id="verify"><h2>Verify your file</h2>
         <p>Compare the SHA-256 digest of your download with the published checksum:</p>
-        <pre><code>shasum -a 256 LocalSR-v0.1.2-beta-macOS-arm64.dmg</code></pre>
+        <pre><code>shasum -a 256 LocalSR-v0.1.3-beta-macOS-arm64.dmg</code></pre>
         <p>A matching checksum confirms the file is the listed release asset. The installer is also notarized by Apple; this should report <code>accepted</code> and <code>Notarized Developer ID</code>:</p>
-        <pre><code>spctl -a -vv -t open --context context:primary-signature LocalSR-v0.1.2-beta-macOS-arm64.dmg</code></pre>
+        <pre><code>spctl -a -vv -t open --context context:primary-signature LocalSR-v0.1.3-beta-macOS-arm64.dmg</code></pre>
         <a class="button button-ink" href="../#download">Back to the showcase <span aria-hidden="true">↗</span></a>
       </section>
 

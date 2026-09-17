@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.2-beta",
-  "date": "2026-09-16",
+  "version": "v0.1.3-beta",
+  "date": "2026-09-17",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -11,12 +11,12 @@
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.1.2-beta-macOS-arm64.dmg",
-      "size_bytes": 415349210,
-      "sha256": "89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f",
+      "filename": "LocalSR-v0.1.3-beta-macOS-arm64.dmg",
+      "size_bytes": 414376041,
+      "sha256": "858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f",
       "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
-      "version": "v0.1.2-beta"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg",
+      "version": "v0.1.3-beta"
     },
     {
       "id": "windows",
@@ -45,34 +45,31 @@
   ],
   "archives": [
     {
-      "id": "macos-011",
+      "id": "macos-012",
       "name": "macOS",
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.1.1-beta-macOS-arm64.dmg",
-      "size_bytes": 414250517,
-      "sha256": "389336915fdc2dd254dc043ed6c8bf74eb39e8afcd3ea0de89d0ec18ab2c0505",
+      "filename": "LocalSR-v0.1.2-beta-macOS-arm64.dmg",
+      "size_bytes": 415349210,
+      "sha256": "89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f",
       "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-macOS-arm64.dmg",
-      "version": "v0.1.1-beta"
-    },
-    {
-      "id": "macos-010",
-      "name": "macOS",
-      "requirements": "Apple Silicon · macOS 14+",
-      "backend": "MPS backend · CPU fallback",
-      "extension": ".dmg",
-      "filename": "LocalSR-v0.1.0-beta-macOS-arm64.dmg",
-      "size_bytes": 412284916,
-      "sha256": "f06eebfd38b908e37f16645eb67f7a2f5bcf3fb91b6f11bb9676cb640316f78c",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-macOS-arm64.dmg",
-      "version": "v0.1.0-beta"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
+      "version": "v0.1.2-beta"
     }
   ],
-  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.2-beta build: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer on GitHub. The v0.1.1-beta and v0.1.0-beta sources remain in their release directories.",
+  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.3-beta build: LocalSR-v0.1.3-beta-source-and-notices.tar.gz (SHA-256 cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f) next to the installer on GitHub. The v0.1.2-beta source is published with that release.",
   "sources": [
+    {
+      "id": "sources-013",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-source-and-notices.tar.gz",
+      "size_bytes": 268422164,
+      "sha256": "cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-source-and-notices.tar.gz"
+    },
     {
       "id": "sources-012",
       "name": "Source and notices",
@@ -82,26 +79,6 @@
       "sha256": "1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37",
       "available": true,
       "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
-    },
-    {
-      "id": "sources-011",
-      "name": "Source and notices",
-      "version": "v0.1.1-beta",
-      "filename": "LocalSR-v0.1.1-beta-source-and-notices.tar.gz",
-      "size_bytes": 267876984,
-      "sha256": "2b21523ac1b3bd976c98a874af25500d3ec4e6b19e65d20e1b46572b9ab7f343",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.1-beta/LocalSR-v0.1.1-beta-source-and-notices.tar.gz"
-    },
-    {
-      "id": "sources-010",
-      "name": "Source and notices",
-      "version": "v0.1.0-beta",
-      "filename": "LocalSR-v0.1.0-beta-source-and-notices.tar.gz",
-      "size_bytes": 267870348,
-      "sha256": "19f2a83a89ca890aa2b5f64b74a0f4f4cb419613f94a9f6b5cdbbd9fa321d851",
-      "available": true,
-      "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.1.0-beta/LocalSR-v0.1.0-beta-source-and-notices.tar.gz"
     }
   ]
 }

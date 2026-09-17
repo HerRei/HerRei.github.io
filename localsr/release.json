@@ -1,6 +1,6 @@
 {
   "version": "v0.1.2-beta",
-  "date": "2026-09-16",
+  "date": "2026-09-17",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -24,11 +24,12 @@
       "requirements": "Windows 10 / 11 · x86-64",
       "backend": "CPU backend",
       "extension": ".exe",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "0.1.2 Windows build in preparation"
+      "filename": "LocalSR-v0.1.2-beta-Windows-x86_64.exe",
+      "size_bytes": 182518367,
+      "sha256": "24d32f3daddca9439e7e60e13c0f9045cda7595737677f5b9e7b79928905e6b6",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Windows-x86_64.exe",
+      "version": "v0.1.2-beta"
     },
     {
       "id": "linux",
@@ -36,11 +37,12 @@
       "requirements": "Linux · x86-64",
       "backend": "CPU backend",
       "extension": ".AppImage",
-      "filename": "",
-      "size_bytes": 0,
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
-      "available": false,
-      "status": "0.1.2 Linux build in preparation"
+      "filename": "LocalSR-v0.1.2-beta-Linux-x86_64.AppImage",
+      "size_bytes": 613550584,
+      "sha256": "496f9851a61c8b34d89484585f8985591a5ae6c742489590fc5907be409344b1",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-Linux-x86_64.AppImage",
+      "version": "v0.1.2-beta"
     }
   ],
   "archives": [
@@ -110,7 +112,7 @@
       "download_url": "https://macmini-ci.tail34a4e0.ts.net/releases/v0.0.11-alpha/LocalSR-v0.0.11-alpha-Linux-x86_64.AppImage"
     }
   ],
-  "sources_note": "Corresponding source, build instructions and license notices for the macOS v0.1.2-beta build: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer. The v0.1.1-beta, v0.1.0-beta and earlier alpha sources remain in their release directories.",
+  "sources_note": "Corresponding source, build instructions and license notices for the macOS, Windows and Linux v0.1.2-beta builds: LocalSR-v0.1.2-beta-source-and-notices.tar.gz (SHA-256 1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37) next to the installer. The v0.1.1-beta, v0.1.0-beta and earlier alpha sources remain in their release directories.",
   "sources": [
     {
       "id": "sources-012",

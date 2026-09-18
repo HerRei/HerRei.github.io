@@ -54,25 +54,33 @@ def render_rows(release, *, direct):
             )
             meta = f'{html.escape(version)} · {values["backend"]} · {size} MB'
             notes = []
+            also = []
             for older in entry["older"]:
                 # An older version, or another edition of this version (such as a GPU
                 # build split into parts for GitHub's asset size limit).
                 o_label = html.escape(older.get("label") or older.get("version", release["version"]))
                 o_size = round(older["size_bytes"] / 1_000_000)
                 parts = older.get("parts") or []
-                o_detail = f"{o_size:,} MB in {len(parts)} parts" if parts else f"{o_size} MB"
-                if direct:
-                    o_href = html.escape(older["download_url"], quote=True)
-                    notes.append(
-                        f'Also available: <a href="{o_href}">{o_label} ({o_detail})</a>'
-                    )
+                engine = older.get("engine_parts") or []
+                if parts:
+                    o_detail = f"{o_size:,} MB in {len(parts)} parts"
+                elif engine:
+                    total = round((older["size_bytes"] + sum(e["size_bytes"] for e in engine)) / 1_000_000)
+                    o_detail = f"{total:,} MB: installer and {len(engine)} engine parts"
                 else:
-                    notes.append(
-                        f'Also available: {o_label} ({o_detail}) — see the download page'
-                    )
+                    o_detail = f"{o_size} MB"
+                if direct:
+                    # Split editions need every part, so they link the parts section.
+                    o_href = "#parts" if parts or engine else html.escape(older["download_url"], quote=True)
+                    also.append(f'<a href="{o_href}">{o_label} ({o_detail})</a>')
+                else:
+                    also.append(f'{o_label} ({o_detail})')
             if pending is not None:
                 p_version = pending.get("version", release["version"])
                 notes.append(f'{p_version} is in preparation')
+            if also:
+                where = "" if direct else " — see the download page"
+                notes.insert(0, "Also available: " + " · ".join(also) + where)
             detail = values["requirements"]
             if notes:
                 detail += '<br>' + ' · '.join(notes)
@@ -95,6 +103,50 @@ def render_rows(release, *, direct):
 
 def render_downloads(release):
     return render_rows(release, direct=False)
+
+
+def split_editions(release):
+    return [
+        item for item in release["platforms"] + release.get("archives", [])
+        if item.get("available") and (item.get("parts") or item.get("engine_parts"))
+    ]
+
+
+def render_parts(release):
+    # Editions larger than one GitHub release file (2 GB): every part, and how to use it.
+    blocks = []
+    for item in sorted(split_editions(release), key=lambda entry: entry["name"]):
+        label = html.escape(f'{item["name"]} · {item.get("label") or item["filename"]}')
+        name = html.escape(item["filename"])
+        rows = []
+        if item.get("engine_parts"):
+            rows.append((item["download_url"], item["filename"], item["size_bytes"]))
+            rows += [(e["url"], e["url"].rsplit("/", 1)[-1], e["size_bytes"]) for e in item["engine_parts"]]
+            count = len(item["engine_parts"])
+            both = "both" if count == 2 else f"all {count}"
+            how = (f'<p>Download the installer and {both} engine parts into one '
+                   f'folder, keep their names, and run the installer. It checks each part\'s size and '
+                   f'SHA-256 and unpacks the engine itself.</p>')
+        else:
+            rows += [(e["url"], e["url"].rsplit("/", 1)[-1], e["size_bytes"]) for e in item["parts"]]
+            count = len(item["parts"])
+            both = "both" if count == 2 else f"all {count}"
+            how = (f'<p>Download {both} parts into one folder, join them, check the '
+                   f'result and make it executable:</p>\n'
+                   f'          <pre><code>cat {name}.part-* &gt; {name}\n'
+                   f'sha256sum {name}   # compare with SHA256SUMS\n'
+                   f'chmod +x {name}</code></pre>')
+        links = "\n".join(
+            f'            <li><a href="{html.escape(url, quote=True)}">{html.escape(file)}</a> '
+            f'<span class="micro">{size / 1_000_000:,.0f} MB</span></li>'
+            for url, file, size in rows
+        )
+        blocks.append(
+            f'        <h3>{label}</h3>\n'
+            f'          {how}\n'
+            f'          <ul>\n{links}\n          </ul>'
+        )
+    return "\n".join(blocks)
 
 
 def main():
@@ -120,8 +172,21 @@ def main():
     )
     if download_count != 1:
         raise SystemExit("Expected exactly one download block on the download page")
+    download_rendered, parts_count = re.subn(
+        r'(?<=<!-- parts:start -->\n).*?(?=        <!-- parts:end -->)',
+        render_parts(release) + "\n", download_rendered, flags=re.S
+    )
+    if parts_count != 1:
+        raise SystemExit("Expected exactly one parts block on the download page")
     artifacts = release["platforms"] + release.get("archives", []) + release.get("sources", [])
-    checksums = "".join(f'{p["sha256"]}  {p["filename"]}\n' for p in artifacts if p.get("available"))
+    lines = []
+    for p in artifacts:
+        if not p.get("available"):
+            continue
+        lines.append(f'{p["sha256"]}  {p["filename"]}\n')
+        for part in (p.get("parts") or []) + (p.get("engine_parts") or []):
+            lines.append(f'{part["sha256"]}  {part["url"].rsplit("/", 1)[-1]}\n')
+    checksums = "".join(lines)
     checksum_path = root / "SHA256SUMS"
     if args.check:
         if (rendered != current or download_rendered != download_current

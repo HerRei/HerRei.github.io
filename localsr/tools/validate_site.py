@@ -102,11 +102,15 @@ def main():
             check(bool(url) and urlsplit(url).scheme == "https", "Available artifact requires HTTPS")
             if platform.get("parts"):
                 # Split downloads link the release page; every part must be the named file's.
-                for part in platform["parts"]:
-                    check(urlsplit(part).scheme == "https", "Download part requires HTTPS")
-                    check(re.search(r"/" + re.escape(platform["filename"]) + r"\.part-\d{4}$", unquote(urlsplit(part).path)) is not None, "Download part filename mismatch")
+                split_name = platform["filename"]
             else:
                 check(bool(url) and unquote(urlsplit(url).path).endswith("/" + platform["filename"]), "Download filename mismatch")
+                # An installer whose engine ships beside it as parts (Windows CUDA).
+                split_name = re.sub(r"\.exe$", "", platform["filename"]) + ".engine.tar.gz"
+            for part in (platform.get("parts") or []) + (platform.get("engine_parts") or []):
+                check(urlsplit(part["url"]).scheme == "https", "Download part requires HTTPS")
+                check(re.search(r"/" + re.escape(split_name) + r"\.part-\d{4}$", unquote(urlsplit(part["url"]).path)) is not None, "Download part filename mismatch")
+                check(re.fullmatch(r"[a-f0-9]{64}", part["sha256"]) is not None and part["size_bytes"] > 0, "Download part needs its size and checksum")
         else:
             check(not url, "Unavailable artifact must not advertise a download URL")
     subprocess.run([sys.executable, str(site / "tools/sync_release.py"), "--check"], check=True)

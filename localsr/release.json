@@ -47,6 +47,123 @@
   ],
   "archives": [
     {
+      "id": "linux-rocm",
+      "name": "Linux",
+      "label": "AMD ROCm edition",
+      "requirements": "Linux · x86-64 · glibc 2.39+ · Radeon supported by ROCm 7.2, amdgpu driver",
+      "backend": "ROCm backend · AppImage",
+      "extension": ".AppImage",
+      "filename": "LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage",
+      "available": true,
+      "version": "v0.1.3-beta",
+      "parts": [
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage.part-0001",
+          "size_bytes": 1992294400,
+          "sha256": "2dfafcdb9f943bae487a0ccf11bb1c3c5c4e18d00b267bf8283defed1e668b35"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage.part-0002",
+          "size_bytes": 1992294400,
+          "sha256": "4667f4abcccf3e77c9c6930f0c81e11a40e6299e46c7e706e5c7593bee7dea47"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage.part-0003",
+          "size_bytes": 1992294400,
+          "sha256": "b67ab9f5a06076eec37ceb53d8efab6df28b357e1e1d76a9c174e7380ce322df"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage.part-0004",
+          "size_bytes": 1992294400,
+          "sha256": "c34595f0bffdf717768d8732076ddde9a102ea99defaa6e01b88a05619f9ab19"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage.part-0005",
+          "size_bytes": 1913969144,
+          "sha256": "99e40aa78470823d37bd7aa3d98115cfa27b8096a35d9d2daea88363b13479c9"
+        }
+      ],
+      "size_bytes": 9883146744,
+      "sha256": "1c7b5fb333f367c1d60f4c214762c09339583a17d47fa6fe34d8151f109f9466",
+      "download_url": "https://github.com/HerRei/local-upscale/releases/tag/v0.1.3-beta"
+    },
+    {
+      "id": "windows-cuda",
+      "name": "Windows",
+      "label": "NVIDIA CUDA edition, untested",
+      "requirements": "Windows 10 / 11 · x86-64 · NVIDIA GPU with a CUDA 12.6 driver",
+      "backend": "CUDA backend · unsigned installer · untested",
+      "extension": ".exe",
+      "filename": "LocalSR-v0.1.3-beta-Windows-CUDA-x86_64.exe",
+      "available": true,
+      "version": "v0.1.3-beta",
+      "size_bytes": 4974633,
+      "sha256": "f6f78cf588c222f44cf5bc3b5dabdbb31a9588a81085f2c63897dbaefd1856bb",
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CUDA-x86_64.exe",
+      "engine_parts": [
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
+          "size_bytes": 1992294400,
+          "sha256": "03dc7d50be1a2c535ffe42bbc57851f775ba89a907de8e3f84233281e8bdaa70"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
+          "size_bytes": 734286627,
+          "sha256": "480534fffeb2fa272cc038a592be8df93951c78161c06ec9093518796414f02a"
+        }
+      ]
+    },
+    {
+      "id": "linux-cuda",
+      "name": "Linux",
+      "label": "NVIDIA CUDA edition, untested",
+      "requirements": "Linux · x86-64 · glibc 2.39+ · NVIDIA GPU with a CUDA 12.6 driver",
+      "backend": "CUDA backend · AppImage · untested",
+      "extension": ".AppImage",
+      "filename": "LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage",
+      "available": true,
+      "version": "v0.1.3-beta",
+      "parts": [
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0001",
+          "size_bytes": 1992294400,
+          "sha256": "72ed4892ce6d0a53d00f31477e2616af838b1cc9d4326398e56b8894715bf6dd"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0002",
+          "size_bytes": 1992294400,
+          "sha256": "d3ba266ffc21e7023949b40d6dcb2d7bc7d45a74e8aa10608d40ebc9ac483eb4"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0003",
+          "size_bytes": 1992294400,
+          "sha256": "8ad58bc7ca62acdf555d5b981492a4ec91474670474ee5c06bdd94601e397e1e"
+        },
+        {
+          "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0004",
+          "size_bytes": 1628883448,
+          "sha256": "5491f519cadde02561655aff98edbc9fa92e67025dcc8eb5bec695989dd8327c"
+        }
+      ],
+      "size_bytes": 7605766648,
+      "sha256": "35d101d39146765d424096e6d7432627ba73685e99b288c162dcb2c9694019f8",
+      "download_url": "https://github.com/HerRei/local-upscale/releases/tag/v0.1.3-beta"
+    },
+    {
+      "id": "windows-directml",
+      "name": "Windows",
+      "label": "DirectML edition, untested",
+      "requirements": "Windows 10 / 11 · x86-64 · DirectX 12 GPU",
+      "backend": "DirectML backend · unsigned installer · untested",
+      "extension": ".exe",
+      "filename": "LocalSR-v0.1.3-beta-Windows-DirectML-x86_64.exe",
+      "available": true,
+      "version": "v0.1.3-beta",
+      "size_bytes": 196676682,
+      "sha256": "0be63d02d168f922b80564b3287dc72734db8c9da1c871653d72a33fb0487726",
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-DirectML-x86_64.exe"
+    },
+    {
       "id": "macos-012",
       "name": "macOS",
       "requirements": "Apple Silicon · macOS 14+",
@@ -101,6 +218,46 @@
       "sha256": "1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37",
       "available": true,
       "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-linux-rocm",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Linux-ROCm-source-and-notices.tar.gz",
+      "size_bytes": 886869926,
+      "sha256": "050449ad1d3fe3dd0ef28759bffdcc60cef1b06a85ecfbad3fd0417d2abb1001",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-ROCm-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-linux-cuda",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Linux-CUDA-source-and-notices.tar.gz",
+      "size_bytes": 698789527,
+      "sha256": "a1e237b7b66578baaa0b379f26d62e72fa16d82feb7692beb4b4b60ff869bdc9",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Linux-CUDA-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-windows-cuda",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Windows-CUDA-source-and-notices.tar.gz",
+      "size_bytes": 220064206,
+      "sha256": "aa9d89037d65d2839324b2a468bf32745b30877ea3a7f8a94e5b90d29209d67e",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CUDA-source-and-notices.tar.gz"
+    },
+    {
+      "id": "sources-013-windows-directml",
+      "name": "Source and notices",
+      "version": "v0.1.3-beta",
+      "filename": "LocalSR-v0.1.3-beta-Windows-DirectML-source-and-notices.tar.gz",
+      "size_bytes": 220074618,
+      "sha256": "0beafa93c6bfdfb166d522ce218828ac52d7902d87d21bffbc15b34d32938708",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-DirectML-source-and-notices.tar.gz"
     }
   ]
 }

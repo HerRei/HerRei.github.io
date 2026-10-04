@@ -1,14 +1,20 @@
 # LocalSR showcase
 
-Published at **https://herrei.github.io/localsr/**. The page is static HTML/CSS and a small
-progressive-enhancement script. Its download links and content remain usable without JavaScript.
+Published at **https://herrei.github.io/localsr/**. The site is static HTML on
+[Tufte CSS](https://edwardtufte.github.io/tufte-css/) (vendored in `vendor/tufte/`, MIT, with the
+self-hosted ET Book faces) plus one site stylesheet and a small progressive-enhancement script.
+There is no build step. Its download links and content remain usable without JavaScript.
 
-Read the [design study](../docs/localsr-design-study.md) for the product audit, references,
-visual direction, page structure, and evidence policy.
+Read the [redesign record](../docs/localsr-redesign-2026-09.md) for the current visual direction
+and the [original design study](../docs/localsr-design-study.md) for the product audit, references
+and evidence policy, which still apply. The design that preceded the September 2026 redesign is kept
+unchanged under `previous/` (its pages carry `noindex` and point back to the current site); it is a
+frozen snapshot and the release tools do not update it.
 
 ## Files
 
-- `index.html`, `styles.css`, `showcase.js`: the showcase and its real image comparison.
+- `index.html`, `styles.css`, `showcase.js`: the home page and its real image comparison.
+- `vendor/tufte/`: Tufte CSS and the ET Book fonts, unmodified, with their licenses.
 - `guide/`: the user guide the app opens from Help → LocalSR User Guide.
 - `models/`: every catalog model in plain words, the license table and the face-model evidence.
 - `release-notes/`: public, readable release notes for the current beta.
@@ -17,8 +23,11 @@ visual direction, page structure, and evidence policy.
 - `about-the-image/`: source photography, model credit, and image preparation.
 - `release.json`: authoritative application release metadata.
 - `SHA256SUMS`: installer checksums generated from that metadata.
-- `assets/image-provenance.json`: exact model/source/output provenance.
-- `assets/fonts/`: self-hosted font subsets and SIL Open Font License notices.
+- `assets/image-provenance.json`: exact model/source/output provenance, and the provenance of
+  the app screenshot `assets/localsr-desktop.webp` (an unedited capture from the app repository).
+- `assets/fonts/`: self-hosted font subsets and SIL Open Font License notices. The LocalSR pages
+  no longer use them; the portfolio at the repository root still does, so they stay.
+- `previous/`: the archived September 2026 design, kept as it was.
 - `tools/`: release synchronizer and reproducible image preparation.
 
 ## Updating the app release
@@ -35,7 +44,8 @@ python3 localsr/tools/sync_release.py --check
 
 The script updates the download rows, version labels, and checksums. Update the displayed release
 date and prose in `index.html` and `release-notes/index.html` to match actual release acceptance.
-Refresh social-preview text when the version changes. Do not carry forward claims about a new
+Refresh social-preview text when the version changes: `assets/og.png` is rendered from a small
+HTML card with headless Firefox (see the redesign record), not drawn by hand. Do not carry forward claims about a new
 backend, signing, or physical testing without release evidence.
 
 ## Visit counting

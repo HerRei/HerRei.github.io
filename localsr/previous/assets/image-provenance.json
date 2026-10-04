@@ -49,22 +49,6 @@
     "marseille-detail-output.webp": "062b1da7793854517b37405ccd5f5273058fbeaa344892501b5041e1ec76435e",
     "marseille-input.png": "0a03af5b4b56b0b8cf6b37042536c9c107a36f14a6090192ded5d5d8a06c39a9",
     "marseille-output.webp": "65cd68af40f9621152ae2d5f37221d62310a92df90714bdf35d026f7385d7cdd",
-    "marseille-print.webp": "5415a24e80524d55c3be099ed2ef61def5e089a945986666be0b25390010b2a7",
-    "localsr-desktop.webp": "e9a687dd337e78a9285d2b417ee8f9cbb12ccb33af7f1902f91ce7e57744a04b"
-  },
-  "screenshot": {
-    "file": "localsr-desktop.webp",
-    "description": "Unedited capture of LocalSR v0.1.1-beta on macOS (MacBook Pro, M1 Pro, 16 GB) on 15 September 2026, showing the comparison view after upscaling a 384 x 384 photograph 4x with the Quick preset (SPAN x4 NomosUni).",
-    "source_file": "docs/assets/localsr-desktop.png in the LocalSR repository (2000 x 1248)",
-    "source_sha256": "b92aeadb3d61ee44b121a4e06dbb8dd6ec15f227098c35f681d08024e62e6133",
-    "preparation": "cwebp -q 84 -resize 1600 0 -metadata none; no other change",
-    "dimensions": [
-      1600,
-      999
-    ],
-    "photograph": "Apollo 17 image AS17-148-22727, courtesy of the Earth Science and Remote Sensing Unit, NASA Johnson Space Center",
-    "photograph_source": "https://svs.gsfc.nasa.gov/30613",
-    "photograph_terms": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
-    "note": "NASA does not endorse LocalSR."
+    "marseille-print.webp": "5415a24e80524d55c3be099ed2ef61def5e089a945986666be0b25390010b2a7"
   }
 }

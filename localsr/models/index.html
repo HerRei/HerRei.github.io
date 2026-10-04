@@ -23,7 +23,7 @@
     <h1>Every model, in plain words.</h1>
     <p class="subtitle">What each LocalSR model does, what it is genuinely best at, and what to check before you download it or use its results for anything commercial. The face-restoration deep-dive with measured results is at the end.</p>
     <p class="dateline">Model guide · 17 September 2026</p>
-    <nav class="contents" aria-label="On this page">Contents: <a href="#start">Start here</a> · <a href="#before-download">Before you download</a> · <a href="#upscale">Making images bigger</a> · <a href="#denoise">Noisy photos</a> · <a href="#deblur-jpeg">Blurry or JPEG-damaged</a> · <a href="#anime">Anime &amp; illustration</a> · <a href="#faces">Faces</a> · <a href="#video">Video (Labs)</a> · <a href="#licenses">License table</a> · <a href="#verify">How LocalSR verifies</a> · <a href="#face-availability">Deep-dive: availability</a> · <a href="#face-hat-s">Deep-dive: HAT-S Face</a> · <a href="#face-hat-l">Deep-dive: HAT-L Face</a> · <a href="#face-use">Deep-dive: use</a> · <a href="#face-limits">Deep-dive: limits</a></nav>
+    <nav class="contents" aria-label="On this page">Contents: <a href="#start">Start here</a> · <a href="#before-download">Before you download</a> · <a href="#upscale">Making images bigger</a> · <a href="#denoise">Noisy photos</a> · <a href="#deblur-jpeg">Blurry or JPEG-damaged</a> · <a href="#anime">Anime &amp; illustration</a> · <a href="#faces">Faces</a> · <a href="#editing">Edit with a prompt</a> · <a href="#video">Video (Labs)</a> · <a href="#licenses">License table</a> · <a href="#verify">How LocalSR verifies</a> · <a href="#face-availability">Deep-dive: availability</a> · <a href="#face-hat-s">Deep-dive: HAT-S Face</a> · <a href="#face-hat-l">Deep-dive: HAT-L Face</a> · <a href="#face-use">Deep-dive: use</a> · <a href="#face-limits">Deep-dive: limits</a></nav>
 <section id="start"><h2>Start here</h2><p>A model is a large trained network file, not a program. LocalSR runs it on your computer, and your images are never sent anywhere. Each model is built for one job at one scale — that is why the catalog is a short list, not a wall of options.</p>
         <p><strong>Not sure which to pick?</strong> Start with the <strong>Quick Start</strong> preset: <a href="#upscale">SPAN 4x NomosUni</a>. It downloads in seconds, runs on modest hardware, and its results cover most photos. Move to a bigger model only when you can name what the quick one is missing.</p>
         <p>Pick by what you want to fix:</p>
@@ -109,6 +109,17 @@
         <p>Both are experimental blends, not magic: they can smooth texture or alter fine features. Inspect eyes, teeth, and hair before keeping a result.</p>
       </section>
 
+      <section id="editing"><h2>Edit with a prompt</h2>
+        <div class="table-wrap"><table class="model-table">
+          <thead><tr><th scope="col">Model</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><strong>FLUX.2 klein 4B</strong> (Q4_0, Q8_0)</th><td>Quick edits from a short instruction on a 16&nbsp;GB Mac. A distilled four-step editor by Black Forest Labs, with a Qwen3-4B text encoder.</td><td>4.9 or 8.3&nbsp;GB · 16&nbsp;GB Mac</td></tr>
+            <tr><th scope="row"><strong>Qwen Image Edit 2511</strong> (six sizes, Q2_K to Q8_0)</th><td>More faithful edits and text in images. Larger sizes keep more detail.</td><td>10.8 to 25.7&nbsp;GB · 24 to 48&nbsp;GB Mac</td></tr>
+          </tbody>
+        </table></div>
+        <p>New in 0.1.4 and experimental. Edits run on the Mac’s GPU through <a href="https://github.com/leejet/stable-diffusion.cpp">stable-diffusion.cpp</a>, in quantized GGUF form from community repositories that LocalSR pins to an exact revision and checksum. Lower quantizations can reduce fidelity. Qwen Image 2.1 is not offered: its Qwen Research License allows research and evaluation only.</p>
+      </section>
+
       <section id="video"><h2>Video <span class="badge badge-labs">Labs</span></h2>
         <div class="table-wrap"><table class="model-table">
           <thead><tr><th scope="col">Model</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
@@ -136,6 +147,8 @@
             <tr><th scope="row">NAFNet SIDD / GoPro Deblur</th><td>Liangyu Chen et&nbsp;al. (megvii-research)</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
             <tr><th scope="row">FBCNN Color</th><td>Jiaxi Jiang et&nbsp;al.</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
             <tr><th scope="row">SeedVR2-3B (FP16/FP8)</th><td>ByteDance Seed · numz</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
+            <tr><th scope="row">Qwen Image Edit 2511 <span class="micro">(with the Qwen2.5-VL encoder and Qwen Image VAE)</span></th><td>Qwen (Alibaba) · GGUF by Unsloth</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
+            <tr><th scope="row">FLUX.2 klein 4B <span class="micro">(with the Qwen3-4B encoder and FLUX.2 VAE)</span></th><td>Black Forest Labs · GGUF by leejet</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
             <tr><th scope="row">YuNet face detector <span class="micro">(helper, not a picker model)</span></th><td>Shiqi Yu · OpenCV Zoo</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
           </tbody>
         </table></div>

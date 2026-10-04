@@ -23,7 +23,7 @@
     <h1>From first photo to finished result.</h1>
     <p class="subtitle">Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p>
     <p class="dateline">User guide · LocalSR beta for macOS, Windows and Linux · 17 September 2026</p>
-    <nav class="contents" aria-label="On this page">Contents: <a href="#install">Install</a> · <a href="#window">The window</a> · <a href="#first-image">Your first image</a> · <a href="#results">Where results go</a> · <a href="#compare">Compare before and after</a> · <a href="#batch">Many files at once</a> · <a href="#models">Models, presets and recipes</a> · <a href="#video">Video</a> · <a href="#settings">Output and hardware settings</a> · <a href="#updates">Updates and privacy</a> · <a href="#finder">Finder and the command line</a> · <a href="#troubleshooting">Troubleshooting</a></nav>
+    <nav class="contents" aria-label="On this page">Contents: <a href="#install">Install</a> · <a href="#window">The window</a> · <a href="#first-image">Your first image</a> · <a href="#edit">Edit with a prompt</a> · <a href="#results">Where results go</a> · <a href="#compare">Compare before and after</a> · <a href="#batch">Many files at once</a> · <a href="#models">Models, presets and recipes</a> · <a href="#video">Video</a> · <a href="#settings">Output and hardware settings</a> · <a href="#updates">Updates and privacy</a> · <a href="#finder">Finder and the command line</a> · <a href="#troubleshooting">Troubleshooting</a></nav>
 <section id="install"><h2>Install</h2>
 <ol>
 <li><strong>Mac:</strong> Apple Silicon (M1 or newer) with macOS 14 or later. Download the DMG from the <a href="../download/">download page</a>, open it, drag <strong>LocalSR</strong> into <strong>Applications</strong> and open it from there. The app is signed and notarized by Apple, so macOS only asks you to confirm that you want to open something downloaded from the internet.</li>
@@ -48,13 +48,24 @@
 <section id="first-image"><h2>Your first image</h2>
 <ol>
 <li><strong>Add a photo.</strong> Drop it onto the preview, or click the preview to choose files. JPEG, PNG, WebP, TIFF and DNG camera RAW work.</li>
-<li><strong>Choose a task</strong> under Enhance: <strong>Upscale</strong> makes photos and artwork 2×, 3× or 4× larger; <strong>Restore</strong> removes noise, blur or JPEG artifacts without enlarging; <strong>Upscale Video</strong> is for clips.</li>
+<li><strong>Choose a task</strong> under Enhance: <strong>Upscale</strong> makes photos and artwork 2×, 3× or 4× larger; <strong>Restore</strong> removes noise, blur or JPEG artifacts without enlarging; <strong>Edit</strong> changes an image from a written instruction (see <a href="#edit">below</a>); <strong>Upscale Video</strong> is for clips.</li>
 <li><strong>Choose the quality.</strong> <strong>Quick</strong> is fast and good for most photos. <strong>Best</strong> is slower and keeps finer texture. Models are not included in the installer: the first time, press <strong>Get Quick</strong> (a few megabytes) or <strong>Quick + Best</strong>. They download once, are checked, and stay on your Mac.</li>
 <li><strong>Say what the image is.</strong> Pick <strong>Photo</strong> or <strong>Illustration</strong>, and under <strong>Fix first</strong> choose problems to clean up before enlarging, such as noise, JPEG artifacts or blur. The plan card underneath shows which model runs at each step, its license, its size and whether it fits your hardware.</li>
 <li><strong>Start</strong> with the blue button at the bottom right. It says <strong>Upscale selected</strong> or <strong>Restore selected</strong>, depending on the task.</li>
 <li><strong>Check the result</strong> in the comparison, then press <strong>Open</strong> to view the file or <strong>Reveal</strong> to show it in Finder.</li>
 </ol>
 <p class="document-callout">Upscaling models invent plausible detail. Text, faces, eyes and fine patterns can look convincing and still be wrong, so look closely before you rely on a result. LocalSR never overwrites your original.</p>
+</section>
+
+<section id="edit"><h2>Edit with a prompt</h2>
+<p><strong>Edit</strong> (new in 0.1.4, experimental, Mac only) changes a photo from a sentence you write. It uses a local image-editing model, so nothing is uploaded.</p>
+<ol>
+<li><strong>Select one image</strong> and choose <strong>Edit</strong> under Enhance.</li>
+<li><strong>Write what should change</strong> in the text field, for example “make it a snowy winter day” or “remove the person on the left”.</li>
+<li><strong>Check the model</strong> under <strong>Model</strong>. The first time, LocalSR suggests the largest model that fits your Mac; <strong>Change…</strong> opens the <em>Edit with a prompt</em> group of the model library. FLUX.2 klein 4B (about 5 or 8&nbsp;GB) is the one for 16&nbsp;GB Macs; Qwen Image Edit 2511 (11 to 26&nbsp;GB) needs 24&nbsp;GB or more. Each download is checked before use.</li>
+<li><strong>Press Edit selected.</strong> The result is a new PNG named like <code>photo_localsr_edit_1a2b3c4d.png</code>, shown in the comparison.</li>
+</ol>
+<p><strong>Edit size</strong> (512, 768 or 1024&nbsp;px on the longest side) and, under Advanced, the step count and seed are optional. Larger sizes need more memory. Before an edit starts, LocalSR checks that enough memory is free, and it stops the edit if the Mac runs short. If an edit is refused or stopped, quit other apps and try again.</p>
 </section>
 
 <section id="results"><h2>Where results go</h2>

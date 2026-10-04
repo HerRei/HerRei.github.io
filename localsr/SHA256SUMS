@@ -1,4 +1,4 @@
-858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f  LocalSR-v0.1.3-beta-macOS-arm64.dmg
+bf089920498071e825c6676a963b19ab0e4da279f0664a6ff0ebc3bece183e0e  LocalSR-v0.1.4-beta-macOS-arm64.dmg
 35de758aa7a7b0b5c169cd13f424e6860943ad1bf21faf04c9c9f4b8d1ab568a  LocalSR-v0.1.3-beta-Windows-CPU-x86_64.exe
 22fdb8db0c5fb87e5c7184520cd2c9981c7d3685c67700c186c9f27b842fe655  LocalSR-v0.1.3-beta-Linux-CPU-x86_64.AppImage
 1c7b5fb333f367c1d60f4c214762c09339583a17d47fa6fe34d8151f109f9466  LocalSR-v0.1.3-beta-Linux-ROCm-x86_64.AppImage
@@ -16,11 +16,11 @@ d3ba266ffc21e7023949b40d6dcb2d7bc7d45a74e8aa10608d40ebc9ac483eb4  LocalSR-v0.1.3
 8ad58bc7ca62acdf555d5b981492a4ec91474670474ee5c06bdd94601e397e1e  LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0003
 5491f519cadde02561655aff98edbc9fa92e67025dcc8eb5bec695989dd8327c  LocalSR-v0.1.3-beta-Linux-CUDA-x86_64.AppImage.part-0004
 0be63d02d168f922b80564b3287dc72734db8c9da1c871653d72a33fb0487726  LocalSR-v0.1.3-beta-Windows-DirectML-x86_64.exe
-89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f  LocalSR-v0.1.2-beta-macOS-arm64.dmg
+858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f  LocalSR-v0.1.3-beta-macOS-arm64.dmg
+95d7a5131543c7a01a4230fa5a8cbcaad242ecd517658f535208a6ad0e4ed7a1  LocalSR-v0.1.4-beta-source-and-notices.tar.gz
 cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f  LocalSR-v0.1.3-beta-source-and-notices.tar.gz
 ef89d58d6b157dbcfa41fc0333cddd3702d65ce161f416435fe94869e09cb21f  LocalSR-v0.1.3-beta-Linux-CPU-source-and-notices.tar.gz
 cbc042a381df7cfd0003940ffb30e38d40be570a5b45227df092ca16b313c2bf  LocalSR-v0.1.3-beta-Windows-CPU-source-and-notices.tar.gz
-1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37  LocalSR-v0.1.2-beta-source-and-notices.tar.gz
 050449ad1d3fe3dd0ef28759bffdcc60cef1b06a85ecfbad3fd0417d2abb1001  LocalSR-v0.1.3-beta-Linux-ROCm-source-and-notices.tar.gz
 a1e237b7b66578baaa0b379f26d62e72fa16d82feb7692beb4b4b60ff869bdc9  LocalSR-v0.1.3-beta-Linux-CUDA-source-and-notices.tar.gz
 aa9d89037d65d2839324b2a468bf32745b30877ea3a7f8a94e5b90d29209d67e  LocalSR-v0.1.3-beta-Windows-CUDA-source-and-notices.tar.gz

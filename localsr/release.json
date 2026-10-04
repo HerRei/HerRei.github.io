@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.3-beta",
-  "date": "2026-09-17",
+  "version": "v0.1.4-beta",
+  "date": "2026-10-04",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -11,12 +11,12 @@
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.1.3-beta-macOS-arm64.dmg",
-      "size_bytes": 414376041,
-      "sha256": "858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f",
+      "filename": "LocalSR-v0.1.4-beta-macOS-arm64.dmg",
+      "size_bytes": 432143569,
+      "sha256": "bf089920498071e825c6676a963b19ab0e4da279f0664a6ff0ebc3bece183e0e",
       "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg",
-      "version": "v0.1.3-beta"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-macOS-arm64.dmg",
+      "version": "v0.1.4-beta"
     },
     {
       "id": "windows",
@@ -164,21 +164,31 @@
       "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-DirectML-x86_64.exe"
     },
     {
-      "id": "macos-012",
+      "id": "macos-013",
       "name": "macOS",
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.1.2-beta-macOS-arm64.dmg",
-      "size_bytes": 415349210,
-      "sha256": "89cd6212f6fa6e0cb0c252ce38aea340fdab4534d2234c76d0e3da55726d0a1f",
+      "filename": "LocalSR-v0.1.3-beta-macOS-arm64.dmg",
+      "size_bytes": 414376041,
+      "sha256": "858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f",
       "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-macOS-arm64.dmg",
-      "version": "v0.1.2-beta"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg",
+      "version": "v0.1.3-beta"
     }
   ],
   "sources_note": "Corresponding source, build instructions and license notices are published with each installer on GitHub: one bundle per package, each built from that package's own contents.",
   "sources": [
+    {
+      "id": "sources-014",
+      "name": "Source and notices",
+      "version": "v0.1.4-beta",
+      "filename": "LocalSR-v0.1.4-beta-source-and-notices.tar.gz",
+      "size_bytes": 268483020,
+      "sha256": "95d7a5131543c7a01a4230fa5a8cbcaad242ecd517658f535208a6ad0e4ed7a1",
+      "available": true,
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-source-and-notices.tar.gz"
+    },
     {
       "id": "sources-013",
       "name": "Source and notices",
@@ -208,16 +218,6 @@
       "sha256": "cbc042a381df7cfd0003940ffb30e38d40be570a5b45227df092ca16b313c2bf",
       "available": true,
       "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-Windows-CPU-source-and-notices.tar.gz"
-    },
-    {
-      "id": "sources-012",
-      "name": "Source and notices",
-      "version": "v0.1.2-beta",
-      "filename": "LocalSR-v0.1.2-beta-source-and-notices.tar.gz",
-      "size_bytes": 268410558,
-      "sha256": "1d866c37d4592d3435d7c27630e2aed37ef92aca1179054541fc8cf2e9b1ed37",
-      "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.2-beta/LocalSR-v0.1.2-beta-source-and-notices.tar.gz"
     },
     {
       "id": "sources-013-linux-rocm",

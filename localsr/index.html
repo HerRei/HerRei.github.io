@@ -36,7 +36,7 @@
     <p class="subtitle">Upscale and restore photos on your own computer.</p>
 
     <section>
-      <p>LocalSR is a free, open-source desktop app. It enlarges a photo, scan or illustration, or cleans up noise, blur and JPEG damage, with models that run on your own machine. Nothing is uploaded, and there is no account.<span class="sidenote-number"></span><span class="sidenote"><span class="numeral"><span data-version>v0.1.3-beta</span></span>, released 17 September 2026, for macOS, Windows and Linux, under the MIT license. <a href="release-notes/">Release notes.</a></span></p>
+      <p>LocalSR is a free, open-source desktop app. It enlarges a photo, scan or illustration, or cleans up noise, blur and JPEG damage, with models that run on your own machine. Nothing is uploaded, and there is no account.<span class="sidenote-number"></span><span class="sidenote"><span class="numeral"><span data-version>v0.1.4-beta</span></span>, released 4 October 2026, for macOS; Windows and Linux are on v0.1.3-beta. MIT license. <a href="release-notes/">Release notes.</a></span></p>
       <p class="actions"><a class="action" href="#download">Download the beta</a><span class="faint">macOS · Windows · Linux</span></p>
     </section>
 
@@ -68,6 +68,7 @@
       <p><span class="newthought">SR stands for super-resolution.</span> A model estimates a larger image from the pixels you already have. The result is an interpretation, so the final judgement is yours.</p>
       <p><span class="newthought">Upscale</span> photos, illustrations, screenshots and scans by 2×, 3× or 4×, one at a time or as a batch.<span class="sidenote-number"></span><span class="sidenote">Large images are processed in overlapping tiles to work within available memory.</span></p>
       <p><span class="newthought">Restore</span> at the same size: dedicated models work on image noise, JPEG artifacts or motion blur without enlarging the image. Clean up first, then upscale.</p>
+      <p><span class="newthought">Edit</span> a photo by describing the change, with Qwen Image Edit 2511 or FLUX.2 klein 4B running on your Mac. New in 0.1.4 and experimental; the result is a new image, and the original stays as it was.<span class="sidenote-number"></span><span class="sidenote">The editing models are separate 5 to 26&nbsp;GB downloads. FLUX.2 klein 4B fits a 16&nbsp;GB Mac; Qwen Image Edit 2511 needs 24&nbsp;GB or more. Mac only for now.</span></p>
       <p><span class="newthought">Files and colour.</span> JPEG, PNG, WebP, TIFF and DNG in; PNG, JPEG, TIFF or WebP out, with ICC-aware colour.<span class="sidenote-number"></span><span class="sidenote">Metadata handling depends on the format and settings.</span></p>
       <p><span class="newthought">Models</span> download when you choose them, from pinned sources, and are checked against their expected size and SHA-256 checksum. Each shows its author and license before download, and <a href="models/">the model guide</a> explains every one in plain words.</p>
       <p><span class="newthought">Video</span> is an experiment, marked Labs in the app. Phone and camera videos can be upscaled frame by frame, with timing, rotation and audio kept; optional SeedVR2 models and HDR preservation are there to explore.<span class="sidenote-number"></span><span class="sidenote">Video is slow on any computer. Start with a short clip.</span></p>
@@ -90,12 +91,12 @@
 
     <section id="download">
       <h2>Download</h2>
-      <p><span class="numeral"><span data-version>v0.1.3-beta</span></span>, released <time datetime="2026-09-17">17 September 2026</time>. Choose the installer for your computer.<span class="sidenote-number"></span><span class="sidenote">The macOS installer is Developer&nbsp;ID signed and notarized by Apple, and future betas arrive as in-app updates; it is the most tested build. The Windows and Linux packages run on the CPU, are not signed and do not update themselves yet.</span></p>
+      <p><span class="numeral"><span data-version>v0.1.4-beta</span></span>, released <time datetime="2026-10-04">4 October 2026</time>. Choose the installer for your computer.<span class="sidenote-number"></span><span class="sidenote">The macOS installer is Developer&nbsp;ID signed and notarized by Apple, and future betas arrive as in-app updates; it is the most tested build. The Windows and Linux packages are still v0.1.3-beta, without Edit; they run on the CPU, are not signed and do not update themselves yet.</span></p>
       <div class="download-options">
             <!-- downloads:start -->
             <article class="download-row" aria-labelledby="download-macos">
-              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: v0.1.2-beta (415 MB) — see the download page</p><span class="platform-size micro">v0.1.3-beta · MPS backend · CPU fallback · 414 MB</span></div>
-              <a class="download-link" data-download="macos" href="download/" aria-label="Download LocalSR v0.1.3-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
+              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: v0.1.3-beta (414 MB) — see the download page</p><span class="platform-size micro">v0.1.4-beta · MPS backend · CPU fallback · 432 MB</span></div>
+              <a class="download-link" data-download="macos" href="download/" aria-label="Download LocalSR v0.1.4-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
             </article>
             <article class="download-row" aria-labelledby="download-windows">
               <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64<br>Also available: NVIDIA CUDA edition, untested (2,732 MB: installer and 2 engine parts) · DirectML edition, untested (197 MB) — see the download page</p><span class="platform-size micro">v0.1.3-beta · CPU backend · unsigned installer · 168 MB</span></div>

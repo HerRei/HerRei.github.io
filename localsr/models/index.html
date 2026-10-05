@@ -1,30 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fffff8" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#151515" media="(prefers-color-scheme: dark)">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f3f1e9">
   <title>Model guide — LocalSR</title>
   <meta name="description" content="What every LocalSR model is, what it is best at, the license terms that apply before you download, and the HAT face-restoration deep-dive.">
   <link rel="canonical" href="https://herrei.github.io/localsr/models/">
-  <link rel="icon" type="image/png" href="../assets/favicon.png">
-  <link rel="stylesheet" href="../vendor/tufte/tufte.css">
-  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
+  <style>.model-table,.model-evidence{width:100%;border-collapse:collapse;font-size:.9rem}.model-table td,.model-table th,.model-evidence td,.model-evidence th{text-align:left;vertical-align:top;border-bottom:1px solid #d9d7ce;padding:.7rem .35rem}.model-evidence caption{text-align:left;margin-bottom:.6rem}.table-wrap{overflow:auto}.model-table code,.checkpoint{overflow-wrap:anywhere}.checkpoint code{white-space:normal}.badge{display:inline-block;font-size:11px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:5px}.badge-labs{border-color:#b33d26;color:#b33d26}.document-body{min-width:0}.document-body a{overflow-wrap:anywhere}</style>
 </head>
-<body id="top">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="running-head">
-    <a class="wordmark" href="../" aria-label="LocalSR home"><svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><path d="M1 7V1h6M15 1h6v6M21 15v6h-6M7 21H1v-6" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="8" width="6" height="6" fill="#b33d26"/></svg>LocalSR</a>
-    <nav aria-label="Main navigation"><a href="../">Home</a><a href="../guide/">Guide</a><a href="../models/" aria-current="page">Models</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="../download/">Download</a></nav>
-  </header>
+<body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
+  <header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../">The showcase</a><a href="../guide/">User guide</a><a href="../release-notes/">Beta notes</a></nav></header>
   <main id="main">
-  <article>
-    <h1>Every model, in plain words.</h1>
-    <p class="subtitle">What each LocalSR model does, what it is genuinely best at, and what to check before you download it or use its results for anything commercial. The face-restoration deep-dive with measured results is at the end.</p>
-    <p class="dateline">Model guide · 17 September 2026</p>
-    <nav class="contents" aria-label="On this page">Contents: <a href="#start">Start here</a> · <a href="#before-download">Before you download</a> · <a href="#upscale">Making images bigger</a> · <a href="#denoise">Noisy photos</a> · <a href="#deblur-jpeg">Blurry or JPEG-damaged</a> · <a href="#anime">Anime &amp; illustration</a> · <a href="#faces">Faces</a> · <a href="#editing">Edit with a prompt</a> · <a href="#video">Video (Labs)</a> · <a href="#licenses">License table</a> · <a href="#verify">How LocalSR verifies</a> · <a href="#face-availability">Deep-dive: availability</a> · <a href="#face-hat-s">Deep-dive: HAT-S Face</a> · <a href="#face-hat-l">Deep-dive: HAT-L Face</a> · <a href="#face-use">Deep-dive: use</a> · <a href="#face-limits">Deep-dive: limits</a></nav>
-<section id="start"><h2>Start here</h2><p>A model is a large trained network file, not a program. LocalSR runs it on your computer, and your images are never sent anywhere. Each model is built for one job at one scale — that is why the catalog is a short list, not a wall of options.</p>
+    <header class="document-hero"><p class="micro">Model guide / 17 September 2026</p><h1>Every model,<br><em>in plain words.</em></h1><p>What each LocalSR model does, what it is genuinely best at, and what to check before you download it or use its results for anything commercial. The face-restoration deep-dive with measured results is at the end.</p></header>
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#start">Start here</a><a href="#before-download">Before you download</a><a href="#upscale">Making images bigger</a><a href="#denoise">Noisy photos</a><a href="#deblur-jpeg">Blurry or JPEG-damaged</a><a href="#anime">Anime &amp; illustration</a><a href="#faces">Faces</a><a href="#editing">Edit with a prompt</a><a href="#video">Video (Labs)</a><a href="#licenses">License table</a><a href="#verify">How LocalSR verifies</a><a href="#face-availability">Deep-dive: availability</a><a href="#face-hat-s">Deep-dive: HAT-S Face</a><a href="#face-hat-l">Deep-dive: HAT-L Face</a><a href="#face-use">Deep-dive: use</a><a href="#face-limits">Deep-dive: limits</a></nav></aside><div class="document-body">
+
+      <section id="start"><h2>Start here</h2><p>A model is a large trained network file, not a program. LocalSR runs it on your computer, and your images are never sent anywhere. Each model is built for one job at one scale — that is why the catalog is a short list, not a wall of options.</p>
         <p><strong>Not sure which to pick?</strong> Start with the <strong>Quick Start</strong> preset: <a href="#upscale">SPAN 4x NomosUni</a>. It downloads in seconds, runs on modest hardware, and its results cover most photos. Move to a bigger model only when you can name what the quick one is missing.</p>
         <p>Pick by what you want to fix:</p>
         <ul>
@@ -171,11 +161,7 @@
       </section>
       <section id="face-use"><h2>Deep-dive: use the matching companion</h2><ol><li>Select stock HAT-S or stock HAT-L as the primary model.</li><li>Choose Faces under Fix first.</li><li>Acknowledge the checkpoint terms and import the exact copy you are permitted to use. LocalSR checks the file’s size and SHA-256.</li><li>Adjust face fidelity and inspect the result. Non-face regions keep the primary model’s output.</li></ol><p>No installer bundles either checkpoint.</p></section>
       <section id="face-limits"><h2>Deep-dive: measured gains, with limits</h2><p>HDR preservation (Labs) keeps float precision and adapts HAT detail to the source’s light and colour. Both face forks remain SDR-trained; their HDR detail quality is unverified. The feature exports 10-bit HLG/PQ as a Labs experiment, with SDR display previews.</p><p>These reports use synthetic degradation and checkpoint-selection sets. They do not establish a controlled HAT-S versus HAT-L comparison, general photographic improvements, or video quality. The larger model costs more memory and processing time.</p><p>Neither interpolation nor L1-only training guarantees accurate missing detail or preserved identity. Results can look smooth or contain incorrect texture. Keep the original image and inspect eyes, teeth, hair, and other fine features.</p><p>Apache-2.0 applies to the HAT source code; it does not independently establish rights to fine-tuned weights or their training images. No commercial-use claim is made. Neither checkpoint is published.</p></section>
-    <footer>
-      <p>A project by <a href="https://herrei.github.io/">Hermes Reisner</a>, Basel. <a href="../about-the-image/">Image and model credits.</a></p>
-      <p><a href="../">Home</a> · <a href="../guide/">User guide</a> · <a href="../models/">Model guide</a> · <a href="../release-notes/">Release notes</a> · <a href="../download/">Download page</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a> · <a href="https://github.com/HerRei/local-upscale">Source on GitHub</a> · <a href="#top">Back to top</a></p>
-    </footer>
-  </article>
-  </main>
-<script src="../count.js" defer></script></body>
-</html>
+
+    </div></div>
+  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermes Reisner</a></span><span><a href="../guide/">Guide</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a></span></div></footer>
+</div><script src="../count.js" defer></script></body></html>

@@ -1,36 +1,36 @@
 {
-  "version": "0.1.4-beta",
-  "pub_date": "2026-10-04T09:38:49Z",
-  "notes": "LocalSR 0.1.4-beta: Edit, a new task, changes a photo from a written instruction, on your Mac (experimental; the editing models are separate downloads). The engine is replaced, so the download is about 760 MB. What changed: https://herrei.github.io/localsr/release-notes/",
+  "version": "0.1.5-beta",
+  "pub_date": "2026-10-07T22:15:22Z",
+  "notes": "LocalSR 0.1.5-beta: a drag-to-Applications install window and a centred app icon. What changed: https://herrei.github.io/localsr/release-notes/",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTNBWS9MaWZTbWNlYnpQTFg3NDNWUFJveEtpTHpzT0FnNE81b3BJcHdqbnBZU2ZuUFgyRGtzcmovNnc1cEk4aG5RVkh3WHQ4YlVGeDF5ODRreDRjVGdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTA2NzAxCWZpbGU6TG9jYWxTUi12MC4xLjQtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6Ci9lM0lJcjlHZkd4RFhSSnpuRU9LTnRMNlJmb0dCWjdNVDRRR00ySDJ4eS9adjNuSHRRQzNZVWc3VklYRXdYWXptMHI0N3oyR1pEdThMRWZrdnBIK0JRPT0K",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.5-beta/LocalSR-v0.1.5-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJ2WVBPdW5EWmJ2UDg2T0k2OWpaeVU2ZytEWmZ1b1FJMkVWa0NQckZReXhIRDJHT2VMNGNvbWhRcXhrZnFhMjcwditBanZBOTN3VlhtNVZNaTZuOHdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDExMjk2CWZpbGU6TG9jYWxTUi12MC4xLjUtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CnUvVGlualdCdjJvY05WenY4RWhSd0dmOHJ3Y3M0N095K3RaSGJhM2x6TUxXSk5NSmVJMmNlUC9ob2I2Wi9qd29pVkxHeGwvelhwZHhEY01FcHgrdUFBPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "macos-arm64-mps-fdbc92b22b56",
-        "size": 362436455,
-        "unpacked_size": 2392040574,
-        "sha256": "2c93d71d6470385338182aadf83a437fe938f1b919b560e1468a74e33d148e37",
+        "engine_id": "macos-arm64-mps-d42f781796fe",
+        "size": 362437545,
+        "unpacked_size": 2392031130,
+        "sha256": "493a279378410a5ed3e2d79aa8890434394f4727e2f7fcce8a9d517ed77c134a",
         "engine": {
-          "id": "macos-arm64-mps-fdbc92b22b56",
+          "id": "macos-arm64-mps-d42f781796fe",
           "manifest": {
-            "name": "LocalSR-v0.1.4-beta-macOS-arm64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-macOS-arm64.engine-payload.json",
+            "name": "LocalSR-v0.1.5-beta-macOS-arm64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.5-beta/LocalSR-v0.1.5-beta-macOS-arm64.engine-payload.json",
             "size": 343,
-            "sha256": "ead0d1f241adb4e11de5ffdd476b0256aa49595c7893288c548450cbbc6048d6",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlrU3BBblhMNE5UMndFUmMwSlcwbHFveGV3UzA0T1BKMmIvQ3puYXNMS2J1Y0dVZzdrZnlkYzhmekk2aXVjUm1RTStsRVA5b243U0dRMDFjMm5UM1FZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTA2NzE0CWZpbGU6TG9jYWxTUi12MC4xLjQtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uClRmRHFvKzRjUm1Ra2xTRnJLN2pBQzZJaVFONmVoR0NXVThSeXZ2L2ZaSzVzMFp1Q1p6SldBZ09hamJNa2NkcXp0ajZUWDRicWhSWUE2SWdiclZaa0JBPT0K"
+            "sha256": "3019d14051e0938df788be133b8b2336b3169dafdbb3d3a88e5006019b08ffe9",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlBcTlka2p2c1lXN2cxWURCTUp5NjBmMTlVTnZLYlU5L3VPQ0ZtLzlEaHJvL3ZLOEpMYm5WZ2tBSU1EZUhjM0UySUpsd1Z0L21xbHdHYmFrR2svWUFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDExMzA4CWZpbGU6TG9jYWxTUi12MC4xLjUtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCjZXUTRnVkRWcjJxNDliVTd5SFMyMkxWS0J1bmZNSzNkT3NsRTZTNFBjZ3ZDM3c3WU41S0hDa3dMMmJ0SGlINGswSlMyd1ZTSXl5MUJaNnZ5VHZkekNnPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.1.4-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "size": 399902102,
-              "sha256": "6b2f5f1613076eee6b285e85eda86ad4f8f9aa2468e759cdc6f0c64cc3b0cbe4",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZThnMGxkMGY4c0lJeFpMWmdRck94Qm0wM0VROUVMYlBhTENJbFZwS213dWpTK05ubjFCTU5Wd0pNVW1uczFWN092YW1KQW9pZ01PejNRWks1ZjFaN1FVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxMTA2NzE0CWZpbGU6TG9jYWxTUi12MC4xLjQtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQo5Qi85Z2FQRTFxRFRkUTNIeXY2SGhaRU5IandJTWZhcUV1RmdBbFRaOHVJajZydXhXd1F0Tm45TXpReHMyZ2xXWkNvNnE1SHZYako1Z3lMcFo0c2VBZz09Cg=="
+              "name": "LocalSR-v0.1.5-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.5-beta/LocalSR-v0.1.5-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "size": 399900367,
+              "sha256": "7ecc040439a1181c53d84f387329ede6dded9a4af4eef107a658625652bbdd49",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS8vRWNiMnNtSm5pZ1lpZzI0anZNZ0V6dlBJUnhMNUdGRmN3UENxVWJKdWppL24vM2Y4WG00YitFWDk3MUVOajd2V05nc2NSM3BraDAraUd0c2RiZHdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkxNDExMzA4CWZpbGU6TG9jYWxTUi12MC4xLjUtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpURzMrMWp0TnRuWVEwK21tMVV6bm9tcUdMdXlRd3Z3ZkV3S1U1NndpbzgxSndhdXZ0MjZaRG4rMUJjUHAzZ1RDdDh0M0dLRFRrRlhYdmpXRGZXVHBBUT09Cg=="
             }
           ]
         }

@@ -1,6 +1,6 @@
 {
-  "version": "v0.1.4-beta",
-  "date": "2026-10-04",
+  "version": "v0.1.5-beta",
+  "date": "2026-10-08",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://macmini-ci.tail34a4e0.ts.net",
@@ -11,12 +11,12 @@
       "requirements": "Apple Silicon · macOS 14+",
       "backend": "MPS backend · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.1.4-beta-macOS-arm64.dmg",
-      "size_bytes": 432143569,
-      "sha256": "bf089920498071e825c6676a963b19ab0e4da279f0664a6ff0ebc3bece183e0e",
+      "filename": "LocalSR-v0.1.5-beta-macOS-arm64.dmg",
+      "size_bytes": 410212310,
+      "sha256": "7e538340f2fdeb20d9154d4344da4024d5f26578b34d63d5d39769d732a998e4",
       "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-macOS-arm64.dmg",
-      "version": "v0.1.4-beta"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.5-beta/LocalSR-v0.1.5-beta-macOS-arm64.dmg",
+      "version": "v0.1.5-beta"
     },
     {
       "id": "windows",
@@ -180,14 +180,14 @@
   "sources_note": "Corresponding source, build instructions and license notices are published with each installer on GitHub: one bundle per package, each built from that package's own contents.",
   "sources": [
     {
-      "id": "sources-014",
+      "id": "sources-015",
       "name": "Source and notices",
-      "version": "v0.1.4-beta",
-      "filename": "LocalSR-v0.1.4-beta-source-and-notices.tar.gz",
-      "size_bytes": 268483020,
-      "sha256": "95d7a5131543c7a01a4230fa5a8cbcaad242ecd517658f535208a6ad0e4ed7a1",
+      "version": "v0.1.5-beta",
+      "filename": "LocalSR-v0.1.5-beta-source-and-notices.tar.gz",
+      "size_bytes": 268493240,
+      "sha256": "0513527cbf2e6f936b497074f895b8276ee4770da8e2d72640063ff0a7de49ea",
       "available": true,
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.4-beta/LocalSR-v0.1.4-beta-source-and-notices.tar.gz"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.5-beta/LocalSR-v0.1.5-beta-source-and-notices.tar.gz"
     },
     {
       "id": "sources-013",

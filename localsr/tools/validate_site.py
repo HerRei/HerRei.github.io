@@ -90,6 +90,23 @@ def main():
     check('@media(prefers-reduced-motion:reduce)' in css, "Missing reduced-motion support")
 
     release = json.loads((site / "release.json").read_text())
+    download_host = urlsplit(release["download_host"]).netloc
+    for artifact in release["platforms"] + release.get("archives", []) + release.get("sources", []):
+        if not artifact.get("available"):
+            continue
+        urls = [] if artifact.get("parts") else [artifact.get("download_url", "")]
+        urls += [part["url"] for part in artifact.get("parts", []) + artifact.get("engine_parts", [])]
+        for url in urls:
+            check(urlsplit(url).netloc == download_host, f"Download bypasses the configured host: {url}")
+    beta = json.loads((site / "updates/beta.json").read_text())
+    check(beta["version"] == release["version"].removeprefix("v"), "Updater and download page versions differ")
+    for platform in beta.get("platforms", {}).values():
+        urls = [platform["url"]]
+        engine = platform.get("localsr", {}).get("engine", {})
+        if engine:
+            urls += [engine["manifest"]["url"]] + [part["url"] for part in engine["parts"]]
+        for url in urls:
+            check(urlsplit(url).netloc == download_host, f"Updater bypasses the configured host: {url}")
     check({p["id"] for p in release["platforms"]} == {"macos", "windows", "linux"}, "Incomplete platform selection")
     for platform in release["platforms"] + release.get("archives", []):
         if not platform.get("available"):

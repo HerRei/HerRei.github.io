@@ -4,7 +4,7 @@
   "notes": "LocalSR 0.1.7-beta: large upscales now open in the comparison view. Your saved image keeps its full resolution. Release notes: https://herrei.github.io/localsr/release-notes/",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.app.tar.gz",
+      "url": "https://downloads.hermesr.duckdns.org/releases/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.app.tar.gz",
       "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXg0SU1kOVkweUk1T2l6RGhmU3cyQnkvUmhoZ01NVWVzZEtIelJEUjlzN0FJdVhGR04vOG9sbGdQK2VaUnVvaU1PQTQ0Wm8xNnplZ1NBQU5WNTl4eGdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTk0MTY4CWZpbGU6TG9jYWxTUi12MC4xLjctYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CjJOMW9NUTlPVXVrYks0L2txYldjSW8yQWZxdzlscmdIU1BtWndCU1BpSndBeHB1TE44WkNmeEpVQWdYNm1vTFhnUUxkay9udGtpeDIrd2RKODRkQ0NRPT0K",
       "localsr": {
         "channel": "beta",
@@ -19,7 +19,7 @@
           "id": "macos-arm64-mps-aed73bb795df",
           "manifest": {
             "name": "LocalSR-v0.1.7-beta-macOS-arm64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.engine-payload.json",
+            "url": "https://downloads.hermesr.duckdns.org/releases/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.engine-payload.json",
             "size": 343,
             "sha256": "277772acabc68b6cb900c15ca891f8bf6d2ab85638ea438b9d9b2b9bac836d52",
             "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpISEEweXBHZ1U1M1BzTGlwQXRodng3QmJOWFg4aHppRkV2Y1lYYkJTNE5tZWhDQjB4UkNSQzNSeG5EZFVSR3hWRnZkbEMzMUdDSTduNm5JcUg1RkFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTk0MTgwCWZpbGU6TG9jYWxTUi12MC4xLjctYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCldwRDZsUCtxSm80VUN5RzRBaGVTbEQ0cGZmdEFNMFhiMFhpdWNJai9MVDBiSHNudFg0RzBnUlhobEpKbEpYNmVoZkM1Zm96VDBZUEJFdFB5dGxOZ0F3PT0K"
@@ -27,7 +27,7 @@
           "parts": [
             {
               "name": "LocalSR-v0.1.7-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://downloads.hermesr.duckdns.org/releases/v0.1.7-beta/LocalSR-v0.1.7-beta-macOS-arm64.engine.tar.gz.part-0001",
               "size": 399899659,
               "sha256": "aef4a7c4847d545284a40dcdc43b1b6a7d8e819049fc917c89e1e5781a287f99",
               "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTkrdEpLSzM5MzJ5aGNzNEZsci9rNDdFZWpSRGlZKzlYM0NXV1A5Q08zdDJYUmh0UDk2MVdwZDg2b1MvaEljQ29tekZyckJaRHBmdDd3WHpJa2lUWXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNTk0MTgwCWZpbGU6TG9jYWxTUi12MC4xLjctYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQoyN3FYMGdrU0hscWpKK3JaQmJUZEk0aVFIQ1ZMaHAwVmZnc2xYWHRzSzlOTVRNYUFBMTNQMFNjYjE4TzNZVW03M3BEcmV5Q21uZlZVMkF1UkRIUjFCZz09Cg=="

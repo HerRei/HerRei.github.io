@@ -1,0 +1,45 @@
+{
+  "photographer": "Hermes Reisner",
+  "subject": "Landskron castle under a starry sky",
+  "source": "Hero photograph of hermesreisner.com (long-landscape.jpg)",
+  "source_sha256": "963fa80a04753c9a6fd831c783cb18e1d21e44e0b744dd6d4c67349c43abe6e3",
+  "source_dimensions": [
+    4200,
+    2362
+  ],
+  "source_crop_xyxy": [
+    230,
+    450,
+    3430,
+    2250
+  ],
+  "input_preparation": "Crop resized to 800 x 450 with Pillow's box filter; no compression, blur or noise added.",
+  "input_dimensions": [
+    800,
+    450
+  ],
+  "output_dimensions": [
+    3200,
+    1800
+  ],
+  "pipeline": "Packaged LocalSR v0.2.1-beta worker (macos-arm64-mps-d027566b870f), one upscale job, events recorded with tools/localsr-demo/media-tools/record_worker.py",
+  "localsr_commit": "d027566b870ff0a8bd9733ef5667388298cac43f",
+  "model_id": "realplksr_nomoswebphoto_x4",
+  "model_name": "RealPLKSR ×4 NomosWebPhoto — Best",
+  "model_author": "Philip Hofmann",
+  "model_url": "https://huggingface.co/Phips/4xNomosWebPhoto_RealPLKSR",
+  "model_license": "CC BY 4.0",
+  "model_sha256": "a9db66c9b674c6a5025b6ef3bee71a57c33b8605d8a2de0980470f89002efbbe",
+  "device": "mps (M1 Pro, 16 GB)",
+  "precision": "fp16",
+  "tile_size": 128,
+  "halo": 16,
+  "recorded_seconds": 5.08,
+  "replay": "Worker events replayed at their recorded times; each finished tile carries its pixels cut from the result, because the worker only samples some tiles for the live preview.",
+  "output_encoding": "WebP quality 90, no sharpening or colour change",
+  "files": {
+    "landskron-localsr.webp": "1dcfe383598a7b80a153bbc16b3d443cd192ea81e45bda6ed2bac093ae49ee8f",
+    "landskron-run.json": "828ccddcabe432c2ff7df88eb00259ea843b0aeac84311bc66e8b6f455ffaf8f",
+    "landskron.webp": "c9690753175bb21f1aa705be7edc4547826782b2d6ddb55492579713bce4b33f"
+  }
+}

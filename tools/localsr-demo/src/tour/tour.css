@@ -1,0 +1,159 @@
+/* Guided tour over the LocalSR interface. Same type, greys and terracotta as the app. */
+.tour-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+}
+.tour-layer[hidden] {
+  display: none;
+}
+.tour-ring {
+  position: fixed;
+  border: 2px solid var(--accent-hi, #c9573a);
+  border-radius: var(--radius, 2px);
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.42);
+  transition:
+    left 220ms ease,
+    top 220ms ease,
+    width 220ms ease,
+    height 220ms ease;
+}
+.tour-card {
+  position: fixed;
+  width: min(340px, calc(100vw - 32px));
+  display: grid;
+  gap: 10px;
+  padding: 18px 18px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius, 2px);
+  background: #1c1c1c;
+  color: var(--text, #ececec);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.55);
+  pointer-events: auto;
+  transition:
+    left 220ms ease,
+    top 220ms ease;
+}
+.tour-card.aside {
+  width: min(300px, calc(100vw - 32px));
+}
+.tour-card.centred {
+  left: 50% !important;
+  top: 50% !important;
+  width: min(420px, calc(100vw - 32px));
+  transform: translate(-50%, -50%);
+}
+.tour-card h2 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.tour-card p {
+  margin: 0;
+  color: #c4c4c4;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.tour-card .tour-note {
+  color: var(--secondary, #a3a3a3);
+  font-size: 12px;
+}
+.tour-card .tour-note a {
+  color: inherit;
+}
+.tour-count {
+  color: var(--secondary, #a3a3a3);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.tour-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.tour-actions button,
+.tour-actions a {
+  min-height: 30px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius, 2px);
+  background: transparent;
+  color: var(--text, #ececec);
+  font: inherit;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tour-actions .tour-primary {
+  border-color: transparent;
+  background: var(--accent-hi, #c9573a);
+  color: #fff;
+}
+.tour-actions .tour-primary.ready {
+  box-shadow: 0 0 0 3px rgba(201, 87, 58, 0.35);
+}
+.tour-actions .tour-quiet {
+  margin-left: auto;
+  border-color: transparent;
+  color: var(--secondary, #a3a3a3);
+}
+.tour-actions button[hidden] {
+  display: none;
+}
+.tour-actions button:focus-visible,
+.tour-actions a:focus-visible,
+.tour-pill:focus-visible {
+  outline: 2px solid var(--focus, rgba(255, 255, 255, 0.72));
+  outline-offset: 2px;
+}
+.tour-pill {
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 14px;
+  transform: translateX(-50%);
+  min-height: 28px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius, 2px);
+  background: #1c1c1c;
+  color: var(--text, #ececec);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+.tour-pill[hidden] {
+  display: none;
+}
+/* In a browser there are no window buttons; paint them where the Mac app has them. */
+@media (min-width: 1280px) {
+  .mac .media-pane .pane-heading {
+    position: relative;
+  }
+  .mac .media-pane .pane-heading::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    margin-top: -6px;
+    border-radius: 50%;
+    background: #ff5f57;
+    box-shadow:
+      20px 0 #febc2e,
+      40px 0 #28c840;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tour-ring,
+  .tour-card {
+    transition: none;
+  }
+}

@@ -24,12 +24,12 @@
       "requirements": "Windows 10 / 11 · x86-64",
       "backend": "CPU backend · unsigned installer",
       "extension": ".exe",
-      "filename": "LocalSR-v0.2.0-beta-Windows-CPU-x86_64.exe",
-      "size_bytes": 179114683,
-      "sha256": "a3225c01b130e4d89e9b5044410f586ffed560a46046775bbae5baf14e06823d",
+      "filename": "LocalSR-v0.2.1-beta-Windows-CPU-x86_64.exe",
+      "size_bytes": 179110962,
+      "sha256": "533df9c0dadd3a5c96c2fbd00923a3839aa752f8905b676370f9089dc687c247",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CPU-x86_64.exe",
-      "version": "v0.2.0-beta"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CPU-x86_64.exe",
+      "version": "v0.2.1-beta"
     },
     {
       "id": "linux",
@@ -37,12 +37,12 @@
       "requirements": "Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)",
       "backend": "CPU backend · AppImage",
       "extension": ".AppImage",
-      "filename": "LocalSR-v0.2.0-beta-Linux-CPU-x86_64.AppImage",
-      "size_bytes": 630823416,
-      "sha256": "6b7c51f87c019aa5eb121216380006609c3961c35dbeeccdd8f9e467fb399b52",
+      "filename": "LocalSR-v0.2.1-beta-Linux-CPU-x86_64.AppImage",
+      "size_bytes": 630831608,
+      "sha256": "fac2a81e19e96bf7bc95be3a65c4c7db7fddc315ef21c45c2100e995c6fe8847",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CPU-x86_64.AppImage",
-      "version": "v0.2.0-beta"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CPU-x86_64.AppImage",
+      "version": "v0.2.1-beta"
     }
   ],
   "archives": [
@@ -94,27 +94,27 @@
       "requirements": "Windows 10 / 11 · x86-64 · NVIDIA GPU with a CUDA 12.6 driver",
       "backend": "CUDA backend · unsigned installer · untested",
       "extension": ".exe",
-      "filename": "LocalSR-v0.2.0-beta-Windows-CUDA-x86_64.exe",
+      "filename": "LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.exe",
       "available": true,
-      "version": "v0.2.0-beta",
-      "size_bytes": 5257378,
-      "sha256": "7d47f19e79242019ea594e662602574b9e850243d528362f55527b3637194e32",
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CUDA-x86_64.exe",
+      "version": "v0.2.1-beta",
+      "size_bytes": 5261705,
+      "sha256": "391d6397e1928511c0144a81432f754cbf6798df702deb102f4862cd03a03787",
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.exe",
       "engine_parts": [
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
           "size_bytes": 1992294400,
-          "sha256": "f5d5a27a296e6a3df7fdb652efb022c05ea687d55b7af2dea4acaf6cc831b152"
+          "sha256": "06b9eb5b048e10867107dee1e6b4c533d673f53485aeca5102cc6f2514655d03"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
           "size_bytes": 1992294400,
-          "sha256": "67e7bfbdf1f2128ccbd2b1f1103c975de56c66e129250c453b5718919c014a8b"
+          "sha256": "8c6106e412c7f7a7d0c6c2eb155fdce5ef97598bcaa5424fb02294fef76c4917"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003",
-          "size_bytes": 254176764,
-          "sha256": "3bf6d0c4b3a43b84be836364e312dd42dd7e3576a384f44fe0dfd6892b41686a"
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003",
+          "size_bytes": 254176279,
+          "sha256": "3a9d2fd415d8df5a02534c08213ff22e82f8de64959a2b0792d08b626064a78a"
         }
       ]
     },
@@ -125,33 +125,33 @@
       "requirements": "Linux · x86-64 · glibc 2.39+ · NVIDIA GPU with a CUDA 12.6 driver",
       "backend": "CUDA backend · AppImage · untested",
       "extension": ".AppImage",
-      "filename": "LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage",
+      "filename": "LocalSR-v0.2.1-beta-Linux-CUDA-x86_64.AppImage",
       "available": true,
-      "version": "v0.2.0-beta",
+      "version": "v0.2.1-beta",
       "parts": [
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage.part-0001",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CUDA-x86_64.AppImage.part-0001",
           "size_bytes": 1992294400,
-          "sha256": "66f68bfdbaeea08e1524cd00e7fd05d30f2386389990f275d1e70d2b58048b8c"
+          "sha256": "2bfef891b599bfe4bc07c021648a372595dba7115afadb049fab986fdc33b1fc"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage.part-0002",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CUDA-x86_64.AppImage.part-0002",
           "size_bytes": 1992294400,
-          "sha256": "8dae919225743b52879f8f624fbad67f6c74cd879991effeefb1525df06c5b56"
+          "sha256": "62c1207917aafe5b306a373c66ce8da6cd3db3655151e97c0973c17f197a9411"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage.part-0003",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CUDA-x86_64.AppImage.part-0003",
           "size_bytes": 1992294400,
-          "sha256": "94309de870767d02357cb07b05cc7849ff862fe837aba0d963490597ff3576dd"
+          "sha256": "fb4300bb0a46d48c80a530b3eda2ececc4c09f60f5c769d5244518ded84f3c3b"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage.part-0004",
-          "size_bytes": 1699740152,
-          "sha256": "e43f1d22cde254e1835a7a58018b1d061b716e9a0fe6e0c2c3ba4c2282758e69"
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CUDA-x86_64.AppImage.part-0004",
+          "size_bytes": 1699744248,
+          "sha256": "1ac8f2770daf1eb868d8be08d1db9ec9a432a97a35b21b08adb407cf8e352743"
         }
       ],
-      "size_bytes": 7676623352,
-      "sha256": "7f6eb3905cd3f65905807eee85a22bd2b919810b309073567c208f505dc80941",
+      "size_bytes": 7676627448,
+      "sha256": "37533f30a899b8e3e2a4f8ee3722b6d7b13f6cce7e5e8223a128bc4a301fc919",
       "download_url": "https://herrei.github.io/localsr/download/#parts"
     },
     {
@@ -161,12 +161,12 @@
       "requirements": "Windows 10 / 11 · x86-64 · DirectX 12 GPU",
       "backend": "DirectML backend · unsigned installer · untested",
       "extension": ".exe",
-      "filename": "LocalSR-v0.2.0-beta-Windows-DirectML-x86_64.exe",
+      "filename": "LocalSR-v0.2.1-beta-Windows-DirectML-x86_64.exe",
       "available": true,
-      "version": "v0.2.0-beta",
-      "size_bytes": 208192314,
-      "sha256": "ce995c1c07e607d42373c1ae29a4b79479b9164cf1b9bc8c7a6b4be0055bdf93",
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-DirectML-x86_64.exe"
+      "version": "v0.2.1-beta",
+      "size_bytes": 208215054,
+      "sha256": "81f884fbf629c21b34353e764ba6980e33756996bcd33626dcb28371e030c0c4",
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-DirectML-x86_64.exe"
     },
     {
       "id": "macos-013",
@@ -205,24 +205,24 @@
       "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.1.3-beta/LocalSR-v0.1.3-beta-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-linux",
+      "id": "sources-021-linux",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Linux-CPU-source-and-notices.tar.gz",
-      "size_bytes": 700727070,
-      "sha256": "e3e8d78f5c889c6b164f8bfcea57512e15521ceeccfeb3788cdb77bcaaf0da36",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Linux-CPU-source-and-notices.tar.gz",
+      "size_bytes": 700730964,
+      "sha256": "93341e33c3f78c1f9a2b845ab2d10a571207cefa02a61296a7e98f69679d6ea9",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CPU-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CPU-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-windows",
+      "id": "sources-021-windows",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Windows-CPU-source-and-notices.tar.gz",
-      "size_bytes": 221981767,
-      "sha256": "cc53fdbf32b4f83bd8caec4863c80010247cccbaec14d76ba43c0c0bf2fd6abb",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Windows-CPU-source-and-notices.tar.gz",
+      "size_bytes": 221984302,
+      "sha256": "04f47dd2126251efb8ebb351c06fd5d5f95e077451f4b5e63e6207222f5542c0",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CPU-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CPU-source-and-notices.tar.gz"
     },
     {
       "id": "sources-020-linux-rocm",
@@ -235,34 +235,34 @@
       "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-linux-cuda",
+      "id": "sources-021-linux-cuda",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Linux-CUDA-source-and-notices.tar.gz",
-      "size_bytes": 703426176,
-      "sha256": "ecea2cfc7313c806963e0727fc3a37e3065c9c07451f67b9f8a82416a4503aa7",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Linux-CUDA-source-and-notices.tar.gz",
+      "size_bytes": 703430300,
+      "sha256": "2737d77d4fa2e35033a833bf544d451be858bb1c7ca9b03b2ed29eaf558bf10d",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-CUDA-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-CUDA-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-windows-cuda",
+      "id": "sources-021-windows-cuda",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Windows-CUDA-source-and-notices.tar.gz",
-      "size_bytes": 221981830,
-      "sha256": "cfe686db58bd1881d689f52ce368940c0131589e077b5c48eacd90150b419134",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Windows-CUDA-source-and-notices.tar.gz",
+      "size_bytes": 221984180,
+      "sha256": "66f7165ba5d76e9700599bb0db51d78e854fbc0bc6a8a11666a34253a24ba5d6",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-CUDA-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CUDA-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-windows-directml",
+      "id": "sources-021-windows-directml",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Windows-DirectML-source-and-notices.tar.gz",
-      "size_bytes": 221991255,
-      "sha256": "1da60db02c953f3454ef34dc564c4aa16f07777cfae1027f027a5a87f981367e",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Windows-DirectML-source-and-notices.tar.gz",
+      "size_bytes": 221995248,
+      "sha256": "4485526eda1a56c1d0862fa2b305d8718db3964ba1072be9b89f6256b35b39f1",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Windows-DirectML-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-DirectML-source-and-notices.tar.gz"
     }
   ]
 }

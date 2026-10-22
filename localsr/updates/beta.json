@@ -1,36 +1,36 @@
 {
-  "version": "0.2.0-beta",
-  "pub_date": "2026-10-22T00:56:48Z",
-  "notes": "A calmer, simpler window: one button that downloads and starts, plain Quick and Best, no top bar, IBM Plex Sans and square corners. New installations start on the GPU, and the window fits small screens.",
+  "version": "0.2.1-beta",
+  "pub_date": "2026-10-22T11:19:55Z",
+  "notes": "The comparison divider stays put while you zoom in, Original \u00b7 Split \u00b7 Enhanced above the preview switches between the whole original, the divider and the whole result, and holding M shows the original. The zoom controls appear only over the picture.",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhkbXNreldYVkovZk9ncUFJS2FzTzBCNUhxUnNmOHE5cFAzcGNOYmpiNVBGQnNwNFpCc0w1U1VFbkZtKzZnMllyYkxCVU9oem1CVXVFQllvSEhaTGc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjMwNTgzCWZpbGU6TG9jYWxTUi12MC4yLjAtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CjlHdGdCNDJ4RG5PaFcwQnBwUSsxNXY3K0liMGVRbFRTczBYd1l3dVhJazhkbnV6T2t4aEpTaitHanYzb0xBNVZHRHZ6TDRaeVZ3ejJHaU1mNmI3TEJ3PT0K",
+      "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTR0UllNTUU1ekdJVXJWY0o5Z1RLMVptZG1HM2dkVzdSbWpQZmFIdjZzTDF0Zmpic2xnY3dSRnQwcVFtZ0QvMG1sY3JjNDZST0QyL3lLeFp3YjFqSmdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjY3OTcwCWZpbGU6TG9jYWxTUi12MC4yLjEtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CmpDN0VwclFyVzBjb2lzSXlLaVkyZlhhVTVzUnkzTmlIckhtN2xPWHhDcDdGZTZFSmpTbWI3OFhEQkh5YXBiYzZMVnRyeUlOV2djQUdROHpzSUI4NkJBPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "macos-arm64-mps-7b05564e1046",
-        "size": 362687088,
-        "unpacked_size": 2392338007,
-        "sha256": "f2cd0b8585e7efda5843db0db0bc6d8e88f7aafd859d8d4fe12f14dcfaf3ad70",
+        "engine_id": "macos-arm64-mps-d027566b870f",
+        "size": 362683511,
+        "unpacked_size": 2392337495,
+        "sha256": "20a63400ad58b54c6deeeee8f070ae408bf60e12889f5d833ad7294c5909e5e4",
         "engine": {
-          "id": "macos-arm64-mps-7b05564e1046",
+          "id": "macos-arm64-mps-d027566b870f",
           "manifest": {
-            "name": "LocalSR-v0.2.0-beta-macOS-arm64.engine-payload.json",
-            "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-macOS-arm64.engine-payload.json",
+            "name": "LocalSR-v0.2.1-beta-macOS-arm64.engine-payload.json",
+            "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-macOS-arm64.engine-payload.json",
             "size": 343,
-            "sha256": "8c53eab875c4ecafe19f69f92b1a7ca9e2e3367057f3e997d80c84dd3607e2ed",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdPSXhlN1RRZGwvVEdBa1hHd1AvbW5YeEpGS28wMExzWHRmVEdwcXpxSWl2ekpFWEQ1bDJQQ1lreUUydS81Yzdtb1RkWjRKaUVSR1pEZkdONDhLYXdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjMwNTk1CWZpbGU6TG9jYWxTUi12MC4yLjAtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCnF1VVdyNnBKODMwemhtV1h1a21OOC8xZzNYZm9Sa2JDOXVaenYyaWhjUXNEQVltTkZjMkFQNjVwZTdwZ0ljT3FVam1BVE9rRDljWEpoUWlpSUZWa0R3PT0K"
+            "sha256": "44c097d5f4fa91098967333c9658978216e8b7d0376d5a469ad474170dc6ceeb",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJpN2pjSnQzV0R0NUVPOVF1Ylppd2VZblpFNkpjbGQ1SmdvUGpXWFVOT1NEdlovbGtOeWpVRFBtTVNuOWZjZTdrRXdldlkybDRnOGVnam1nTWRFM2dZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjY3OTgyCWZpbGU6TG9jYWxTUi12MC4yLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCjdnYmxxeC9ORFVZNnRXMXIxRThBQVlreDVlcmhYeEtoRUlQMUtKOUowaitmZVVxUzVJdVZPenM5T0FIWUFDOUZab0x3aWVQTUpIZHEzUVVhalM3SENBPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.2.0-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "size": 399901598,
-              "sha256": "bafda5ffaa00f653c3794bb704823647456db44c2c9acc508362a8b146fcf89f",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZSszU0o0NzRUSmVCdDAwZzQxV3RDcjlCQ29MVGQ4S09VdWw5R3h0UEhFMWxsdnkrZFQ4aVN2eGZ2blBRYkpjcW10MkdVRGRoemZqMVl5RDV6cGMvd2cwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjMwNTk1CWZpbGU6TG9jYWxTUi12MC4yLjAtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpjZ05NcDR2MElIcGREZ3E0QmtPdVBKMFplN3pnTkJTTnUvQmt5ZHNlVWJjS3Z1MXVhTmd4Lys4cGhPbjJ5d01ucDEzK1FOK1Vybkx4Qi9DTkF1RzZEQT09Cg=="
+              "name": "LocalSR-v0.2.1-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "size": 399900651,
+              "sha256": "21f847f940ae39e780547e4b3e874fe732e98d9c948dbf1f9e6fc9bd3e74662d",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXl2bmNqSWZ1WTBTYlZvbUQ1R3o2VmdBSzNMZEg0MGtSVVYvV3lxUUh2ZEJnMHRveDBiRjY1bkpqS0NHL0ptVVBibHVWaGI4K05jR0xkTGRJbjZUSFE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzkyNjY3OTgyCWZpbGU6TG9jYWxTUi12MC4yLjEtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQp2NDdSUTVZelFZa3ZQbHlwOXBrU2QzWCtPemJoN3RmUGtPT1pUbTlwanlpdHYvVnJnaVRLdVFETzZ1eTBFU0RGU0Y1MDRpMVlDclNOMXpsMnRQMmVCUT09Cg=="
             }
           ]
         }

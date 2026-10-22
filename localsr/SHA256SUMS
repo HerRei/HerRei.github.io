@@ -1,4 +1,4 @@
-b60e47f1cdda574c35bbcf7cf4c811809d4b1a6de85376c30873613d84a7085b  LocalSR-v0.2.0-beta-macOS-arm64.dmg
+701bfd6e8b2181fd64bc6a2bc3831f8c13ad22beaf4bb4b2ba8f54f263655f00  LocalSR-v0.2.1-beta-macOS-arm64.dmg
 a3225c01b130e4d89e9b5044410f586ffed560a46046775bbae5baf14e06823d  LocalSR-v0.2.0-beta-Windows-CPU-x86_64.exe
 6b7c51f87c019aa5eb121216380006609c3961c35dbeeccdd8f9e467fb399b52  LocalSR-v0.2.0-beta-Linux-CPU-x86_64.AppImage
 55331b9c60e54d1fcedbabd3babfa6ee2da6759477763b4dcf346154d3a58c53  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage
@@ -18,7 +18,7 @@ f5d5a27a296e6a3df7fdb652efb022c05ea687d55b7af2dea4acaf6cc831b152  LocalSR-v0.2.0
 e43f1d22cde254e1835a7a58018b1d061b716e9a0fe6e0c2c3ba4c2282758e69  LocalSR-v0.2.0-beta-Linux-CUDA-x86_64.AppImage.part-0004
 ce995c1c07e607d42373c1ae29a4b79479b9164cf1b9bc8c7a6b4be0055bdf93  LocalSR-v0.2.0-beta-Windows-DirectML-x86_64.exe
 858d643dfad058db11ad87b816b69cf46fa3aefe01f25bf4c91c125c048e428f  LocalSR-v0.1.3-beta-macOS-arm64.dmg
-5b2b42657660f8d9f37041429876405a21523425129456aca449cde9f40683e2  LocalSR-v0.2.0-beta-source-and-notices.tar.gz
+211fd1d82f10d3f921c4a040141810c40bd8568fbfb1021512768bdb1887119b  LocalSR-v0.2.1-beta-source-and-notices.tar.gz
 cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f  LocalSR-v0.1.3-beta-source-and-notices.tar.gz
 e3e8d78f5c889c6b164f8bfcea57512e15521ceeccfeb3788cdb77bcaaf0da36  LocalSR-v0.2.0-beta-Linux-CPU-source-and-notices.tar.gz
 cc53fdbf32b4f83bd8caec4863c80010247cccbaec14d76ba43c0c0bf2fd6abb  LocalSR-v0.2.0-beta-Windows-CPU-source-and-notices.tar.gz

@@ -53,38 +53,38 @@
       "requirements": "Linux · x86-64 · glibc 2.39+ · Radeon supported by ROCm 7.2, amdgpu driver",
       "backend": "ROCm backend · AppImage",
       "extension": ".AppImage",
-      "filename": "LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage",
+      "filename": "LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage",
       "available": true,
-      "version": "v0.2.0-beta",
+      "version": "v0.2.1-beta",
       "parts": [
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0001",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0001",
           "size_bytes": 1992294400,
-          "sha256": "8b8b3cbe6f6a6ab4c5dae406f71b6a3255d3e18bbb430d905e3a9af67da11b3d"
+          "sha256": "e7fe8c35303c76dfd5359caf67947b374e5b135f47f36789426d2fcfad2044e3"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0002",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0002",
           "size_bytes": 1992294400,
-          "sha256": "16f29d996d1b7e395f9708910494daf52385930bb63872f6524c5b45b6bf908b"
+          "sha256": "103bb606f61710cc7b95fd9b12d957d82269edbb907fab85cffabf9a6a4fd1b0"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0003",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0003",
           "size_bytes": 1992294400,
-          "sha256": "6a69f5d2852fd606263da0686637b02d2139797871b326f00653c9661c6c0435"
+          "sha256": "3a94c0617fa723ccc2acf349c99ddeaffda766b16c1c4136c333f7e6c034de42"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0004",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0004",
           "size_bytes": 1992294400,
-          "sha256": "9367a66a2d4f009ebd00de66c8e8429361b40de394a2ccecf3e470a322db4e20"
+          "sha256": "b315f4b5ca85646de4a2770194d478d8fdeadc99ff3e2de37cb0377432975d8a"
         },
         {
-          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0005",
+          "url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0005",
           "size_bytes": 1984829944,
-          "sha256": "ade892f7a3f2ed7e2003315f65c5fbcb8f3783d363567a6c19249580abd8242a"
+          "sha256": "c75df536cb80f398b2f9cc918aebf20419c7d9f3ca8246c28eb759ec1b1cbb11"
         }
       ],
       "size_bytes": 9954007544,
-      "sha256": "55331b9c60e54d1fcedbabd3babfa6ee2da6759477763b4dcf346154d3a58c53",
+      "sha256": "80c8a57029cf9e28bb1320fa7e4eebcc744d115e87897e2a4f71c04c705d1b0d",
       "download_url": "https://herrei.github.io/localsr/download/#parts"
     },
     {
@@ -225,14 +225,14 @@
       "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Windows-CPU-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-020-linux-rocm",
+      "id": "sources-021-linux-rocm",
       "name": "Source and notices",
-      "version": "v0.2.0-beta",
-      "filename": "LocalSR-v0.2.0-beta-Linux-ROCm-source-and-notices.tar.gz",
-      "size_bytes": 891499951,
-      "sha256": "27ffc10518cd6f970a5557902f44dc031e5e3fc3e330e89932d03fa6788ff859",
+      "version": "v0.2.1-beta",
+      "filename": "LocalSR-v0.2.1-beta-Linux-ROCm-source-and-notices.tar.gz",
+      "size_bytes": 891502545,
+      "sha256": "decd5a18e5d15243c1a46f704276d3d063ce31da0dd1ab5485bf1ee898f59fdd",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.0-beta/LocalSR-v0.2.0-beta-Linux-ROCm-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.1-beta/LocalSR-v0.2.1-beta-Linux-ROCm-source-and-notices.tar.gz"
     },
     {
       "id": "sources-021-linux-cuda",

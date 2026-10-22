@@ -1,12 +1,12 @@
 701bfd6e8b2181fd64bc6a2bc3831f8c13ad22beaf4bb4b2ba8f54f263655f00  LocalSR-v0.2.1-beta-macOS-arm64.dmg
 533df9c0dadd3a5c96c2fbd00923a3839aa752f8905b676370f9089dc687c247  LocalSR-v0.2.1-beta-Windows-CPU-x86_64.exe
 fac2a81e19e96bf7bc95be3a65c4c7db7fddc315ef21c45c2100e995c6fe8847  LocalSR-v0.2.1-beta-Linux-CPU-x86_64.AppImage
-55331b9c60e54d1fcedbabd3babfa6ee2da6759477763b4dcf346154d3a58c53  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage
-8b8b3cbe6f6a6ab4c5dae406f71b6a3255d3e18bbb430d905e3a9af67da11b3d  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0001
-16f29d996d1b7e395f9708910494daf52385930bb63872f6524c5b45b6bf908b  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0002
-6a69f5d2852fd606263da0686637b02d2139797871b326f00653c9661c6c0435  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0003
-9367a66a2d4f009ebd00de66c8e8429361b40de394a2ccecf3e470a322db4e20  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0004
-ade892f7a3f2ed7e2003315f65c5fbcb8f3783d363567a6c19249580abd8242a  LocalSR-v0.2.0-beta-Linux-ROCm-x86_64.AppImage.part-0005
+80c8a57029cf9e28bb1320fa7e4eebcc744d115e87897e2a4f71c04c705d1b0d  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage
+e7fe8c35303c76dfd5359caf67947b374e5b135f47f36789426d2fcfad2044e3  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0001
+103bb606f61710cc7b95fd9b12d957d82269edbb907fab85cffabf9a6a4fd1b0  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0002
+3a94c0617fa723ccc2acf349c99ddeaffda766b16c1c4136c333f7e6c034de42  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0003
+b315f4b5ca85646de4a2770194d478d8fdeadc99ff3e2de37cb0377432975d8a  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0004
+c75df536cb80f398b2f9cc918aebf20419c7d9f3ca8246c28eb759ec1b1cbb11  LocalSR-v0.2.1-beta-Linux-ROCm-x86_64.AppImage.part-0005
 391d6397e1928511c0144a81432f754cbf6798df702deb102f4862cd03a03787  LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.exe
 06b9eb5b048e10867107dee1e6b4c533d673f53485aeca5102cc6f2514655d03  LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001
 8c6106e412c7f7a7d0c6c2eb155fdce5ef97598bcaa5424fb02294fef76c4917  LocalSR-v0.2.1-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002
@@ -22,7 +22,7 @@ fb4300bb0a46d48c80a530b3eda2ececc4c09f60f5c769d5244518ded84f3c3b  LocalSR-v0.2.1
 cea24d3778dbd9f548060f0ce51537e13f6f5d935d909c824a4474da3e153e1f  LocalSR-v0.1.3-beta-source-and-notices.tar.gz
 93341e33c3f78c1f9a2b845ab2d10a571207cefa02a61296a7e98f69679d6ea9  LocalSR-v0.2.1-beta-Linux-CPU-source-and-notices.tar.gz
 04f47dd2126251efb8ebb351c06fd5d5f95e077451f4b5e63e6207222f5542c0  LocalSR-v0.2.1-beta-Windows-CPU-source-and-notices.tar.gz
-27ffc10518cd6f970a5557902f44dc031e5e3fc3e330e89932d03fa6788ff859  LocalSR-v0.2.0-beta-Linux-ROCm-source-and-notices.tar.gz
+decd5a18e5d15243c1a46f704276d3d063ce31da0dd1ab5485bf1ee898f59fdd  LocalSR-v0.2.1-beta-Linux-ROCm-source-and-notices.tar.gz
 2737d77d4fa2e35033a833bf544d451be858bb1c7ca9b03b2ed29eaf558bf10d  LocalSR-v0.2.1-beta-Linux-CUDA-source-and-notices.tar.gz
 66f7165ba5d76e9700599bb0db51d78e854fbc0bc6a8a11666a34253a24ba5d6  LocalSR-v0.2.1-beta-Windows-CUDA-source-and-notices.tar.gz
 4485526eda1a56c1d0862fa2b305d8718db3964ba1072be9b89f6256b35b39f1  LocalSR-v0.2.1-beta-Windows-DirectML-source-and-notices.tar.gz

@@ -22,9 +22,9 @@
 <section id="window"><h2>The window</h2>
 <ul>
 <li><strong>Media</strong> on the left: everything you added, with its status. The <strong>+</strong> button adds files. With two or more items, switch between <strong>Single</strong> and <strong>Batch</strong> at the top.</li>
-<li><strong>The preview</strong> in the middle: drop files here. After processing it shows the before-and-after comparison.</li>
+<li><strong>The preview</strong> in the middle: drop files here. Videos play here before they are upscaled. After processing it shows the before-and-after comparison.</li>
 <li><strong>Enhance</strong> on the right: what to do (the task), how (quality, content, what to fix first) and, under <strong>Advanced</strong>, output and hardware settings.</li>
-<li><strong>The status bar</strong> at the bottom: what the next job will make (for example <em>600 × 400 → 2400 × 1600 · 4× · Apple GPU (Metal)</em>), progress and time estimates, the start button, and <strong>Reveal</strong> and <strong>Open</strong> for the selected item’s result.</li>
+<li><strong>The status bar</strong> at the bottom: what the next job will make (for example <em>600 × 400 → 2400 × 1600 · 4× · Neural Engine</em>), progress and time estimates, the start button, and <strong>Reveal</strong> and <strong>Open</strong> for the selected item’s result.</li>
 <li><strong>The menu bar</strong> has the rest: <strong>View → Models…</strong> (⇧⌘M) opens the model library, <strong>View → Performance and Diagnostics…</strong> runs a benchmark, <strong>LocalSR → Check for Updates…</strong> handles updates, and <strong>Help → LocalSR User Guide</strong> opens this page.</li>
 </ul>
 <p>There is no toolbar: the window buttons sit beside <strong>Media</strong>, and the pane headings form the top of the window. In a narrow window a slim bar switches between <strong>Media</strong>, <strong>Preview</strong> and <strong>Enhance</strong>.</p>
@@ -82,7 +82,7 @@
 <ul>
 <li>Add a clip, choose <strong>Upscale</strong> and press <strong>Start selected video</strong>. Every frame goes through the image model, and the original timing, rotation and audio are kept.</li>
 <li>iPhone and camera videos (H.264, HEVC, AAC) open directly on a Mac. WMV, DivX, FLV and a few older formats need FFmpeg; LocalSR shows the install command when a file needs it and uses an installed FFmpeg automatically. On Windows and Linux, H.264 and HEVC need that FFmpeg too.</li>
-<li>Exports use AV1 by default. Under <strong>Advanced → Video format</strong> you can choose VP9, lossless FFV1, or H.264 and HEVC. macOS writes H.264 and HEVC with its own encoders into MP4, and those files play almost everywhere.</li>
+<li>Exports use the <strong>Automatic</strong> format by default: on a Mac, HEVC written by the Mac’s hardware encoder while the next frames are upscaled; MKV, HDR preservation and Windows and Linux use AV1. Under <strong>Advanced → Video format</strong> you can choose AV1, VP9, lossless FFV1, or H.264 and HEVC. macOS writes H.264 and HEVC with its own encoders into MP4, and those files play almost everywhere.</li>
 <li><strong>Video is slow on any computer.</strong> Minutes of footage can take hours. Start with a few seconds, check the result, then run the whole clip.</li>
 <li>HDR preservation, de-flicker and the SeedVR2 video models are marked <strong>Labs</strong>: they work, but their quality is not established yet.</li>
 </ul>
@@ -93,7 +93,7 @@
 <ul>
 <li><strong>Output scale</strong> and <strong>Format</strong> (PNG, JPEG, TIFF or WebP) for images; <strong>Save to</strong> for the output folder.</li>
 <li><strong>Preserve safe metadata and color profile</strong> converts colors to sRGB with a matching profile and copies only the date, artist and copyright. Location, camera serial numbers and similar details are never copied.</li>
-<li><strong>Hardware</strong> chooses the Apple GPU (Metal) or the CPU. The GPU is usually much faster.</li>
+<li><strong>Hardware</strong> chooses where models run. <strong>Neural Engine</strong>, the default on Apple Silicon, runs Quick, Real-ESRGAN and JPEG cleanup on the Neural Engine and Best through Core ML on the GPU, two to three times as fast with far less energy; other models use the GPU. The first job with a model prepares it once, which can take a minute. <strong>Apple GPU (Metal)</strong> keeps every model on the GPU, and <strong>CPU</strong> is the slowest.</li>
 <li><strong>Tile</strong>, <strong>Halo</strong> and <strong>Precision</strong> control how large images are split to fit in memory. Leave them alone unless you run out of memory; <strong>Safe memory mode</strong> is the simple switch for that.</li>
 <li><strong>Interface text</strong> makes the whole window larger.</li>
 </ul>
@@ -111,7 +111,7 @@
 <section id="troubleshooting"><h2>Troubleshooting</h2>
 <ul>
 <li><strong>Open or Reveal is missing.</strong> Select an item in the Media list that has finished. The buttons belong to the selected item.</li>
-<li><strong>It is slow.</strong> Check that <strong>Hardware</strong> is the Apple GPU, try <strong>Quick</strong>, use a smaller output scale, and close other heavy apps. <strong>View → Performance and Diagnostics…</strong> runs a short benchmark to compare the GPU and CPU on your Mac.</li>
+<li><strong>It is slow.</strong> Check that <strong>Hardware</strong> is the Neural Engine or the Apple GPU, try <strong>Quick</strong>, use a smaller output scale, and close other heavy apps. <strong>View → Performance and Diagnostics…</strong> runs a short benchmark to compare the GPU and CPU on your Mac.</li>
 <li><strong>It stopped with a memory error.</strong> Turn on <strong>Safe memory mode</strong> or choose a smaller model. Very large images and 4× video need a lot of memory.</li>
 <li><strong>A video will not open.</strong> The format probably needs FFmpeg; follow the install command LocalSR shows. If it still fails, report the format.</li>
 <li><strong>The result looks plastic or wrong.</strong> Try another model or Photo instead of Illustration, and turn off fixes you do not need. Some damage cannot be recovered.</li>

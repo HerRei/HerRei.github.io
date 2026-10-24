@@ -1,6 +1,6 @@
 {
-  "version": "v0.2.2-beta",
-  "date": "2026-10-23",
+  "version": "v0.3.0-beta",
+  "date": "2026-10-24",
   "repository": "HerRei/local-upscale",
   "release_url": "https://herrei.github.io/localsr/release-notes/",
   "download_host": "https://downloads.hermesr.duckdns.org",
@@ -9,14 +9,14 @@
       "id": "macos",
       "name": "macOS",
       "requirements": "Apple Silicon · macOS 14+",
-      "backend": "MPS backend · CPU fallback",
+      "backend": "Neural Engine · MPS · CPU fallback",
       "extension": ".dmg",
-      "filename": "LocalSR-v0.2.2-beta-macOS-arm64.dmg",
-      "size_bytes": 410469155,
-      "sha256": "2900f6aa23489d0a1c1c373a552779dad339c2ab6b3c03f18628618b1591e767",
+      "filename": "LocalSR-v0.3.0-beta-macOS-arm64.dmg",
+      "size_bytes": 419382799,
+      "sha256": "67a587e7941d52cc5503729b085604c8fa2ae4c87e99fd5e2074e47852059957",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.2-beta/LocalSR-v0.2.2-beta-macOS-arm64.dmg",
-      "version": "v0.2.2-beta"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.3.0-beta/LocalSR-v0.3.0-beta-macOS-arm64.dmg",
+      "version": "v0.3.0-beta"
     },
     {
       "id": "windows",
@@ -185,14 +185,14 @@
   "sources_note": "Corresponding source, build instructions and license notices are served with each package from the Mac mini through the Infomaniak VPS, with mirrors on GitHub Releases.",
   "sources": [
     {
-      "id": "sources-022",
+      "id": "sources-030",
       "name": "Source and notices",
-      "version": "v0.2.2-beta",
-      "filename": "LocalSR-v0.2.2-beta-source-and-notices.tar.gz",
-      "size_bytes": 270361907,
-      "sha256": "6fed38b911c77a6cb80f9c3b2648c2cb7176de5399450f1f0fdb9f60324626fd",
+      "version": "v0.3.0-beta",
+      "filename": "LocalSR-v0.3.0-beta-source-and-notices.tar.gz",
+      "size_bytes": 270400056,
+      "sha256": "4fe185d919c1851b9d8aba10b4c42e095ef8fb1c08a28343cc826476fb225273",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.2-beta/LocalSR-v0.2.2-beta-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.3.0-beta/LocalSR-v0.3.0-beta-source-and-notices.tar.gz"
     },
     {
       "id": "sources-013",

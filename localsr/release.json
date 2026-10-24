@@ -37,12 +37,12 @@
       "requirements": "Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)",
       "backend": "CPU backend · AppImage",
       "extension": ".AppImage",
-      "filename": "LocalSR-v0.2.2-beta-Linux-CPU-x86_64.AppImage",
-      "size_bytes": 630831608,
-      "sha256": "825dd99dd6988e30a67d02a8cf91f428224589062fc2fdf9ac010435f664ad63",
+      "filename": "LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage",
+      "size_bytes": 630872568,
+      "sha256": "45070e9775453ca3662b0a946bc6951c2f7abc85877498c0db3b2088dc7ad0c5",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.2-beta/LocalSR-v0.2.2-beta-Linux-CPU-x86_64.AppImage",
-      "version": "v0.2.2-beta"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage",
+      "version": "v0.3.0-beta"
     }
   ],
   "archives": [
@@ -205,14 +205,14 @@
       "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.1.3-beta/LocalSR-v0.1.3-beta-source-and-notices.tar.gz"
     },
     {
-      "id": "sources-022-linux",
+      "id": "sources-030-linux",
       "name": "Source and notices",
-      "version": "v0.2.2-beta",
-      "filename": "LocalSR-v0.2.2-beta-Linux-CPU-source-and-notices.tar.gz",
-      "size_bytes": 700733358,
-      "sha256": "dd8870a1f3494e12df1a08160d389319b9b41e9bf2a7331efd2c0fdc9a13ecf2",
+      "version": "v0.3.0-beta",
+      "filename": "LocalSR-v0.3.0-beta-Linux-CPU-source-and-notices.tar.gz",
+      "size_bytes": 700764907,
+      "sha256": "4512a7df576223bc46014d8d1faa54517e6c332d4ddc1c65ea3041d33e6216c0",
       "available": true,
-      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.2.2-beta/LocalSR-v0.2.2-beta-Linux-CPU-source-and-notices.tar.gz"
+      "download_url": "https://downloads.hermesr.duckdns.org/releases/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-source-and-notices.tar.gz"
     },
     {
       "id": "sources-030-windows",

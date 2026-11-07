@@ -164,6 +164,9 @@ def main():
     if count != 1:
         raise SystemExit("Expected exactly one download block")
     rendered = re.sub(r'(?<=<span data-version>)[^<]+', release["version"], rendered)
+    press_page = root / "press" / "index.html"
+    press_current = press_page.read_text()
+    press_rendered = re.sub(r'(?<=<span data-version>)[^<]+', release["version"], press_current)
     download_page = root / "download" / "index.html"
     download_current = download_page.read_text()
     download_rendered, download_count = re.subn(
@@ -189,13 +192,14 @@ def main():
     checksums = "".join(lines)
     checksum_path = root / "SHA256SUMS"
     if args.check:
-        if (rendered != current or download_rendered != download_current
+        if (rendered != current or download_rendered != download_current or press_rendered != press_current
                 or not checksum_path.exists() or checksum_path.read_text() != checksums):
             raise SystemExit("Download HTML/checksums need syncing: run localsr/tools/sync_release.py")
         print("Download availability, release versions, and checksums match release.json")
     else:
         path.write_text(rendered)
         download_page.write_text(download_rendered)
+        press_page.write_text(press_rendered)
         checksum_path.write_text(checksums)
         print("Updated download HTML and SHA256SUMS")
 

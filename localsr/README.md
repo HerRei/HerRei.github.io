@@ -88,9 +88,9 @@ pre-releases.
 1. Build, sign and notarize the new version in the LocalSR repository
    (`build/release-<version>/release_macos.sh`). It also writes the signed
    `.app.tar.gz` update archive, its `.sig`, the source bundle and `release.json`.
-2. Copy every installer, source bundle, update archive, signature and engine payload to the Mac mini under
-   `/mnt/hdd/localsr-downloads/public/releases/v<version>/`, and publish the DMG, the source
-   bundle and `SHA256SUMS` as assets of the GitHub release `v<version>`. Both the download page and updater must use `https://github.com/HerRei/local-upscale/releases/download/v<version>/`.
+2. Publish every installer, source bundle, update archive, signature, engine manifest and part, `.sha256`
+   file and `SHA256SUMS` as assets of the GitHub release `v<version>`, and copy them to the Mac mini under
+   `/mnt/hdd/localsr-downloads/public/releases/v<version>/`. Both the download page and updater must use `https://github.com/HerRei/local-upscale/releases/download/v<version>/`.
 3. Edit `updates/beta.json`: raise `version`, update `notes` and `pub_date`, and
    in `platforms["darwin-aarch64-mps-native"]` set the new `url`, the contents of
    the `.sig` file as `signature`, and the `localsr` contract (`engine_id`, `size`,

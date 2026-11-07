@@ -25,9 +25,9 @@ visual direction, page structure, and evidence policy.
 
 Update `release.json` with verified release asset names, sizes, checksums, platform
 requirements, and the version. Public downloads use
-`https://downloads.hermesr.duckdns.org/releases/<tag>/<file>`: the Infomaniak VPS
-relays encrypted traffic over WireGuard to the Mac mini, which serves the files.
-GitHub Releases is a mirror and a convenient transfer source for the mini.
+`https://github.com/HerRei/local-upscale/releases/download/<tag>/<file>`. The Mac
+mini keeps a copy at `https://downloads.hermesr.duckdns.org/releases/<tag>/<file>`
+(through the Infomaniak VPS and WireGuard), which the site does not link.
 Stage files under `/mnt/hdd/localsr-downloads/staging/`, verify their sizes and
 SHA-256 hashes, and install them under `public/releases/<tag>/` before publishing
 any website or updater URL. Then run:
@@ -90,7 +90,7 @@ pre-releases.
    `.app.tar.gz` update archive, its `.sig`, the source bundle and `release.json`.
 2. Copy every installer, source bundle, update archive, signature and engine payload to the Mac mini under
    `/mnt/hdd/localsr-downloads/public/releases/v<version>/`, and publish the DMG, the source
-   bundle and `SHA256SUMS` as mirror assets of the GitHub release `v<version>`. Both the download page and updater must use `https://downloads.hermesr.duckdns.org/releases/v<version>/`.
+   bundle and `SHA256SUMS` as assets of the GitHub release `v<version>`. Both the download page and updater must use `https://github.com/HerRei/local-upscale/releases/download/v<version>/`.
 3. Edit `updates/beta.json`: raise `version`, update `notes` and `pub_date`, and
    in `platforms["darwin-aarch64-mps-native"]` set the new `url`, the contents of
    the `.sig` file as `signature`, and the `localsr` contract (`engine_id`, `size`,

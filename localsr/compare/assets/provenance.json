@@ -1,0 +1,109 @@
+[
+ {
+  "name": "blur",
+  "category": "blur",
+  "source": "lFwtNu840Is.jpg",
+  "unsplash_id": "lFwtNu840Is",
+  "photographer": "Jimmy Hu",
+  "crop": [
+   1300,
+   3200
+  ],
+  "localsr": [
+   "nafnet_gopro_deblur",
+   "realplksr_nomoswebphoto_x4"
+  ],
+  "localsr_source": "catalog",
+  "upscayl": "high-fidelity-4x",
+  "seed": 20261108,
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "motion_length_lr": 5,
+   "motion_angle_degrees": 26.307387412792245,
+   "blur_domain": "encoded sRGB",
+   "blur_boundary": "reflect101",
+   "jpeg_qualities": [
+    90
+   ]
+  }
+ },
+ {
+  "name": "noise",
+  "category": "noise",
+  "source": "Q6-z_J7aJhQ.jpg",
+  "unsplash_id": "Q6-z_J7aJhQ",
+  "photographer": "Revendo",
+  "crop": [
+   660,
+   2300
+  ],
+  "localsr": [
+   "omdb_4x_realwebphoto_v4_dat2"
+  ],
+  "localsr_source": "openmodeldb",
+  "upscayl": "upscayl-standard-4x",
+  "seed": 20261109,
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "electrons": 652.8568086725893,
+   "read_sigma_linear": 0.0068056074437736185,
+   "chroma_sigma_linear": 0.009966279488591405,
+   "noise_domain": "linear sRGB",
+   "jpeg_qualities": [
+    90
+   ]
+  }
+ },
+ {
+  "name": "structure",
+  "category": "structure",
+  "source": "Kcas7Rb2icI.jpg",
+  "unsplash_id": "Kcas7Rb2icI",
+  "photographer": "Fabian Kleiser",
+  "crop": [
+   800,
+   2400
+  ],
+  "localsr": [
+   "realplksr_nomoswebphoto_x4"
+  ],
+  "localsr_source": "catalog",
+  "upscayl": "upscayl-standard-4x",
+  "seed": 20261110,
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "jpeg_qualities": [
+    85
+   ]
+  }
+ },
+ {
+  "name": "jpeg",
+  "category": "jpeg",
+  "source": "GZoEfNZHJhY.jpg",
+  "unsplash_id": "GZoEfNZHJhY",
+  "photographer": "Hans",
+  "crop": [
+   630,
+   2150
+  ],
+  "localsr": [
+   "omdb_1x_dejpg_realplksr_otf",
+   "realplksr_nomoswebphoto_x4"
+  ],
+  "localsr_source": "openmodeldb+catalog",
+  "upscayl": "upscayl-standard-4x",
+  "seed": 20261111,
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "jpeg_qualities": [
+    35,
+    55
+   ]
+  }
+ }
+]

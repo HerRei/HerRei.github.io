@@ -19,3 +19,10 @@
 @media(max-width:360px){.page-shell{padding-inline:16px}.workflow-section{margin-inline:-16px;padding-inline:16px}.masthead nav{gap:12px}.wordmark{font-size:24px}.crop-mark{display:none}.hero h1{font-size:9.3vw}.hero-topline{font-size:7px}.view-switch button{font-size:9px;padding-inline:7px}.section-rule .micro{font-size:8px}.download-intro h2{font-size:55px}.download-link{padding-inline:10px;gap:10px}.download-row .platform-detail{font-size:10px}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
 @media(forced-colors:active){.comparison-line{background:CanvasText}.comparison-line>span{background:Canvas;border-color:CanvasText}.comparison:has(.comparison-range:focus-visible){outline-color:Highlight}.button,.download-link,.alpha-stamp strong{border:1px solid ButtonText}}
+.button-line{color:var(--ink);background:transparent}
+.button-line:hover{color:var(--accent);border-color:var(--accent)}
+.hero-intro .hero-demo{margin-top:12px;margin-left:0}
+@media(max-width:600px){.masthead nav .nav-compare{display:none}}
+.hero-compare{display:block;margin-top:14px;font-size:13px;text-underline-offset:3px}
+@media(max-width:850px){.hero-intro .hero-demo{grid-column:2;grid-row:4;margin-top:12px}.hero-intro .hero-compare{grid-column:2;grid-row:5;text-align:center}}
+@media(max-width:600px){.hero-intro .hero-demo{margin-top:10px}.hero-intro .hero-compare{text-align:left}}

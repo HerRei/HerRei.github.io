@@ -31,7 +31,7 @@ function zoomPercent(): number {
 export const steps: TourStep[] = [
   {
     title: 'Try LocalSR in your browser',
-    body: 'This is the real LocalSR window, replaying a recorded upscale from a MacBook. Seven short steps, then the result is yours to explore. Nothing is uploaded: the photo and the result are part of this page.',
+    body: 'This is the real LocalSR window, replaying a recorded upscale from a MacBook. It only has this one photo, so for your own photos you need the app. Seven short steps, then the result is yours to explore. Nothing is uploaded: the photo and the result are part of this page.',
     // Phones get the app's compact layout; the tour still works, the window is just cramped.
   },
   {

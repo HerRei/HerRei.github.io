@@ -317,6 +317,9 @@
    ],
    "bhi-real": [
     "bhi_dat2_real"
+   ],
+   "bhi-otf": [
+    "bhi_dat2_otf"
    ]
   },
   "upscayl_options": [
@@ -335,7 +338,8 @@
     35,
     55
    ]
-  }
+  },
+  "note": "bhi-otf rendered afterwards on the CPU from the same input.png (PyTorch fp32)."
  },
  {
   "name": "bicycle",
@@ -371,6 +375,9 @@
    ],
    "bhi-real": [
     "bhi_dat2_real"
+   ],
+   "bhi-otf": [
+    "bhi_dat2_otf"
    ]
   },
   "upscayl_options": [
@@ -389,7 +396,8 @@
     35,
     55
    ]
-  }
+  },
+  "note": "bhi-otf rendered afterwards on the CPU from the same input.png (PyTorch fp32)."
  },
  {
   "name": "longhair",

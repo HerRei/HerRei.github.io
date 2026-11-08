@@ -32,6 +32,9 @@ class Document(HTMLParser):
         for attribute in ("href", "src"):
             if attribute in attrs:
                 self.refs.append(attrs[attribute])
+        # Comparison selects name the image each choice loads.
+        if tag == "option" and attrs.get("value", "").endswith((".webp", ".png", ".jpg")):
+            self.refs.append(attrs["value"])
         if tag == "img":
             self.images.append(attrs)
         if tag == "button":

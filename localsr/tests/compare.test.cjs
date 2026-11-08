@@ -29,20 +29,27 @@ function select(choices, chosen) {
 }
 
 function setup(failing = new Set()) {
-  const choices = [['a.webp', 'Upscayl Standard'], ['b.webp', 'LocalSR Best'], ['c.webp', 'Original']];
+  const choices = [['a.webp', 'Upscayl Standard'], ['b.webp', 'LocalSR Best'], ['c.webp', 'Original'], ['input.webp', 'Damaged input']];
   const left = element({ src: 'a.webp' });
   const right = element({ src: 'b.webp' });
   const frame = element({ querySelector: selector => ({ '.before-image': left, '.after-image': right })[selector] });
   frame.classList = { add: name => frame.classes.add(name) };
   frame.style = { setProperty: (key, value) => { frame.styles[key] = value; } };
+  const toggle = element({ textContent: 'Show input' });
   const parts = {
     '.comparison': frame, '.comparison-range': element(), '[data-side="left"]': select(choices, 'a.webp'),
     '[data-side="right"]': select(choices, 'b.webp'), '[data-label="left"]': element({ textContent: 'Upscayl Standard' }),
     '[data-label="right"]': element({ textContent: 'LocalSR Best' }), '[data-status]': element({ hidden: false }),
-    '[data-swap]': element(), '.compare-pick': element(),
+    '[data-toggle-input]': toggle, '[data-swap]': toggle, '.compare-pick': element(),
   };
   const hidden = [parts['.compare-pick'], parts['.comparison-range'], parts['[data-label="left"]']];
-  const figure = { querySelector: selector => parts[selector], querySelectorAll: () => hidden.filter(item => item.hidden) };
+  const figure = {
+    querySelector: selector => {
+      if (selector === '[data-toggle-input], [data-swap]') return toggle;
+      return parts[selector];
+    },
+    querySelectorAll: () => hidden.filter(item => item.hidden),
+  };
   class ControlledImage {
     set src(value) { this.url = value; }
     decode() { return failing.has(this.url) ? Promise.reject(new Error('missing')) : Promise.resolve(); }
@@ -50,7 +57,7 @@ function setup(failing = new Set()) {
   vm.runInNewContext(source, {
     document: { querySelectorAll: () => [figure] }, Image: ControlledImage, Promise, Number, Math,
   });
-  return { ...parts, left, right, frame, hidden };
+  return { ...parts, toggle, left, right, frame, hidden };
 }
 
 test('the comparison is ready with both sides labelled', () => {
@@ -75,14 +82,34 @@ test('a new choice shows only after both images have loaded', async () => {
   assert.equal(ui['[data-status]'].textContent, 'Comparing Original with LocalSR Best.');
 });
 
-test('swap exchanges the two sides', async () => {
+test('toggle switches between input vs original and the comparison', async () => {
   const ui = setup();
-  ui['[data-swap]'].fire('click');
+  assert.equal(ui.toggle.textContent, 'Show input');
+  assert.equal(ui.toggle.attrs['aria-pressed'], 'false');
+
+  // Click toggle: should show Damaged input on left and Original on right
+  ui.toggle.fire('click');
   await tick();
-  assert.equal(ui.left.src, 'b.webp');
-  assert.equal(ui.right.src, 'a.webp');
-  assert.equal(ui['[data-side="left"]'].value, 'b.webp');
-  assert.equal(ui['.comparison-range'].attrs['aria-valuetext'], '50% LocalSR Best, 50% Upscayl Standard');
+  assert.equal(ui.left.src, 'input.webp');
+  assert.equal(ui.left.alt, 'Damaged input');
+  assert.equal(ui.right.src, 'c.webp');
+  assert.equal(ui.right.alt, 'Original');
+  assert.equal(ui['[data-side="left"]'].value, 'input.webp');
+  assert.equal(ui['[data-side="right"]'].value, 'c.webp');
+  assert.equal(ui.toggle.textContent, 'Show comparison');
+  assert.equal(ui.toggle.attrs['aria-pressed'], 'true');
+
+  // Click toggle again: should restore comparison (Upscayl Standard and LocalSR Best)
+  ui.toggle.fire('click');
+  await tick();
+  assert.equal(ui.left.src, 'a.webp');
+  assert.equal(ui.left.alt, 'Upscayl Standard');
+  assert.equal(ui.right.src, 'b.webp');
+  assert.equal(ui.right.alt, 'LocalSR Best');
+  assert.equal(ui['[data-side="left"]'].value, 'a.webp');
+  assert.equal(ui['[data-side="right"]'].value, 'b.webp');
+  assert.equal(ui.toggle.textContent, 'Show input');
+  assert.equal(ui.toggle.attrs['aria-pressed'], 'false');
 });
 
 test('a missing image keeps the previous comparison and says so', async () => {

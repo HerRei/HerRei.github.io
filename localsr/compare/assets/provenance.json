@@ -1,21 +1,41 @@
 [
  {
-  "name": "blur",
+  "name": "sign",
   "category": "blur",
-  "source": "lFwtNu840Is.jpg",
-  "unsplash_id": "lFwtNu840Is",
-  "photographer": "Jimmy Hu",
+  "source": "TLJr3ThwNlw.jpg",
+  "unsplash_id": "TLJr3ThwNlw",
   "crop": [
-   1300,
-   3200
+   700,
+   0
   ],
-  "localsr": [
-   "nafnet_gopro_deblur",
-   "realplksr_nomoswebphoto_x4"
-  ],
-  "localsr_source": "catalog",
-  "upscayl": "high-fidelity-4x",
   "seed": 20261108,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "deblur-best": [
+    "nafnet_gopro_deblur",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
   "degradation": {
    "jpeg_subsampling": "4:2:0",
    "jpeg_decoder": "Pillow/libjpeg",
@@ -29,27 +49,101 @@
   }
  },
  {
-  "name": "noise",
-  "category": "noise",
-  "source": "Q6-z_J7aJhQ.jpg",
-  "unsplash_id": "Q6-z_J7aJhQ",
-  "photographer": "Revendo",
+  "name": "lane",
+  "category": "blur",
+  "source": "lyum5c8gUWE.jpg",
+  "unsplash_id": "lyum5c8gUWE",
   "crop": [
-   660,
-   2300
+   2400,
+   200
   ],
-  "localsr": [
-   "omdb_4x_realwebphoto_v4_dat2"
-  ],
-  "localsr_source": "openmodeldb",
-  "upscayl": "upscayl-standard-4x",
   "seed": 20261109,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "deblur-best": [
+    "nafnet_gopro_deblur",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
   "degradation": {
    "jpeg_subsampling": "4:2:0",
    "jpeg_decoder": "Pillow/libjpeg",
-   "electrons": 652.8568086725893,
-   "read_sigma_linear": 0.0068056074437736185,
-   "chroma_sigma_linear": 0.009966279488591405,
+   "motion_length_lr": 9,
+   "motion_angle_degrees": 137.00186797585025,
+   "blur_domain": "encoded sRGB",
+   "blur_boundary": "reflect101",
+   "jpeg_qualities": [
+    90
+   ]
+  }
+ },
+ {
+  "name": "cat",
+  "category": "noise",
+  "source": "2Ccbg5Hlx0U.jpg",
+  "unsplash_id": "2Ccbg5Hlx0U",
+  "crop": [
+   3900,
+   4200
+  ],
+  "crop_size": [
+   4096,
+   3072
+  ],
+  "seed": 20261110,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "denoise-best": [
+    "nafnet_sidd_width64",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "electrons": 856.9512501246145,
+   "read_sigma_linear": 0.0037105903441832662,
+   "chroma_sigma_linear": 0.007826418910951958,
    "noise_domain": "linear sRGB",
    "jpeg_qualities": [
     90
@@ -57,21 +151,90 @@
   }
  },
  {
-  "name": "structure",
+  "name": "shop",
+  "category": "noise",
+  "source": "Q6-z_J7aJhQ.jpg",
+  "unsplash_id": "Q6-z_J7aJhQ",
+  "crop": [
+   660,
+   2300
+  ],
+  "seed": 20261111,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "denoise-best": [
+    "nafnet_sidd_width64",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "electrons": 769.8969142024612,
+   "read_sigma_linear": 0.007935182576555561,
+   "chroma_sigma_linear": 0.00905595874023573,
+   "noise_domain": "linear sRGB",
+   "jpeg_qualities": [
+    90
+   ]
+  }
+ },
+ {
+  "name": "guildhouse",
   "category": "structure",
   "source": "Kcas7Rb2icI.jpg",
   "unsplash_id": "Kcas7Rb2icI",
-  "photographer": "Fabian Kleiser",
   "crop": [
    800,
    2400
   ],
-  "localsr": [
-   "realplksr_nomoswebphoto_x4"
+  "seed": 20261112,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "hat-l": [
+    "hat_l_x4_imagenet"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
   ],
-  "localsr_source": "catalog",
-  "upscayl": "upscayl-standard-4x",
-  "seed": 20261110,
   "degradation": {
    "jpeg_subsampling": "4:2:0",
    "jpeg_decoder": "Pillow/libjpeg",
@@ -81,28 +244,194 @@
   }
  },
  {
-  "name": "jpeg",
+  "name": "books",
+  "category": "structure",
+  "source": "57I496odF5c.jpg",
+  "unsplash_id": "57I496odF5c",
+  "crop": [
+   250,
+   1500
+  ],
+  "seed": 20261113,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "hat-l": [
+    "hat_l_x4_imagenet"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "jpeg_qualities": [
+    85
+   ]
+  }
+ },
+ {
+  "name": "market",
   "category": "jpeg",
   "source": "GZoEfNZHJhY.jpg",
   "unsplash_id": "GZoEfNZHJhY",
-  "photographer": "Hans",
   "crop": [
    630,
    2150
   ],
-  "localsr": [
-   "omdb_1x_dejpg_realplksr_otf",
-   "realplksr_nomoswebphoto_x4"
+  "seed": 20261114,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "fbcnn-best": [
+    "fbcnn_color",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "dejpg-best": [
+    "omdb_1x_dejpg_realplksr_otf",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
   ],
-  "localsr_source": "openmodeldb+catalog",
-  "upscayl": "upscayl-standard-4x",
-  "seed": 20261111,
   "degradation": {
    "jpeg_subsampling": "4:2:0",
    "jpeg_decoder": "Pillow/libjpeg",
    "jpeg_qualities": [
     35,
     55
+   ]
+  }
+ },
+ {
+  "name": "bicycle",
+  "category": "jpeg",
+  "source": "9Eq26n8TeCM.jpg",
+  "unsplash_id": "9Eq26n8TeCM",
+  "crop": [
+   1350,
+   250
+  ],
+  "crop_size": [
+   3200,
+   2400
+  ],
+  "seed": 20261115,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "fbcnn-best": [
+    "fbcnn_color",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "dejpg-best": [
+    "omdb_1x_dejpg_realplksr_otf",
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "realwebphoto": [
+    "omdb_4x_realwebphoto_v4_dat2"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "jpeg_qualities": [
+    35,
+    55
+   ]
+  }
+ },
+ {
+  "name": "longhair",
+  "category": "clean",
+  "source": "Q_bl5gqPI3c.jpg",
+  "unsplash_id": "Q_bl5gqPI3c",
+  "crop": [
+   2550,
+   1000
+  ],
+  "seed": 20261116,
+  "localsr_options": {
+   "quick": [
+    "span_photo_x4"
+   ],
+   "best": [
+    "realplksr_nomoswebphoto_x4"
+   ],
+   "swinir": [
+    "swinir_m_real_x4_gan"
+   ],
+   "hat-l": [
+    "hat_l_x4_imagenet"
+   ],
+   "bhi-real": [
+    "bhi_dat2_real"
+   ]
+  },
+  "upscayl_options": [
+   "upscayl-standard-4x",
+   "upscayl-lite-4x",
+   "high-fidelity-4x",
+   "remacri-4x",
+   "ultramix-balanced-4x",
+   "ultrasharp-4x",
+   "digital-art-4x"
+  ],
+  "degradation": {
+   "jpeg_subsampling": "4:2:0",
+   "jpeg_decoder": "Pillow/libjpeg",
+   "jpeg_qualities": [
+    92
    ]
   }
  }

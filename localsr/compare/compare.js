@@ -5,11 +5,12 @@
   document.querySelectorAll('[data-compare]').forEach(figure => {
     const frame = figure.querySelector('.comparison');
     const range = figure.querySelector('.comparison-range');
-    const line = figure.querySelector('.comparison-line');
     const left = frame.querySelector('.before-image');
     const right = frame.querySelector('.after-image');
     const pickLeft = figure.querySelector('[data-side="left"]');
     const pickRight = figure.querySelector('[data-side="right"]');
+    const tagLeft = figure.querySelector('[data-label="left"]');
+    const tagRight = figure.querySelector('[data-label="right"]');
 
     function label(select) {
       return select.options[select.selectedIndex].text;
@@ -26,14 +27,20 @@
       left.alt = label(pickLeft);
       right.src = pickRight.value;
       right.alt = label(pickRight);
+      tagLeft.textContent = label(pickLeft);
+      tagRight.textContent = label(pickRight);
       setSplit(range.value);
     }
 
+    figure.querySelector('[data-swap]').addEventListener('click', () => {
+      [pickLeft.value, pickRight.value] = [pickRight.value, pickLeft.value];
+      update();
+    });
     pickLeft.addEventListener('change', update);
     pickRight.addEventListener('change', update);
     range.addEventListener('input', () => setSplit(range.value));
     frame.classList.add('is-ready');
-    [range, line, figure.querySelector('.compare-pick')].forEach(element => { element.hidden = false; });
+    figure.querySelectorAll('[hidden]').forEach(element => { element.hidden = false; });
     setSplit(range.value);
   });
 })();

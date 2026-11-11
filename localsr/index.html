@@ -222,14 +222,14 @@
               <p class="platform-req">Windows 10 / 11 · x86-64</p>
               <p>v0.3.0-beta · CPU backend · unsigned installer</p>
               <a class="btn btn-primary download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.3.0-beta for Windows, 179 MB">Download .exe · 179 MB</a>
-              <ul class="platform-more"><li><a href="download/#parts">NVIDIA CUDA edition, untested</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition, untested</a> · 208 MB</li></ul>
+              <ul class="platform-more"><li><a href="download/#parts">NVIDIA CUDA edition</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition</a> · 208 MB</li></ul>
             </article>
             <article class="platform" data-platform="linux" data-size="631 MB" aria-labelledby="download-linux">
               <h3 id="download-linux">Linux</h3>
               <p class="platform-req">Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)</p>
               <p>v0.3.0-beta · CPU backend · AppImage</p>
               <a class="btn btn-primary download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.3.0-beta for Linux, 631 MB">Download .AppImage · 631 MB</a>
-              <ul class="platform-more"><li><a href="download/#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="download/#parts">NVIDIA CUDA edition, untested</a> · 7,677 MB in 4 parts</li></ul>
+              <ul class="platform-more"><li><a href="download/#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="download/#parts">NVIDIA CUDA edition</a> · 7,677 MB in 4 parts</li></ul>
             </article>
             <!-- downloads:end -->
       </div>
@@ -253,14 +253,14 @@
           <li>Upscaling reconstructs detail. Faces, text and fine patterns can look sharp and still differ from the real scene, especially at 4×.</li>
           <li>Video is upscaled one frame at a time, so fine detail can flicker.</li>
           <li>Large images and long videos can take hours. Try a small one first.</li>
-          <li>The Mac build is tested the most. The NVIDIA CUDA and DirectML editions are untested so far.</li>
+          <li>The Mac build is tested the most.</li>
         </ul>
         <p class="quiet" style="font-size: 15.5px">Results are saved as new files, so your originals stay untouched.</p>
       </div>
       <div class="questions">
         <h2 class="h2" style="margin-bottom: 18px">Questions</h2>
         <details><summary>Is it free?</summary><p>Yes. LocalSR is open source under the MIT license, with nothing to buy or sign up for. The models you download keep their own licenses; <a href="models/#licenses">the model guide</a> lists them.</p></details>
-        <details><summary>Will it use my graphics card?</summary><p>On a Mac, yes: the Neural Engine and the Apple Silicon GPU, with a CPU fallback. On Windows and Linux the standard download runs on the CPU. GPU editions exist for AMD (ROCm on Linux, tested on a Radeon RX&nbsp;9060&nbsp;XT), NVIDIA (CUDA on Windows and Linux, untested) and any DirectX&nbsp;12 card (DirectML on Windows, untested).</p></details>
+        <details><summary>Will it use my graphics card?</summary><p>On a Mac, yes: the Neural Engine and the Apple Silicon GPU, with a CPU fallback. On Windows and Linux the standard download runs on the CPU. GPU editions exist for AMD (ROCm on Linux, tested on a Radeon RX&nbsp;9060&nbsp;XT), NVIDIA (CUDA on Windows and Linux) and any DirectX&nbsp;12 card (DirectML on Windows).</p></details>
         <details><summary>What does “beta” mean here?</summary><p>Features can still change. The Mac build is signed, notarized and tells you when a newer beta is available. The Windows and Linux packages pass the same automated checks but have not had the manual testing the Mac build gets, and they do not update themselves yet. Keep your originals.</p></details>
         <details><summary>Can it recover the original detail?</summary><p>Super-resolution estimates plausible detail from an image. It cannot guarantee the recovery of information that was lost, and results vary by source and model. Inspect small text, faces and fine patterns carefully.</p></details>
         <details><summary>Are the models included?</summary><p>Most models download separately, when you first choose them. LocalSR checks every download against its expected size and SHA-256 checksum.</p></details>

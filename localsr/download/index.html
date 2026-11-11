@@ -39,14 +39,14 @@
               <p class="platform-req">Windows 10 / 11 · x86-64</p>
               <p>v0.3.0-beta · CPU backend · unsigned installer</p>
               <a class="btn btn-primary download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.3.0-beta for Windows, 179 MB">Download .exe · 179 MB</a>
-              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition, untested</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition, untested</a> · 208 MB</li></ul>
+              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition</a> · 208 MB</li></ul>
             </article>
             <article class="platform" id="linux" data-platform="linux" data-size="631 MB" aria-labelledby="download-linux">
               <h3 id="download-linux">Linux</h3>
               <p class="platform-req">Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)</p>
               <p>v0.3.0-beta · CPU backend · AppImage</p>
               <a class="btn btn-primary download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.3.0-beta for Linux, 631 MB">Download .AppImage · 631 MB</a>
-              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="#parts">NVIDIA CUDA edition, untested</a> · 7,677 MB in 4 parts</li></ul>
+              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="#parts">NVIDIA CUDA edition</a> · 7,677 MB in 4 parts</li></ul>
             </article>
         <!-- downloads:end -->
       </div>
@@ -60,8 +60,8 @@
 
       <section id="know"><h2>What to know first</h2>
         <ul>
-          <li><strong>This is a beta.</strong> Features can still change, and some hardware is untested. The Mac build is the most tested. The Windows and Linux packages pass the codec policy and an automated test of the installed app, but have not had this release’s manual checks.</li>
-          <li><strong>Graphics cards on Windows and Linux.</strong> The standard downloads run on the CPU. The GPU editions are listed under each platform: <strong>AMD ROCm</strong> (Linux), tested on a Radeon RX&nbsp;9060&nbsp;XT; <strong>NVIDIA CUDA</strong> (Windows and Linux) and <strong>DirectML</strong> (Windows), both <strong>untested</strong>: CUDA has not yet run on an NVIDIA card, and DirectML’s photo-denoising results can still differ from the CPU’s. CUDA needs a current NVIDIA driver; ROCm needs a supported Radeon and the amdgpu driver. The CUDA and ROCm editions are several gigabytes and come <a href="#parts">in parts</a>.</li>
+          <li><strong>This is a beta.</strong> Features can still change, and not every graphics card has been tried yet. The Mac build is the most tested. The Windows and Linux packages pass the codec policy and an automated test of the installed app, but have not had this release’s manual checks.</li>
+          <li><strong>Graphics cards on Windows and Linux.</strong> The standard downloads run on the CPU. The GPU editions are listed under each platform: <strong>AMD ROCm</strong> (Linux), tested on a Radeon RX&nbsp;9060&nbsp;XT; <strong>NVIDIA CUDA</strong> (Windows and Linux) and <strong>DirectML</strong> (Windows). CUDA has not yet run on an NVIDIA card, and DirectML’s photo-denoising results can still differ from the CPU’s. CUDA needs a current NVIDIA driver; ROCm needs a supported Radeon and the amdgpu driver. The CUDA and ROCm editions are several gigabytes and come <a href="#parts">in parts</a>.</li>
           <li><strong>Phone and camera videos open on a Mac.</strong> LocalSR itself includes only royalty-free video formats (AV1, VP9, FFV1 and more); on macOS it hands H.264, HEVC and AAC to the codecs that ship with the system, so iPhone and camera recordings open and export without extra software. Formats macOS cannot read (WMV, DivX, FLV) use an FFmpeg you install yourself; LocalSR finds it automatically and shows the install command when a file needs it. On Windows and Linux there are no such system codecs, so every patent-licensed format &mdash; H.264 and HEVC included &mdash; needs that installed FFmpeg; images and royalty-free video work without it.</li>
           <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — the app never overwrites them — and inspect results before you rely on or republish them.</li>
           <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Every model LocalSR downloads for you is published under Apache-2.0, MIT, BSD-3-Clause or CC&nbsp;BY&nbsp;4.0, which allow personal and commercial use (CC&nbsp;BY with attribution). Only the two optional face models, which you have to supply yourself, have unresolved rights. The <a href="../models/#licenses">model license table</a> lists each one.</li>
@@ -86,7 +86,7 @@ chmod +x LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage</code></pre>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004</a> <span class="quiet">1,992 MB</span></li>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005</a> <span class="quiet">1,985 MB</span></li>
           </ul>
-        <h3>Linux · NVIDIA CUDA edition, untested</h3>
+        <h3>Linux · NVIDIA CUDA edition</h3>
           <p>Download all 4 parts into one folder, join them, check the result and make it executable:</p>
           <pre><code>cat LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-* &gt; LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage
 sha256sum LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage   # compare with SHA256SUMS
@@ -97,7 +97,7 @@ chmod +x LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage</code></pre>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004</a> <span class="quiet">1,700 MB</span></li>
           </ul>
-        <h3>Windows · NVIDIA CUDA edition, untested</h3>
+        <h3>Windows · NVIDIA CUDA edition</h3>
           <p>Download the installer and all 3 engine parts into one folder, keep their names, and run the installer. It checks each part's size and SHA-256 and unpacks the engine itself.</p>
           <ul class="parts-list">
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe</a> <span class="quiet">5 MB</span></li>

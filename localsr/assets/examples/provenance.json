@@ -38,6 +38,28 @@
       "run": "LocalSR 0.2.1 packaged engine, MacBook Pro M1 Pro 16 GB, Apple GPU (MPS), 9.2 s for the whole 768 × 1024 photo; rerun with all network access denied gave a byte-identical file"
     },
     {
+      "id": "cat",
+      "input": "cat-input.png",
+      "result": "../../compare/assets/longhair/localsr-best.webp",
+      "thumb": "cat-thumb.webp",
+      "input_pixels": [
+        256,
+        192
+      ],
+      "result_pixels": [
+        1024,
+        768
+      ],
+      "input_preparation": "Recovered from compare/assets/longhair/input.webp (the comparison page's nearest-neighbour 4× copy of the input) by averaging each 4 × 4 block",
+      "source_input_sha256": "d7d9d7941c724010740edcd81aead2b4536c56145b644e0b1404643e987bf007",
+      "source_result_sha256": "a7062c62ea8a4270e026397d022b9a4eb91e596c726b263ab29f399f23586c24",
+      "subject": "A long-haired cat, reduced to 256 × 192 with no damage added",
+      "photo": "Ingo W. Dühring, Unsplash License",
+      "task": "Upscale ×4, Best",
+      "model": "RealPLKSR ×4 NomosWebPhoto (Philip Hofmann, CC BY 4.0)",
+      "run": "PyTorch fp32 through spandrel as in the app, AMD Radeon RX 9060 XT under Linux; median 0.1 s for 256 × 192 → 1024 × 768 with the model loaded (models/which)"
+    },
+    {
       "id": "corridor",
       "input": "corridor-input.png",
       "result": "corridor-result.webp",
@@ -147,28 +169,6 @@
       "task": "Upscale ×4, Quick",
       "model": "SPAN ×4 NomosUni (Philip Hofmann, CC BY 4.0)",
       "run": "LocalSR automation CLI, Apple GPU (MPS), fp32; see assets/image-provenance.json"
-    },
-    {
-      "id": "sign",
-      "input": "sign-input.png",
-      "result": "../../compare/assets/sign/localsr-deblur-best.webp",
-      "thumb": "sign-thumb.webp",
-      "input_pixels": [
-        256,
-        192
-      ],
-      "result_pixels": [
-        1024,
-        768
-      ],
-      "input_preparation": "Recovered from compare/assets/sign/input.webp (the comparison page's nearest-neighbour 4× copy of the damaged input) by averaging each 4 × 4 block",
-      "source_input_sha256": "14615473cd6b6b2046de348a6d325df5a4a1187dffde10255af3d4914df5d4dc",
-      "source_result_sha256": "3a8622a6ca8e5805b190b42d52cb94abe44ec534d1955fdf9f8d3e2b5caa2e0a",
-      "subject": "A hiking sign in Belp; reduced to 256 × 192 and given a simulated motion blur and JPEG q90",
-      "photo": "Ivan Prodanov, Unsplash License (unsplash_id TLJr3ThwNlw)",
-      "task": "Fix blur, then upscale ×4 with Best",
-      "model": "NAFNet GoPro (Megvii Research, MIT), then RealPLKSR ×4 NomosWebPhoto (Philip Hofmann, CC BY 4.0)",
-      "run": "PyTorch fp32 through spandrel as in the app, AMD Radeon RX 9060 XT under Linux; median 0.1 s for 256 × 192 → 1024 × 768 with the model loaded (models/which)"
     }
   ],
   "files_sha256": {
@@ -178,13 +178,13 @@
     "calf-input.png": "8688c476063859e83ee776f40b4ad4e3a31e5b493450086b89757c4962388499",
     "calf-result.webp": "94c652b0adb237d56742790876b04c190e907fc61b99bd8bbd6008cb629a4c73",
     "calf-thumb.webp": "f2ee7c7c4a338d16c98d14e4aade780a93765d99634e8afceebb24bb49b9b8f8",
+    "cat-input.png": "2ffcc33ea8acaddb838306cac2b721c340f775ae0827d47bddc6bcb7b8b2bbdc",
+    "cat-thumb.webp": "241f17f07577ed218c5cabe1af34ea550325592e41ca60678bd7e542000467c5",
     "corridor-input.png": "b0236158772e7d8d3ef8549be009642ef185aeb2d2b06aa039258d30b291cd2d",
     "corridor-result.webp": "6a73d63fafef722b5befc57ed6a48ab68995bbf3e5f5362c84fa74e3ee73cbec",
     "corridor-thumb.webp": "7631900df8d9041c3edc66fc10f72408c4e8db7b1cf5e0d541b346de30f94fa8",
     "marseille-input.png": "58d57d20cbdeb38af2c41898f03c53cff97252ca9e880474779195101809ce35",
     "marseille-result.webp": "9409cc158ecef7f5ccbb66d9743486da2af7786a984ba3721824c4aee36e680f",
-    "marseille-thumb.webp": "d80c72cab7419160772fdf3d59748df31e3963c1ce58ba4544128ce0a65d84e9",
-    "sign-input.png": "7010aaedbe5efe4b891708bea97567d673b29615a86973f2209681c2cb3f3fe3",
-    "sign-thumb.webp": "17a660d3b3aa1f4d895560340858c33fe01ea00f5a8fa24cb2c40ba79b1646da"
+    "marseille-thumb.webp": "d80c72cab7419160772fdf3d59748df31e3963c1ce58ba4544128ce0a65d84e9"
   }
 }

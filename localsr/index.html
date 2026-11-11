@@ -44,11 +44,10 @@
       <h1 id="hero-title">Image and video restoration, on your computer.</h1>
       <p class="lead">LocalSR is a free desktop app for upscaling photos, cleaning up noise and blur, and enhancing video. The models run on your computer, and your photos stay there too.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary btn-large" href="download/" data-os-download>Download</a>
+        <a class="btn btn-primary btn-large" href="#download">Download free</a>
         <a class="btn btn-large" href="demo/">Try it in your browser</a>
       </div>
-      <p class="hero-note" data-os-note>Free for macOS, Windows and Linux. Version <span data-version>v0.3.0-beta</span>.</p>
-      <p class="hero-note"><a href="download/">All downloads and GPU editions</a></p>
+      <p class="hero-note">For macOS, Windows and Linux. Version <span data-version>v0.3.0-beta</span>.</p>
     </div>
 
     <dl class="facts">
@@ -86,25 +85,25 @@
           data-alt-before="Detail of a phone photo of an orange butterfly, enlarged by the browser" data-alt-after="The same detail upscaled four times by LocalSR"
           data-task="Upscale ×4, Best" data-model="RealPLKSR ×4 NomosWebPhoto" data-size="768 × 1024 → 3072 × 4096" data-ran="MacBook Pro M1 Pro, 9.2&nbsp;s"><img src="assets/examples/butterfly-thumb.webp" width="64" height="64" alt="">Butterfly</button>
         <button type="button" aria-pressed="false"
-          data-name="Hiking sign, motion blur" data-dims="Whole photo"
-          data-before="assets/examples/sign-input.png" data-after="compare/assets/sign/localsr-deblur-best.webp"
-          data-alt-before="A small photo of a yellow hiking sign with motion blur, enlarged by the browser" data-alt-after="The same photo with the blur removed and upscaled four times by LocalSR"
-          data-task="Fix blur, then upscale ×4" data-model="NAFNet GoPro, then RealPLKSR ×4" data-size="256 × 192 → 1024 × 768" data-ran="Linux PC, Radeon RX 9060 XT, 0.1&nbsp;s"><img src="assets/examples/sign-thumb.webp" width="64" height="64" alt="">Blurred sign</button>
+          data-name="Long-haired cat" data-dims="Whole photo"
+          data-before="assets/examples/cat-input.png" data-after="compare/assets/longhair/localsr-best.webp"
+          data-alt-before="A small photo of a long-haired cat, enlarged by the browser" data-alt-after="The same photo upscaled four times by LocalSR"
+          data-task="Upscale ×4, Best" data-model="RealPLKSR ×4 NomosWebPhoto" data-size="256 × 192 → 1024 × 768" data-ran="Linux PC, Radeon RX 9060 XT, 0.1&nbsp;s"><img src="assets/examples/cat-thumb.webp" width="64" height="64" alt="">Cat</button>
         <button type="button" aria-pressed="false"
           data-name="Painted ceiling, ISO 6400" data-dims="Detail at 1:1"
           data-before="assets/examples/corridor-input.png" data-after="assets/examples/corridor-result.webp"
           data-alt-before="Detail of a painted ceiling photographed at ISO 6400, with visible noise" data-alt-after="The same detail after LocalSR removed the noise"
-          data-task="Remove noise, same size" data-model="SCUNet Color" data-size="6000 × 4000, unchanged" data-ran="MacBook Pro M1 Pro, 117.5&nbsp;s"><img src="assets/examples/corridor-thumb.webp" width="64" height="64" alt="">High ISO</button>
+          data-task="Remove noise, same size" data-model="SCUNet Color" data-size="6000 × 4000, unchanged" data-ran="MacBook Pro M1 Pro, 117.5&nbsp;s"><img src="assets/examples/corridor-thumb.webp" width="64" height="64" alt="">Ceiling</button>
         <button type="button" aria-pressed="false"
           data-name="Calf, small crop" data-dims="Detail at 1:1"
           data-before="assets/examples/calf-input.png" data-after="assets/examples/calf-result.webp"
           data-alt-before="A small crop of a calf at a feeding fence, enlarged by the browser" data-alt-after="The same crop upscaled four times by LocalSR"
-          data-task="Upscale ×4, Best" data-model="RealPLKSR ×4 NomosWebPhoto" data-size="342 × 342 → 1368 × 1368" data-ran="MacBook Pro M1 Pro, 2.4&nbsp;s"><img src="assets/examples/calf-thumb.webp" width="64" height="64" alt="">Small crop</button>
+          data-task="Upscale ×4, Best" data-model="RealPLKSR ×4 NomosWebPhoto" data-size="342 × 342 → 1368 × 1368" data-ran="MacBook Pro M1 Pro, 2.4&nbsp;s"><img src="assets/examples/calf-thumb.webp" width="64" height="64" alt="">Calf</button>
         <button type="button" aria-pressed="false"
-          data-name="Marseille, 480 pixels wide" data-dims="Detail at 1:1"
+          data-name="Balconies in Marseille" data-dims="Detail at 1:1"
           data-before="assets/examples/marseille-input.png" data-after="assets/examples/marseille-result.webp"
           data-alt-before="Detail of a small photo of balconies in Marseille, enlarged by the browser" data-alt-after="The same detail upscaled four times by LocalSR"
-          data-task="Upscale ×4, Quick" data-model="SPAN ×4 NomosUni" data-size="480 × 240 → 1920 × 960" data-ran="A Mac, Apple GPU"><img src="assets/examples/marseille-thumb.webp" width="64" height="64" alt="">Quick</button>
+          data-task="Upscale ×4, Quick" data-model="SPAN ×4 NomosUni" data-size="480 × 240 → 1920 × 960" data-ran="A Mac, Apple GPU"><img src="assets/examples/marseille-thumb.webp" width="64" height="64" alt="">Balconies</button>
       </div>
       <dl class="viewer-facts">
         <div><dt>Task</dt><dd data-fact="task">Upscale ×4, Best</dd></div>
@@ -233,6 +232,11 @@
               <ul class="platform-more"><li><a href="download/#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="download/#parts">NVIDIA CUDA edition, untested</a> · 7,677 MB in 4 parts</li></ul>
             </article>
             <!-- downloads:end -->
+      </div>
+      <div class="os-notes">
+        <div><h3>On a Mac</h3><p>Open the DMG and drag LocalSR onto the Applications folder. It updates itself.</p></div>
+        <div><h3>On Windows</h3><p>The installer is not code-signed yet, so SmartScreen warns first: choose <em>More info</em>, then <em>Run anyway</em>.</p></div>
+        <div><h3>On Linux</h3><p>Make the AppImage executable with <code class="inline-code">chmod +x</code>, then run it.</p></div>
       </div>
       <div class="after-download">
         <span>On a Mac with Homebrew: <code class="inline-code">brew install --cask herrei/tap/localsr</code></span>

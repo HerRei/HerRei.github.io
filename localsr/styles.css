@@ -180,7 +180,7 @@ code, pre, kbd { font-family: var(--mono); }
 .hero-text .lead { max-width: 500px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
 .hero-note { font-size: 15px; color: var(--secondary); }
-.facts { grid-area: facts; align-self: end; font-size: 15.5px; line-height: 1.45; }
+.facts { grid-area: facts; align-self: start; margin-top: 16px; font-size: 15.5px; line-height: 1.45; }
 .facts > div { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 16px; padding: 13px 0; border-top: 1px solid var(--border); }
 .facts > div:last-child { border-bottom: 1px solid var(--border); }
 .facts dt { font-weight: 600; }
@@ -388,6 +388,7 @@ code, pre, kbd { font-family: var(--mono); }
 .os-notes > div { padding: 0 4px; }
 .os-notes h3 { font-size: 16px; margin-bottom: 6px; }
 .os-notes p { font-size: 15px; color: var(--secondary); }
+.os-notes p .inline-code { padding: 1px 6px; font-size: 13.5px; }
 
 /* Comparison pages (compare/, models/which/) */
 .compare-main { max-width: 1312px; margin: 0 auto; padding: 56px var(--gutter) 96px; }

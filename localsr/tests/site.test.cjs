@@ -42,30 +42,19 @@ function fakePage() {
     panel.querySelector = selector => ({ '.download-link': button, '.platform-req': requirements })[selector];
     return Object.assign(panel, { button });
   });
-  const hero = make({ textContent: 'Download', attrs: { href: 'download/' } });
-  const note = make({ textContent: 'Free for macOS, Windows and Linux.' });
-  const doc = {
-    querySelectorAll: selector => (selector === '.platform[data-platform]' ? panels : []),
-    querySelector: selector => ({ '[data-os-download]': hero, '[data-os-note]': note })[selector] || null,
-  };
-  return { doc, panels, hero, note };
+  const doc = { querySelectorAll: selector => (selector === '.platform[data-platform]' ? panels : []) };
+  return { doc, panels };
 }
 
-test('the visitor’s platform gets the red button and the hero names it', () => {
-  const { doc, panels, hero, note } = fakePage();
+test('the visitor’s platform gets the red button and the others stay neutral', () => {
+  const { doc, panels } = fakePage();
   markDownloads(doc, 'windows');
-  assert.equal(hero.textContent, 'Download for Windows');
-  assert.equal(hero.attrs.href, 'https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/windows.file', 'the hero downloads the file itself');
-  assert.equal(note.textContent, 'Free, 179 MB. Windows 10 / 11 · x86-64. The installer is not signed yet: if SmartScreen warns, choose More info, then Run anyway.');
   assert.ok(panels[1].classes.has('is-yours') && panels[1].button.classes.has('btn-primary'));
   assert.ok(!panels[0].button.classes.has('btn-primary') && !panels[2].button.classes.has('btn-primary'));
 });
 
-test('without a desktop platform the hero points at all three downloads', () => {
-  const { doc, panels, hero, note } = fakePage();
+test('without a desktop platform no download is singled out', () => {
+  const { doc, panels } = fakePage();
   markDownloads(doc, null);
-  assert.equal(hero.textContent, 'Download');
-  assert.equal(hero.attrs.href, '#download');
-  assert.equal(note.textContent, 'A free desktop app for macOS, Windows and Linux.');
-  assert.ok(panels.every(panel => !panel.classes.has('is-yours')));
+  assert.ok(panels.every(panel => !panel.classes.has('is-yours') && !panel.button.classes.has('btn-primary')));
 });

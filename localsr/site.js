@@ -1,15 +1,8 @@
-/* Small enhancements on every page: the download for this computer, the current section in
+/* Small enhancements on every page: marking the download for this computer, the current section in
    "On this page", and closing the small-screen menu. Everything works without it. */
 (() => {
   'use strict';
 
-  const NAMES = { macos: 'macOS', windows: 'Windows', linux: 'Linux' };
-  // What to do once the file is downloaded, shown under the main download button.
-  const HINTS = {
-    macos: 'Open the DMG and drag LocalSR onto Applications.',
-    windows: 'The installer is not signed yet: if SmartScreen warns, choose More info, then Run anyway.',
-    linux: 'Make the AppImage executable (chmod +x), then run it.',
-  };
 
   // Desktop operating system of this browser, or null on phones, tablets and anything unknown.
   function detectPlatform(nav) {
@@ -29,21 +22,6 @@
       mine.classList.add('is-yours');
       const button = mine.querySelector('.download-link');
       if (button) button.classList.add('btn-primary');
-    }
-    const hero = doc.querySelector('[data-os-download]');
-    const note = doc.querySelector('[data-os-note]');
-    if (!hero) return;
-    if (mine) {
-      const file = mine.querySelector('.download-link');
-      hero.textContent = `Download for ${NAMES[os]}`;
-      hero.setAttribute('href', file ? file.getAttribute('href') : `download/#${os}`);
-      const requirements = mine.querySelector('.platform-req');
-      if (note) {
-        note.textContent = `Free, ${mine.dataset.size || 'one download'}. ${requirements ? requirements.textContent : NAMES[os]}. ${HINTS[os]}`;
-      }
-    } else {
-      hero.setAttribute('href', '#download');
-      if (note) note.textContent = 'A free desktop app for macOS, Windows and Linux.';
     }
   }
 

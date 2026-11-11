@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f3f1e9">
+<meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
 <title>Press — LocalSR</title><meta name="description" content="Facts, pictures and a contact for articles, videos and listings about LocalSR.">
 <link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
-<style>.beta-table{width:100%;border-collapse:collapse;font-size:.9rem}.beta-table td,.beta-table th{text-align:left;vertical-align:top;border-bottom:1px solid #d9d7ce;padding:.7rem .35rem}.document-body{min-width:0}.table-wrap{overflow:auto}.document-body a{overflow-wrap:anywhere}</style>
-</head><body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-<header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot">.</span></a><nav aria-label="Main navigation"><a href="../#download">Downloads</a><a href="../guide/">Guide</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav></header>
-<main id="main"><header class="document-hero"><p class="micro">Updated 7 November 2026</p><h1>Facts and pictures.<br><em>Free to use.</em></h1><p>For articles, videos and listings about LocalSR.</p></header>
+</head><body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap"><header class="document-hero"><p class="micro">Updated 7 November 2026</p><h1>Facts and pictures.<br><em>Free to use.</em></h1><p>For articles, videos and listings about LocalSR.</p></header>
 <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#facts">Facts</a><a href="#about">In a few sentences</a><a href="#pictures">Pictures</a><a href="#removing">Removing it</a></nav></aside><div class="document-body"><section id="facts"><h2>Facts</h2><div class="table-wrap"><table class="beta-table"><tbody>
 <tr><th scope="row">Name</th><td>LocalSR</td></tr>
 <tr><th scope="row">What it does</th><td>Upscales, denoises and restores photos and videos with AI models, on your own computer</td></tr>
@@ -22,5 +32,12 @@
 <section id="about"><h2>In a few sentences</h2><p>LocalSR is a free desktop app for upscaling photos, cleaning up noise and blur, and enhancing video. Choose an image, pick Quick or Best, and compare the result with your original. The models run on your computer; your photos stay there too.</p><p>On Apple Silicon Macs, Quick and Best run through Core ML on the Neural Engine or the GPU. On an M1 Pro, that made them two to three times as fast as in 0.2. LocalSR is open source and made by one person alongside uni.</p></section>
 <section id="pictures"><h2>Pictures</h2><img class="document-image" src="localsr-window.webp" width="2760" height="1722" loading="lazy" alt="The LocalSR window on macOS: a photo of balconies in Marseille compared before and after a 4× upscale, with the media list on the left and the task, quality and model settings on the right"><ul><li><a href="localsr-icon.png">App icon</a>, 1024 × 1024 PNG</li><li><a href="localsr-window.webp">Window</a>, 2760 × 1722 WebP</li><li><a href="localsr-model-library.webp">Model library</a>, 2760 × 1722 WebP</li><li>Before and after: <a href="../assets/marseille-detail-input.png">original detail</a>, 160 × 80 PNG, and <a href="../assets/marseille-detail-output.webp">4× result</a>, 640 × 320 WebP</li></ul><p>The window pictures are unedited captures of LocalSR 0.2 on macOS. The photo is by Tim Ziegelbaum on Unsplash, and the result is real output from Quick with no added sharpening. <a href="../about-the-image/">Image and model credits</a>.</p></section>
 <section id="removing"><h2>Removing it</h2><p>On a Mac, quit LocalSR and move it to the Trash. Then delete <code>~/Library/Application Support/LocalSR</code>, which holds the models, settings and queue, and <code>~/Library/Caches/LocalSR</code>. If you turned on the Finder action, also delete <code>~/Library/Services/Enhance with LocalSR.workflow</code>. Exported files stay where you saved them.</p></section></div></div></main>
-<footer class="footer"><div class="footer-top"><p>A little more detail.<br><em>On your own computer.</em></p><a class="back-top" href="#top">Back to top ↑</a></div><div class="footer-bottom micro"><span>LocalSR · HerRei</span><span><a href="../support/">Support</a> · <a href="../privacy/">Privacy</a> · <a href="../terms/">Terms</a></span></div></footer>
-</div><script src="../count.js" defer></script></body></html>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR and Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

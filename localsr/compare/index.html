@@ -1,40 +1,21 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f3f1e9">
+<meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
 <title>LocalSR and Upscayl — LocalSR</title><meta name="description" content="The same damaged photos through LocalSR and Upscayl 2.15. Pick any two results and compare them, and see where LocalSR is better and where it isn't.">
 <link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
-<style>
-.compare-main{max-width:1024px;margin:0 auto;padding:40px 0 80px}
-.compare-main h1{font-size:clamp(34px,4.4vw,52px);line-height:1.1;letter-spacing:-1.5px}
-.compare-main>p{max-width:680px;font-size:16px;line-height:1.7;color:var(--muted);margin-top:16px}
-.compare-section{margin-top:56px;padding-top:28px;border-top:1px solid var(--line)}
-.compare-section h2{font-size:24px;letter-spacing:-.6px}
-.compare-section>p{font-size:15px;line-height:1.7;color:var(--muted);margin-top:8px}
-.compare-figure{margin:24px 0 0}
-.compare-figure .comparison{aspect-ratio:4/3}
-.comparison:not(.is-ready){display:none}
-.comparison.is-ready + .stacked{display:none}
-.stacked{display:grid;gap:10px}
-.stacked img{width:100%;height:auto}
-.stacked p{margin-top:6px}
-.compare-pick{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:10px;margin-bottom:10px}
-.compare-pick select{font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);padding:7px 8px;width:100%;min-width:0;min-height:44px}
-.compare-pick select:last-child{text-align-last:right}
-.compare-pick button{font:inherit;font-size:13px;color:var(--ink);background:transparent;border:1px solid var(--line);padding:7px 12px;cursor:pointer;white-space:nowrap;min-height:44px}
-.compare-pick button:hover{border-color:var(--ink)}
-.compare-pick select:focus-visible,.compare-pick button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.compare-jump{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:22px}
-.compare-jump a{font-size:14px;color:var(--ink)}
-@media (max-width:620px){.compare-pick{grid-template-columns:1fr auto}.compare-pick select:last-child{grid-column:1 / -1;text-align-last:auto}}
-.compare-figure figcaption{font-size:13px;color:var(--muted);margin-top:8px}
-.result-table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
-.result-table td,.result-table th{text-align:left;vertical-align:top;border-bottom:1px solid #d9d7ce;padding:.55rem .35rem}
-.table-wrap{overflow:auto}
-.compare-section ul{padding-left:20px;margin-top:12px}
-.compare-section li{font-size:15px;line-height:1.7;color:var(--muted)}
-</style>
-</head><body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-<header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot">.</span></a><nav aria-label="Main navigation"><a href="../#download">Downloads</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../support/">Support</a></nav></header>
+</head><body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/" aria-current="page">Compare</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/" aria-current="page">Compare</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
 <main id="main" class="compare-main">
 <h1>LocalSR and Upscayl</h1>
 <p>The same photos, damaged in the same way, through both apps. Pick any two results above a photo and drag the divider. The original is in the list too. This compares Upscayl's own models with LocalSR, including some models you load yourself, on simulated damage. "Better" means closer to the original on my test photos, not the best either app can do. <a href="#method">How I tested</a></p>
@@ -114,17 +95,17 @@
 </section>
 <section class="compare-section" id="results"><h2>All results</h2>
 <p>Each app used the model that did best on the first half of the test photos. The numbers come from the other half.</p>
-<div class="table-wrap"><table class="result-table"><thead><tr><th scope="col">Photos</th><th scope="col">Upscayl</th><th scope="col">LocalSR</th><th scope="col">LocalSR closer to the original</th></tr></thead><tbody>
-<tr><td>Motion blur</td><td>High Fidelity</td><td>NAFNet, then Best (built in)</td><td>25 of 29, clearly better</td></tr>
-<tr><td>Sensor noise</td><td>Standard</td><td>4xRealWebPhoto v4 (OpenModelDB)</td><td>23 of 29, better</td></tr>
-<tr><td>Sensor noise</td><td>Standard</td><td>Best (built in)</td><td>7 of 29, Upscayl is better</td></tr>
-<tr><td>Buildings, lettering</td><td>Standard</td><td>4xBHI DAT2 real (community)</td><td>20 of 24, clearly better</td></tr>
-<tr><td>Buildings, lettering</td><td>Standard</td><td>Best (built in)</td><td>16 of 24, a little better</td></tr>
-<tr><td>Recompressed JPEG</td><td>Standard</td><td>1xDeJPG, then Best</td><td>12 of 29, about the same</td></tr>
-<tr><td>Recompressed JPEG</td><td>Standard</td><td>4xBHI DAT2 otf (community)</td><td>10 of 29, about the same</td></tr>
-<tr><td>Recompressed JPEG</td><td>Standard</td><td>Best (built in)</td><td>5 of 29, Upscayl is better</td></tr>
-<tr><td>Clean photos</td><td>UltraMix Balanced</td><td>4xBHI DAT2 real (community)</td><td>23 of 29, better</td></tr>
-<tr><td>Clean photos</td><td>UltraMix Balanced</td><td>SwinIR (built in)</td><td>15 of 29, about the same</td></tr>
+<div class="table-wrap"><table class="result-table stack"><thead><tr><th scope="col">Photos</th><th scope="col">Upscayl</th><th scope="col">LocalSR</th><th scope="col">LocalSR closer to the original</th></tr></thead><tbody>
+<tr><td>Motion blur</td><td data-label="Upscayl">High Fidelity</td><td data-label="LocalSR">NAFNet, then Best (built in)</td><td data-label="LocalSR closer to the original">25 of 29, clearly better</td></tr>
+<tr><td>Sensor noise</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">4xRealWebPhoto v4 (OpenModelDB)</td><td data-label="LocalSR closer to the original">23 of 29, better</td></tr>
+<tr><td>Sensor noise</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">Best (built in)</td><td data-label="LocalSR closer to the original">7 of 29, Upscayl is better</td></tr>
+<tr><td>Buildings, lettering</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">4xBHI DAT2 real (community)</td><td data-label="LocalSR closer to the original">20 of 24, clearly better</td></tr>
+<tr><td>Buildings, lettering</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">Best (built in)</td><td data-label="LocalSR closer to the original">16 of 24, a little better</td></tr>
+<tr><td>Recompressed JPEG</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">1xDeJPG, then Best</td><td data-label="LocalSR closer to the original">12 of 29, about the same</td></tr>
+<tr><td>Recompressed JPEG</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">4xBHI DAT2 otf (community)</td><td data-label="LocalSR closer to the original">10 of 29, about the same</td></tr>
+<tr><td>Recompressed JPEG</td><td data-label="Upscayl">Standard</td><td data-label="LocalSR">Best (built in)</td><td data-label="LocalSR closer to the original">5 of 29, Upscayl is better</td></tr>
+<tr><td>Clean photos</td><td data-label="Upscayl">UltraMix Balanced</td><td data-label="LocalSR">4xBHI DAT2 real (community)</td><td data-label="LocalSR closer to the original">23 of 29, better</td></tr>
+<tr><td>Clean photos</td><td data-label="Upscayl">UltraMix Balanced</td><td data-label="LocalSR">SwinIR (built in)</td><td data-label="LocalSR closer to the original">15 of 29, about the same</td></tr>
 </tbody></table></div></section>
 <section class="compare-section" id="method"><h2>How I tested</h2>
 <ul>
@@ -135,5 +116,12 @@
 <li>The photos on this page are separate from the test photos. Models from OpenModelDB and community models are not part of LocalSR, you load them yourself in the model library. The <a href="../models/which/">model guide</a> lists every model I measured.</li>
 </ul></section>
 </main>
-<footer class="site-footer"><div class="footer-top"><a class="wordmark" href="#top">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a href="#top" class="back-top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermes Reisner</a></span><a href="../compare/">Compare</a><a href="../models/which/">Which model</a><a href="../guide/">Guide</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub <span aria-hidden="true">↗</span></a></div></footer>
-</div><script src="compare.js" defer></script><script src="../count.js" defer></script></body></html>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR and Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="compare.js" defer></script><script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

@@ -8,9 +8,25 @@ from pathlib import Path
 import re
 
 
+def megabytes(size_bytes):
+    return f"{round(size_bytes / 1_000_000):,} MB"
+
+
+def edition_detail(item):
+    # Editions too large for one GitHub release file come as parts (or an installer plus engine parts).
+    parts = item.get("parts") or []
+    engine = item.get("engine_parts") or []
+    if parts:
+        return f"{megabytes(item['size_bytes'])} in {len(parts)} parts"
+    if engine:
+        total = item["size_bytes"] + sum(e["size_bytes"] for e in engine)
+        return f"{megabytes(total)}: installer and {len(engine)} engine parts"
+    return megabytes(item["size_bytes"])
+
+
 def render_rows(release, *, direct):
-    # One row per platform. The newest available version provides the button;
-    # older available versions and pending status are folded into the row.
+    # One panel per platform. The newest available standard build provides the button; other
+    # editions of this version (GPU builds) and older versions are listed under it.
     merged = {}
     order = []
     for platform in release["platforms"] + release.get("archives", []):
@@ -26,79 +42,52 @@ def render_rows(release, *, direct):
                 entry["older"].append(platform)
         else:
             entry["pending"] = platform
-    rows = []
+    panels = []
     for pid in order:
         entry = merged[pid]
         current = entry["current"]
         pending = entry["pending"]
+        source = current if current is not None else (pending or {})
+        values = {key: html.escape(str(value), quote=True) for key, value in source.items()}
+        name = values.get("name", pid)
+        requirements = values.get("requirements", "")
+        anchor = f' id="{pid}"' if direct else ""
+        size_attr = f' data-size="{megabytes(current["size_bytes"])}"' if current is not None else ""
+        lines = [
+            f'            <article class="platform"{anchor} data-platform="{pid}"{size_attr} aria-labelledby="download-{pid}">',
+            f'              <div class="platform-head"><h3 id="download-{pid}">{name}</h3><span class="yours">For this computer</span></div>',
+            f'              <p class="platform-req">{requirements}</p>',
+        ]
         if current is not None:
-            values = {key: html.escape(str(value), quote=True) for key, value in current.items()}
-            version = current.get("version", release["version"])
-            size = round(current["size_bytes"] / 1_000_000)
-            href = values["download_url"] if direct else "download/"
-            # A download too large for one release asset is published in parts; the button
-            # then points at the download page, which explains how to join them.
+            version = html.escape(current.get("version", release["version"]))
+            size = megabytes(current["size_bytes"])
             parts = current.get("parts") or []
-            label = (
-                f'Download {values["extension"]} · {len(parts)} parts'
-                if parts
-                else f'Download {values["extension"]}'
+            parts_page = "#parts" if direct else "download/#parts"
+            href = parts_page if parts else values["download_url"]
+            label = f'Download {values["extension"]} · {size}'
+            lines.append(f'              <p>{version} · {values["backend"]}</p>')
+            lines.append(
+                f'              <a class="btn download-link" data-download="{values["id"]}" href="{href}" '
+                f'aria-label="Download LocalSR {version} for {name}, {size}">{label}</a>'
             )
-            if parts and direct:
-                href = "#parts"
-            action = (
-                f'<a class="download-link" data-download="{values["id"]}" '
-                f'href="{href}" '
-                f'aria-label="Download LocalSR {html.escape(version)} for {values["name"]}">'
-                f'<span>{label}</span><span aria-hidden="true">↓</span></a>'
-            )
-            meta = f'{html.escape(version)} · {values["backend"]} · {size} MB'
-            notes = []
-            also = []
+            more = []
             for older in entry["older"]:
-                # An older version, or another edition of this version (such as a GPU
-                # build split into parts for GitHub's asset size limit).
+                if not direct and older.get("version", release["version"]) != current.get("version", release["version"]):
+                    continue  # Older versions are listed on the download page only.
                 o_label = html.escape(older.get("label") or older.get("version", release["version"]))
-                o_size = round(older["size_bytes"] / 1_000_000)
-                parts = older.get("parts") or []
-                engine = older.get("engine_parts") or []
-                if parts:
-                    o_detail = f"{o_size:,} MB in {len(parts)} parts"
-                elif engine:
-                    total = round((older["size_bytes"] + sum(e["size_bytes"] for e in engine)) / 1_000_000)
-                    o_detail = f"{total:,} MB: installer and {len(engine)} engine parts"
-                else:
-                    o_detail = f"{o_size} MB"
-                if direct:
-                    # Split editions need every part, so they link the parts section.
-                    o_href = "#parts" if parts or engine else html.escape(older["download_url"], quote=True)
-                    also.append(f'<a href="{o_href}">{o_label} ({o_detail})</a>')
-                else:
-                    also.append(f'{o_label} ({o_detail})')
+                detail = edition_detail(older)
+                split = older.get("parts") or older.get("engine_parts")
+                o_href = parts_page if split else html.escape(older["download_url"], quote=True)
+                more.append(f'<li><a href="{o_href}">{o_label}</a> · {detail}</li>')
             if pending is not None:
-                p_version = pending.get("version", release["version"])
-                notes.append(f'{p_version} is in preparation')
-            if also:
-                where = "" if direct else " — see the download page"
-                notes.insert(0, "Also available: " + " · ".join(also) + where)
-            detail = values["requirements"]
-            if notes:
-                detail += '<br>' + ' · '.join(notes)
+                more.append(f'<li>{html.escape(pending.get("version", release["version"]))} is in preparation</li>')
+            if more:
+                lines.append(f'              <ul class="platform-more">{"".join(more)}</ul>')
         else:
-            # No available build at all for this platform.
-            values = {key: html.escape(str(value), quote=True) for key, value in (pending or {}).items()}
-            action = f'<span class="platform-detail">{values.get("status", "Not yet available")}</span>'
-            meta = ""
-            detail = values.get("requirements", "")
-        rows.append(
-            f'            <article class="download-row" aria-labelledby="download-{pid}">\n'
-            f'              <div><h3 id="download-{pid}">{values["name"]}</h3>'
-            f'<p class="platform-detail">{detail}</p>'
-            + (f'<span class="platform-size micro">{meta}</span></div>' if meta else "</div>") + '\n'
-            f'              {action}\n'
-            f'            </article>'
-        )
-    return "\n".join(rows)
+            lines.append(f'              <p>{values.get("status", "Not yet available")}</p>')
+        lines.append('            </article>')
+        panels.append("\n".join(lines))
+    return "\n".join(panels)
 
 
 def render_downloads(release):
@@ -138,13 +127,13 @@ def render_parts(release):
                    f'chmod +x {name}</code></pre>')
         links = "\n".join(
             f'            <li><a href="{html.escape(url, quote=True)}">{html.escape(file)}</a> '
-            f'<span class="micro">{size / 1_000_000:,.0f} MB</span></li>'
+            f'<span class="quiet">{size / 1_000_000:,.0f} MB</span></li>'
             for url, file, size in rows
         )
         blocks.append(
             f'        <h3>{label}</h3>\n'
             f'          {how}\n'
-            f'          <ul>\n{links}\n          </ul>'
+            f'          <ul class="parts-list">\n{links}\n          </ul>'
         )
     return "\n".join(blocks)
 

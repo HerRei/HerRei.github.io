@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f3f1e9">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
   <title>Model guide — LocalSR</title>
   <meta name="description" content="What every LocalSR model is, what it is best at, the license terms that apply before you download, and the HAT face-restoration deep-dive.">
   <link rel="canonical" href="https://herrei.github.io/localsr/models/">
   <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
-  <style>.model-table,.model-evidence{width:100%;border-collapse:collapse;font-size:.9rem}.model-table td,.model-table th,.model-evidence td,.model-evidence th{text-align:left;vertical-align:top;border-bottom:1px solid #d9d7ce;padding:.7rem .35rem}.model-evidence caption{text-align:left;margin-bottom:.6rem}.table-wrap{overflow:auto}.model-table code,.checkpoint{overflow-wrap:anywhere}.checkpoint code{white-space:normal}.badge{display:inline-block;font-size:11px;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:1px 9px;margin-right:5px}.badge-labs{border-color:#b33d26;color:#b33d26}.document-body{min-width:0}.document-body a{overflow-wrap:anywhere}</style>
 </head>
-<body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-  <header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../">The showcase</a><a href="../guide/">User guide</a><a href="which/">Which model</a><a href="../release-notes/">Beta notes</a></nav></header>
-  <main id="main">
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/" aria-current="page">Models</a><a href="../compare/">Compare</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/" aria-current="page">Models</a><a href="../compare/">Compare</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap">
     <header class="document-hero"><p class="micro">Model guide / 17 September 2026</p><h1>Every model,<br><em>in plain words.</em></h1><p>What each LocalSR model does, what it is genuinely best at, and what to check before you download it or use its results for anything commercial. The face-restoration deep-dive with measured results is at the end. For examples and measurements by kind of damage, see <a href="which/">which model for which photo</a>.</p></header>
     <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#start">Start here</a><a href="#before-download">Before you download</a><a href="#upscale">Making images bigger</a><a href="#denoise">Noisy photos</a><a href="#deblur-jpeg">Blurry or JPEG-damaged</a><a href="#anime">Anime &amp; illustration</a><a href="#faces">Faces</a><a href="#editing">Edit with a prompt</a><a href="#video">Video (Labs)</a><a href="#licenses">License table</a><a href="#verify">How LocalSR verifies</a><a href="#face-availability">Deep-dive: availability</a><a href="#face-hat-s">Deep-dive: HAT-S Face</a><a href="#face-hat-l">Deep-dive: HAT-L Face</a><a href="#face-use">Deep-dive: use</a><a href="#face-limits">Deep-dive: limits</a></nav></aside><div class="document-body">
 
@@ -38,50 +48,50 @@
       </section>
 
       <section id="upscale"><h2>Making images bigger</h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>SPAN 4x NomosUni</strong><br><span class="micro">Quick Start</span></th><td>4×</td><td>The default first choice. Tiny download, very fast, good general photo quality. Also the model behind the website’s worked example.</td><td>Very low · ~5 MB · ~0.5 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>RealPLKSR 4x NomosWebPhoto</strong><br><span class="micro">Best Quality preset</span></th><td>4×</td><td>When the quick result visibly falls short: finer texture in photos, better fidelity on faces and fabric. Slower than SPAN, still moderate.</td><td>Medium · ~30 MB · ~1.2 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>Real-ESRGAN ×2</strong></th><td>2×</td><td>You genuinely want 2× — for a webpage, a print at modest enlargement, or a 4× model’s jump being too much. Native 2× avoids the downsample a 4× model needs.</td><td>Medium · ~67 MB · ~1.8 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>HAT-S ×4</strong></th><td>4×</td><td>A stronger, slower alternative for photos; the lightest of the HAT family and the base of the face-aware pair.</td><td>High · ~81 MB · ~2 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>HAT-L ×4 ImageNet</strong></th><td>4×</td><td>Maximum quality stills on capable hardware — the largest official HAT variant. Roughly 3× slower than HAT-S; needs a strong GPU and patience.</td><td>Very high · ~166 MB · ~6 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>Real-ESRGAN ×4 — Classic</strong></th><td>4×</td><td>The well-known real-world photo upscaler. Robust on photos with unknown blur, noise and compression; smoother than NomosWebPhoto on fine texture.</td><td>Medium · ~67 MB · ~1.8 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>SwinIR ×4 Real — Transformer</strong></th><td>4×</td><td>A transformer trained on real-world degradation, between SPAN and HAT in cost. Sharp and strong on real photographs with mixed blur and compression.</td><td>High · ~67 MB · ~2.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>SPAN 4x NomosUni</strong><br><span class="micro">Quick Start</span></th><td data-label="Scale">4×</td><td data-label="Best for">The default first choice. Tiny download, very fast, good general photo quality. Also the model behind the website’s worked example.</td><td data-label="Cost">Very low · ~5 MB · ~0.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>RealPLKSR 4x NomosWebPhoto</strong><br><span class="micro">Best Quality preset</span></th><td data-label="Scale">4×</td><td data-label="Best for">When the quick result visibly falls short: finer texture in photos, better fidelity on faces and fabric. Slower than SPAN, still moderate.</td><td data-label="Cost">Medium · ~30 MB · ~1.2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>Real-ESRGAN ×2</strong></th><td data-label="Scale">2×</td><td data-label="Best for">You genuinely want 2× — for a webpage, a print at modest enlargement, or a 4× model’s jump being too much. Native 2× avoids the downsample a 4× model needs.</td><td data-label="Cost">Medium · ~67 MB · ~1.8 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-S ×4</strong></th><td data-label="Scale">4×</td><td data-label="Best for">A stronger, slower alternative for photos; the lightest of the HAT family and the base of the face-aware pair.</td><td data-label="Cost">High · ~81 MB · ~2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-L ×4 ImageNet</strong></th><td data-label="Scale">4×</td><td data-label="Best for">Maximum quality stills on capable hardware — the largest official HAT variant. Roughly 3× slower than HAT-S; needs a strong GPU and patience.</td><td data-label="Cost">Very high · ~166 MB · ~6 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>Real-ESRGAN ×4 — Classic</strong></th><td data-label="Scale">4×</td><td data-label="Best for">The well-known real-world photo upscaler. Robust on photos with unknown blur, noise and compression; smoother than NomosWebPhoto on fine texture.</td><td data-label="Cost">Medium · ~67 MB · ~1.8 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>SwinIR ×4 Real — Transformer</strong></th><td data-label="Scale">4×</td><td data-label="Best for">A transformer trained on real-world degradation, between SPAN and HAT in cost. Sharp and strong on real photographs with mixed blur and compression.</td><td data-label="Cost">High · ~67 MB · ~2.5 GB VRAM</td></tr>
           </tbody>
         </table></div>
         <p>A practical path: <strong>SPAN</strong> first; if a specific image deserves more, try <strong>NomosWebPhoto</strong>; reserve <strong>HAT-L</strong> for hero shots. For 2× outputs, <strong>Real-ESRGAN ×2</strong> beats running a 4× model and shrinking.</p>
       </section>
 
       <section id="denoise"><h2>Noisy photos</h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>RealPLKSR Denoise</strong></th><td>1×</td><td>Fast, light cleanup of grainy snapshots — evening phone photos, high-ISO shots. Cleans while keeping size and character.</td><td>Low · ~30 MB · ~1 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>NAFNet SIDD Width64</strong></th><td>1×</td><td>The strongest denoise option: trained on real smartphone camera noise (SIDD). Highest-fidelity preset; large download, noticeably slower.</td><td>High · ~464 MB · ~4 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>SCUNet Color — Blind Denoise</strong></th><td>1×</td><td>Real photos with unknown mixed noise and mild compression. No strength setting; this variant keeps texture rather than inventing it.</td><td>Medium · ~72 MB · ~1.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>RealPLKSR Denoise</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Fast, light cleanup of grainy snapshots — evening phone photos, high-ISO shots. Cleans while keeping size and character.</td><td data-label="Cost">Low · ~30 MB · ~1 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>NAFNet SIDD Width64</strong></th><td data-label="Scale">1×</td><td data-label="Best for">The strongest denoise option: trained on real smartphone camera noise (SIDD). Highest-fidelity preset; large download, noticeably slower.</td><td data-label="Cost">High · ~464 MB · ~4 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>SCUNet Color — Blind Denoise</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Real photos with unknown mixed noise and mild compression. No strength setting; this variant keeps texture rather than inventing it.</td><td data-label="Cost">Medium · ~72 MB · ~1.5 GB VRAM</td></tr>
           </tbody>
         </table></div>
         <p>All three are 1×: they don’t enlarge. Denoise <em>first</em>, then upscale — clean input makes every upscaler better. Two-stage jobs (denoise → HAT/SPAN) are a normal LocalSR workflow.</p>
       </section>
 
       <section id="deblur-jpeg"><h2>Blurry or JPEG-damaged</h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>NAFNet GoPro Deblur</strong></th><td>1×</td><td>Camera-shake blur from moving subjects or long handheld exposures. Trained on the GoPro motion set; won’t fix a missed focus point, but handles motion well.</td><td>Medium · ~272 MB · ~1.5 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>FBCNN Color</strong></th><td>1×</td><td>Old or re-shared JPEGs: blocking, ringing, mosquito noise. A restoration pass, not an upscaler — chain it before upscaling old downloads and forwarded images.</td><td>Medium · ~288 MB · ~2.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>NAFNet GoPro Deblur</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Camera-shake blur from moving subjects or long handheld exposures. Trained on the GoPro motion set; won’t fix a missed focus point, but handles motion well.</td><td data-label="Cost">Medium · ~272 MB · ~1.5 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>FBCNN Color</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Old or re-shared JPEGs: blocking, ringing, mosquito noise. A restoration pass, not an upscaler — chain it before upscaling old downloads and forwarded images.</td><td data-label="Cost">Medium · ~288 MB · ~2.5 GB VRAM</td></tr>
           </tbody>
         </table></div>
         <p>For 2004-era camera clips and heavily compressed files, FBCNN → SPAN is the workhorse order.</p>
       </section>
 
       <section id="anime"><h2>Anime &amp; illustration</h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>RealPLKSR 4x HFA2k — Anime</strong></th><td>4×</td><td>Anime cels, manga scans, illustrations, clean line art. Photo models soften lines; this one keeps them crisp. Fast enough for batches.</td><td>Low · ~30 MB · ~0.8 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>Real-ESRGAN ×4 Anime — Fast</strong></th><td>4×</td><td>A compact anime and illustration model: clean lines and flat colour in a fraction of the photo models’ time. Good for long batches of frames or scans.</td><td>Low · ~18 MB · ~0.9 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>RealPLKSR 4x HFA2k — Anime</strong></th><td data-label="Scale">4×</td><td data-label="Best for">Anime cels, manga scans, illustrations, clean line art. Photo models soften lines; this one keeps them crisp. Fast enough for batches.</td><td data-label="Cost">Low · ~30 MB · ~0.8 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>Real-ESRGAN ×4 Anime — Fast</strong></th><td data-label="Scale">4×</td><td data-label="Best for">A compact anime and illustration model: clean lines and flat colour in a fraction of the photo models’ time. Good for long batches of frames or scans.</td><td data-label="Cost">Low · ~18 MB · ~0.9 GB VRAM</td></tr>
           </tbody>
         </table></div>
         <p>HFA2k is published by Philip Hofmann under CC&nbsp;BY&nbsp;4.0 on <a href="https://huggingface.co/Phips/4xHFA2k_ludvae_realplksr_dysample">its model card</a>, so commercial use is allowed with attribution. (Its GitHub release spells the license “CC-BY-0.4”, a typo for the same license.) Real-ESRGAN Anime is BSD-3-Clause.</p>
@@ -89,32 +99,32 @@
 
       <section id="faces"><h2>Faces</h2>
         <p class="document-callout"><strong>Warning — unresolved rights.</strong> The face-restoration checkpoints below were fine-tuned for this project, but their training-data and weight rights are not established. LocalSR does <strong>not</strong> download them automatically; you must supply a copy you are permitted to use, which LocalSR verifies by size and SHA-256. No commercial-use claim is made for either model or its outputs. Full details and measured trade-offs are in the <a href="#face-availability">deep-dive below</a>.</p>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>HAT-S ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td>4× face pass</td><td>Small, damaged, or degraded faces within photos. Runs as a companion to stock HAT-S: non-face regions keep the primary model’s output. Blended to recover damaged faces without regressing clean ones.</td><td>High · ~40 MB · ~2 GB VRAM</td></tr>
-            <tr><th scope="row"><strong>HAT-L ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td>4× face pass</td><td>The same idea on the larger base — more recovery power, more cost. Also a companion; also SDR-trained (HDR quality unverified).</td><td>Very high · ~166 MB · ~6 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-S ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td data-label="Scale">4× face pass</td><td data-label="Best for">Small, damaged, or degraded faces within photos. Runs as a companion to stock HAT-S: non-face regions keep the primary model’s output. Blended to recover damaged faces without regressing clean ones.</td><td data-label="Cost">High · ~40 MB · ~2 GB VRAM</td></tr>
+            <tr><th scope="row"><strong>HAT-L ×4 Face</strong><br><span class="badge badge-labs">Labs</span></th><td data-label="Scale">4× face pass</td><td data-label="Best for">The same idea on the larger base — more recovery power, more cost. Also a companion; also SDR-trained (HDR quality unverified).</td><td data-label="Cost">Very high · ~166 MB · ~6 GB VRAM</td></tr>
           </tbody>
         </table></div>
         <p>Both are experimental blends, not magic: they can smooth texture or alter fine features. Inspect eyes, teeth, and hair before keeping a result.</p>
       </section>
 
       <section id="editing"><h2>Edit with a prompt</h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>FLUX.2 klein 4B</strong> (Q4_0, Q8_0)</th><td>Quick edits from a short instruction on a 16&nbsp;GB Mac. A distilled four-step editor by Black Forest Labs, with a Qwen3-4B text encoder.</td><td>4.9 or 8.3&nbsp;GB · 16&nbsp;GB Mac</td></tr>
-            <tr><th scope="row"><strong>Qwen Image Edit 2511</strong> (six sizes, Q2_K to Q8_0)</th><td>More faithful edits and text in images. Larger sizes keep more detail.</td><td>10.8 to 25.7&nbsp;GB · 24 to 48&nbsp;GB Mac</td></tr>
+            <tr><th scope="row"><strong>FLUX.2 klein 4B</strong> (Q4_0, Q8_0)</th><td data-label="Best for">Quick edits from a short instruction on a 16&nbsp;GB Mac. A distilled four-step editor by Black Forest Labs, with a Qwen3-4B text encoder.</td><td data-label="Cost">4.9 or 8.3&nbsp;GB · 16&nbsp;GB Mac</td></tr>
+            <tr><th scope="row"><strong>Qwen Image Edit 2511</strong> (six sizes, Q2_K to Q8_0)</th><td data-label="Best for">More faithful edits and text in images. Larger sizes keep more detail.</td><td data-label="Cost">10.8 to 25.7&nbsp;GB · 24 to 48&nbsp;GB Mac</td></tr>
           </tbody>
         </table></div>
         <p>New in 0.1.4 and experimental. Edits run on the Mac’s GPU through <a href="https://github.com/leejet/stable-diffusion.cpp">stable-diffusion.cpp</a>, in quantized GGUF form from community repositories that LocalSR pins to an exact revision and checksum. Lower quantizations can reduce fidelity. Qwen Image 2.1 is not offered: its Qwen Research License allows research and evaluation only.</p>
       </section>
 
       <section id="video"><h2>Video <span class="badge badge-labs">Labs</span></h2>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Best for</th><th scope="col">Cost</th></tr></thead>
           <tbody>
-            <tr><th scope="row"><strong>SeedVR2-3B</strong> (FP16 and FP8 variants)</th><td>Whole-clip video restoration and upscaling. The FP8 variant trades a little fidelity for a smaller download on NVIDIA CUDA / AMD ROCm. Requires its own supported GPU backend — it does not run through the image models’ paths.</td><td>Extreme · 6.8 GB + 0.5 GB per file · 16 GB+ memory · hours to days per clip</td></tr>
+            <tr><th scope="row"><strong>SeedVR2-3B</strong> (FP16 and FP8 variants)</th><td data-label="Best for">Whole-clip video restoration and upscaling. The FP8 variant trades a little fidelity for a smaller download on NVIDIA CUDA / AMD ROCm. Requires its own supported GPU backend — it does not run through the image models’ paths.</td><td data-label="Cost">Extreme · 6.8 GB + 0.5 GB per file · 16 GB+ memory · hours to days per clip</td></tr>
           </tbody>
         </table></div>
         <p>Experimental: SDR output only, memory use depends on clip length and output size, and 16 GB does not guarantee a fit. Test on a short segment before committing an evening. Everyday video upscaling in LocalSR uses the image models frame-by-frame — this family is the separate, heavier Labs route.</p>
@@ -122,24 +132,24 @@
 
       <section id="licenses"><h2>License table</h2>
         <p>Every downloadable model, in one place. “Personal use” means private restoration of your own media; “commercial” means selling or publishing outputs as part of a product or service.</p>
-        <div class="table-wrap"><table class="model-table">
+        <div class="table-wrap"><table class="model-table stack">
           <thead><tr><th scope="col">Model</th><th scope="col">Author</th><th scope="col">License</th><th scope="col">Commercial use</th></tr></thead>
           <tbody>
-            <tr><th scope="row">SPAN 4x NomosUni</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
-            <tr><th scope="row">RealPLKSR 4x NomosWebPhoto</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
-            <tr><th scope="row">RealPLKSR 4x HFA2k — Anime</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
-            <tr><th scope="row">RealPLKSR Denoise</th><td>Philip Hofmann</td><td>CC BY 4.0</td><td>Allowed with attribution</td></tr>
-            <tr><th scope="row">Real-ESRGAN ×2 / ×4 / ×4 Anime</th><td>Xintao Wang et&nbsp;al.</td><td>BSD-3-Clause</td><td>Allowed under BSD terms</td></tr>
-            <tr><th scope="row">SwinIR ×4 Real</th><td>Jingyun Liang et&nbsp;al.</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">SCUNet Color</th><td>Kai Zhang et&nbsp;al.</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">HAT-S ×4 / HAT-L ×4 ImageNet</th><td>XPixel Group</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">HAT-S ×4 Face / HAT-L ×4 Face</th><td>HerRei / XPixel Group</td><td><strong>Checkpoint rights unverified</strong></td><td><strong>Unclear — user-supplied; no commercial claim</strong></td></tr>
-            <tr><th scope="row">NAFNet SIDD / GoPro Deblur</th><td>Liangyu Chen et&nbsp;al. (megvii-research)</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
-            <tr><th scope="row">FBCNN Color</th><td>Jiaxi Jiang et&nbsp;al.</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">SeedVR2-3B (FP16/FP8)</th><td>ByteDance Seed · numz</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">Qwen Image Edit 2511 <span class="micro">(with the Qwen2.5-VL encoder and Qwen Image VAE)</span></th><td>Qwen (Alibaba) · GGUF by Unsloth</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">FLUX.2 klein 4B <span class="micro">(with the Qwen3-4B encoder and FLUX.2 VAE)</span></th><td>Black Forest Labs · GGUF by leejet</td><td>Apache-2.0</td><td>Allowed under Apache terms</td></tr>
-            <tr><th scope="row">YuNet face detector <span class="micro">(helper, not a picker model)</span></th><td>Shiqi Yu · OpenCV Zoo</td><td>MIT</td><td>Allowed under MIT terms</td></tr>
+            <tr><th scope="row">SPAN 4x NomosUni</th><td data-label="Author">Philip Hofmann</td><td data-label="License">CC BY 4.0</td><td data-label="Commercial use">Allowed with attribution</td></tr>
+            <tr><th scope="row">RealPLKSR 4x NomosWebPhoto</th><td data-label="Author">Philip Hofmann</td><td data-label="License">CC BY 4.0</td><td data-label="Commercial use">Allowed with attribution</td></tr>
+            <tr><th scope="row">RealPLKSR 4x HFA2k — Anime</th><td data-label="Author">Philip Hofmann</td><td data-label="License">CC BY 4.0</td><td data-label="Commercial use">Allowed with attribution</td></tr>
+            <tr><th scope="row">RealPLKSR Denoise</th><td data-label="Author">Philip Hofmann</td><td data-label="License">CC BY 4.0</td><td data-label="Commercial use">Allowed with attribution</td></tr>
+            <tr><th scope="row">Real-ESRGAN ×2 / ×4 / ×4 Anime</th><td data-label="Author">Xintao Wang et&nbsp;al.</td><td data-label="License">BSD-3-Clause</td><td data-label="Commercial use">Allowed under BSD terms</td></tr>
+            <tr><th scope="row">SwinIR ×4 Real</th><td data-label="Author">Jingyun Liang et&nbsp;al.</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">SCUNet Color</th><td data-label="Author">Kai Zhang et&nbsp;al.</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">HAT-S ×4 / HAT-L ×4 ImageNet</th><td data-label="Author">XPixel Group</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">HAT-S ×4 Face / HAT-L ×4 Face</th><td data-label="Author">HerRei / XPixel Group</td><td data-label="License"><strong>Checkpoint rights unverified</strong></td><td data-label="Commercial use"><strong>Unclear — user-supplied; no commercial claim</strong></td></tr>
+            <tr><th scope="row">NAFNet SIDD / GoPro Deblur</th><td data-label="Author">Liangyu Chen et&nbsp;al. (megvii-research)</td><td data-label="License">MIT</td><td data-label="Commercial use">Allowed under MIT terms</td></tr>
+            <tr><th scope="row">FBCNN Color</th><td data-label="Author">Jiaxi Jiang et&nbsp;al.</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">SeedVR2-3B (FP16/FP8)</th><td data-label="Author">ByteDance Seed · numz</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">Qwen Image Edit 2511 <span class="micro">(with the Qwen2.5-VL encoder and Qwen Image VAE)</span></th><td data-label="Author">Qwen (Alibaba) · GGUF by Unsloth</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">FLUX.2 klein 4B <span class="micro">(with the Qwen3-4B encoder and FLUX.2 VAE)</span></th><td data-label="Author">Black Forest Labs · GGUF by leejet</td><td data-label="License">Apache-2.0</td><td data-label="Commercial use">Allowed under Apache terms</td></tr>
+            <tr><th scope="row">YuNet face detector <span class="micro">(helper, not a picker model)</span></th><td data-label="Author">Shiqi Yu · OpenCV Zoo</td><td data-label="License">MIT</td><td data-label="Commercial use">Allowed under MIT terms</td></tr>
           </tbody>
         </table></div>
         <p>Licenses cover the models, not your photos: your media stays yours in every case. When in doubt — especially before any use of the face-model rows — check the linked source page for each model in the app’s catalog, or get advice. This guide is plain-language orientation, not legal advice.</p>
@@ -152,16 +162,24 @@
 
       <section id="face-availability"><h2>Deep-dive: availability</h2><p>Both face checkpoints are optional <strong>Labs</strong> companions in the current beta. Neither is downloaded automatically or published: their checkpoint and training-data rights are unresolved. If you have a copy you are permitted to use, LocalSR verifies it before loading. Stock HAT remains the general-purpose choice within each pair.</p></section>
       <section id="face-hat-s"><h2>Deep-dive: HAT-S Face · the lighter model</h2><p>The selected blend combines 90% stock HAT-S with 10% of the face-tuned 95k checkpoint (α = 0.10). Interpolation recovered a useful model after the original GAN/perceptual fine-tune regressed on clean images.</p>
-        <table class="model-evidence"><caption>Reported HAT-S recovery PSNR, 512 held-out faces</caption><thead><tr><th scope="col">Bucket</th><th scope="col">Stock</th><th scope="col">Selected</th><th scope="col">Change</th></tr></thead><tbody><tr><th scope="row">Clean</th><td>32.59</td><td>31.97</td><td>−0.62 dB</td></tr><tr><th scope="row">Mild</th><td>28.70</td><td>28.83</td><td>+0.13 dB</td></tr><tr><th scope="row">Hard</th><td>25.78</td><td>25.86</td><td>+0.08 dB</td></tr></tbody></table>
+        <table class="model-evidence stack"><caption>Reported HAT-S recovery PSNR, 512 held-out faces</caption><thead><tr><th scope="col">Bucket</th><th scope="col">Stock</th><th scope="col">Selected</th><th scope="col">Change</th></tr></thead><tbody><tr><th scope="row">Clean</th><td data-label="Stock">32.59</td><td data-label="Selected">31.97</td><td data-label="Change">−0.62 dB</td></tr><tr><th scope="row">Mild</th><td data-label="Stock">28.70</td><td data-label="Selected">28.83</td><td data-label="Change">+0.13 dB</td></tr><tr><th scope="row">Hard</th><td data-label="Stock">25.78</td><td data-label="Selected">25.86</td><td data-label="Change">+0.08 dB</td></tr></tbody></table>
         <p>Hard-bucket SSIM improved from 0.6842 to 0.7012. These are the HAT-S recovery report's measurements, not a new benchmark.</p><p class="checkpoint"><strong>Exact file:</strong> <code>base_95k_interp_a0p1.pth</code><br>40,484,805 bytes · 4× native scale<br><strong>SHA-256:</strong> <code>92277daf002214307bea6f1e06b4fa745acdb7690728a0a9a619076e7bc8d7f2</code></p><p><a href="https://github.com/HerRei/HAT/blob/main/docs/models/hat-s-face.md">HAT-S model card</a> · <a href="https://github.com/HerRei/HAT/blob/main/FACE_SR_SALVAGE_REPORT.md">Recovery report</a></p>
       </section>
       <section id="face-hat-l"><h2>Deep-dive: HAT-L Face · the larger model</h2><p>Three L1-only stages ran for 250k, 250k, and 299k iterations, without GAN or perceptual loss. Training plateaued in a roughly 0.1 dB band. Raw face-tuned weights improved mildly degraded faces by about 1 dB but lost about 1.9 dB on clean inputs.</p><p>From 14 candidates, the selected blend combines <strong>75% stock ImageNet HAT-L and 25% face-tuned run 3</strong> (α = 0.25). Its reported results balance recovery with a much smaller clean-image cost.</p>
-        <table class="model-evidence"><caption>Reported HAT-L recovery PSNR, 512-image buckets</caption><thead><tr><th scope="col">Bucket</th><th scope="col">Stock</th><th scope="col">Selected</th><th scope="col">Change</th></tr></thead><tbody><tr><th scope="row">Clean</th><td>32.78</td><td>32.58</td><td>−0.19 dB</td></tr><tr><th scope="row">Mild</th><td>28.69</td><td>29.13</td><td>+0.44 dB</td></tr><tr><th scope="row">Hard</th><td>25.72</td><td>25.97</td><td>+0.25 dB</td></tr></tbody></table>
+        <table class="model-evidence stack"><caption>Reported HAT-L recovery PSNR, 512-image buckets</caption><thead><tr><th scope="col">Bucket</th><th scope="col">Stock</th><th scope="col">Selected</th><th scope="col">Change</th></tr></thead><tbody><tr><th scope="row">Clean</th><td data-label="Stock">32.78</td><td data-label="Selected">32.58</td><td data-label="Change">−0.19 dB</td></tr><tr><th scope="row">Mild</th><td data-label="Stock">28.69</td><td data-label="Selected">29.13</td><td data-label="Change">+0.44 dB</td></tr><tr><th scope="row">Hard</th><td data-label="Stock">25.72</td><td data-label="Selected">25.97</td><td data-label="Change">+0.25 dB</td></tr></tbody></table>
         <p>Deltas come from unrounded report values; the displayed clean scores subtract to −0.20 dB. SSIM and ArcFace were also evaluated, but their numeric results are not reproduced here. The VGG perceptual detail stage was not launched.</p><p class="checkpoint"><strong>Exact file:</strong> <code>hat_l_x4_face_task4.pth</code><br>165,676,233 bytes · 4× native scale<br><strong>SHA-256:</strong> <code>8a5548208310fcc7195abd4e1cf17ed87faaf3e5c38e2edeb63a45ac5b9c2af4</code></p><p><a href="https://github.com/HerRei/HAT/blob/main/docs/models/hat-l-face.md">HAT-L model card and selection notes</a></p>
       </section>
       <section id="face-use"><h2>Deep-dive: use the matching companion</h2><ol><li>Select stock HAT-S or stock HAT-L as the primary model.</li><li>Choose Faces under Fix first.</li><li>Acknowledge the checkpoint terms and import the exact copy you are permitted to use. LocalSR checks the file’s size and SHA-256.</li><li>Adjust face fidelity and inspect the result. Non-face regions keep the primary model’s output.</li></ol><p>No installer bundles either checkpoint.</p></section>
       <section id="face-limits"><h2>Deep-dive: measured gains, with limits</h2><p>HDR preservation (Labs) keeps float precision and adapts HAT detail to the source’s light and colour. Both face forks remain SDR-trained; their HDR detail quality is unverified. The feature exports 10-bit HLG/PQ as a Labs experiment, with SDR display previews.</p><p>These reports use synthetic degradation and checkpoint-selection sets. They do not establish a controlled HAT-S versus HAT-L comparison, general photographic improvements, or video quality. The larger model costs more memory and processing time.</p><p>Neither interpolation nor L1-only training guarantees accurate missing detail or preserved identity. Results can look smooth or contain incorrect texture. Keep the original image and inspect eyes, teeth, hair, and other fine features.</p><p>Apache-2.0 applies to the HAT source code; it does not independently establish rights to fine-tuned weights or their training images. No commercial-use claim is made. Neither checkpoint is published.</p></section>
 
     </div></div>
-  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermes Reisner</a></span><span><a href="../guide/">Guide</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a> · <a href="../terms/">Terms</a></span></div></footer>
-</div><script src="../count.js" defer></script></body></html>
+  </main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR and Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

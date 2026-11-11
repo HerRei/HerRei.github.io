@@ -1,0 +1,190 @@
+{
+  "examples": [
+    {
+      "id": "butterfly",
+      "input": "butterfly-input.png",
+      "result": "butterfly-result.webp",
+      "thumb": "butterfly-thumb.webp",
+      "input_crop_xywh": [
+        210,
+        345,
+        340,
+        255
+      ],
+      "scale": 4,
+      "input_pixels": [
+        340,
+        255
+      ],
+      "result_pixels": [
+        1360,
+        1020
+      ],
+      "source_input_sha256": "cc549dd7a33e74db6282d39e2d47d97b5356e752725ab9984597b89825226af6",
+      "source_result_sha256": "29e185608e99fca9be746c833ab4a1dbc15db6018c1930798231b7a570512008",
+      "source_input_dimensions": [
+        768,
+        1024
+      ],
+      "source_result_dimensions": [
+        3072,
+        4096
+      ],
+      "result_encoding": "lossy WebP, quality 90, no sharpening or colour change",
+      "subject": "Westlicher Scheckenfalter on a scabious flower, phone photo",
+      "photo": "Hermes Reisner",
+      "task": "Upscale ×4, Best",
+      "model": "RealPLKSR ×4 NomosWebPhoto (Philip Hofmann, CC BY 4.0)",
+      "run": "LocalSR 0.2.1 packaged engine, MacBook Pro M1 Pro 16 GB, Apple GPU (MPS), 9.2 s for the whole 768 × 1024 photo; rerun with all network access denied gave a byte-identical file"
+    },
+    {
+      "id": "corridor",
+      "input": "corridor-input.png",
+      "result": "corridor-result.webp",
+      "thumb": "corridor-thumb.webp",
+      "input_crop_xywh": [
+        116,
+        0,
+        752,
+        564
+      ],
+      "scale": 1,
+      "input_pixels": [
+        752,
+        564
+      ],
+      "result_pixels": [
+        752,
+        564
+      ],
+      "source_input_sha256": "d2dcd21bf850cc576b8d30dd5ebddf8074247ba8505054630e90688029efcdbc",
+      "source_result_sha256": "9b228ac668f0bbb88e409c6ae40aeac0c3cb3bc779bd2dceb6a86e1b9e117daa",
+      "source_input_dimensions": [
+        984,
+        564
+      ],
+      "source_result_dimensions": [
+        984,
+        564
+      ],
+      "result_encoding": "lossy WebP, quality 90, no sharpening or colour change",
+      "subject": "Painted ceiling beams, Sony a6600 at ISO 6400 (1:1 crop of a 6000 × 4000 photo)",
+      "photo": "Hermes Reisner",
+      "task": "Restore noise, same size",
+      "model": "SCUNet Color, real-image PSNR (Kai Zhang et al., Apache-2.0)",
+      "run": "LocalSR 0.2.1 packaged engine, MacBook Pro M1 Pro 16 GB, Apple GPU (MPS), 117.5 s for the whole 6000 × 4000 photo"
+    },
+    {
+      "id": "calf",
+      "input": "calf-input.png",
+      "result": "calf-result.webp",
+      "thumb": "calf-thumb.webp",
+      "input_crop_xywh": [
+        1,
+        40,
+        340,
+        255
+      ],
+      "scale": 4,
+      "input_pixels": [
+        340,
+        255
+      ],
+      "result_pixels": [
+        1360,
+        1020
+      ],
+      "source_input_sha256": "f78d4f3e160c47072fe604e834af9fe90cbaba67793f31356e6662fa4fc74e96",
+      "source_result_sha256": "8249dbc27cc9e55874bca9a184168738bd50d3b7c88406f690461712266eaa0b",
+      "source_input_dimensions": [
+        342,
+        342
+      ],
+      "source_result_dimensions": [
+        1368,
+        1368
+      ],
+      "result_encoding": "lossy WebP, quality 90, no sharpening or colour change",
+      "subject": "A calf at a feeding fence, a 342 × 342 crop of a phone photo",
+      "photo": "Hermes Reisner",
+      "task": "Upscale ×4, Best",
+      "model": "RealPLKSR ×4 NomosWebPhoto (Philip Hofmann, CC BY 4.0)",
+      "run": "LocalSR 0.2.1 packaged engine, MacBook Pro M1 Pro 16 GB, Apple GPU (MPS), 2.4 s"
+    },
+    {
+      "id": "marseille",
+      "input": "marseille-input.png",
+      "result": "marseille-result.webp",
+      "thumb": "marseille-thumb.webp",
+      "input_crop_xywh": [
+        80,
+        0,
+        320,
+        240
+      ],
+      "scale": 4,
+      "input_pixels": [
+        320,
+        240
+      ],
+      "result_pixels": [
+        1280,
+        960
+      ],
+      "source_input_sha256": "0a03af5b4b56b0b8cf6b37042536c9c107a36f14a6090192ded5d5d8a06c39a9",
+      "source_result_sha256": "65cd68af40f9621152ae2d5f37221d62310a92df90714bdf35d026f7385d7cdd",
+      "source_input_dimensions": [
+        480,
+        240
+      ],
+      "source_result_dimensions": [
+        1920,
+        960
+      ],
+      "result_encoding": "lossy WebP, quality 90, no sharpening or colour change",
+      "subject": "Unité d’Habitation, Marseille",
+      "photo": "Tim Ziegelbaum, Unsplash License",
+      "task": "Upscale ×4, Quick",
+      "model": "SPAN ×4 NomosUni (Philip Hofmann, CC BY 4.0)",
+      "run": "LocalSR automation CLI, Apple GPU (MPS), fp32; see assets/image-provenance.json"
+    },
+    {
+      "id": "sign",
+      "input": "sign-input.png",
+      "result": "../../compare/assets/sign/localsr-deblur-best.webp",
+      "thumb": "sign-thumb.webp",
+      "input_pixels": [
+        256,
+        192
+      ],
+      "result_pixels": [
+        1024,
+        768
+      ],
+      "input_preparation": "Recovered from compare/assets/sign/input.webp (the comparison page's nearest-neighbour 4× copy of the damaged input) by averaging each 4 × 4 block",
+      "source_input_sha256": "14615473cd6b6b2046de348a6d325df5a4a1187dffde10255af3d4914df5d4dc",
+      "source_result_sha256": "3a8622a6ca8e5805b190b42d52cb94abe44ec534d1955fdf9f8d3e2b5caa2e0a",
+      "subject": "A hiking sign in Belp; reduced to 256 × 192 and given a simulated motion blur and JPEG q90",
+      "photo": "Ivan Prodanov, Unsplash License (unsplash_id TLJr3ThwNlw)",
+      "task": "Fix blur, then upscale ×4 with Best",
+      "model": "NAFNet GoPro (Megvii Research, MIT), then RealPLKSR ×4 NomosWebPhoto (Philip Hofmann, CC BY 4.0)",
+      "run": "PyTorch fp32 through spandrel as in the app, AMD Radeon RX 9060 XT under Linux; median 0.1 s for 256 × 192 → 1024 × 768 with the model loaded (models/which)"
+    }
+  ],
+  "files_sha256": {
+    "butterfly-input.png": "69718d7257dd003ae4fe18a9d504f0e2d36e02c62b0f14b2e33c49accba62b43",
+    "butterfly-result.webp": "1bf49d700ebc2fe1a64dae2e006f85ef36b654daebee645be5aa1ec5f0dddba6",
+    "butterfly-thumb.webp": "75ee1968adb04a23348ec6ea5d36268be8b7e60be4d0201da925950daa9d2d0f",
+    "calf-input.png": "8688c476063859e83ee776f40b4ad4e3a31e5b493450086b89757c4962388499",
+    "calf-result.webp": "94c652b0adb237d56742790876b04c190e907fc61b99bd8bbd6008cb629a4c73",
+    "calf-thumb.webp": "f2ee7c7c4a338d16c98d14e4aade780a93765d99634e8afceebb24bb49b9b8f8",
+    "corridor-input.png": "b0236158772e7d8d3ef8549be009642ef185aeb2d2b06aa039258d30b291cd2d",
+    "corridor-result.webp": "6a73d63fafef722b5befc57ed6a48ab68995bbf3e5f5362c84fa74e3ee73cbec",
+    "corridor-thumb.webp": "7631900df8d9041c3edc66fc10f72408c4e8db7b1cf5e0d541b346de30f94fa8",
+    "marseille-input.png": "58d57d20cbdeb38af2c41898f03c53cff97252ca9e880474779195101809ce35",
+    "marseille-result.webp": "9409cc158ecef7f5ccbb66d9743486da2af7786a984ba3721824c4aee36e680f",
+    "marseille-thumb.webp": "d80c72cab7419160772fdf3d59748df31e3963c1ce58ba4544128ce0a65d84e9",
+    "sign-input.png": "7010aaedbe5efe4b891708bea97567d673b29615a86973f2209681c2cb3f3fe3",
+    "sign-thumb.webp": "17a660d3b3aa1f4d895560340858c33fe01ea00f5a8fa24cb2c40ba79b1646da"
+  }
+}

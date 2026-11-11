@@ -1,24 +1,34 @@
 # LocalSR showcase
 
-Published at **https://herrei.github.io/localsr/**. The page is static HTML/CSS and a small
-progressive-enhancement script. Its download links and content remain usable without JavaScript.
+Published at **https://herrei.github.io/localsr/**. The pages are static HTML with one stylesheet
+and two small progressive-enhancement scripts. Download links and content work without JavaScript.
 
-Read the [design study](../docs/localsr-design-study.md) for the product audit, references,
-visual direction, page structure, and evidence policy.
+The look follows the desktop app's design language (`desktop/src/styles.css` in the app repository):
+neutral dark greys, IBM Plex Sans, 2 px and 4 px corners, and one red (#b3452a) used only on the
+download for the visitor's own system. The [design study](../docs/localsr-design-study.md) still
+holds the evidence policy; its paper look was replaced in November 2026.
 
 ## Files
 
-- `index.html`, `styles.css`, `showcase.js`: the showcase and its real image comparison.
+- `index.html`, `showcase.js`: the home page and its example viewer (real results, a draggable line).
+- `styles.css`: the only stylesheet, for every page except the in-browser demo.
+- `site.js`: on every page: picks the download for the visitor's system, marks the current section
+  under "On this page", closes the small-screen menu.
+- `assets/examples/`: the home page examples, cut from real runs; `provenance.json` lists sources,
+  crops, models, the computer each ran on, and checksums that `validate_site.py` checks.
+- `compare/`, `models/which/`: measured comparisons; `compare/compare.js` drives their sliders.
 - `guide/`: the user guide the app opens from Help → LocalSR User Guide.
 - `models/`: every catalog model in plain words, the license table and the face-model evidence.
 - `release-notes/`: public, readable release notes for the current beta.
 - `download/`, `support/`, `privacy/`: download page, support, and the privacy page that must
   describe every count the site, the app and the download hosts make.
-- `about-the-image/`: source photography, model credit, and image preparation.
+- `about-the-image/`: where each example comes from, how it was prepared and which model made it.
 - `release.json`: authoritative application release metadata.
 - `SHA256SUMS`: installer checksums generated from that metadata.
 - `assets/image-provenance.json`: exact model/source/output provenance.
-- `assets/fonts/`: self-hosted font subsets and SIL Open Font License notices.
+- `assets/fonts/`: IBM Plex Sans (the app's own unmodified variable file, and the italic converted
+  to WOFF2 without other changes), IBM Plex Mono, and their SIL Open Font License notices. DM Sans
+  and Newsreader belong to the earlier design and are no longer used.
 - `tools/`: release synchronizer and reproducible image preparation.
 
 ## Updating the app release
@@ -71,7 +81,7 @@ Run these checks, then the portfolio's existing checks documented in the root RE
 ```sh
 python3 localsr/tools/validate_site.py
 node --check localsr/showcase.js
-node --test localsr/tests/comparison.test.cjs
+node --test localsr/tests/
 ```
 
 The Pages repository publishes

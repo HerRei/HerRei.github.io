@@ -1,23 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f3f1e9">
-  <title>Before you download — LocalSR</title>
-  <meta name="description" content="What to know before downloading LocalSR, and the direct installer links.">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
+  <title>Download — LocalSR</title>
+  <meta name="description" content="Download LocalSR for macOS, Windows or Linux: the installers, the GPU editions, how to install and how to check your file.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://herrei.github.io/localsr/download/">
   <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
 </head>
-<body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-  <header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><nav aria-label="Main navigation"><a href="../">The showcase</a><a href="../guide/">User guide</a><a href="../models/">Model guide</a><a href="../release-notes/">Beta notes</a></nav></header>
-  <main id="main">
-    <header class="document-hero"><p class="micro">Before you download / 22 October 2026</p><h1>One minute<br><em>before the beta.</em></h1><p>LocalSR is early software and its models are reconstructions. Here is what that means — then take the installer straight from this page.</p></header>
-    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#know">What to know</a><a href="#links">Direct downloads</a><a href="#parts">Downloads in parts</a><a href="#verify">Verify your file</a></nav></aside><div class="document-body">
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/" aria-current="page">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/" aria-current="page">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap">
+    <header class="document-hero"><p class="micro">Download</p><h1>LocalSR for macOS,<br><em>Windows and Linux.</em></h1><p>The same free app on all three. Pick the installer for your computer; GPU editions and older versions are listed under each one.</p></header>
+    <section class="download-top" id="links" aria-labelledby="links-title">
+      <h2 class="sr-only" id="links-title">Installers</h2>
+      <div class="platforms">
+        <!-- downloads:start -->
+            <article class="platform" id="macos" data-platform="macos" data-size="419 MB" aria-labelledby="download-macos">
+              <div class="platform-head"><h3 id="download-macos">macOS</h3><span class="yours">For this computer</span></div>
+              <p class="platform-req">Apple Silicon · macOS 14+</p>
+              <p>v0.3.0-beta · Neural Engine · MPS · CPU fallback</p>
+              <a class="btn download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.3.0-beta for macOS, 419 MB">Download .dmg · 419 MB</a>
+              <ul class="platform-more"><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg">v0.1.3-beta</a> · 414 MB</li></ul>
+            </article>
+            <article class="platform" id="windows" data-platform="windows" data-size="179 MB" aria-labelledby="download-windows">
+              <div class="platform-head"><h3 id="download-windows">Windows</h3><span class="yours">For this computer</span></div>
+              <p class="platform-req">Windows 10 / 11 · x86-64</p>
+              <p>v0.3.0-beta · CPU backend · unsigned installer</p>
+              <a class="btn download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.3.0-beta for Windows, 179 MB">Download .exe · 179 MB</a>
+              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition, untested</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition, untested</a> · 208 MB</li></ul>
+            </article>
+            <article class="platform" id="linux" data-platform="linux" data-size="631 MB" aria-labelledby="download-linux">
+              <div class="platform-head"><h3 id="download-linux">Linux</h3><span class="yours">For this computer</span></div>
+              <p class="platform-req">Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)</p>
+              <p>v0.3.0-beta · CPU backend · AppImage</p>
+              <a class="btn download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.3.0-beta for Linux, 631 MB">Download .AppImage · 631 MB</a>
+              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="#parts">NVIDIA CUDA edition, untested</a> · 7,677 MB in 4 parts</li></ul>
+            </article>
+        <!-- downloads:end -->
+      </div>
+      <div class="os-notes">
+        <div><h3>On a Mac</h3><p>Open the DMG and drag LocalSR onto the Applications folder. It is signed and notarized by Apple and updates itself. With Homebrew: <code class="inline-code">brew install --cask herrei/tap/localsr</code></p></div>
+        <div><h3>On Windows</h3><p>Run the installer. It is not code-signed yet, so SmartScreen warns first: choose <em>More info</em>, then <em>Run anyway</em>. Download new versions from this page for now.</p></div>
+        <div><h3>On Linux</h3><p>Make the AppImage executable with <code class="inline-code">chmod +x LocalSR-*.AppImage</code> and run it. It needs glibc 2.39 or later, as in Ubuntu 24.04. Download new versions from this page for now.</p></div>
+      </div>
+    </section>
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#know">What to know</a><a href="#parts">Downloads in parts</a><a href="#verify">Check your file</a><a href="#source">Source and licences</a></nav></aside><div class="document-body">
 
       <section id="know"><h2>What to know first</h2>
         <ul>
-          <li><strong>This is a beta.</strong> Features can still change, and some hardware is untested. The macOS installer (Apple Silicon, macOS 14 or later) is Developer&nbsp;ID signed and notarized by Apple and tells you when a newer beta is available; it is also the most tested build. The Windows and Linux packages pass the codec policy and an automated test of the installed app, but have not had this release’s manual checks, and they do not update themselves yet.</li>
-          <li><strong>Windows and Linux.</strong> The Windows installer is not code-signed, so SmartScreen warns first: choose <em>More info</em>, then <em>Run anyway</em>. On Linux, make the AppImage executable (<code>chmod +x</code>) and run it. The standard downloads run on the CPU. The GPU editions are listed under each platform: <strong>AMD ROCm</strong> (Linux), tested on a Radeon RX&nbsp;9060&nbsp;XT; <strong>NVIDIA CUDA</strong> (Windows and Linux) and <strong>DirectML</strong> (Windows), both <strong>untested</strong> — CUDA has not yet run on an NVIDIA card, and DirectML’s photo-denoising results can still differ from the CPU’s. CUDA needs a current NVIDIA driver; ROCm needs a supported Radeon and the amdgpu driver. The CUDA and ROCm editions are several gigabytes and come <a href="#parts">in parts</a>.</li>
+          <li><strong>This is a beta.</strong> Features can still change, and some hardware is untested. The Mac build is the most tested. The Windows and Linux packages pass the codec policy and an automated test of the installed app, but have not had this release’s manual checks.</li>
+          <li><strong>Graphics cards on Windows and Linux.</strong> The standard downloads run on the CPU. The GPU editions are listed under each platform: <strong>AMD ROCm</strong> (Linux), tested on a Radeon RX&nbsp;9060&nbsp;XT; <strong>NVIDIA CUDA</strong> (Windows and Linux) and <strong>DirectML</strong> (Windows), both <strong>untested</strong>: CUDA has not yet run on an NVIDIA card, and DirectML’s photo-denoising results can still differ from the CPU’s. CUDA needs a current NVIDIA driver; ROCm needs a supported Radeon and the amdgpu driver. The CUDA and ROCm editions are several gigabytes and come <a href="#parts">in parts</a>.</li>
           <li><strong>Phone and camera videos open on a Mac.</strong> LocalSR itself includes only royalty-free video formats (AV1, VP9, FFV1 and more); on macOS it hands H.264, HEVC and AAC to the codecs that ship with the system, so iPhone and camera recordings open and export without extra software. Formats macOS cannot read (WMV, DivX, FLV) use an FFmpeg you install yourself; LocalSR finds it automatically and shows the install command when a file needs it. On Windows and Linux there are no such system codecs, so every patent-licensed format &mdash; H.264 and HEVC included &mdash; needs that installed FFmpeg; images and royalty-free video work without it.</li>
           <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — the app never overwrites them — and inspect results before you rely on or republish them.</li>
           <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Every model LocalSR downloads for you is published under Apache-2.0, MIT, BSD-3-Clause or CC&nbsp;BY&nbsp;4.0, which allow personal and commercial use (CC&nbsp;BY with attribution). Only the two optional face models, which you have to supply yourself, have unresolved rights. The <a href="../models/#licenses">model license table</a> lists each one.</li>
@@ -25,26 +69,6 @@
           <li><strong>No warranty.</strong> LocalSR is free software provided as is under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>, without warranty of any kind. It is a beta: keep backups of anything that matters.</li>
         </ul>
         <p>More detail: the <a href="../guide/">user guide</a> walks through the app, the <a href="../models/">model guide</a> explains every model in plain words, and the <a href="../release-notes/">beta notes</a> cover what ships and what is still in development.</p>
-      </section>
-
-      <section id="links"><h2>Direct downloads</h2>
-        <p>Choose your installer — these are the same files the main page links:</p>
-        <!-- downloads:start -->
-            <article class="download-row" aria-labelledby="download-macos">
-              <div><h3 id="download-macos">macOS</h3><p class="platform-detail">Apple Silicon · macOS 14+<br>Also available: <a href="https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg">v0.1.3-beta (414 MB)</a></p><span class="platform-size micro">v0.3.0-beta · Neural Engine · MPS · CPU fallback · 419 MB</span></div>
-              <a class="download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.3.0-beta for macOS"><span>Download .dmg</span><span aria-hidden="true">↓</span></a>
-            </article>
-            <article class="download-row" aria-labelledby="download-windows">
-              <div><h3 id="download-windows">Windows</h3><p class="platform-detail">Windows 10 / 11 · x86-64<br>Also available: <a href="#parts">NVIDIA CUDA edition, untested (4,244 MB: installer and 3 engine parts)</a> · <a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition, untested (208 MB)</a></p><span class="platform-size micro">v0.3.0-beta · CPU backend · unsigned installer · 179 MB</span></div>
-              <a class="download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.3.0-beta for Windows"><span>Download .exe</span><span aria-hidden="true">↓</span></a>
-            </article>
-            <article class="download-row" aria-labelledby="download-linux">
-              <div><h3 id="download-linux">Linux</h3><p class="platform-detail">Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)<br>Also available: <a href="#parts">AMD ROCm edition (9,954 MB in 5 parts)</a> · <a href="#parts">NVIDIA CUDA edition, untested (7,677 MB in 4 parts)</a></p><span class="platform-size micro">v0.3.0-beta · CPU backend · AppImage · 631 MB</span></div>
-              <a class="download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.3.0-beta for Linux"><span>Download .AppImage</span><span aria-hidden="true">↓</span></a>
-            </article>
-        <!-- downloads:end -->
-        <p>On a Mac with <a href="https://brew.sh/">Homebrew</a>, one command installs the same signed build, and LocalSR keeps updating itself afterwards:</p>
-        <pre><code>brew install --cask herrei/tap/localsr</code></pre>
       </section>
 
       <section id="parts"><h2>Downloads in parts</h2>
@@ -55,43 +79,60 @@
           <pre><code>cat LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-* &gt; LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage
 sha256sum LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage   # compare with SHA256SUMS
 chmod +x LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage</code></pre>
-          <ul>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005</a> <span class="micro">1,985 MB</span></li>
+          <ul class="parts-list">
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005</a> <span class="quiet">1,985 MB</span></li>
           </ul>
         <h3>Linux · NVIDIA CUDA edition, untested</h3>
           <p>Download all 4 parts into one folder, join them, check the result and make it executable:</p>
           <pre><code>cat LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-* &gt; LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage
 sha256sum LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage   # compare with SHA256SUMS
 chmod +x LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage</code></pre>
-          <ul>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004</a> <span class="micro">1,700 MB</span></li>
+          <ul class="parts-list">
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004</a> <span class="quiet">1,700 MB</span></li>
           </ul>
         <h3>Windows · NVIDIA CUDA edition, untested</h3>
           <p>Download the installer and all 3 engine parts into one folder, keep their names, and run the installer. It checks each part's size and SHA-256 and unpacks the engine itself.</p>
-          <ul>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe</a> <span class="micro">5 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002</a> <span class="micro">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003</a> <span class="micro">254 MB</span></li>
+          <ul class="parts-list">
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe</a> <span class="quiet">5 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003</a> <span class="quiet">254 MB</span></li>
           </ul>
         <!-- parts:end -->
       </section>
 
-      <section id="verify"><h2>Verify your file</h2>
-        <p>Compare the SHA-256 digest of your download with the published checksum:</p>
-        <pre><code>shasum -a 256 LocalSR-v0.1.3-beta-macOS-arm64.dmg</code></pre>
-        <p>A matching checksum confirms the file is the listed release asset. The installer is also notarized by Apple; this should report <code>accepted</code> and <code>Notarized Developer ID</code>:</p>
-        <pre><code>spctl -a -vv -t open --context context:primary-signature LocalSR-v0.1.3-beta-macOS-arm64.dmg</code></pre>
-        <a class="button button-ink" href="../#download">Back to the showcase <span aria-hidden="true">↗</span></a>
+      <section id="verify"><h2>Check your file</h2>
+        <p>Compare the SHA-256 of your download with the one in <a href="../SHA256SUMS">SHA256SUMS</a>. A match confirms you have the published file.</p>
+        <h3>macOS</h3>
+        <pre><code>shasum -a 256 LocalSR-*.dmg</code></pre>
+        <p>The installer is also notarized by Apple. This should report <code>accepted</code> and <code>Notarized Developer ID</code>:</p>
+        <pre><code>spctl -a -vv -t open --context context:primary-signature LocalSR-*.dmg</code></pre>
+        <h3>Windows, in PowerShell</h3>
+        <pre><code>Get-FileHash .\LocalSR-*.exe -Algorithm SHA256</code></pre>
+        <h3>Linux</h3>
+        <pre><code>sha256sum LocalSR-*.AppImage</code></pre>
+      </section>
+
+      <section id="source"><h2>Source and licences</h2>
+        <p>LocalSR is free software under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>. Each installer has a source and notices bundle next to it on <a href="https://github.com/HerRei/local-upscale/releases">GitHub Releases</a>, with the exact sources of the libraries it ships. The <a href="../release-notes/#sources">release notes</a> list them.</p>
+        <a class="btn" href="../release-notes/">Read the release notes</a>
       </section>
 
     </div></div>
-  </main><footer class="site-footer"><div class="footer-top"><a class="wordmark" href="../">LocalSR<span class="wordmark-dot" aria-hidden="true">.</span></a><p>Image restoration.<br><em>On your computer.</em></p><a class="back-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div><div class="footer-bottom micro"><span>A project by <a href="https://herrei.github.io/">Hermes Reisner</a></span><span><a href="../guide/">Guide</a> · <a href="../support/">Support</a> · <a href="../privacy/">Privacy</a> · <a href="../terms/">Terms</a></span></div></footer>
-</div><script src="../count.js" defer></script></body></html>
+  </main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR and Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

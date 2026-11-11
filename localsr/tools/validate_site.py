@@ -29,7 +29,7 @@ class Document(HTMLParser):
             self.ids.append(attrs["id"])
         if tag == "h1":
             self.h1_count += 1
-        for attribute in ("href", "src"):
+        for attribute in ("href", "src", "data-before", "data-after"):
             if attribute in attrs:
                 self.refs.append(attrs[attribute])
         # Comparison selects name the image each choice loads.
@@ -78,9 +78,13 @@ def main():
 
     css = (site / "styles.css").read_text()
     for reference in re.findall(r'url\(["\']?([^"\')]+)', css):
+        if reference.startswith("data:"):
+            continue
         check((site / reference).is_file(), f"Missing stylesheet asset: {reference}")
-    for reference in re.findall(r"['\"](assets/[^'\"]+)['\"]", (site / "showcase.js").read_text()):
-        check((site / reference).is_file(), f"Missing comparison asset: {reference}")
+    examples = json.loads((site / "assets/examples/provenance.json").read_text())
+    for filename, expected in examples["files_sha256"].items():
+        file = site / "assets/examples" / filename
+        check(file.is_file() and hashlib.sha256(file.read_bytes()).hexdigest() == expected, f"Example image changed: {filename}")
 
     provenance = json.loads((site / "assets/image-provenance.json").read_text())
     for filename, expected in provenance["assets"].items():

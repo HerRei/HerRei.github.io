@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f3f1e9">
+<meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
 <title>User guide — LocalSR</title><meta name="description" content="How to use LocalSR: install it, upscale or restore your first image, run batches and videos, find your results, and fix common problems.">
 <link rel="canonical" href="https://herrei.github.io/localsr/guide/">
 <link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
-</head><body id="top"><a class="skip-link" href="#main">Skip to content</a><div class="page-shell">
-<header class="masthead"><a class="wordmark" href="../"><span class="crop-mark" aria-hidden="true"></span>LocalSR<span class="wordmark-dot">.</span></a><nav aria-label="Main navigation"><a href="../#download">Downloads</a><a href="../models/">Model guide</a><a href="../support/">Support</a><a href="../privacy/">Privacy</a></nav></header>
-<main id="main"><header class="document-hero"><p class="micro">User guide · LocalSR beta for macOS, Windows and Linux · 22 October 2026</p><h1>From first photo<br><em>to finished result.</em></h1><p>Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p></header>
-<div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#install">Install</a><a href="#window">The window</a><a href="#first-image">Your first image</a><a href="#edit">Edit with a prompt</a><a href="#results">Where results go</a><a href="#compare">Compare before and after</a><a href="#batch">Many files at once</a><a href="#models">Models, presets and recipes</a><a href="#video">Video</a><a href="#settings">Output and hardware settings</a><a href="#updates">Updates and privacy</a><a href="#finder">Finder and the command line</a><a href="#troubleshooting">Troubleshooting</a></nav></aside><div class="document-body">
+</head><body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/" aria-current="page">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/" aria-current="page">Guide</a><a href="../models/">Models</a><a href="../compare/">Compare</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap"><header class="document-hero"><p class="micro">User guide · LocalSR beta for macOS, Windows and Linux · 22 October 2026</p><h1>From first photo<br><em>to finished result.</em></h1><p>Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p></header>
+<div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#install">Install</a><a href="#window">The window</a><a href="#first-image">Your first image</a><a href="#edit">Edit with a prompt</a><a href="#results">Where results go</a><a href="#compare">Compare before and after</a><a href="#batch">Many files at once</a><a href="#models">Models, presets and recipes</a><a href="#video">Video</a><a href="#settings">Output and hardware settings</a><a href="#updates">Updates and privacy</a><a href="#finder">Finder (Mac) and the command line</a><a href="#troubleshooting">Troubleshooting</a></nav></aside><div class="document-body">
 
 <section id="install"><h2>Install</h2>
 <ol>
@@ -25,7 +36,7 @@
 <li><strong>The preview</strong> in the middle: drop files here. Videos play here before they are upscaled. After processing it shows the before-and-after comparison.</li>
 <li><strong>Enhance</strong> on the right: what to do (the task), how (quality, content, what to fix first) and, under <strong>Advanced</strong>, output and hardware settings.</li>
 <li><strong>The status bar</strong> at the bottom: what the next job will make (for example <em>600 × 400 → 2400 × 1600 · 4× · Neural Engine</em>), progress and time estimates, the start button, and <strong>Reveal</strong> and <strong>Open</strong> for the selected item’s result.</li>
-<li><strong>The menu bar</strong> has the rest: <strong>View → Models…</strong> (⇧⌘M) opens the model library, <strong>View → Performance and Diagnostics…</strong> runs a benchmark, <strong>LocalSR → Check for Updates…</strong> handles updates, and <strong>Help → LocalSR User Guide</strong> opens this page.</li>
+<li><strong>The menu bar</strong> has the rest: <strong>View → Models…</strong> (⇧⌘M, or Ctrl+Shift+M on Windows and Linux) opens the model library, <strong>View → Performance and Diagnostics…</strong> runs a benchmark, <strong>LocalSR → Check for Updates…</strong> handles updates, and <strong>Help → LocalSR User Guide</strong> opens this page.</li>
 </ul>
 <p>There is no toolbar: the window buttons sit beside <strong>Media</strong>, and the pane headings form the top of the window. In a narrow window a slim bar switches between <strong>Media</strong>, <strong>Preview</strong> and <strong>Enhance</strong>.</p>
 </section>
@@ -34,10 +45,10 @@
 <ol>
 <li><strong>Add a photo.</strong> Drop it onto the preview, or click the preview to choose files. JPEG, PNG, WebP, TIFF, AVIF, GIF and camera RAW (DNG, Canon, Nikon, Sony, Fujifilm and more) work, and on a Mac also HEIC and JPEG XL, which macOS decodes.</li>
 <li><strong>Choose a task</strong> under Enhance: <strong>Upscale</strong> makes photos and artwork 2×, 3× or 4× larger; <strong>Restore</strong> removes noise, blur or JPEG artifacts without enlarging; <strong>Edit</strong> changes an image from a written instruction (see <a href="#edit">below</a>). Upscale also handles videos: select a clip and it switches to video.</li>
-<li><strong>Choose the quality.</strong> <strong>Quick</strong> is fast and good for most photos. <strong>Best</strong> is slower and keeps finer texture. Models are not included in the installer; each card says how big its download is until it is on your Mac.</li>
+<li><strong>Choose the quality.</strong> <strong>Quick</strong> is fast and good for most photos. <strong>Best</strong> is slower and keeps finer texture. Models are not included in the installer; each card says how big its download is until it is on your computer.</li>
 <li><strong>Say what the image is.</strong> Pick <strong>Photo</strong> or <strong>Illustration</strong>, and under <strong>Fix first</strong> choose problems to clean up before enlarging, such as noise, JPEG artifacts or blur. <strong>Model</strong> underneath shows which model runs at each step; <strong>Change…</strong> opens the library.</li>
 <li><strong>Start</strong> with the button at the bottom right. It says <strong>Upscale selected</strong> or <strong>Restore selected</strong>, depending on the task. The first time, it says <strong>Download 4 MB, then upscale</strong>: it fetches the model, checks it, and starts. While it downloads, the same button cancels.</li>
-<li><strong>Check the result</strong> in the comparison, then press <strong>Open</strong> to view the file or <strong>Reveal</strong> to show it in Finder.</li>
+<li><strong>Check the result</strong> in the comparison, then press <strong>Open</strong> to view the file or <strong>Reveal</strong> to show it in its folder.</li>
 </ol>
 <p class="document-callout">Upscaling models invent plausible detail. Text, faces, eyes and fine patterns can look convincing and still be wrong, so look closely before you rely on a result. LocalSR never overwrites your original.</p>
 </section>
@@ -73,7 +84,7 @@
 </section>
 
 <section id="models"><h2>Models, presets and recipes</h2>
-<p><strong>View → Models…</strong> (⇧⌘M), or <strong>Change…</strong> under Model, opens the library. It lists every model with what it is good at, its size, author, license and source. Download or remove models there, or pin a model to the Quick or Best preset for a task. The <a href="../models/">model guide</a> explains each model in plain words.</p>
+<p><strong>View → Models…</strong> (⇧⌘M, or Ctrl+Shift+M on Windows and Linux), or <strong>Change…</strong> under Model, opens the library. It lists every model with what it is good at, its size, author, license and source. Download or remove models there, or pin a model to the Quick or Best preset for a task. The <a href="../models/">model guide</a> explains each model in plain words.</p>
 <p>If you often use the same setup, press <strong>Save as recipe…</strong> next to Quality. Recipes appear next to Quick and Best and in the <strong>Presets</strong> menu.</p>
 <p>You can also use your own model: in the library, under <strong>Your own file</strong>, choose a checkpoint. <code>.safetensors</code> files are strongly recommended. The two optional HAT face models are only available as copies you supply yourself, because their rights are unresolved.</p>
 </section>
@@ -100,18 +111,18 @@
 </section>
 
 <section id="updates"><h2>Updates and privacy</h2>
-<p>LocalSR checks for a newer beta each time it starts. When one is available, a notice offers <strong>Update Now</strong>: the update is downloaded, verified against LocalSR’s signing key, installed, and the app restarts. It waits until a running queue has finished. Settings, recipes and models are kept. <strong>LocalSR → Check for Updates…</strong> checks by hand.</p>
-<p>Your photos and videos never leave your Mac. The update check sends an anonymous count (app version, platform and release channel, no identifiers). Turn it off under <strong>LocalSR → Check for Updates…</strong>, in the Software Update dialog. The <a href="../privacy/">privacy page</a> describes every connection the app makes.</p>
+<p>On a Mac, LocalSR checks for a newer beta each time it starts. When one is available, a notice offers <strong>Update Now</strong>: the update is downloaded, verified against LocalSR’s signing key, installed, and the app restarts. It waits until a running queue has finished. Settings, recipes and models are kept. <strong>LocalSR → Check for Updates…</strong> checks by hand.</p>
+<p>On Windows and Linux, download new versions from the download page for now. Your photos and videos never leave your computer. The Mac app’s update check sends an anonymous count (app version, platform and release channel, no identifiers). Turn it off under <strong>LocalSR → Check for Updates…</strong>, in the Software Update dialog. The <a href="../privacy/">privacy page</a> describes every connection the app makes.</p>
 </section>
 
-<section id="finder"><h2>Finder and the command line</h2>
-<p><strong>File → System Integrations…</strong> installs an <strong>Enhance with LocalSR</strong> Quick Action for Finder, so you can right-click photos, videos or folders and send them to LocalSR with the Quick or Best preset. It also adds a <code>localsr-next</code> command for scripts. Move LocalSR to Applications first; both can be removed from the same dialog.</p>
+<section id="finder"><h2>Finder (Mac) and the command line</h2>
+<p>On a Mac, <strong>File → System Integrations…</strong> installs an <strong>Enhance with LocalSR</strong> Quick Action for Finder, so you can right-click photos, videos or folders and send them to LocalSR with the Quick or Best preset. It also adds a <code>localsr-next</code> command for scripts. Move LocalSR to Applications first; both can be removed from the same dialog.</p>
 </section>
 
 <section id="troubleshooting"><h2>Troubleshooting</h2>
 <ul>
 <li><strong>Open or Reveal is missing.</strong> Select an item in the Media list that has finished. The buttons belong to the selected item.</li>
-<li><strong>It is slow.</strong> Check that <strong>Hardware</strong> is the Neural Engine or the Apple GPU, try <strong>Quick</strong>, use a smaller output scale, and close other heavy apps. <strong>View → Performance and Diagnostics…</strong> runs a short benchmark to compare the GPU and CPU on your Mac.</li>
+<li><strong>It is slow.</strong> On a Mac, check that <strong>Hardware</strong> is the Neural Engine or the Apple GPU; on Windows and Linux the standard download uses the CPU, and a GPU edition is faster on a supported graphics card, try <strong>Quick</strong>, use a smaller output scale, and close other heavy apps. <strong>View → Performance and Diagnostics…</strong> runs a short benchmark to compare the GPU and CPU on your Mac.</li>
 <li><strong>It stopped with a memory error.</strong> Turn on <strong>Safe memory mode</strong> or choose a smaller model. Very large images and 4× video need a lot of memory.</li>
 <li><strong>A video will not open.</strong> The format probably needs FFmpeg; follow the install command LocalSR shows. If it still fails, report the format.</li>
 <li><strong>The result looks plastic or wrong.</strong> Try another model or Photo instead of Illustration, and turn off fixes you do not need. Some damage cannot be recovered.</li>
@@ -121,5 +132,12 @@
 </section>
 
 </div></div></main>
-<footer class="footer"><div class="footer-top"><p>A little more detail.<br><em>On your own computer.</em></p><a class="back-top" href="#top">Back to top ↑</a></div><div class="footer-bottom micro"><span>LocalSR · HerRei</span><span><a href="../support/">Support</a> · <a href="../privacy/">Privacy</a> · <a href="../terms/">Terms</a></span></div></footer>
-</div><script src="../count.js" defer></script></body></html>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR and Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

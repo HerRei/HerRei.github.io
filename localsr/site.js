@@ -1,29 +1,7 @@
-/* Small enhancements on every page: marking the download for this computer, the current section in
-   "On this page", and closing the small-screen menu. Everything works without it. */
+/* Small enhancements on every page: the current section in "On this page", table roles for
+   tables that stack on phones, and closing the small-screen menu. Everything works without it. */
 (() => {
   'use strict';
-
-
-  // Desktop operating system of this browser, or null on phones, tablets and anything unknown.
-  function detectPlatform(nav) {
-    const ua = nav.userAgent || '';
-    const platform = (nav.userAgentData && nav.userAgentData.platform) || nav.platform || '';
-    if (/Android|iPhone|iPad|iPod|CrOS/i.test(ua) || /Android|Chrome OS|iOS/i.test(platform)) return null;
-    if (/Mac/i.test(platform) || /Macintosh/.test(ua)) return nav.maxTouchPoints > 1 ? null : 'macos';
-    if (/Win/i.test(platform) || /Windows/.test(ua)) return 'windows';
-    if (/Linux|X11/i.test(platform) || /Linux|X11/.test(ua)) return 'linux';
-    return null;
-  }
-
-  function markDownloads(doc, os) {
-    const panels = [...doc.querySelectorAll('.platform[data-platform]')];
-    const mine = panels.find(panel => panel.dataset.platform === os);
-    if (mine) {
-      mine.classList.add('is-yours');
-      const button = mine.querySelector('.download-link');
-      if (button) button.classList.add('btn-primary');
-    }
-  }
 
   function followSections(doc, win) {
     const links = [...doc.querySelectorAll('nav[aria-label="On this page"] a[href^="#"]')];
@@ -72,9 +50,6 @@
     });
   }
 
-  if (typeof module !== 'undefined') module.exports = { detectPlatform, markDownloads };
-  if (typeof document === 'undefined') return;
-  markDownloads(document, detectPlatform(navigator));
   followSections(document, window);
   keepTableRoles(document);
   closeMenus(document);

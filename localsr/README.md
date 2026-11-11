@@ -4,16 +4,16 @@ Published at **https://herrei.github.io/localsr/**. The pages are static HTML wi
 and two small progressive-enhancement scripts. Download links and content work without JavaScript.
 
 The look follows the desktop app's design language (`desktop/src/styles.css` in the app repository):
-neutral dark greys, IBM Plex Sans, 2 px and 4 px corners, and one red (#b3452a) used only on the
-download for the visitor's own system. The [design study](../docs/localsr-design-study.md) still
+neutral dark greys, IBM Plex Sans, 2 px and 4 px corners, and one red (#b3452a) used only on
+download buttons. The [design study](../docs/localsr-design-study.md) still
 holds the evidence policy; its paper look was replaced in November 2026.
 
 ## Files
 
 - `index.html`, `showcase.js`: the home page and its example viewer (real results, a draggable line).
 - `styles.css`: the only stylesheet, for every page except the in-browser demo.
-- `site.js`: on every page: picks the download for the visitor's system, marks the current section
-  under "On this page", closes the small-screen menu.
+- `site.js`: on every page: marks the current section under "On this page", keeps table roles for
+  tables that stack on phones, closes the small-screen menu.
 - `assets/examples/`: the home page examples, cut from real runs; `provenance.json` lists sources,
   crops, models, the computer each ran on, and checksums that `validate_site.py` checks.
 - `compare/`, `models/which/`: measured comparisons; `compare/compare.js` drives their sliders.

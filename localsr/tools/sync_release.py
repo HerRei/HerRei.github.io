@@ -55,7 +55,7 @@ def render_rows(release, *, direct):
         size_attr = f' data-size="{megabytes(current["size_bytes"])}"' if current is not None else ""
         lines = [
             f'            <article class="platform"{anchor} data-platform="{pid}"{size_attr} aria-labelledby="download-{pid}">',
-            f'              <div class="platform-head"><h3 id="download-{pid}">{name}</h3><span class="yours">For this computer</span></div>',
+            f'              <h3 id="download-{pid}">{name}</h3>',
             f'              <p class="platform-req">{requirements}</p>',
         ]
         if current is not None:
@@ -67,7 +67,7 @@ def render_rows(release, *, direct):
             label = f'Download {values["extension"]} · {size}'
             lines.append(f'              <p>{version} · {values["backend"]}</p>')
             lines.append(
-                f'              <a class="btn download-link" data-download="{values["id"]}" href="{href}" '
+                f'              <a class="btn btn-primary download-link" data-download="{values["id"]}" href="{href}" '
                 f'aria-label="Download LocalSR {version} for {name}, {size}">{label}</a>'
             )
             more = []

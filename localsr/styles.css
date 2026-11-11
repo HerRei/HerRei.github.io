@@ -284,10 +284,6 @@ code, pre, kbd { font-family: var(--mono); }
 .platform-more { margin: 4px 0 0; padding: 12px 0 0; list-style: none; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 6px; }
 .platform-more li { color: var(--secondary); }
 .platform-more a { color: var(--text); }
-.platform.is-yours { border-color: var(--border-strong); background: var(--chrome); }
-.yours { display: none; font-size: 13px; color: var(--secondary); }
-.platform.is-yours .yours { display: inline; }
-.platform-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
 .hardware li { color: var(--secondary); font-size: 15.5px; }
 .hardware { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
 .after-download { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 28px; font-size: 15.5px; color: var(--secondary); }

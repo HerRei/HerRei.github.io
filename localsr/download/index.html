@@ -27,26 +27,26 @@
       <h2 class="sr-only" id="links-title">Installers</h2>
       <div class="platforms">
         <!-- downloads:start -->
-            <article class="platform" id="macos" data-platform="macos" data-size="419 MB" aria-labelledby="download-macos">
+            <article class="platform" id="macos" data-platform="macos" data-size="422 MB" aria-labelledby="download-macos">
               <h3 id="download-macos">macOS</h3>
               <p class="platform-req">Apple Silicon · macOS 14+</p>
-              <p>v0.3.0-beta · Neural Engine · MPS · CPU fallback</p>
-              <a class="btn btn-primary download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.3.0-beta for macOS, 419 MB">Download .dmg · 419 MB</a>
+              <p>v0.4.0-beta · Neural Engine · MPS · CPU fallback</p>
+              <a class="btn btn-primary download-link" data-download="macos" href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-macOS-arm64.dmg" aria-label="Download LocalSR v0.4.0-beta for macOS, 422 MB">Download .dmg · 422 MB</a>
               <ul class="platform-more"><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.1.3-beta/LocalSR-v0.1.3-beta-macOS-arm64.dmg">v0.1.3-beta</a> · 414 MB</li></ul>
             </article>
-            <article class="platform" id="windows" data-platform="windows" data-size="179 MB" aria-labelledby="download-windows">
+            <article class="platform" id="windows" data-platform="windows" data-size="180 MB" aria-labelledby="download-windows">
               <h3 id="download-windows">Windows</h3>
               <p class="platform-req">Windows 10 / 11 · x86-64</p>
-              <p>v0.3.0-beta · CPU backend · unsigned installer</p>
-              <a class="btn btn-primary download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.3.0-beta for Windows, 179 MB">Download .exe · 179 MB</a>
-              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition</a> · 4,244 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-DirectML-x86_64.exe">DirectML edition</a> · 208 MB</li></ul>
+              <p>v0.4.0-beta · CPU backend · unsigned installer</p>
+              <a class="btn btn-primary download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.4.0-beta for Windows, 180 MB">Download .exe · 180 MB</a>
+              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition</a> · 4,245 MB: installer and 3 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-DirectML-x86_64.exe">DirectML edition</a> · 258 MB</li></ul>
             </article>
-            <article class="platform" id="linux" data-platform="linux" data-size="631 MB" aria-labelledby="download-linux">
+            <article class="platform" id="linux" data-platform="linux" data-size="565 MB" aria-labelledby="download-linux">
               <h3 id="download-linux">Linux</h3>
               <p class="platform-req">Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)</p>
-              <p>v0.3.0-beta · CPU backend · AppImage</p>
-              <a class="btn btn-primary download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.3.0-beta for Linux, 631 MB">Download .AppImage · 631 MB</a>
-              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 9,954 MB in 5 parts</li><li><a href="#parts">NVIDIA CUDA edition</a> · 7,677 MB in 4 parts</li></ul>
+              <p>v0.4.0-beta · CPU backend · AppImage</p>
+              <a class="btn btn-primary download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.4.0-beta for Linux, 565 MB">Download .AppImage · 565 MB</a>
+              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 6,579 MB in 4 parts</li><li><a href="#parts">NVIDIA CUDA edition</a> · 5,020 MB in 3 parts</li></ul>
             </article>
         <!-- downloads:end -->
       </div>
@@ -75,35 +75,33 @@
         <p>GitHub stores release files of up to 2&nbsp;GB, and the NVIDIA and AMD editions are larger, so they come in parts. Each part is listed in <a href="../SHA256SUMS">SHA256SUMS</a>.</p>
         <!-- parts:start -->
         <h3>Linux · AMD ROCm edition</h3>
-          <p>Download all 5 parts into one folder, join them, check the result and make it executable:</p>
-          <pre><code>cat LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-* &gt; LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage
-sha256sum LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage   # compare with SHA256SUMS
-chmod +x LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage</code></pre>
+          <p>Download all 4 parts into one folder, join them, check the result and make it executable:</p>
+          <pre><code>cat LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-* &gt; LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage
+sha256sum LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage   # compare with SHA256SUMS
+chmod +x LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage</code></pre>
           <ul class="parts-list">
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0004</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005">LocalSR-v0.3.0-beta-Linux-ROCm-x86_64.AppImage.part-0005</a> <span class="quiet">1,985 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0001">LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0002">LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0003">LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0004">LocalSR-v0.4.0-beta-Linux-ROCm-x86_64.AppImage.part-0004</a> <span class="quiet">602 MB</span></li>
           </ul>
         <h3>Linux · NVIDIA CUDA edition</h3>
-          <p>Download all 4 parts into one folder, join them, check the result and make it executable:</p>
-          <pre><code>cat LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-* &gt; LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage
-sha256sum LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage   # compare with SHA256SUMS
-chmod +x LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage</code></pre>
+          <p>Download all 3 parts into one folder, join them, check the result and make it executable:</p>
+          <pre><code>cat LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-* &gt; LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage
+sha256sum LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage   # compare with SHA256SUMS
+chmod +x LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage</code></pre>
           <ul class="parts-list">
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0003</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004">LocalSR-v0.3.0-beta-Linux-CUDA-x86_64.AppImage.part-0004</a> <span class="quiet">1,700 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0001">LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0002">LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0003">LocalSR-v0.4.0-beta-Linux-CUDA-x86_64.AppImage.part-0003</a> <span class="quiet">1,036 MB</span></li>
           </ul>
         <h3>Windows · NVIDIA CUDA edition</h3>
           <p>Download the installer and all 3 engine parts into one folder, keep their names, and run the installer. It checks each part's size and SHA-256 and unpacks the engine itself.</p>
           <ul class="parts-list">
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.exe</a> <span class="quiet">5 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002</a> <span class="quiet">1,992 MB</span></li>
-            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.3.0-beta/LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003">LocalSR-v0.3.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003</a> <span class="quiet">254 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.exe</a> <span class="quiet">6 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001">LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002">LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002</a> <span class="quiet">1,992 MB</span></li>
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.4.0-beta/LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003">LocalSR-v0.4.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003</a> <span class="quiet">255 MB</span></li>
           </ul>
         <!-- parts:end -->
       </section>

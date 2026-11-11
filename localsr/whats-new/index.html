@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
+  <title>What's new in 0.4 — LocalSR</title>
+  <meta name="description" content="What's new in LocalSR 0.4: more hardware, comparing results and videos, updates on every system, and a reliability and interface pass.">
+  <link rel="canonical" href="https://herrei.github.io/localsr/whats-new/">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="LocalSR"><meta property="og:title" content="What's new in LocalSR 0.4"><meta property="og:description" content="More hardware, comparing results and videos, updates on every system, and a reliability and interface pass."><meta property="og:url" content="https://herrei.github.io/localsr/whats-new/"><meta property="og:image" content="https://herrei.github.io/localsr/assets/og.png"><meta property="og:image:alt" content="LocalSR. Image and video restoration, on your computer."><meta property="og:image:width" content="1738"><meta property="og:image:height" content="905">
+  <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">vs Upscayl</a><a href="../support/">Support</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="../support/">Support</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap"><header class="document-hero"><p class="micro">LocalSR / Release notes</p><h1>What's new <em>in 0.4.</em></h1><p>LocalSR 0.4.0-beta is out, the first public release since 0.3.0. It brings support for more hardware, updates on every system, comparison of saved results including videos, and a pass over reliability and the interface.</p></header>
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#compare">Compare your results</a><a href="#interface">A calmer interface</a><a href="#hardware">More hardware</a><a href="#video">Video</a><a href="#safety">Safer by default</a><a href="#updates">Updates everywhere</a><a href="#limitations">What to know before updating</a></nav></aside>
+      <div class="document-body">
+        <section id="compare"><h2>Compare your results</h2><p>In Outputs, pick two to four saved results and choose <em>Compare these N</em>. A slider lets you drag between two versions of the same input; linked boxes show up to four, including results from different inputs. Zoom and pan stay linked, and LocalSR loads visible image detail from the saved file when you zoom in beyond the preview.</p><p>You can compare videos in the same slider or boxes. One transport plays, pauses and seeks all ready videos by time, and if one buffers, they wait and resume together. Audio comes from the first slot.</p></section>
+        <section id="interface"><h2>A calmer interface</h2><p>The status bar has two start buttons: <em>Only this one</em> runs the selected picture and <em>Upscale all N</em> runs the queue. Inputs and Outputs have their own tabs and counts. Click a result to see it, choose <em>Use as input</em> to work on it again, or clear the Outputs list without deleting the files.</p><p>The running picture has its own progress line, with Saving and Stopping states when needed. Help tips explain Advanced controls, and every model library row shows which hardware the model can use.</p></section>
+        <section id="hardware"><h2>More hardware</h2><p>On Windows, DirectML can use built-in Intel and AMD Radeon graphics. Intel graphics also appear as OpenVINO devices on Windows and Linux, and Intel NPUs can run SPAN, Real-ESRGAN, FBCNN and NAFNet. Before trusting a GPU, LocalSR compares its result with the CPU's; a driver that crashes during the check is left alone.</p></section>
+        <section id="video"><h2>Video</h2><p>Frame interpolation is an optional Labs feature, off by default, that adds frames to motion. You can interpolate before or after upscaling, and the clip keeps its duration and compatible audio. On a Mac you can save HEIC images and MOV video with HEVC or Apple ProRes. Finished videos appear in Outputs with their duration and frame rate. With Video format Automatic, an early system HEVC encoder refusal can continue as AV1 with a note.</p></section>
+        <section id="safety"><h2>Safer by default</h2><p>LocalSR never writes a result over an existing file, even when names differ only in case or Unicode form. Before a job it checks the output volume has enough space and keeps 8&nbsp;GB free on the system volume. If a job cannot fit, LocalSR refuses it before starting.</p><p>The remaining-time estimate begins after a steady speed is measured and changes in steps that do not flicker. Core ML preparation has a time limit, and Intel NPU compilation runs separately so it cannot freeze the engine. FFmpeg and the editing runtime are run only if LocalSR found them itself or you chose them through the app's file dialogs.</p></section>
+        <section id="updates"><h2>Updates everywhere</h2><p>Windows and Linux builds can now update in the app, as the Mac build does. If you use 0.3.0 on Windows or Linux, install this release once from the download page; later releases can update in the app. The installation uses the same settings, queue and models folder.</p></section>
+        <section id="limitations"><h2>What to know before updating</h2><p>The Windows and Linux builds were checked by automated tests that start the installed app and check its engine; hands-on testing was on an Apple Silicon Mac. Windows installers are not code-signed, so SmartScreen asks before they run. CUDA editions have never run on an NVIDIA GPU, DirectML's NAFNet denoising misses its accuracy tolerance, Intel NPUs on Windows have not been tried on real hardware, and AMD NPUs are not supported.</p><p>Frame interpolation is experimental, and its speed and memory use at 1080p and 4K on the Mac have not been validated. De-flicker, editing, SeedVR2 and HDR preservation also remain experimental. The Illustration choice now selects illustration models, but it has not been visually compared with the previous behaviour. Inspect restored detail and keep your originals.</p><p><a class="btn btn-primary" href="../download/">Download LocalSR</a></p><p><a href="../release-notes/">Read the full release notes</a></p></section>
+      </div>
+    </div>
+  </main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

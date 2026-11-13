@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#161616">
+  <meta name="color-scheme" content="dark">
+  <title>Help — LocalSR</title>
+  <meta name="description" content="Everything you need to run LocalSR: load your own checkpoint model (with walkthrough video), pick built-in models, configure hardware, troubleshoot issues and report bugs.">
+  <link rel="canonical" href="https://herrei.github.io/localsr/help/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <header class="document-hero">
+    <p class="micro">LocalSR v0.4 · Documentation &amp; tutorials</p>
+    <h1>Help, guides &amp;<br><em>your own models.</em></h1>
+    <p>Walkthroughs, the built-in model reference, hardware settings, troubleshooting and bug reporting in one place.</p>
+  </header>
+
+  <div class="document-layout">
+    <aside class="document-aside">
+      <nav aria-label="On this page">
+        <a href="#custom-model">Add your own model</a>
+        <a href="#guide">User guide</a>
+        <a href="#models">Model guide</a>
+        <a href="#settings">Compare &amp; hardware</a>
+        <a href="#troubleshooting">Troubleshooting</a>
+        <a href="#support">Support &amp; bug reports</a>
+      </nav>
+    </aside>
+
+    <div class="document-body">
+      <section id="custom-model">
+        <h2>Add your own model</h2>
+        <p>LocalSR v0.4 lets you run any compatible checkpoint directly from disk without waiting for a catalog release or copying files into Application Support.</p>
+        <figure class="tutorial-figure">
+          <video class="tutorial-video" controls playsinline preload="metadata" width="1920" height="1080" poster="../assets/tutorials/add-own-model-poster.jpg">
+            <source src="../assets/tutorials/add-own-model.mp4" type="video/mp4">
+            Your browser cannot play MP4 video inline. <a href="../assets/tutorials/add-own-model.mp4">Download the tutorial video (4.5 MB)</a>.
+          </video>
+          <figcaption>Walkthrough (0:38, works muted): checking a checkpoint’s MIT licence on OpenModelDB, picking it via <strong>Your own file</strong>, opting in for <code>.pth</code>, and inspecting a real 2× split output.</figcaption>
+        </figure>
+        <p class="document-callout"><strong>Your file, your responsibility.</strong> LocalSR is MIT-licensed, but external model checkpoints carry their own licences and code-execution risks. Check a model’s rights on OpenModelDB or the author’s release page before downloading or publishing results.</p>
+        <ol class="steps">
+          <li><span>1</span><div><strong>Check the licence and format first.</strong><p>Pick checkpoints whose licence covers what you need (for example <code>MIT</code>, <code>BSD-3-Clause</code> or <code>CC BY</code>), and prefer <code>.safetensors</code> files whenever offered.</p></div></li>
+          <li><span>2</span><div><strong>Open Your own file in LocalSR.</strong><p>Under <strong>Enhance → Model</strong>, press <strong>Change…</strong> (or <kbd>⇧⌘M</kbd> / <kbd>Ctrl+Shift+M</kbd>), choose <strong>Your own file</strong> in the left sidebar, then click <strong>Choose checkpoint…</strong> to select the file anywhere on disk.</p></div></li>
+          <li><span>3</span><div><strong>Confirm pickle files explicitly if needed.</strong><p><code>.safetensors</code> files run directly. PyTorch pickle checkpoints (<code>.pth</code>, <code>.pt</code>, <code>.ckpt</code>) can execute code inside the worker, so LocalSR keeps <strong>Upscale selected</strong> disabled until you tick <em>Allow this pickle-based checkpoint</em>.</p></div></li>
+          <li><span>4</span><div><strong>Run locally or stop cleanly.</strong><p>LocalSR supports 42 super-resolution architectures through Spandrel. Unsupported checkpoints stop immediately with <em>Could not finish</em> before changing any files.</p></div></li>
+        </ol>
+      </section>
+
+      <section id="guide">
+        <h2>User guide</h2>
+        <p>Start with one photo before running a folder or long video. LocalSR never overwrites your originals and always writes results as new files.</p>
+        <div class="grid-2">
+          <div class="ruled">
+            <h3>Install</h3>
+            <p><strong>macOS:</strong> Apple Silicon (M1 or newer), macOS 14+. Drag to Applications (signed and notarized, self-updates) or run <code>brew install --cask herrei/tap/localsr</code>. <strong>Windows 10/11 &amp; Linux:</strong> unsigned installers (choose <em>More info → Run anyway</em> on SmartScreen) and AppImages (<code>chmod +x</code>), with separate GPU editions on the <a href="../download/">download page</a>.</p>
+          </div>
+          <div class="ruled">
+            <h3>The window</h3>
+            <p><strong>Media</strong> on the left lists files (Single or Batch). <strong>Preview</strong> in the middle plays videos and compares before and after. <strong>Enhance</strong> on the right picks the task, quality (Quick or Best), content type and fixes. The status bar starts jobs and provides <strong>Reveal</strong> and <strong>Open</strong>.</p>
+          </div>
+          <div class="ruled">
+            <h3>Tasks &amp; recipes</h3>
+            <p><strong>Upscale</strong> enlarges photos, illustrations and videos (2×, 3× or 4×). <strong>Restore</strong> cleans noise, blur or JPEG artifacts at 1×. <strong>Edit</strong> (experimental, Mac only) edits a still photo from text. Save frequent combinations with <strong>Save as recipe…</strong></p>
+          </div>
+          <div class="ruled">
+            <h3>Batches, video &amp; outputs</h3>
+            <p>Drop a folder with <strong>Add Folder…</strong> or use <strong>Upscale all N</strong> for queues. Videos keep source timing, rotation and audio (longer clips can take hours). Results go to Desktop by default under <strong>Advanced → Save to</strong>.</p>
+          </div>
+        </div>
+        <p>For the complete section-by-section reference including Finder Quick Actions, the <code>localsr-next</code> command-line integration and video format options, open the <a href="../guide/">full user guide</a>.</p>
+      </section>
+
+      <section id="models">
+        <h2>Model guide</h2>
+        <p>Each built-in model targets one kind of damage at one scale, downloads only when you first pick it, and is verified against its expected size and SHA-256 hash. Every catalog row in the app lists its author, licence and compatible hardware before downloading.</p>
+        <div class="table-wrap">
+          <table class="model-table stack">
+            <thead><tr><th scope="col">Model</th><th scope="col">Scale</th><th scope="col">Best for</th><th scope="col">Size &amp; licence</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><strong>SPAN 4× NomosUni</strong><br><span class="micro">Quick preset</span></th><td data-label="Scale">4×</td><td data-label="Best for">Default fast start on everyday photos.</td><td data-label="Size &amp; licence">4.5 MB · CC BY 4.0</td></tr>
+              <tr><th scope="row"><strong>RealPLKSR 4× NomosWebPhoto</strong><br><span class="micro">Best preset</span></th><td data-label="Scale">4×</td><td data-label="Best for">Finer natural texture on photos when Quick falls short.</td><td data-label="Size &amp; licence">28 MB · CC BY 4.0</td></tr>
+              <tr><th scope="row"><strong>Real-ESRGAN ×2 / ×4</strong></th><td data-label="Scale">2× / 4×</td><td data-label="Best for">Native 2× enlargement or mixed real-world degradation.</td><td data-label="Size &amp; licence">67 MB · BSD-3-Clause</td></tr>
+              <tr><th scope="row"><strong>HAT-S / HAT-L ×4</strong></th><td data-label="Scale">4×</td><td data-label="Best for">Highest still detail on strong GPUs (slowest).</td><td data-label="Size &amp; licence">81 / 166 MB · Apache-2.0</td></tr>
+              <tr><th scope="row"><strong>Real-ESRGAN Anime 6B / HFA2k</strong></th><td data-label="Scale">4×</td><td data-label="Best for">Line art, animation and illustrations (Quick / Best Illustration).</td><td data-label="Size &amp; licence">17 / 28 MB · BSD-3 / CC BY</td></tr>
+              <tr><th scope="row"><strong>RealPLKSR / SCUNet / NAFNet Denoise</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Grainy snapshots or high-ISO noise (chain before upscaling).</td><td data-label="Size &amp; licence">30 / 72 / 464 MB · CC BY / Apache / MIT</td></tr>
+              <tr><th scope="row"><strong>NAFNet Deblur / FBCNN JPEG</strong></th><td data-label="Scale">1×</td><td data-label="Best for">Motion blur and heavy JPEG blocking under <em>Fix first</em>.</td><td data-label="Size &amp; licence">272 / 288 MB · MIT / Apache-2.0</td></tr>
+              <tr><th scope="row"><strong>SeedVR2 &amp; Editing models</strong> <span class="badge badge-labs">Labs</span></th><td data-label="Scale">Video / 1×</td><td data-label="Best for">Experimental video restoration and Mac prompt editing.</td><td data-label="Size &amp; licence">3–26 GB · Apache-2.0 / Non-commercial (4B/Qwen)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Need deeper detail or side-by-side measurements?</strong> Read the <a href="../models/">full model guide</a> (complete licence table, SHA-256 verification and the optional HAT face-restoration deep dive) or inspect real test crops in <a href="../models/which/">which model for which photo</a>.</p>
+      </section>
+
+      <section id="settings">
+        <h2>Compare &amp; hardware</h2>
+        <ul>
+          <li><strong>Comparing results:</strong> Switch between <strong>Original · Split · Enhanced</strong>, hold <kbd>M</kbd> for the original, or pick up to four saved outputs in the <em>Outputs</em> tab and choose <strong>Compare these N</strong>. Press <strong>View → Actual Pixels (1:1)</strong> to judge real detail.</li>
+          <li><strong>Metadata &amp; colour:</strong> <strong>Preserve safe metadata and color profile</strong> keeps date, artist, copyright and sRGB conversion while stripping GPS location and camera serials.</li>
+          <li><strong>Hardware backends:</strong> On Apple Silicon Macs, <strong>Neural Engine</strong> is the default (runs Quick and Core ML lanes fast at low power) alongside <strong>Apple GPU (Metal)</strong>. Windows supports DirectML, OpenVINO, Intel NPU and CUDA; Linux supports ROCm, OpenVINO and CUDA.</li>
+          <li><strong>Updates &amp; privacy:</strong> All processing happens on your machine. Only the explicit model downloads you trigger and the optional update check (disable under <strong>LocalSR → Check for Updates…</strong>) use the network. See <a href="../privacy/">Privacy</a>.</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <div class="questions">
+          <details>
+            <summary>Open or Reveal buttons are missing</summary>
+            <p>Select a finished item in the <strong>Media</strong> or <strong>Outputs</strong> list. The buttons operate on the selected finished file.</p>
+          </details>
+          <details>
+            <summary>Processing is very slow</summary>
+            <p>Check under <strong>Advanced → Hardware</strong> that a GPU or Neural Engine is active instead of CPU. The standard Windows and Linux installers run on CPU unless you install a GPU edition. Try <strong>Quick</strong>, a smaller output scale, or run <strong>View → Performance and Diagnostics…</strong> to compare backends.</p>
+          </details>
+          <details>
+            <summary>Stopped with an out-of-memory error</summary>
+            <p>Enable <strong>Safe memory mode</strong> under <strong>Advanced</strong>, choose a lighter model such as SPAN instead of HAT-L, or close other memory-heavy applications.</p>
+          </details>
+          <details>
+            <summary>A video file will not open</summary>
+            <p>Legacy formats (and H.264/HEVC on Windows and Linux) use FFmpeg. Follow the install prompt LocalSR displays or choose FFmpeg via the app’s own file dialog.</p>
+          </details>
+          <details>
+            <summary>The result looks plastic or invents wrong detail</summary>
+            <p>Switch between <strong>Photo</strong> and <strong>Illustration</strong>, turn off unnecessary <em>Fix first</em> toggles, or compare models under <a href="../models/which/">which model for which photo</a>. Super-resolution reconstructs plausible detail and cannot recover lost information reliably on tiny text or faces.</p>
+          </details>
+          <details>
+            <summary>My custom checkpoint stopped with “Could not finish”</summary>
+            <p>LocalSR uses Spandrel (42 supported super-resolution architectures). If a file is an unsupported architecture, damaged, or requires custom external scripts, LocalSR stops safely before writing anything. Check the author’s architecture notes and try a Spandrel-compatible release.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="support">
+        <h2>Support &amp; bug reports</h2>
+        <p>Report reproducible problems on <a href="https://github.com/HerRei/local-upscale/issues">GitHub Issues</a>, or email <a href="mailto:hermes.reisner@gmail.com">hermes.reisner@gmail.com</a> for anything private or security-related.</p>
+        <ul>
+          <li>Include your app version, OS, CPU/GPU, model name, input dimensions and exact steps. For video, add format, duration and output size.</li>
+          <li><strong>Copy diagnostics</strong> under <strong>View → Performance and Diagnostics…</strong> copies an app and hardware summary without filenames or images. Review reports before posting and never upload private images, settings databases or certificates.</li>
+          <li>Windows installers are unsigned, CUDA/Windows-NPU editions have not been verified on physical hardware, and SeedVR2, Edit, frame interpolation and HDR preservation remain experimental.</li>
+        </ul>
+        <p>More context on volunteer project availability and full beta caveats lives on the <a href="../support/">support &amp; limitations page</a> and in <a href="https://github.com/HerRei/local-upscale/blob/main/KNOWN_LIMITATIONS.md">KNOWN_LIMITATIONS.md</a>.</p>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../help/">Help</a><a href="../help/#custom-model">Add your own model</a><a href="../guide/">User guide</a><a href="../models/">Model guide</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script>
+<script src="../count.js" defer></script>
+</body>
+</html>

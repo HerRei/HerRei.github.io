@@ -367,6 +367,19 @@ code, pre, kbd { font-family: var(--mono); }
 }
 .document-callout p, .draft-note p { font-size: 16px; }
 .document-image, .beta-shot { width: 100%; height: auto; margin: 22px 0; border-radius: var(--radius-surface); border: 1px solid var(--border); }
+.tutorial-figure { margin: 20px 0 24px; }
+.tutorial-video {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  background: var(--stage); border: 1px solid var(--border-strong); border-radius: var(--radius-surface);
+}
+.tutorial-figure figcaption { margin-top: 10px; font-size: 14px; color: var(--secondary); }
+.document-body .grid-2 { gap: 20px 32px; margin: 20px 0; }
+.document-body .ruled { padding-top: 16px; }
+.document-body .ruled h3 { margin: 0 0 6px; font-size: 18px; }
+.document-body .ruled p { font-size: 15.5px; }
+.document-body .steps { margin: 18px 0; }
+.document-body .questions { margin: 16px 0; }
+.document-body .questions details p { margin: 0 0 16px; color: var(--body); font-size: 16px; }
 .document-body .btn { margin-top: 24px; }
 .document-body .platforms { margin: 20px 0 8px; grid-template-columns: minmax(0, 1fr); }
 .document-body .platform h3 { margin: 0; }

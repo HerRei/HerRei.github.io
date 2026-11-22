@@ -288,6 +288,10 @@ code, pre, kbd { font-family: var(--mono); }
 .hardware { margin: 0; padding: 0 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
 .after-download { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; margin-top: 28px; font-size: 15.5px; color: var(--secondary); }
 .after-download nav { margin-left: auto; display: flex; flex-wrap: wrap; gap: 6px 24px; }
+.phone-app { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px 28px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+.phone-app h3 { font-size: 16px; margin-bottom: 6px; }
+.phone-app p { font-size: 15px; color: var(--secondary); max-width: 720px; }
+.phone-app nav { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 24px; font-size: 15.5px; }
 .inline-code {
   display: inline-block; white-space: nowrap;
   font-family: var(--mono); font-size: 14.5px; color: var(--text); background: var(--panel);
@@ -493,6 +497,8 @@ code, pre, kbd { font-family: var(--mono); }
   .document-hero > p:last-child, .lead { font-size: 17px; }
   .document-body p, .document-body li { font-size: 16.5px; }
   .after-download nav { margin-left: 0; }
+  .phone-app { grid-template-columns: minmax(0, 1fr); }
+  .phone-app .btn { width: 100%; }
   .after-download .inline-code, .os-notes .inline-code { display: block; margin-top: 8px; overflow-x: auto; overflow-wrap: normal; }
   .stack thead { display: none; }
   .stack, .stack tbody, .stack tr, .stack td, .stack tbody th { display: block; min-width: 0 !important; }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
+  <title>Mobile app — LocalSR</title>
+  <meta name="description" content="LocalSR for Android and iPhone: upscale photos 4x on the phone itself, with no account and no network access.">
+  <link rel="canonical" href="https://herrei.github.io/localsr/phone/">
+  <link rel="icon" type="image/png" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
+</head>
+<body id="top">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
+    <nav class="nav" aria-label="Main"><a href="../phone/" aria-current="page">Mobile app</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a></nav>
+    <div class="header-end">
+      <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../phone/" aria-current="page">Mobile app</a><a href="../demo/">Try it in your browser</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+    </div>
+  </div>
+</header>
+<main id="main" class="wrap">
+    <header class="document-hero"><p class="micro">Mobile app</p><h1>LocalSR on your phone.</h1><p>The same idea as the desktop app, made small: pick photos, and LocalSR upscales them 4x on the phone itself. There is no account, and the app has no network access, so your photos never leave the phone.</p></header>
+    <section class="download-top" aria-labelledby="get-title">
+      <h2 class="sr-only" id="get-title">Get the app</h2>
+      <div class="platforms phone-platforms">
+        <article class="platform" id="android" aria-labelledby="phone-android">
+          <h3 id="phone-android">Android</h3>
+          <p class="platform-req">Android 10 or later · phones</p>
+          <p>1.0.0 · APK, outside the Play Store</p>
+          <a class="btn btn-primary" href="https://github.com/HerRei/local-upscale/releases/download/mobile-v1.0.0/LocalSR-mobile-1.0.0-android.apk" aria-label="Download LocalSR Mobile 1.0.0 for Android, 28 MB">Download .apk · 28 MB</a>
+          <ul class="platform-more"><li><a href="https://github.com/HerRei/local-upscale/releases/tag/mobile-v1.0.0">Release notes and checksum</a></li><li><a href="https://herrei.itch.io/localsr">Also on itch.io</a></li></ul>
+        </article>
+        <article class="platform" id="iphone" aria-labelledby="phone-iphone">
+          <h3 id="phone-iphone">iPhone</h3>
+          <p class="platform-req">iOS 27 or later</p>
+          <p>1.0.0 · App Store</p>
+          <span class="btn btn-disabled" aria-disabled="true">In App Review</span>
+          <ul class="platform-more"><li>It will be free on the App Store. This page links to it once it is out.</li></ul>
+        </article>
+      </div>
+      <div class="os-notes phone-notes">
+        <div><h3>Installing the APK</h3><p>Download the file on the phone and open it. Android asks once whether your browser or file manager may install apps; allow it, then tap Install. Play Protect may scan the app first, because it does not come from the Play Store.</p></div>
+        <div><h3>Updates</h3><p>The APK does not update itself. New versions appear on this page, on GitHub and on itch.io, and install over the old one because they are signed with the same key.</p></div>
+      </div>
+    </section>
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#what">What it does</a><a href="#shots">Screenshots</a><a href="#privacy">Privacy</a><a href="#source">Source</a></nav></aside><div class="document-body">
+
+      <section id="what"><h2>What it does</h2>
+        <ul>
+          <li><strong>Upscales photos 4x.</strong> Two small models are built in: Best for the cleanest result, Fast when you have many photos. On a recent iPhone, a 12 MP photo takes a few seconds.</li>
+          <li><strong>Several photos at once.</strong> Pick up to 20, and LocalSR works through them one after another.</li>
+          <li><strong>Before and after.</strong> Each result opens with a slider and pinch to zoom, so you can check the detail before you save it.</li>
+          <li><strong>Uses the fastest chip that works.</strong> On the first run, LocalSR checks once whether the NPU, the GPU or the CPU gives correct results fastest on your phone.</li>
+          <li><strong>Full 4x.</strong> An optional setting upscales 12 MP photos to 48 MP on phones with enough memory.</li>
+          <li><strong>iPhone share menu.</strong> In Photos, share a photo with "Upscale with LocalSR".</li>
+        </ul>
+        <p>Videos, Restore and the larger models are only in the <a href="../download/">desktop app</a>.</p>
+      </section>
+
+      <section id="shots"><h2>Screenshots</h2>
+        <div class="phone-shots">
+          <img src="../assets/phone/03_batch.webp" width="660" height="1434" loading="lazy" decoding="async" alt="LocalSR on a phone, upscaling the first of three photos: a sign and a restaurant menu">
+          <img src="../assets/phone/02_compare.webp" width="660" height="1434" loading="lazy" decoding="async" alt="A restaurant menu with the before and after slider in the middle and the result size, 2400 × 3200, 4×, below">
+          <img src="../assets/phone/01_zoom.webp" width="660" height="1434" loading="lazy" decoding="async" alt="The same menu zoomed in: the original text is blurry on the left and sharp on the right">
+        </div>
+        <p class="micro">Screenshots from the iPhone app with my own photos.</p>
+      </section>
+
+      <section id="privacy"><h2>Privacy</h2>
+        <p>The app makes no network requests: no account, no analytics, no ads. The models are part of the app. On the iPhone it asks only to add photos to your library, not to read it. The <a href="../privacy/">privacy page</a> has the details.</p>
+      </section>
+
+      <section id="source"><h2>Source</h2>
+        <p>The phone app is free software under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>. Its code is in <a href="https://github.com/HerRei/local-upscale/tree/main/mobile">mobile/</a> on GitHub, and its changes are in the <a href="https://github.com/HerRei/local-upscale/blob/main/mobile/CHANGELOG.md">mobile changelog</a>. It has its own version numbers, separate from the desktop app.</p>
+      </section>
+
+    </div></div>
+  </main>
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
+    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../help/">Help</a><a href="../help/#custom-model">Add your own model</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
+  </div>
+</footer>
+<script src="../site.js" defer></script><script src="../count.js" defer></script></body></html>

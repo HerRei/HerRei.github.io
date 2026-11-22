@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
-<title>User guide — LocalSR</title><meta name="description" content="How to use LocalSR: install it, upscale or restore your first image, run batches and videos, find your results, and fix common problems.">
+<title>User guide · LocalSR</title><meta name="description" content="How to use LocalSR: install it, upscale or restore your first image, run batches and videos, find your results, and fix common problems.">
 <link rel="canonical" href="https://herrei.github.io/localsr/guide/">
 <link rel="icon" href="../assets/favicon.png"><link rel="stylesheet" href="../styles.css">
 </head><body id="top">
@@ -9,11 +9,11 @@
 <header class="site-header">
   <div class="wrap header-row">
     <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
-    <nav class="nav" aria-label="Main"><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a></nav>
+    <nav class="nav" aria-label="Main"><a href="../guide/" aria-current="page">Guide</a><a href="../models/">Models</a><a href="../compatibility/">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a></nav>
     <div class="header-end">
       <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
       <a class="btn btn-small" href="../download/">Download</a>
-      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/" aria-current="page">Guide</a><a href="../models/">Models</a><a href="../compatibility/">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
     </div>
   </div>
 </header>
@@ -22,7 +22,7 @@
 
 <section id="install"><h2>Install</h2>
 <ol>
-<li><strong>Mac:</strong> Apple Silicon (M1 or newer) with macOS 14 or later. Download the DMG from the <a href="../download/">download page</a>, open it and drag <strong>LocalSR</strong> along the arrow onto the <strong>Applications</strong> folder beside it, then open it from Applications. The app is signed and notarized by Apple, so macOS only asks you to confirm that you want to open something downloaded from the internet.</li>
+<li><strong>Mac:</strong> Apple Silicon (M1 or newer) with macOS 14 or later. Download the DMG from the <a href="../download/">download page</a>, open it and drag <strong>LocalSR</strong> along the arrow onto the <strong>Applications</strong> folder beside it, then open it from Applications. You can also install it with <code>brew install --cask herrei/tap/localsr</code>. The app is signed and notarized by Apple, so macOS only asks you to confirm that you want to open something downloaded from the internet.</li>
 <li><strong>Windows 10 or 11:</strong> run the installer. It is not code-signed yet, so SmartScreen warns first: choose <em>More info</em>, then <em>Run anyway</em>.</li>
 <li><strong>Linux:</strong> make the AppImage executable (<code>chmod +x LocalSR-*.AppImage</code>) and run it.</li>
 </ol>
@@ -71,7 +71,7 @@
 </section>
 
 <section id="compare"><h2>Compare before and after</h2>
-<p>When the selected item has a result, the preview shows the original on the left of the divider and the enhanced version on the right. Drag the divider, or focus it and use the arrow keys. It stays where it is while you zoom and pan, so a close look still shows both sides.</p><p><strong>Original · Split · Enhanced</strong> above the preview switches between the whole original, the divider and the whole result; the same views are in the <strong>View</strong> menu, and a new result starts in Split. Hold <kbd>M</kbd> to see the original from any view.</p><p>Scroll or pinch to zoom. The zoom controls appear at the bottom right while the pointer is over the picture. <strong>View → Actual Pixels (1:1)</strong> shows real pixels, which is the honest way to judge detail; <strong>View → Fit to Window</strong> zooms back out. A finished video sits on the same canvas with the same switch; the bar below it plays and pauses (or press <kbd>Space</kbd>), scrubs and changes the speed, and both versions play in sync.</p>
+<p>To compare saved outputs, pick up to four in the <strong>Outputs</strong> tab and choose <strong>Compare these N</strong>.</p><p>When the selected item has a result, the preview shows the original on the left of the divider and the enhanced version on the right. Drag the divider, or focus it and use the arrow keys. It stays where it is while you zoom and pan, so a close look still shows both sides.</p><p><strong>Original · Split · Enhanced</strong> above the preview switches between the whole original, the divider and the whole result; the same views are in the <strong>View</strong> menu, and a new result starts in Split. Hold <kbd>M</kbd> to see the original from any view.</p><p>Scroll or pinch to zoom. The zoom controls appear at the bottom right while the pointer is over the picture. <strong>View → Actual Pixels (1:1)</strong> shows real pixels, which is the honest way to judge detail; <strong>View → Fit to Window</strong> zooms back out. A finished video sits on the same canvas with the same switch; the bar below it plays and pauses (or press <kbd>Space</kbd>), scrubs and changes the speed, and both versions play in sync.</p>
 </section>
 
 <section id="batch"><h2>Many files at once</h2>
@@ -99,7 +99,7 @@
 </ul>
 </section>
 
-<section id="settings"><h2>Output and hardware settings</h2>
+<section id="settings"><h2>Output and hardware settings</h2><p>Windows supports DirectML, OpenVINO, Intel NPU and CUDA; Linux supports ROCm, OpenVINO and CUDA. See <a href="../compatibility/">Compatibility</a> for supported GPUs and setup.</p>
 <p>Open <strong>Advanced</strong> at the bottom of the Enhance panel.</p>
 <ul>
 <li><strong>Output scale</strong> and <strong>Format</strong> (PNG, JPEG, TIFF or WebP) for images; <strong>Save to</strong> for the output folder.</li>
@@ -135,8 +135,8 @@
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
-    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
-    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../help/">Help</a><a href="../help/#custom-model">Add your own model</a><a href="../compatibility/">What runs on my computer</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Docs"><p class="footer-head">Docs</p><a href="../help/">Help</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compatibility/">Compatibility</a><a href="../help/#custom-model">Add your own model</a></nav>
     <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
   </div>
 </footer>

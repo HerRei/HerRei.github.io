@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#161616"><meta name="color-scheme" content="dark">
-  <title>Download — LocalSR</title>
+  <title>Download · LocalSR</title>
   <meta name="description" content="Download LocalSR for macOS, Windows or Linux: the installers, the GPU editions, how to install and how to check your file.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://herrei.github.io/localsr/download/">
@@ -13,11 +13,11 @@
 <header class="site-header">
   <div class="wrap header-row">
     <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
-    <nav class="nav" aria-label="Main"><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a></nav>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compatibility/">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a></nav>
     <div class="header-end">
       <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
-      <a class="btn btn-small" href="../download/" aria-current="page">Download</a>
-      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/" aria-current="page">Download</a><a href="../demo/">Try it in your browser</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+      <a class="btn btn-small" href="../download/">Download</a>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compatibility/">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
     </div>
   </div>
 </header>
@@ -63,7 +63,7 @@
           <li><strong>This is a beta.</strong> Features can still change, and not every graphics card has been tried yet. The Mac build is the most tested. The Windows and Linux packages pass the codec policy and an automated test of the installed app, but have not had this release’s manual checks.</li>
           <li><strong>Graphics cards on Windows and Linux.</strong> The standard downloads run on the CPU. The GPU editions are listed under each platform: <strong>AMD ROCm</strong> (Linux), tested on a Radeon RX&nbsp;9060&nbsp;XT; <strong>NVIDIA CUDA</strong> (Windows and Linux) and <strong>DirectML</strong> (Windows). CUDA has not yet run on an NVIDIA card, and DirectML’s photo-denoising results can still differ from the CPU’s. CUDA needs a current NVIDIA driver; ROCm needs a supported Radeon and the amdgpu driver. The CUDA and ROCm editions are several gigabytes and come <a href="#parts">in parts</a>. Check <a href="../compatibility/">What runs on my computer</a> for supported graphics cards, drivers and Linux workarounds.</li>
           <li><strong>Phone and camera videos open on a Mac.</strong> LocalSR itself includes only royalty-free video formats (AV1, VP9, FFV1 and more); on macOS it hands H.264, HEVC and AAC to the codecs that ship with the system, so iPhone and camera recordings open and export without extra software. Formats macOS cannot read (WMV, DivX, FLV) use an FFmpeg you install yourself; LocalSR finds it automatically and shows the install command when a file needs it. On Windows and Linux there are no such system codecs, so every patent-licensed format &mdash; H.264 and HEVC included &mdash; needs that installed FFmpeg; images and royalty-free video work without it.</li>
-          <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals — the app never overwrites them — and inspect results before you rely on or republish them.</li>
+          <li><strong>Results are reconstructions, not recovered truth.</strong> Upscaling models invent plausible detail. Edges, text, eyes, and skin can look convincing and still be wrong. Keep your originals · the app never overwrites them · and inspect results before you rely on or republish them.</li>
           <li><strong>Models have their own licenses.</strong> The app is MIT-licensed; the model files are not. Every model LocalSR downloads for you is published under Apache-2.0, MIT, BSD-3-Clause or CC&nbsp;BY&nbsp;4.0, which allow personal and commercial use (CC&nbsp;BY with attribution). Only the two optional face models, which you have to supply yourself, have unresolved rights. The <a href="../models/#licenses">model license table</a> lists each one.</li>
           <li><strong>Your media stays on your computer.</strong> Photos and videos are processed locally and never uploaded; there is no account. Model downloads contact their pinned source (GitHub or Hugging&nbsp;Face) and are hash-verified. At launch the macOS app checks for updates and sends an anonymous count with that check: app version, platform and channel, with no identifiers. You can turn it off under Check for Updates in the app’s … menu. This website counts visits without cookies. The <a href="../privacy/">privacy page</a> explains all of it.</li>
           <li><strong>No warranty.</strong> LocalSR is free software provided as is under the <a href="https://github.com/HerRei/local-upscale/blob/main/LICENSE">MIT license</a>, without warranty of any kind. It is a beta: keep backups of anything that matters.</li>
@@ -128,8 +128,8 @@ chmod +x LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage</code></pre>
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
-    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
-    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../help/">Help</a><a href="../help/#custom-model">Add your own model</a><a href="../compatibility/">What runs on my computer</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Docs"><p class="footer-head">Docs</p><a href="../help/">Help</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compatibility/">Compatibility</a><a href="../help/#custom-model">Add your own model</a></nav>
     <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
   </div>
 </footer>

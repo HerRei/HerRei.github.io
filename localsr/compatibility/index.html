@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#161616">
   <meta name="color-scheme" content="dark">
-  <title>What runs on my computer - LocalSR</title>
+  <title>Compatibility · LocalSR</title>
   <meta name="description" content="Supported graphics cards, CPU-only hardware, workarounds and driver requirements for LocalSR on macOS, Windows and Linux.">
   <link rel="canonical" href="https://herrei.github.io/localsr/compatibility/">
   <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -16,57 +16,71 @@
 <header class="site-header">
   <div class="wrap header-row">
     <a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a>
-    <nav class="nav" aria-label="Main"><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a></nav>
+    <nav class="nav" aria-label="Main"><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compatibility/" aria-current="page">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a></nav>
     <div class="header-end">
       <a class="nav-quiet" href="https://github.com/HerRei/local-upscale">GitHub</a>
       <a class="btn btn-small" href="../download/">Download</a>
-      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../help/" aria-current="page">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
+      <details class="menu"><summary>Menu</summary><nav aria-label="Main, small screens"><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../guide/">Guide</a><a href="../models/">Models</a><a href="../compatibility/" aria-current="page">Compatibility</a><a href="../help/">Help</a><a href="../compare/">vs Upscayl</a><a href="../release-notes/">Release notes</a><a href="https://github.com/HerRei/local-upscale">GitHub</a></nav></details>
     </div>
   </div>
 </header>
 
 <main id="main" class="wrap">
   <header class="document-hero">
-    <p class="micro">Hardware compatibility</p>
-    <h1>What runs<br><em>on my computer.</em></h1>
-    <p>Check which graphics engine LocalSR uses on macOS, Windows and Linux, and what driver or setup each card needs. From the next release, you can also pick the GPU engine inside the app under Advanced settings &gt; Hardware &gt; Engine or use Import engine from file offline.</p>
+    <h1>Compatibility</h1>
+    <p class="compat-lead">What runs on my computer: which graphics engine LocalSR uses on macOS, Windows and Linux, and what each card needs.</p>
+    <p class="micro compat-updated">Last checked: <time datetime="2026-11-22">22 November 2026</time>. Actual behaviour and stability depend on your graphics driver version.</p>
+    <p class="document-callout">From the next release, you can also pick the GPU engine inside the app under Advanced settings &gt; Hardware &gt; Engine or use Import engine from file offline.</p>
   </header>
 
   <div class="document-layout">
     <aside class="document-aside">
       <nav aria-label="On this page">
+        <a href="#quick">Quick check</a>
         <a href="#macos">macOS</a>
         <a href="#windows">Windows</a>
         <a href="#linux">Linux</a>
-        <a href="#workarounds">Workarounds</a>
-        <a href="#agent-prompt">Let your coding agent do it</a>
+        <a href="#workarounds">Setup and fixes</a>
+        <a href="#agent-prompt">Prompt for a coding agent</a>
       </nav>
     </aside>
 
-    <div class="document-body">
+    <div class="document-body wide">
+      <section id="quick">
+        <h2>Quick check</h2>
+        <div class="table-wrap"><table class="data-table stack quick-table">
+          <thead><tr><th scope="col">System</th><th scope="col">Works</th><th scope="col">Needs setup</th><th scope="col">CPU only or not supported</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="#macos">macOS</a></th><td data-label="Works">Apple Silicon M1 or newer</td><td data-label="Needs setup">None</td><td data-label="CPU only or not supported">Intel Macs not supported</td></tr>
+            <tr><th scope="row"><a href="#windows">Windows</a></th><td data-label="Works">GTX 16xx, RTX 20xx or newer; GTX 9xx/10xx and Titan V with the DirectML engine; any DirectX 12 GPU</td><td data-label="Needs setup">Intel Haswell (older driver)</td><td data-label="CPU only or not supported">Intel HD 4000 or older</td></tr>
+            <tr><th scope="row"><a href="#linux">Linux</a></th><td data-label="Works">GTX 16xx, RTX 20xx or newer; AMD RX 7000/9000, PRO W7000, W6800; Ryzen AI Max / AI 9; Intel Arc and Gen12</td><td data-label="Needs setup">AMD RX 6600-6800; Intel Gen9-11; experimental: Radeon 680M/610M, 780M/760M</td><td data-label="CPU only or not supported">GTX 9xx and 10xx; RX 5000; Vega and Radeon VII; Intel Gen7 or older</td></tr>
+          </tbody></table></div>
+        <p class="compat-legend"><span class="badge badge-works">Works</span> <span class="badge badge-workaround">Needs setup</span> <span class="badge badge-experimental">Experimental</span> <span class="badge badge-cpu">CPU only / Not supported</span></p>
+      </section>
+
       <section id="macos">
         <h2>macOS</h2>
         <div class="table-wrap">
           <table class="data-table compat-table stack">
             <thead>
               <tr>
-                <th scope="col">GPU family</th>
-                <th scope="col">How LocalSR uses it</th>
+                <th scope="col">Graphics card</th>
                 <th scope="col">Status</th>
-                <th scope="col">Requirement</th>
+                <th scope="col">Engine</th>
+                <th scope="col">What you need</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row"><strong>Apple Silicon (M1 or newer)</strong><span class="compat-sub">Neural Engine and integrated GPU</span></th>
-                <td data-label="How LocalSR uses it">MPS / Core ML</td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Nothing extra required.</td>
+                <td data-label="Engine">MPS / Core ML</td>
+                <td data-label="What you need">Nothing extra required.</td>
               </tr>
+              <tr><th scope="row"><strong>Intel Mac</strong></th><td data-label="Status"><span class="badge badge-cpu">Not supported</span></td><td data-label="Engine">None</td><td data-label="What you need">Intel Macs are not supported.</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="micro">Intel Macs are not supported.</p>
       </section>
 
       <section id="windows">
@@ -75,42 +89,42 @@
           <table class="data-table compat-table stack">
             <thead>
               <tr>
-                <th scope="col">GPU family</th>
-                <th scope="col">How LocalSR uses it</th>
+                <th scope="col">Graphics card</th>
                 <th scope="col">Status</th>
-                <th scope="col">Requirement</th>
+                <th scope="col">Engine</th>
+                <th scope="col">What you need</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row"><strong>NVIDIA Turing or newer</strong><span class="compat-sub">GTX 16xx, RTX 20xx+; sm_75, 80, 86, 90, 100, 120</span></th>
-                <td data-label="How LocalSR uses it">CUDA engine<span class="compat-sub">torch 2.13.0+cu130</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">NVIDIA driver 580 or newer.</td>
+                <td data-label="Engine">CUDA engine<span class="compat-sub">torch 2.13.0+cu130</span></td>
+                <td data-label="What you need">NVIDIA driver 580 or newer.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>NVIDIA Pascal, Maxwell, Volta</strong><span class="compat-sub">GTX 9xx, GTX 10xx, Titan V; no sm_50/60/70 in cu130</span></th>
-                <td data-label="How LocalSR uses it">DirectML engine<span class="compat-sub">CUDA 13 dropped these cards</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Use the DirectML engine (Windows 10 1903+, DX12 driver).</td>
+                <td data-label="Engine">DirectML engine<span class="compat-sub">CUDA 13 dropped these cards</span></td>
+                <td data-label="What you need">Use the DirectML engine (Windows 10 1903+, DX12 driver).</td>
               </tr>
               <tr>
                 <th scope="row"><strong>Any DirectX 12 GPU</strong><span class="compat-sub">NVIDIA Kepler+, AMD GCN / HD 7000+ incl. Vega iGPUs, Intel Haswell 4th gen+</span></th>
-                <td data-label="How LocalSR uses it">DirectML engine<span class="compat-sub">onnxruntime-directml 1.24.4</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Windows 10 1903+ and a DX12 driver. GPU check vs CPU decides per model.</td>
+                <td data-label="Engine">DirectML engine<span class="compat-sub">onnxruntime-directml 1.24.4</span></td>
+                <td data-label="What you need">Windows 10 1903+ and a DX12 driver. GPU check vs CPU decides per model.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>Intel Haswell (4th gen)</strong><span class="compat-sub">Integrated graphics</span></th>
-                <td data-label="How LocalSR uses it">DirectML engine</td>
-                <td data-label="Status"><span class="badge badge-workaround">Works with a workaround</span></td>
-                <td data-label="Requirement">Driver 15.40.42.5063 or older; some drivers from 15.40.44.5107 disable DX12.</td>
+                <td data-label="Status"><span class="badge badge-workaround">Needs setup</span></td>
+                <td data-label="Engine">DirectML engine</td>
+                <td data-label="What you need">Driver 15.40.42.5063 or older; some drivers from 15.40.44.5107 disable DX12. <a href="#fix-haswell">See the fix</a></td>
               </tr>
               <tr>
                 <th scope="row"><strong>Intel HD 4000 (Ivy Bridge) or older</strong><span class="compat-sub">WDDM 1.3</span></th>
-                <td data-label="How LocalSR uses it">CPU</td>
                 <td data-label="Status"><span class="badge badge-cpu">CPU only</span></td>
-                <td data-label="Requirement">No DX12 support.</td>
+                <td data-label="Engine">CPU</td>
+                <td data-label="What you need">No DX12 support.</td>
               </tr>
             </tbody>
           </table>
@@ -123,84 +137,84 @@
           <table class="data-table compat-table stack">
             <thead>
               <tr>
-                <th scope="col">GPU family</th>
-                <th scope="col">How LocalSR uses it</th>
+                <th scope="col">Graphics card</th>
                 <th scope="col">Status</th>
-                <th scope="col">Requirement</th>
+                <th scope="col">Engine</th>
+                <th scope="col">What you need</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <th scope="row"><strong>NVIDIA Turing or newer</strong><span class="compat-sub">GTX 16xx, RTX 20xx+; sm_75, 80, 86, 90, 100, 120</span></th>
-                <td data-label="How LocalSR uses it">CUDA engine<span class="compat-sub">torch 2.13.0+cu130</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">NVIDIA driver 580 or newer.</td>
+                <td data-label="Engine">CUDA engine<span class="compat-sub">torch 2.13.0+cu130</span></td>
+                <td data-label="What you need">NVIDIA driver 580 or newer.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>NVIDIA Pascal, Maxwell, Volta</strong><span class="compat-sub">GTX 9xx, GTX 10xx, Titan V; no sm_50/60/70 in cu130</span></th>
-                <td data-label="How LocalSR uses it">CPU<span class="compat-sub">CUDA 13 dropped them</span></td>
                 <td data-label="Status"><span class="badge badge-cpu">CPU only</span></td>
-                <td data-label="Requirement">No sm_50/60/70 in cu130 wheels.</td>
+                <td data-label="Engine">CPU<span class="compat-sub">CUDA 13 dropped them</span></td>
+                <td data-label="What you need">No sm_50/60/70 in cu130 wheels.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD RX 7000 / 9000, Radeon PRO W7000, W6800</strong><span class="compat-sub">gfx1030, gfx1100, gfx1101, gfx1102, gfx1200, gfx1201</span></th>
-                <td data-label="How LocalSR uses it">ROCm engine<span class="compat-sub">torch 2.13.0+rocm7.2</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Ubuntu 24.04.3 / 22.04.5 class distro, amdgpu driver, user in video and render groups.</td>
+                <td data-label="Engine">ROCm engine<span class="compat-sub">torch 2.13.0+rocm7.2</span></td>
+                <td data-label="What you need">Ubuntu 24.04.3 / 22.04.5 class distro, amdgpu driver, user in video and render groups.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD Ryzen AI Max / AI 9</strong><span class="compat-sub">gfx1150, gfx1151</span></th>
-                <td data-label="How LocalSR uses it">ROCm engine<span class="compat-sub">torch 2.13.0+rocm7.2</span></td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Kernel 6.17.0-19 (Ubuntu HWE) or 6.18.4+, amdgpu driver, video and render groups.</td>
+                <td data-label="Engine">ROCm engine<span class="compat-sub">torch 2.13.0+rocm7.2</span></td>
+                <td data-label="What you need">Kernel 6.17.0-19 (Ubuntu HWE) or 6.18.4+, amdgpu driver, video and render groups.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD RX 6600-6800 (RDNA2)</strong><span class="compat-sub">gfx1031, gfx1032, gfx1034</span></th>
-                <td data-label="How LocalSR uses it">ROCm engine with override</td>
-                <td data-label="Status"><span class="badge badge-workaround">Works with a workaround</span></td>
-                <td data-label="Requirement">HSA_OVERRIDE_GFX_VERSION=10.3.0 (common; not confirmed on ROCm 7.2).</td>
+                <td data-label="Status"><span class="badge badge-workaround">Needs setup</span></td>
+                <td data-label="Engine">ROCm engine with override</td>
+                <td data-label="What you need">HSA_OVERRIDE_GFX_VERSION=10.3.0 (common; not confirmed on ROCm 7.2). <a href="#fix-rdna2">See the fix</a></td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD Radeon 680M / 610M integrated graphics</strong><span class="compat-sub">gfx1035, gfx1036</span></th>
-                <td data-label="How LocalSR uses it">ROCm engine with 10.3.0 override</td>
                 <td data-label="Status"><span class="badge badge-experimental">Experimental</span></td>
-                <td data-label="Requirement">Hang risk because display shares the GPU, plus APU memory settings.</td>
+                <td data-label="Engine">ROCm engine with 10.3.0 override</td>
+                <td data-label="What you need">Hang risk because display shares the GPU, plus APU memory settings. <a href="#fix-apu">See the fix</a></td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD Radeon 780M / 760M integrated graphics</strong><span class="compat-sub">gfx1103; native target in torch 2.13</span></th>
-                <td data-label="How LocalSR uses it">ROCm engine</td>
                 <td data-label="Status"><span class="badge badge-experimental">Experimental</span></td>
-                <td data-label="Requirement">GPU hangs and MES errors reported; kernel flags such as amdgpu.cwsr_enable=0 as last resort.</td>
+                <td data-label="Engine">ROCm engine</td>
+                <td data-label="What you need">GPU hangs and MES errors reported; kernel flags such as amdgpu.cwsr_enable=0 as last resort. <a href="#fix-apu">See the fix</a></td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD RX 5000 (RDNA1)</strong><span class="compat-sub">gfx1010, gfx1012</span></th>
-                <td data-label="How LocalSR uses it">CPU</td>
                 <td data-label="Status"><span class="badge badge-cpu">CPU only</span></td>
-                <td data-label="Requirement">No reliable kernels; overrides failed since ROCm 6.</td>
+                <td data-label="Engine">CPU</td>
+                <td data-label="What you need">No reliable kernels; overrides failed since ROCm 6.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>AMD Vega 56 / 64, Radeon VII, Vega APUs</strong><span class="compat-sub">Ryzen 2000G-5000G; gfx900, gfx902, gfx906, gfx90c</span></th>
-                <td data-label="How LocalSR uses it">CPU</td>
                 <td data-label="Status"><span class="badge badge-cpu">CPU only</span></td>
-                <td data-label="Requirement">No rocBLAS/hipBLASLt for gfx900/906 in wheel; APU override gave 0% correct results in a user report.</td>
+                <td data-label="Engine">CPU</td>
+                <td data-label="What you need">No rocBLAS/hipBLASLt for gfx900/906 in wheel; APU override gave 0% correct results in a user report.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>Intel Arc and Gen12 integrated graphics</strong></th>
-                <td data-label="How LocalSR uses it">OpenVINO (CPU download)</td>
                 <td data-label="Status"><span class="badge badge-works">Works</span></td>
-                <td data-label="Requirement">Requires intel-opencl-icd.</td>
+                <td data-label="Engine">OpenVINO (CPU download)</td>
+                <td data-label="What you need">Requires intel-opencl-icd.</td>
               </tr>
               <tr>
                 <th scope="row"><strong>Intel Gen9-11 integrated graphics</strong><span class="compat-sub">Skylake to Ice Lake</span></th>
-                <td data-label="How LocalSR uses it">OpenVINO (CPU download)</td>
-                <td data-label="Status"><span class="badge badge-workaround">Works with a workaround</span></td>
-                <td data-label="Requirement">Needs intel-opencl-icd-legacy1 and intel-level-zero-gpu-legacy1 from intel/compute-runtime releases.</td>
+                <td data-label="Status"><span class="badge badge-workaround">Needs setup</span></td>
+                <td data-label="Engine">OpenVINO (CPU download)</td>
+                <td data-label="What you need">Needs intel-opencl-icd-legacy1 and intel-level-zero-gpu-legacy1 from intel/compute-runtime releases. <a href="#fix-intel">See the fix</a></td>
               </tr>
               <tr>
                 <th scope="row"><strong>Intel Gen7 / 7.5 or older</strong><span class="compat-sub">Ivy Bridge, Haswell</span></th>
-                <td data-label="How LocalSR uses it">CPU</td>
                 <td data-label="Status"><span class="badge badge-cpu">CPU only</span></td>
-                <td data-label="Requirement">Not supported by OpenVINO.</td>
+                <td data-label="Engine">CPU</td>
+                <td data-label="What you need">Not supported by OpenVINO.</td>
               </tr>
             </tbody>
           </table>
@@ -208,32 +222,28 @@
       </section>
 
       <section id="workarounds">
-        <h2>Workarounds</h2>
+        <h2>Setup and fixes</h2>
         <div class="workaround-list">
-          <article class="workaround-card">
-            <h3>Linux AMD: join video and render groups</h3>
+          <h3>Linux</h3>
+          <details class="disclosure" id="fix-groups"><summary>AMD on Linux: join video and render groups</summary><div class="disclosure-body">
             <p><strong>For:</strong> Everyone running the Linux ROCm engine on an AMD GPU. Log out and back in after running this.</p>
             <div class="code-block">
               <div class="code-head"><span>Terminal</span><button type="button" class="copy-btn" data-copy-target="cmd-groups">Copy</button></div>
               <pre><code id="cmd-groups">sudo usermod -a -G video,render $USER</code></pre>
             </div>
-            <p><strong>Undo:</strong> Run <code>sudo gpasswd -d $USER render</code> and <code>sudo gpasswd -d $USER video</code>, then log out and back in.</p>
-            <p><strong>Risk:</strong> Grants your user account direct access to local GPU and video device nodes.</p>
-          </article>
+            <dl class="fix-facts"><dt>Undo</dt><dd>Run <code>sudo gpasswd -d $USER render</code> and <code>sudo gpasswd -d $USER video</code>, then log out and back in.</dd><dt>Risk</dt><dd>Grants your user account direct access to local GPU and video device nodes.</dd></dl>
+          </div></details>
 
-          <article class="workaround-card">
-            <h3>Linux AMD RX 6600-6800 (RDNA2): 10.3.0 override</h3>
+          <details class="disclosure" id="fix-rdna2"><summary>AMD RX 6600 to 6800 on Linux: set the 10.3.0 override</summary><div class="disclosure-body">
             <p><strong>For:</strong> Linux AMD RX 6600, 6700 and 6800 series GPUs (<code>gfx1031</code>, <code>gfx1032</code>, <code>gfx1034</code>).</p>
             <div class="code-block">
               <div class="code-head"><span>Terminal</span><button type="button" class="copy-btn" data-copy-target="cmd-rdna2">Copy</button></div>
               <pre><code id="cmd-rdna2">HSA_OVERRIDE_GFX_VERSION=10.3.0 ./LocalSR-...-Linux-ROCm-x86_64.AppImage</code></pre>
             </div>
-            <p><strong>Undo:</strong> It is only an environment variable for that launch. Close LocalSR and unset <code>HSA_OVERRIDE_GFX_VERSION</code>, or start the AppImage without it.</p>
-            <p><strong>Risk:</strong> At your own risk: common workaround, not confirmed on ROCm 7.2. LocalSR's GPU check compares each model with the CPU before using the GPU; if results are wrong or the GPU hangs, unset it and use the CPU.</p>
-          </article>
+            <dl class="fix-facts"><dt>Undo</dt><dd>It is only an environment variable for that launch. Close LocalSR and unset <code>HSA_OVERRIDE_GFX_VERSION</code>, or start the AppImage without it.</dd><dt>Risk</dt><dd>At your own risk: common workaround, not confirmed on ROCm 7.2. LocalSR's GPU check compares each model with the CPU before using the GPU; if results are wrong or the GPU hangs, unset it and use the CPU.</dd></dl>
+          </div></details>
 
-          <article class="workaround-card">
-            <h3>Linux AMD integrated graphics: APU memory and kernel flags</h3>
+          <details class="disclosure" id="fix-apu"><summary>AMD integrated graphics on Linux: adjust APU memory and kernel flags</summary><div class="disclosure-body">
             <p><strong>For:</strong> Radeon 680M/610M (<code>gfx1035</code>, <code>gfx1036</code>) and Radeon 780M/760M (<code>gfx1103</code>) integrated GPUs, as a last resort when runs fail or hang.</p>
             <div class="code-block">
               <div class="code-head"><span>Terminal</span><button type="button" class="copy-btn" data-copy-target="cmd-apu">Copy</button></div>
@@ -241,31 +251,25 @@
 amd-ttm --set &lt;GB&gt;</code></pre>
             </div>
             <p>Reboot after <code>amd-ttm --set &lt;GB&gt;</code>. Only as a last resort on <code>gfx1103</code>, add kernel parameter <code>amdgpu.cwsr_enable=0</code>.</p>
-            <p><strong>Undo:</strong> Run <code>amd-ttm --clear</code> and reboot. Remove <code>amdgpu.cwsr_enable=0</code> from your bootloader config and reboot.</p>
-            <p><strong>Risk:</strong> At your own risk: display shares the GPU so runs can hang the desktop, and AMD does not test <code>amdgpu.cwsr_enable=0</code>.</p>
-          </article>
+            <dl class="fix-facts"><dt>Undo</dt><dd>Run <code>amd-ttm --clear</code> and reboot. Remove <code>amdgpu.cwsr_enable=0</code> from your bootloader config and reboot.</dd><dt>Risk</dt><dd>At your own risk: display shares the GPU so runs can hang the desktop, and AMD does not test <code>amdgpu.cwsr_enable=0</code>.</dd></dl>
+          </div></details>
 
-          <article class="workaround-card">
-            <h3>Linux Intel Gen9-11: legacy1 compute-runtime</h3>
+          <details class="disclosure" id="fix-intel"><summary>Intel Gen9-11 on Linux: install legacy1 compute-runtime</summary><div class="disclosure-body">
             <p><strong>For:</strong> Linux Intel Gen9 to Gen11 integrated graphics (Skylake to Ice Lake). After installing <code>intel-opencl-icd-legacy1</code> and <code>intel-level-zero-gpu-legacy1</code> from <a href="https://github.com/intel/compute-runtime/releases">intel/compute-runtime releases</a>, the GPU shows as <code>(OpenVINO)</code>.</p>
             <div class="code-block">
               <div class="code-head"><span>Terminal</span><button type="button" class="copy-btn" data-copy-target="cmd-intel">Copy</button></div>
               <pre><code id="cmd-intel">sudo apt install ./intel-opencl-icd-legacy1_*.deb ./intel-level-zero-gpu-legacy1_*.deb</code></pre>
             </div>
-            <p><strong>Undo:</strong> Remove both packages with your package manager (for example <code>sudo apt remove intel-opencl-icd-legacy1 intel-level-zero-gpu-legacy1</code>).</p>
-            <p><strong>Risk:</strong> Replaces or pins the system OpenCL and Level Zero packages with the legacy1 release.</p>
-          </article>
+            <dl class="fix-facts"><dt>Undo</dt><dd>Remove both packages with your package manager (for example <code>sudo apt remove intel-opencl-icd-legacy1 intel-level-zero-gpu-legacy1</code>).</dd><dt>Risk</dt><dd>Replaces or pins the system OpenCL and Level Zero packages with the legacy1 release.</dd></dl>
+          </div></details>
 
-          <article class="workaround-card">
-            <h3>Windows GTX 9xx, GTX 10xx and Titan V: DirectML engine</h3>
+          <h3>Windows</h3>
+          <details class="disclosure" id="fix-haswell"><summary>Intel Haswell on Windows: use an older driver</summary><div class="disclosure-body"><p><strong>For:</strong> Intel Haswell (4th gen) integrated graphics. Driver 15.40.42.5063 or older is needed; some drivers from 15.40.44.5107 disable DX12.</p><dl class="fix-facts"><dt>Undo</dt><dd>Restore your previous driver.</dd><dt>Risk</dt><dd>Some newer drivers disable DX12.</dd></dl></div></details>
+          <details class="disclosure" id="fix-win-dml"><summary>GTX 9xx, GTX 10xx and Titan V on Windows: use the DirectML engine</summary><div class="disclosure-body">
             <p><strong>For:</strong> Windows systems with NVIDIA Pascal, Maxwell or Volta cards (dropped by CUDA 13). Use the <a href="../download/#windows">DirectML edition</a> instead of CUDA, or switch engine in the app from the next release.</p>
-            <div class="code-block">
-              <div class="code-head"><span>App setting</span><button type="button" class="copy-btn" data-copy-target="cmd-win-dml">Copy</button></div>
-              <pre><code id="cmd-win-dml">Advanced settings &gt; Hardware &gt; Engine -&gt; DirectML</code></pre>
-            </div>
-            <p><strong>Undo:</strong> Switch Engine back to CPU, or uninstall the DirectML edition.</p>
-            <p><strong>Risk:</strong> LocalSR checks each model against the CPU first and falls back to CPU if DirectML results differ.</p>
-          </article>
+            <p>In the app, choose <strong>Advanced settings &gt; Hardware &gt; Engine → DirectML</strong>.</p>
+            <dl class="fix-facts"><dt>Undo</dt><dd>Switch Engine back to CPU, or uninstall the DirectML edition.</dd><dt>Risk</dt><dd>LocalSR checks each model against the CPU first and falls back to CPU if DirectML results differ.</dd></dl>
+          </div></details>
         </div>
 
         <div class="document-callout">
@@ -274,14 +278,14 @@ amd-ttm --set &lt;GB&gt;</code></pre>
       </section>
 
       <section id="agent-prompt">
-        <h2>Let your coding agent do it</h2>
+        <h2>Prompt for a coding agent (Linux, AMD)</h2>
         <p>On Linux with an AMD GPU, you can paste this self-contained prompt into your coding agent to diagnose your card and set up a safe launcher script when applicable.</p>
-        <details class="agent-details">
+        <div class="prompt-actions"><button type="button" class="copy-btn" data-copy-target="agent-prompt-code">Copy prompt</button><a href="agent-prompt.txt">agent-prompt.txt</a></div>
+        <details class="disclosure">
           <summary>Prompt for your coding agent</summary>
-          <div class="agent-details-body">
-            <p>Copy the full prompt below, or open <a href="agent-prompt.txt">agent-prompt.txt</a> directly.</p>
+          <div class="disclosure-body">
             <div class="code-block">
-              <div class="code-head"><span>agent-prompt.txt</span><button type="button" class="copy-btn" data-copy-target="agent-prompt-code">Copy prompt</button></div>
+              <div class="code-head"><span>agent-prompt.txt</span></div>
               <pre><code id="agent-prompt-code">Goal: Check an AMD GPU on Linux for LocalSR's ROCm engine. If there is no AMD GPU: for NVIDIA, recommend the CUDA engine for Turing or newer with driver 580+; older NVIDIA uses CPU on Linux. For Intel, recommend the OpenVINO route (see the LocalSR compatibility page). Stop without changes and report.
 
 Run these read-only diagnosis commands first (do not change anything yet):
@@ -323,7 +327,7 @@ Next step: &lt;e.g. "Start LocalSR with ~/.local/bin/localsr-amd and check Advan
         </details>
       </section>
 
-      <p class="micro compat-updated">Last checked: <time datetime="2026-11-22">22 November 2026</time>. Actual behaviour and stability depend on your graphics driver version.</p>
+      <section><h2>Card not listed or still stuck?</h2><p>Visit <a href="../support/">Support</a> for help and bug reports.</p></section>
     </div>
   </div>
 </main>
@@ -331,8 +335,8 @@ Next step: &lt;e.g. "Start LocalSR with ~/.local/bin/localsr-amd and check Advan
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand"><a class="logo" href="../" aria-label="LocalSR home"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="#ece9df" stroke-width="2.6" d="M3.5 9.5v-6h6M14.5 3.5h6v6M20.5 14.5v6h-6M9.5 20.5h-6v-6"/><rect x="9.25" y="9.25" width="5.5" height="5.5" rx="1" fill="#e0603f"/></svg><span>LocalSR</span></a><p>Image and video restoration, on your computer. Free and open source for macOS, Windows and Linux.</p><p>A project by <a href="https://hermesreisner.com/">Hermes Reisner</a>.</p></div>
-    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a></nav>
-    <nav aria-label="Learn"><p class="footer-head">Learn</p><a href="../help/">Help</a><a href="../help/#custom-model">Add your own model</a><a href="../compatibility/">What runs on my computer</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Get LocalSR"><p class="footer-head">Get LocalSR</p><a href="../download/">Download</a><a href="../demo/">Try it in your browser</a><a href="../release-notes/">Release notes</a><a href="../SHA256SUMS">Checksums</a><a href="https://github.com/HerRei/local-upscale">Source on GitHub</a><a href="../compare/">LocalSR vs Upscayl</a></nav>
+    <nav aria-label="Docs"><p class="footer-head">Docs</p><a href="../help/">Help</a><a href="../guide/">User guide</a><a href="../models/">Models</a><a href="../models/which/">Which model for which photo</a><a href="../compatibility/">Compatibility</a><a href="../help/#custom-model">Add your own model</a></nav>
     <nav aria-label="About"><p class="footer-head">About</p><a href="../support/">Support</a><a href="../privacy/">Privacy</a><a href="../terms/">Terms</a><a href="../press/">Press</a><a href="../about-the-image/">About the examples</a></nav>
   </div>
 </footer>

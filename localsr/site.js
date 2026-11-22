@@ -89,6 +89,17 @@
     });
   }
 
+  function openHashDetails() {
+    if (!location.hash) return;
+    let target;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+    for (let node = target; node; node = node.parentElement) {
+      if (node.tagName === 'DETAILS') node.open = true;
+    }
+  }
+  openHashDetails();
+  window.addEventListener('hashchange', openHashDetails);
+
   followSections(document, window);
   keepTableRoles(document);
   closeMenus(document);

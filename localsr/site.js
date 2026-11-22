@@ -50,7 +50,47 @@
     });
   }
 
+  function copyText(text) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      return navigator.clipboard.writeText(text);
+    }
+    return new Promise((resolve, reject) => {
+      const area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.opacity = '0';
+      document.body.appendChild(area);
+      area.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(area);
+      if (ok) resolve();
+      else reject(new Error('Copy failed'));
+    });
+  }
+
+  function initCopyButtons(doc) {
+    doc.querySelectorAll('button[data-copy-target]').forEach(button => {
+      const original = button.textContent;
+      let timer = 0;
+      button.addEventListener('click', () => {
+        const target = doc.getElementById(button.dataset.copyTarget);
+        if (!target) return;
+        copyText(target.textContent).then(() => {
+          button.textContent = 'Copied';
+          clearTimeout(timer);
+          timer = setTimeout(() => { button.textContent = original; }, 2000);
+        }).catch(() => {
+          button.textContent = 'Select and copy manually';
+          clearTimeout(timer);
+          timer = setTimeout(() => { button.textContent = original; }, 2500);
+        });
+      });
+    });
+  }
+
   followSections(document, window);
   keepTableRoles(document);
   closeMenus(document);
+  initCopyButtons(document);
 })();

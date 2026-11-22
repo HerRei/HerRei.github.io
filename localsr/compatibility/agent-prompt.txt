@@ -1,0 +1,35 @@
+Goal: Check an AMD GPU on Linux for LocalSR's ROCm engine. If there is no AMD GPU: for NVIDIA, recommend the CUDA engine for Turing or newer with driver 580+; older NVIDIA uses CPU on Linux. For Intel, recommend the OpenVINO route (see the LocalSR compatibility page). Stop without changes and report.
+
+Run these read-only diagnosis commands first (do not change anything yet):
+1. lspci -nn | grep -iE 'vga|3d|display'
+2. If rocminfo is installed: rocminfo | grep -i gfx
+3. groups
+4. uname -r
+5. Find the LocalSR AppImage path (check common locations such as ~/Downloads, ~/Applications, or ~/.local/bin, or ask me if it is not found).
+
+Match the detected GPU / gfx ID against this lookup table:
+- gfx1030, gfx1100, gfx1101, gfx1102, gfx1200, gfx1201 (RX 7000/9000, Radeon PRO W7000, W6800): Supported natively on ROCm. No HSA_OVERRIDE_GFX_VERSION override is needed. Check that amdgpu is in use and the user is in the video and render groups.
+- gfx1150, gfx1151: Supported natively on ROCm, no override needed, but requires Linux kernel 6.17.0-19 (Ubuntu HWE) or 6.18.4 or newer, plus amdgpu and video + render groups.
+- gfx1031, gfx1032, gfx1034 (RX 6600-6800, RDNA2): Works with workaround (common, not confirmed on ROCm 7.2). Run the ROCm AppImage with HSA_OVERRIDE_GFX_VERSION=10.3.0. Note: at the user's own risk; LocalSR's GPU check compares each model against the CPU before using the GPU.
+- gfx1035, gfx1036 (Radeon 680M / 610M iGPU): Experimental. Uses HSA_OVERRIDE_GFX_VERSION=10.3.0, with hang risk because the display shares the GPU, and may need APU memory settings (amd-debug-tools / amd-ttm). Do not change system settings or install tools without asking first and explaining the hang risk.
+- gfx1103 (Radeon 780M / 760M iGPU): Experimental (native target in torch 2.13, no override needed). GPU hangs and MES errors have been reported; kernel flags such as amdgpu.cwsr_enable=0 are a last resort only (AMD does not test them). Do not edit bootloader or kernel flags unless explicitly asked after reading the risk.
+- gfx900, gfx902, gfx906, gfx90c (Vega 56/64, Radeon VII, Vega APUs), gfx1010, gfx1012 (RX 5000, RDNA1), or any other unlisted AMD GPU: CPU only. Do not apply overrides; report that LocalSR should run on CPU.
+
+Hard rules:
+- If the user is missing video or render group membership, show exactly `sudo usermod -a -G video,render $USER` and say to log out and back in. Never run this command. You may still create the permitted launcher.
+- Never run sudo or change system settings without asking me first and showing the exact command (including installing packages or setting amd-ttm).
+- Never install packages from outside the Linux distribution repositories or official AMD/Intel sources.
+- Never edit bootloader or kernel flags unless I explicitly ask you to after reading the risk.
+- Never disable security features.
+- Never download a different LocalSR build.
+- Stop immediately and report if you see any GPU hang, kernel error, or MES error.
+
+Only change allowed without asking first:
+- If the GPU is a documented override case (gfx1031, gfx1032, gfx1034) and you found the LocalSR ROCm AppImage, you may create a small launcher script in my home directory (for example ~/.local/bin/localsr-amd) that exports HSA_OVERRIDE_GFX_VERSION=10.3.0 and execs that AppImage, make it executable, and print the exact command to delete it.
+
+Finish with this exact report format:
+Detected GPU + gfx ID: <value>
+Matched rule: <row from the table above>
+What was changed: <file/action or "nothing">
+How to undo: <exact command or "nothing to undo">
+Next step: <e.g. "Start LocalSR with ~/.local/bin/localsr-amd and check Advanced settings > Hardware" or "Use the CPU build/engine">

@@ -50,7 +50,10 @@ export const steps: TourStep[] = [
     title: 'Start the upscale',
     body: 'Press the button. In the app, the first press also downloads the model, once.',
     target: '.status-bar .start',
-    done: () => Boolean($('.model-activity') || $('.progressive-image.visible') || $('.result-image')),
+    done: () =>
+      Boolean(
+        $('.progressive-image.visible') || $('.result-image') || $('.status-bar .progress'),
+      ),
     requireAction: true,
   },
   {
@@ -74,7 +77,7 @@ export const steps: TourStep[] = [
   {
     title: 'Original, Split, Enhanced',
     body: 'Switch between the whole original, the divider and the whole result up here. Or hold M to flash the original wherever you are.',
-    target: '.view-switch',
+    target: '.preview-header .view-switch',
   },
   {
     title: 'Now look for yourself',
@@ -183,6 +186,9 @@ export function startTour(onRestart: () => void): void {
 
   function place(): void {
     const step = steps[index];
+    const headerBottom = $('.site-header')?.getBoundingClientRect().bottom ?? 0;
+    const gap = 16;
+    const minTop = Math.max(gap, headerBottom + 8);
     card.classList.toggle('aside', Boolean(step.aside));
     if (step.aside) {
       // Bottom left, over the media list, with nothing dimmed.
@@ -190,7 +196,7 @@ export function startTour(onRestart: () => void): void {
       card.classList.remove('centred');
       const status = $('.status-bar')?.getBoundingClientRect().height ?? 56;
       card.style.left = '16px';
-      card.style.top = `${window.innerHeight - status - card.offsetHeight - 16}px`;
+      card.style.top = `${Math.max(minTop, window.innerHeight - status - card.offsetHeight - 16)}px`;
       return;
     }
     const target = step.target ? $(step.target) : null;
@@ -211,7 +217,6 @@ export function startTour(onRestart: () => void): void {
       width: `${rect.width + pad * 2}px`,
       height: `${rect.height + pad * 2}px`,
     });
-    const gap = 16;
     const width = card.offsetWidth;
     const height = card.offsetHeight;
     const vw = window.innerWidth;
@@ -220,7 +225,7 @@ export function startTour(onRestart: () => void): void {
     if (rect.width * rect.height > vw * vh * 0.3) {
       const status = $('.status-bar')?.getBoundingClientRect().height ?? 56;
       card.style.left = `${gap}px`;
-      card.style.top = `${vh - status - height - gap}px`;
+      card.style.top = `${Math.max(minTop, vh - status - height - gap)}px`;
       return;
     }
     // Prefer the side with room: right, left, below, above; big targets get the card inside.
@@ -231,9 +236,9 @@ export function startTour(onRestart: () => void): void {
       left = Math.min(Math.max(gap, rect.left), vw - width - gap);
       top = rect.bottom + gap;
       if (top + height > vh - gap) top = rect.top - height - gap;
-      if (top < gap) top = rect.top + gap;
+      if (top < minTop) top = rect.top + gap;
     }
-    top = Math.min(Math.max(gap, top), vh - height - gap);
+    top = Math.min(Math.max(minTop, top), vh - height - gap);
     card.style.left = `${left}px`;
     card.style.top = `${top}px`;
   }

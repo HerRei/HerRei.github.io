@@ -1,367 +1,346 @@
 {
-  "version": "0.5.0-beta",
-  "pub_date": "2026-11-20T17:05:03Z",
-  "notes": "LocalSR 0.5.0-beta. What changed: https://herrei.github.io/localsr/release-notes/",
+  "version": "0.5.2-beta",
+  "pub_date": "2026-11-22T22:38:11Z",
+  "notes": "Restore first, colour for black-and-white photos, an engine manager for GPU engines, the Mage-Flow edit model, stricter engine checks, a new Windows installer, and the fix for edits failing on Windows.",
   "platforms": {
     "darwin-aarch64-mps-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-macOS-arm64.app.tar.gz",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlLNzhlMXNybGEvU0p4Rm85clRJTjNYSkdoK0huMm9CWEFySndjT3JYZEs1TUZDZXFsYXBoL3ZVWnBDODBTYkQ4NUlBLzlOdHBmUEdvdDdKTDBYdWd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MTk0Mjc1CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6CkRyNHJ4aGNHU0hhRis0ZmxNbEk5OUxIUXZxUzFxTkhxc2lSZHJDRGg4eVRZTjhOa1lrcWdSOU5odEJJbmxqRHVuMDVUMGhmYkJhV0QwenI0MCswZEJBPT0K",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-macOS-arm64.app.tar.gz",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpRc2gySHpLcVQ3RXRsMUV5czdCcWZ6RHZZRUQrM2FsNHhObmN3QWpHdTE4ZHV0WDJ1V1BiSGorSDBBcXg4VWZ6bmp4OUZqcmd5UG1oQXYxand6cEFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3MDYyCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1tYWNPUy1hcm02NC5hcHAudGFyLmd6Cm9ZWVRDYlhKaGlaM284Ym5MeUFIMld5cEpnL0h6ZVZrMkZVbFJSbWZPOXJQZm43eVlCZTR3bkZrMi80bU40ZTNjQUhyd2YybzVWVHJZenhHbWNPd0NRPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "mps",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "macos-arm64-mps-a1158def5f3a65c79124fde2d835e6a88a2eb803df2c7d357bfe194fec65603f",
-        "size": 390036577,
-        "unpacked_size": 2566399414,
-        "sha256": "c509b33a9ed5374ff520ae7b075aa79701a5cde5c31f29e98dff72a861f39ce9",
+        "engine_id": "macos-arm64-mps-fc6de3766a6553809f882f825ae947c1675eae0585b5baaf2890203f7cd99ad5",
+        "size": 390355504,
+        "unpacked_size": 2567399993,
+        "sha256": "ecdc4fa9953a80d59e3d66c1ecc98e81379109aec79a25e19ef6bd6941089055",
         "engine": {
-          "id": "macos-arm64-mps-a1158def5f3a65c79124fde2d835e6a88a2eb803df2c7d357bfe194fec65603f",
+          "id": "macos-arm64-mps-fc6de3766a6553809f882f825ae947c1675eae0585b5baaf2890203f7cd99ad5",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-macOS-arm64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-macOS-arm64.engine-payload.json",
-            "size": 343,
-            "sha256": "975035008a4fb6f83397d634ae383b7521a8b974794c7b8c9dc9aeda621f2dc2",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBBZDlXUkF1STZ4U0dzMGMxRXNwU3RBTm9LbUlGWlRrL2ZXeWFpZG1YaEJETVY2NE1tTUQ5SWs1c3RqSTh4ZGREM1EzVTJabE9BcDNBd3YyN24xYUFFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MTk0Mjg4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCnZmbmJlRmJPOCt6V3UzTzVKNFlLdGpsK2pFckRFNkRGcXk2RDQwTDNka0pNVEJqeFRnYVhJYU1ML3hrLzYvNUN1VDRQczVVMHUxQ2VSVG80S0RyYUNnPT0K"
+            "name": "LocalSR-v0.5.2-beta-macOS-arm64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-macOS-arm64.engine-payload.json",
+            "size": 532,
+            "sha256": "9c5c7bd6783d6bdf02deba8fbabb6273817598535c96772610c998d00a8a9e3b",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBKUThWTFl1NDVpUDBLVHB2RDJkdDllYzFKYVBsbGdPLzhtaXNvdklWc1hPZUlTaVl1ZnJ6VlJPLzZwTDVDZC9zTmZTQnBvQ3JBY2E2bUpXNW1BdHcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3MDc1CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uCmVmZFZ4NWwxelNrMlBaNVJoZEFKME1GeU84Rll2Mk1tbnBIOE5JRXhBTHNKbmVZUkwrNUFpd2EvVDR4c242d05KTG1INnE1SDIzSXVBZmFLa3hmQkNnPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-macOS-arm64.engine.tar.gz.part-0001",
-              "size": 428793484,
-              "sha256": "8809f8ebbe3ed66b3a08d6621f61a1358eb57c2706d0ffdef02469735f72d582",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhvSFdVRG9qWTN1cmNXRDJaaEFhVEhOMThhTDBvcys2WFNqRUluajJsSkx2RzZ1Wm94YW80MnRlQ0pXR0Yyc3NqK1FPUmd1WWtwYi8xMFJCUlpIbkFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MTk0Mjg4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpYYnJKa0VpeE1aTzEzbnpaQXEycXg0OVRic0FnbGd5TzdXbzNhNmJwTnMwZlhUQ0FqVlF1TFkvbmM3bmJkbkhIcC8waDFwVlpDYXFqWXRDZ1NiSjhDZz09Cg=="
+              "name": "LocalSR-v0.5.2-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-macOS-arm64.engine.tar.gz.part-0001",
+              "size": 428846394,
+              "sha256": "1d472fea3a53262de7c1356eb9711daca236fa696e6c917849acb38409bcf1d0",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJhVHpCY2hzSGZLdlVDZGR0T0Y4cGJwTXdrTXFGWGRKa0hoUjRpSXFjd1NoOThsZkJzQ01VVXUrejJwZFk3VkZqS0tUdTNra1h5aGFaMyt5Wnl0V0FJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3MDc2CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpieUErYlNZcmpBUnQwZ1FsWm5rNEF6bkxSMEpreEJwdTRQcFY0MlliY0dBVTBTcTQvMjlLbXVvdXlkV012dFRMbHN6TnVVL2NnbUlNOUZQNkRGNkJEUT09Cg=="
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoibXBzIiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJtYWNvcy1hcm02NC1tcHMtYTExNThkZWY1ZjNhNjVjNzkxMjRmZGUyZDgzNWU2YTg4YTJlYjgwM2RmMmM3ZDM1N2JmZTE5NGZlYzY1NjAzZiIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiI5NzUwMzUwMDhhNGZiNmY4MzM5N2Q2MzRhZTM4M2I3NTIxYThiOTc0Nzk0YzdiOGM5ZGM5YWVkYTYyMWYyZGMyIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiYzUwOWIzM2E5ZWQ1Mzc0ZmY1MjBhZTdiMDc1YWE3OTcwMWE1Y2RlNWMzMWYyOWU5OGRmZjcyYTg2MWYzOWNlOSIsInRhcmdldCI6ImRhcndpbi1hYXJjaDY0LW1wcy1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoyNTY2Mzk5NDE0LCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTNnRUFOdE56UHlZMzVUSWc3YlZsd215aGxkSmRobTlSbkljSUc3NmdXdG9UWUhmS0grL2Q0eW84eWs4ekY4YXJQRCt6QWRmNis3aUNpYWlnKzcwNHdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MTk0MzAzCWZpbGU6ZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZS5zdGF0ZW1lbnQuanNvbgozcGdxYXFUVG8rUHRzMEpPd1ptWlJJOWxqaTNrbkJjT0t4N1VNQ0FZbHUxbnVCczJoT1FhMXdwZ0psdFVQcHRqM2tremNBQ080UmVOODV0QXNLemdBUT09Cg==",
-        "statement_v2": "eyJiYWNrZW5kIjoibXBzIiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJtYWNvcy1hcm02NC1tcHMtYTExNThkZWY1ZjNhNjVjNzkxMjRmZGUyZDgzNWU2YTg4YTJlYjgwM2RmMmM3ZDM1N2JmZTE5NGZlYzY1NjAzZiIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiOTc1MDM1MDA4YTRmYjZmODMzOTdkNjM0YWUzODNiNzUyMWE4Yjk3NDc5NGM3YjhjOWRjOWFlZGE2MjFmMmRjMiIsInNpemUiOjM0M30sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtbWFjT1MtYXJtNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI4ODA5ZjhlYmJlM2VkNjZiM2EwOGQ2NjIxZjYxYTEzNThlYjU3YzI3MDZkMGZmZGVmMDI0Njk3MzVmNzJkNTgyIiwic2l6ZSI6NDI4NzkzNDg0fV0sImtpbmQiOiJuYXRpdmUiLCJwYXJ0cyI6W10sInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6Miwic2hhMjU2IjoiYzUwOWIzM2E5ZWQ1Mzc0ZmY1MjBhZTdiMDc1YWE3OTcwMWE1Y2RlNWMzMWYyOWU5OGRmZjcyYTg2MWYzOWNlOSIsInNpemUiOjM5MDAzNjU3NywidGFyZ2V0IjoiZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjI1NjYzOTk0MTQsInZlcnNpb24iOiIwLjUuMC1iZXRhIn0=",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhFVXZqZjJUSjJhNmRjOEh0RXFtMGp3SThVdzhVdlNSMnFWVmRoOWVRZ3lvY1RuTUluYUVRRUVReTBsUVMxKzNkaEl6Yi9DZ1BlbjA1OGJ3Z1BSM1FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MTk0MzA0CWZpbGU6ZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZS5zdGF0ZW1lbnQtdjIuanNvbgo4TUprN2FPU0JCSDcyWllJRXJKbHVKSW41OExvVGIrUUpndm54OVk2akhnY1V5a0p5dXp5QWNmbkJSSzB3YzUyYytNWHVwUzNLS1gxeUNHbGRIVXhBUT09Cg=="
+        "statement": "eyJiYWNrZW5kIjoibXBzIiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJtYWNvcy1hcm02NC1tcHMtZmM2ZGUzNzY2YTY1NTM4MDlmODgyZjgyNWFlOTQ3YzE2NzVlYWUwNTg1YjViYWFmMjg5MDIwM2Y3Y2Q5OWFkNSIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiI5YzVjN2JkNjc4M2Q2YmRmMDJkZWJhOGZiYWJiNjI3MzgxNzU5ODUzNWM5Njc3MjYxMGM5OThkMDBhOGE5ZTNiIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiZWNkYzRmYTk5NTNhODBkNTllM2Q2NmMxZWNjOThlODEzNzkxMDlhZWM3OWEyNWUxOWVmNmJkNjk0MTA4OTA1NSIsInRhcmdldCI6ImRhcndpbi1hYXJjaDY0LW1wcy1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoyNTY3Mzk5OTkzLCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZnUVY3NGdidlcrTGkzdWJ3OWJlU3pDT0d5Z3U2eXVxblphWFhQTEFOSTV6NUltdHJDeU80ZEFBWjhkTi9lSThaeTZNd3NESkVFbWIrM3hsN0ZJc1FNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3MDkxCWZpbGU6ZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZS5zdGF0ZW1lbnQuanNvbgprUnprNC8wdGd0OFlyT3RyUnlocDVuNm9kZTlwSS9Kbkh3S3QyQ0dkWE5wbjZwR3NxMHo2MHRLWmRuc0N2TFNYTEJ4QW5xa3NnZDdTeHRUaUEzM1NBZz09Cg==",
+        "statement_v2": "eyJiYWNrZW5kIjoibXBzIiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJtYWNvcy1hcm02NC1tcHMtZmM2ZGUzNzY2YTY1NTM4MDlmODgyZjgyNWFlOTQ3YzE2NzVlYWUwNTg1YjViYWFmMjg5MDIwM2Y3Y2Q5OWFkNSIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1tYWNPUy1hcm02NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiOWM1YzdiZDY3ODNkNmJkZjAyZGViYThmYmFiYjYyNzM4MTc1OTg1MzVjOTY3NzI2MTBjOTk4ZDAwYThhOWUzYiIsInNpemUiOjUzMn0sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtbWFjT1MtYXJtNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiIxZDQ3MmZlYTNhNTMyNjJkZTdjMTM1NmViOTcxMWRhY2EyMzZmYTY5NmU2YzkxNzg0OWFjYjM4NDA5YmNmMWQwIiwic2l6ZSI6NDI4ODQ2Mzk0fV0sImtpbmQiOiJuYXRpdmUiLCJwYXJ0cyI6W10sInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6Miwic2hhMjU2IjoiZWNkYzRmYTk5NTNhODBkNTllM2Q2NmMxZWNjOThlODEzNzkxMDlhZWM3OWEyNWUxOWVmNmJkNjk0MTA4OTA1NSIsInNpemUiOjM5MDM1NTUwNCwidGFyZ2V0IjoiZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjI1NjczOTk5OTMsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhuNVJhR3o0SlkrR2swOUNrRTU5SXRoTGJ1aDB6eVppUDhzU0RzZkdZb3Q0SHM1Nm0xd2xrQjdIc0FlUm1UUmVNaENYdDhVVWpDTTRvZWVrWERGS0FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1Mzg3MDkxCWZpbGU6ZGFyd2luLWFhcmNoNjQtbXBzLW5hdGl2ZS5zdGF0ZW1lbnQtdjIuanNvbgpwcW00ZWdQb3JHQnE4Z3BnWVpzR1psRDlYc0xxYnRpekJ5UzZxdzBsZFcvTHFSMlFaQzRKS1JWRndkcWhWR3dFSDhoVVhjNzRockJ6bkNXN254djBEZz09Cg=="
       }
     },
     "windows-x86_64-cuda-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTN1NnVVQkI5aFl1R0g0SzRRcHVyaE9STVA3YkNpMy84SThaK2pmTmwxbXpYZjF1dFpzZmh2UlRwcHMxK0JWRUZNYjZmc2xiM3ZNSVlIZjg4KzJ2cUFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODI3CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmV4ZQpycUlhcjc1K0ltYlpBUzNIenMzZnMvZm0za0ZXSURjak9OekxhdUZNZS85UElDK2VyUmQycTZrL0U2MGpnMUxML3owcFBjbkVIOFFoZXJBZU1sLzdBdz09Cg==",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhXRVBiWkY1N05MdW1CSFNCN3BWY0plTWorSWZ3MXloaXVLcjMrVHpKQXNNK2tLcStPTlMvcllPb0RMWkFIamJENHNrekVoRzBIb2UweG1wbGp1WEFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njg5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmV4ZQp6VTh1Q2NzckhPdTA0a1YvRGU1RFEyaDhrc1NrYmtodURBYmRNbUkwMGpiNzh2RVo5UERTenB6Ly9YUjdqUEsyVC82eTRubzUvTkxmaFNVMUVjR21CZz09Cg==",
       "localsr": {
         "channel": "beta",
         "backend": "cuda",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "windows-x86_64-cuda-93c23a3ec131b05d6e60d5a2e74b319143c9c69b4c7769a0673a4c805bea8a27",
-        "size": 5880418,
-        "unpacked_size": 6258329240,
-        "sha256": "1d103c45d3aa1e244d892e4f52449978a4d96be52a44cb99f30cc24d95152f2b",
+        "engine_id": "windows-x86_64-cuda-6ff9cfb143e8062c11803be49f5901b8bc8ede468bfed375a28de16417941c33",
+        "size": 6128602,
+        "unpacked_size": 4897628074,
+        "sha256": "32d330c083a9327e748d831744c43010a7cba5563ec222acfe7b33c461f19d43",
         "engine": {
-          "id": "windows-x86_64-cuda-93c23a3ec131b05d6e60d5a2e74b319143c9c69b4c7769a0673a4c805bea8a27",
+          "id": "windows-x86_64-cuda-6ff9cfb143e8062c11803be49f5901b8bc8ede468bfed375a28de16417941c33",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine-payload.json",
-            "size": 790,
-            "sha256": "b20594ec6b96e2e0d6f20abdbcda787eced4f6c91c5949d7e73ba3dd4d5b8bfd",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTRqWDR3UHlKTVFLV05iV2RJNVJFaVdNckJERGhya0RGYUl6MFpKWElkV3ArdEdYQk1oaHh1QlZteGpMQkQ3dXhOMXlPNHdYdlNtL3dySnFVcWlvMVFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODI4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS1wYXlsb2FkLmpzb24KaW5XTm9sT0NEd0Y4Mmp2bXEzdmUvNDROUlJ3aGFuN0ZpZ2U5NGJhUlZxekFvMGllZnc4RWFlYUdGd0w4YmxUbkw4ckVBZVZWb3VmQTNMVm55azRQREE9PQo="
+            "name": "LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine-payload.json",
+            "size": 778,
+            "sha256": "6f0d7d78020db1822ad95731f0c75b299c88e0206f77be0d03c8c3552e4d97a0",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJ5UFBkRy93T0Q2YjUwaTVqR1JmZWpKRUxwRVJ2VHR4QTVCV1dpeTV2b3I0TUt6ZURncUtuQmY1eUx4b0NYSEZqNkxLQlhibFJ0Q0J1Ry9FRGlJSkFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njg5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS1wYXlsb2FkLmpzb24KQzVvNTJkaFUyQWIzOU1ZMlpaQXBjenlZM2h2YUhobEkxS1ZIUHoybHp1N3BhcFhiWE1IaFBZcUdMUnpzQWFuK0k1ZDNncFVqZjFySGsyZUVab2lHREE9PQo="
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
+              "name": "LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001",
               "size": 1992294400,
-              "sha256": "83a852bb9df1476ea73a13e27293e1ca48324c5d97cde1826b5febfa6195f8d3",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS92WFRockpQenpUbGVNOVBhZzFEY0FCU284MFZmdkwrS2h1K2NCR3IzamduNWRtMEtvbFB4SzhJZ1NMZ0NDZDYzRUR3Y0laRndIbk9VdEl6NDlybFFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODMwCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxCmFVUmVGR3Y3TnVpejA3L2ttZmZ0dTJydnpVZkVEblh0N3BrL0JuT2JjNW1EVGVWY0xiK1Bpdk1NYWNmSDAyT0wrM2crblRIc0UrWDFhNFM3MkRYSUJ3PT0K"
+              "sha256": "96827cfa57991113f9218148e16438c4247d7bca23098b6b0fb122af33516553",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZaRktkZmNrZVRxY09UZDBXZUxtZ1E4SU85ekRxaGZsYm1jOThub2ZlcXhoMXMyRTRGRHNtblhUaU8xY0l4ZVpQQjNROEovZDVlaXJzV0VRRlQwMXcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NjkxCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxCndES0Z4VmpHeFRNTmxadFg4WjlkUWR3ZVA4WnJWZHpNWDdqcEwvc0tMRjlWM3owbksvazlqWkN5aVhPeWR2ZzRacmNIZEZSQVdJSG02SFp5OEdsQ0NnPT0K"
             },
             {
-              "name": "LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
-              "size": 1992294400,
-              "sha256": "5b838e3b718e6b4099e7d91e9b49f2e70f43e54a8bfa68ebc185c847dcd40289",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS9JaGpEcm5sUkFMZkFRMW5wNEIvN3RtTmQxeWsrU0NLcExHd0tQaVMwdC85QzhndTdGL2laS0Uxc1oxeE1mWTVtU1pLQ0M5M1cxZ3B4cmxvQ2Z0TWcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODM1CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAyCnhKdXhrcm1xM1RZN0VEMldmVTVYYnRDZkdtRVVxeFIwS1dWczBMazBoN05pWHMxTWxZdjJMUXBQZFlHOEtOeTdNWisvU1lxOWwybzl6MllWenVVUUF3PT0K"
-            },
-            {
-              "name": "LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0003",
-              "size": 273041489,
-              "sha256": "f3800fbd59e89af0a90ab638282605737121ac0d8da227e93e209b0d46341807",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdzY3pTQXFPd201SGU5TFl1VG1ob2MvcWI5M0o1MDNSeC9leGF2b1R1VG5KaFEzcWZ4ZFluZW0zR3VKYnpUVFM2VjBmS1p6RW1NemlJMi9yZlRPMVFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODM4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAzCm1GZU9UWktXWE16OXJReDlrcFgwenpwdjhqQzZQeEhWMUlIUmhMNG90dHNtSXA4bnFBWUJJRmh1UG1vbHRwTTlXaTRBalJxWUl5OVBVajZSWVluckN3PT0K"
+              "name": "LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002",
+              "size": 1502858186,
+              "sha256": "4312e69d95849f80385ecf1b657abc95d2c58410c355f0ced98e85132aa130f1",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTF4dUFuWFB6WlNNWDZIQklMQlB0bTFiWTJPUUpoSEx0NHBSR1l3UU11a1IzVVhxOTFpRzVEVlhqUnlNUnFQbU1TNXZqKytJdjlXTENDeFlRRm1tUndzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njk2CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAyCmxXU2FsdXpocWh5VEpoV2dVdlhJV001ZURRN1ArbWN1SGx5ZXhKQmhCZW1SakZhcFBaQ0NyRncrWTBkQ3RuZ0I2ZGRDaE9heWlyYmNYdHZmaGd6UkFRPT0K"
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoid2luZG93cy14ODZfNjQtY3VkYS05M2MyM2EzZWMxMzFiMDVkNmU2MGQ1YTJlNzRiMzE5MTQzYzljNjliNGM3NzY5YTA2NzNhNGM4MDViZWE4YTI3IiwiZW5naW5lX21hbmlmZXN0X3NoYTI1NiI6ImIyMDU5NGVjNmI5NmUyZTBkNmYyMGFiZGJjZGE3ODdlY2VkNGY2YzkxYzU5NDlkN2U3M2JhM2RkNGQ1YjhiZmQiLCJraW5kIjoibmF0aXZlIiwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoxLCJzaGEyNTYiOiIxZDEwM2M0NWQzYWExZTI0NGQ4OTJlNGY1MjQ0OTk3OGE0ZDk2YmU1MmE0NGNiOTlmMzBjYzI0ZDk1MTUyZjJiIiwidGFyZ2V0Ijoid2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjo2MjU4MzI5MjQwLCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTNmVG1vRFVaQTE3OGxWMWo0UnMva2J5SkYxY1FEU09LWVhSM3dDdUl2NDhYcUdJVTBRLzBFTWtzck5sVHJHUTE5Q0RDUDcvejRoL0dBaGRQYzgzSlFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODM5CWZpbGU6d2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUuc3RhdGVtZW50Lmpzb24KTFFnUm9EZGtZdjhna2VjY2JMRXdWeHRDSnJvdGlEdTBNbk9QdWhvMm9temUrK2s2LzVlcnZNNEtPWHRjS3BZYjRXQVFWbnlGZXRaRTlRZGFmN2c4RHc9PQo=",
-        "statement_v2": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoid2luZG93cy14ODZfNjQtY3VkYS05M2MyM2EzZWMxMzFiMDVkNmU2MGQ1YTJlNzRiMzE5MTQzYzljNjliNGM3NzY5YTA2NzNhNGM4MDViZWE4YTI3IiwiZW5naW5lX21hbmlmZXN0Ijp7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLVdpbmRvd3MtQ1VEQS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6ImIyMDU5NGVjNmI5NmUyZTBkNmYyMGFiZGJjZGE3ODdlY2VkNGY2YzkxYzU5NDlkN2U3M2JhM2RkNGQ1YjhiZmQiLCJzaXplIjo3OTB9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLVdpbmRvd3MtQ1VEQS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI4M2E4NTJiYjlkZjE0NzZlYTczYTEzZTI3MjkzZTFjYTQ4MzI0YzVkOTdjZGUxODI2YjVmZWJmYTYxOTVmOGQzIiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAyIiwic2hhMjU2IjoiNWI4MzhlM2I3MThlNmI0MDk5ZTdkOTFlOWI0OWYyZTcwZjQzZTU0YThiZmE2OGViYzE4NWM4NDdkY2Q0MDI4OSIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtV2luZG93cy1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMyIsInNoYTI1NiI6ImYzODAwZmJkNTllODlhZjBhOTBhYjYzODI4MjYwNTczNzEyMWFjMGQ4ZGEyMjdlOTNlMjA5YjBkNDYzNDE4MDciLCJzaXplIjoyNzMwNDE0ODl9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiIxZDEwM2M0NWQzYWExZTI0NGQ4OTJlNGY1MjQ0OTk3OGE0ZDk2YmU1MmE0NGNiOTlmMzBjYzI0ZDk1MTUyZjJiIiwic2l6ZSI6NTg4MDQxOCwidGFyZ2V0Ijoid2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjo2MjU4MzI5MjQwLCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZThhTGlBTWpCUGE0V1BoeEJ5TWJxelE2Q3AycElmaE5oUyt6OFdvVE5veERTc1N2bVhVMkp6NzdPQ0VjOFpsd0JTMWtTR1JZc0pYQXlpT0dJa050MFF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODM5CWZpbGU6d2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUuc3RhdGVtZW50LXYyLmpzb24KRXVseFBnanhPNlMvTWtCN0t2eTVKNEQycE9WdmlWcG9uZXBpMjdWdkF0TXE4WjdCaXlNRGlySDJIOXMzWXRkeFV0YkNVLzd0TFEyOGszK05uYTFaQ1E9PQo="
+        "statement": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoid2luZG93cy14ODZfNjQtY3VkYS02ZmY5Y2ZiMTQzZTgwNjJjMTE4MDNiZTQ5ZjU5MDFiOGJjOGVkZTQ2OGJmZWQzNzVhMjhkZTE2NDE3OTQxYzMzIiwiZW5naW5lX21hbmlmZXN0X3NoYTI1NiI6IjZmMGQ3ZDc4MDIwZGIxODIyYWQ5NTczMWYwYzc1YjI5OWM4OGUwMjA2Zjc3YmUwZDAzYzhjMzU1MmU0ZDk3YTAiLCJraW5kIjoibmF0aXZlIiwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoxLCJzaGEyNTYiOiIzMmQzMzBjMDgzYTkzMjdlNzQ4ZDgzMTc0NGM0MzAxMGE3Y2JhNTU2M2VjMjIyYWNmZTdiMzNjNDYxZjE5ZDQzIiwidGFyZ2V0Ijoid2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjo0ODk3NjI4MDc0LCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS9VS0t6NDFPQTV3OWNXU2xzK1NSVDNyb1B4VmE3d0hiK2oyTjR2ZjBHbWtMYkdFNmRjaGdYZ3ZSWXNqQ1BuQWNXbUtJYXRwRytpZHVTYlFmMEh0U1FZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njk4CWZpbGU6d2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUuc3RhdGVtZW50Lmpzb24KMFRoWUlyZDRMOFZ6TXdBTFY1aXYwRnJkSHlQU3NnWlNwYVJSWC9aR08zMmxoV0tnc2dRcEdMVnpMYklIWmh3MER3dHc4bHluZ2xxQmczcEVzM3R5QlE9PQo=",
+        "statement_v2": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoid2luZG93cy14ODZfNjQtY3VkYS02ZmY5Y2ZiMTQzZTgwNjJjMTE4MDNiZTQ5ZjU5MDFiOGJjOGVkZTQ2OGJmZWQzNzVhMjhkZTE2NDE3OTQxYzMzIiwiZW5naW5lX21hbmlmZXN0Ijp7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLVdpbmRvd3MtQ1VEQS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6IjZmMGQ3ZDc4MDIwZGIxODIyYWQ5NTczMWYwYzc1YjI5OWM4OGUwMjA2Zjc3YmUwZDAzYzhjMzU1MmU0ZDk3YTAiLCJzaXplIjo3Nzh9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLVdpbmRvd3MtQ1VEQS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI5NjgyN2NmYTU3OTkxMTEzZjkyMTgxNDhlMTY0MzhjNDI0N2Q3YmNhMjMwOThiNmIwZmIxMjJhZjMzNTE2NTUzIiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAyIiwic2hhMjU2IjoiNDMxMmU2OWQ5NTg0OWY4MDM4NWVjZjFiNjU3YWJjOTVkMmM1ODQxMGMzNTVmMGNlZDk4ZTg1MTMyYWExMzBmMSIsInNpemUiOjE1MDI4NTgxODZ9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiIzMmQzMzBjMDgzYTkzMjdlNzQ4ZDgzMTc0NGM0MzAxMGE3Y2JhNTU2M2VjMjIyYWNmZTdiMzNjNDYxZjE5ZDQzIiwic2l6ZSI6NjEyODYwMiwidGFyZ2V0Ijoid2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjo0ODk3NjI4MDc0LCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZSttS0Z5ZUs1a1hNYmpRYW82dlZMYlRkZFRzdkh6UXdGU2s0VU93WmdIYnNEdWhuOGpybGk0cnFMK01weW1JTmpqcy9CQTVYUW9iWXhuWHhOUlphU2dJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njk4CWZpbGU6d2luZG93cy14ODZfNjQtY3VkYS1uYXRpdmUuc3RhdGVtZW50LXYyLmpzb24KM2tzaEluVS9xbHozYnN0TmhVdEIwTWYxVTdFK1FZbEhkZEUwUVNtU0ZuMzBrVnJmNlN3MWdFSTlPR2N2YTRGOGdrNWZ6VXEzMjVaSy9nZTBCNWxhRFE9PQo="
       }
     },
     "windows-x86_64-cpu-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CPU-x86_64.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpaQVBQTUFxaVRrSFdVczdTM1VCL0Y0OWdkUVlna2tsU0lhS2xXek5wRUkySWtReWxtWHFVN2NsVVdRU0tONVFpbzlEUUdhUjc2NlMvY3Q2VWJRMFFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQwCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZXhlCmJHaW1wYnhINERINWMwVHp2ZFI0aGhjMmRZTTEvMFhMRzJDWEhtN0ZVQlRhOHdrUG1pQlhYV3JLQm54RURnTHUrTkRvTDN1cUR6TnBGUmxYemszY0NnPT0K",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CPU-x86_64.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFhVUZCTzkrQjE2WU5xK1RPRG9NY0lINmR3QXhkODdkMHQ4UVhuVlRCVkJSTi9vZTRDbGxsS1h6Wis1UUFielhSYVNaN1pnR3g0TFNqVm9HTmYvb3drPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njk5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZXhlClJQOVlLR0JIbHFuRmNwOGkySlFtTmJUVmdhTHUxei9RRHFoUTk5aU1LZ3NZR094M2sxUjYxM0ZhcjFuRGpkaXpEV240VVNJL0RGY2gxWXMzNlhlMkJnPT0K",
       "localsr": {
         "channel": "beta",
         "backend": "cpu",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "windows-x86_64-cpu-ebf28110869918c7907f8d9fbbeed5602e3d49295b955d89960436bc2696256a",
-        "size": 191819270,
-        "unpacked_size": 1703274602,
-        "sha256": "a18a39f2252652f9963ba3f9e87bdffcd7118e60506d1f82e93726cbadaa8f50",
+        "engine_id": "windows-x86_64-cpu-670deb790422838a2b689e92d192b37de26c8f7687d692cedb10f9ca687a0a8b",
+        "size": 192140512,
+        "unpacked_size": 1703736694,
+        "sha256": "9536d30b955111fa6bfb1f33810a2d72764666e7ad5c0b1e25e503c9f31d4db4",
         "engine": {
-          "id": "windows-x86_64-cpu-ebf28110869918c7907f8d9fbbeed5602e3d49295b955d89960436bc2696256a",
+          "id": "windows-x86_64-cpu-670deb790422838a2b689e92d192b37de26c8f7687d692cedb10f9ca687a0a8b",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Windows-CPU-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CPU-x86_64.engine-payload.json",
-            "size": 363,
-            "sha256": "cd08217a3091a3c17376174abc3f813387d02a0e0aff4aaf17a150226e0bda68",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTVOT1pqcE9jRVZnOTNEMEZpZUI4bHo0TFlLSndJN0NtQzBjN1BwdHU1L2FMa1Y5T2c1U3lRdVk2cUdHRHEvUWFHOE4yN3ArR1FmZmRkZ3NxVklmbndFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQwCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbgpBczJPSGJnWkdsS3NHczFyZGdlZTdoaVZ1RXg3Slg4RlNXakU3VGdrWWpJREZzUzZaOHBXdU1SQlY3bCtCVkVEeTdFSUtIc1REemtCWW42L0oydkJCQT09Cg=="
+            "name": "LocalSR-v0.5.2-beta-Windows-CPU-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CPU-x86_64.engine-payload.json",
+            "size": 561,
+            "sha256": "a90ad88da5fb9a60392b5cc141d9b775d090fab0587fa6ac08f53adc37f5f6f3",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXlXTkY0ZnlIMEhkUWNIZ3VqZVh1bVhTU0RRTTd3SlNEN1A0ZEZYcjBack4rbGFKNTIwMHVpV3VEcm5mY2o5UHFQcGRMeDZac3EvTEZDcy9jQ0duQ3dzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Njk5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbgpLampjUmZxVTVrS1orMDZtaFNXNDR3YUR6NEgwR2VtUVgycmpNM3RaS1kwT0xIZzl4ZUJFWmhDUFpqWHo2d0Z6V003aHZ6NUpFV041K21PSUNIVVFBQT09Cg=="
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Windows-CPU-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-CPU-x86_64.engine.tar.gz.part-0001",
-              "size": 306582342,
-              "sha256": "f429b38658acc15cdefb16d7833af28083854c3aec2a399327db31ce0a3c0369",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZTcmN6ckpVc2ZVTG9QSWJBM29SVzhQL3FiT2pFa0NFWU1mMkhWdTkwZm9mQTdnM1BlY2ozeWtXS2ZIclBHL0VNL01kWHFPUHBjN3J4Rng3NFNIdFFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQxCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEKZXR6ZEdXRjhTNGZXbmUyY3BKSXBvKzNaTWhqZVlpRHgrbEd0WnRXSVdJQ1p5bmU0aVVHeXl1bmwvc3JSdHlVT05QMTk2K25KbU13Q3V1TGExT0lHRGc9PQo="
+              "name": "LocalSR-v0.5.2-beta-Windows-CPU-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CPU-x86_64.engine.tar.gz.part-0001",
+              "size": 306626962,
+              "sha256": "a5d00063585472c032def782cac72629d256a3a5967875d1fd61401c04951e3f",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpJWHYvTXZhSG9HbUlmV2FPK29ZSzY2Kzh2bmVwa0dSNGtwTnpBSE9IMHM2Rjc0dTN6eUplNXhVUGxlNzJFWHlqdnJIeTJyaGZPTHc0U3BHa3dqaGdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAwCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEKTGJDV1pqVjYyYWZGQWdYK3FacDdWTi9IcVdieGVnVWhaUGFKRXlVc3ozQW04aXF3SFlabTUxZ2J2MHg3NVFTNnUwYlUyUVBmdytQZDFsSkVPWVY2Q1E9PQo="
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtZWJmMjgxMTA4Njk5MThjNzkwN2Y4ZDlmYmJlZWQ1NjAyZTNkNDkyOTViOTU1ZDg5OTYwNDM2YmMyNjk2MjU2YSIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiJjZDA4MjE3YTMwOTFhM2MxNzM3NjE3NGFiYzNmODEzMzg3ZDAyYTBlMGFmZjRhYWYxN2ExNTAyMjZlMGJkYTY4Iiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiYTE4YTM5ZjIyNTI2NTJmOTk2M2JhM2Y5ZTg3YmRmZmNkNzExOGU2MDUwNmQxZjgyZTkzNzI2Y2JhZGFhOGY1MCIsInRhcmdldCI6IndpbmRvd3MteDg2XzY0LWNwdS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoxNzAzMjc0NjAyLCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBJTnFKcmo4czA1WHVpRldYMUxnRGRpQTh5ajRkdnZQTFNBbWNrWXZhMnNDT3FqSndhaUNnN3lhc3BmbkhDQ1VhbmFZM0pham1IcUpzNXN4aEFuRHdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQyCWZpbGU6d2luZG93cy14ODZfNjQtY3B1LW5hdGl2ZS5zdGF0ZW1lbnQuanNvbgpwSXBlYmhmWXJSSEhiMVI3elMzY0VTKzVoVXYybXBURi9Ock1oaUwyS3lFeW4wMmZwRVFhT1ZaUnFpTDlZZnhVOHdBSVZPdkdHd1BSSzZyZFJ5NHNDZz09Cg==",
-        "statement_v2": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtZWJmMjgxMTA4Njk5MThjNzkwN2Y4ZDlmYmJlZWQ1NjAyZTNkNDkyOTViOTU1ZDg5OTYwNDM2YmMyNjk2MjU2YSIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6ImNkMDgyMTdhMzA5MWEzYzE3Mzc2MTc0YWJjM2Y4MTMzODdkMDJhMGUwYWZmNGFhZjE3YTE1MDIyNmUwYmRhNjgiLCJzaXplIjozNjN9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLVdpbmRvd3MtQ1BVLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMSIsInNoYTI1NiI6ImY0MjliMzg2NThhY2MxNWNkZWZiMTZkNzgzM2FmMjgwODM4NTRjM2FlYzJhMzk5MzI3ZGIzMWNlMGEzYzAzNjkiLCJzaXplIjozMDY1ODIzNDJ9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiJhMThhMzlmMjI1MjY1MmY5OTYzYmEzZjllODdiZGZmY2Q3MTE4ZTYwNTA2ZDFmODJlOTM3MjZjYmFkYWE4ZjUwIiwic2l6ZSI6MTkxODE5MjcwLCJ0YXJnZXQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtbmF0aXZlIiwidW5wYWNrZWRfc2l6ZSI6MTcwMzI3NDYwMiwidmVyc2lvbiI6IjAuNS4wLWJldGEifQ==",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTAvUmxaVjBnME5kNU5CTWZYSEMvYmZEUXd1QWlTSTdZZEkyZzJFa0ZvVzJZdHplTzM2bERNVWhUOVZLMHZlaEFiMWJaR1BoT3JuSnZhMVh4MXpLVWd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQyCWZpbGU6d2luZG93cy14ODZfNjQtY3B1LW5hdGl2ZS5zdGF0ZW1lbnQtdjIuanNvbgp2emtDZXV3U1NGWWIwWjQ0ckl0eFhyQnFybEVkZkNhY2xDYWxldEdmNndJYnJzUThCTGIzUjliTk5FQ2VjMzE2VEw2M1dLb2NyVUVVQTloZGUxMkhEUT09Cg=="
+        "statement": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtNjcwZGViNzkwNDIyODM4YTJiNjg5ZTkyZDE5MmIzN2RlMjZjOGY3Njg3ZDY5MmNlZGIxMGY5Y2E2ODdhMGE4YiIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiJhOTBhZDg4ZGE1ZmI5YTYwMzkyYjVjYzE0MWQ5Yjc3NWQwOTBmYWIwNTg3ZmE2YWMwOGY1M2FkYzM3ZjVmNmYzIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiOTUzNmQzMGI5NTUxMTFmYTZiZmIxZjMzODEwYTJkNzI3NjQ2NjZlN2FkNWMwYjFlMjVlNTAzYzlmMzFkNGRiNCIsInRhcmdldCI6IndpbmRvd3MteDg2XzY0LWNwdS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoxNzAzNzM2Njk0LCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTB1MmxOTTF5UUxTM0ZrM0l6ZzdUYzczSFJWU0l2VmJONXZZWHRFSktMWmMxN3UwMGE3Q0wyS1FOTVR1UDR5TGVZd0ZuY2FlOVlTNEVubHVQdzdoSGdFPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAxCWZpbGU6d2luZG93cy14ODZfNjQtY3B1LW5hdGl2ZS5zdGF0ZW1lbnQuanNvbgpyakg5dDhoeGo0N0FBQVVEZlNLeHI0VlpHQ1E2VE9OMDZma09ETHFiSkRxQzVKUHpWZE5pc090bjh3RnppZ3ErTlFkVzJsb01XejZ5YWl3NHNXcGtBQT09Cg==",
+        "statement_v2": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtNjcwZGViNzkwNDIyODM4YTJiNjg5ZTkyZDE5MmIzN2RlMjZjOGY3Njg3ZDY5MmNlZGIxMGY5Y2E2ODdhMGE4YiIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLUNQVS14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6ImE5MGFkODhkYTVmYjlhNjAzOTJiNWNjMTQxZDliNzc1ZDA5MGZhYjA1ODdmYTZhYzA4ZjUzYWRjMzdmNWY2ZjMiLCJzaXplIjo1NjF9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLVdpbmRvd3MtQ1BVLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMSIsInNoYTI1NiI6ImE1ZDAwMDYzNTg1NDcyYzAzMmRlZjc4MmNhYzcyNjI5ZDI1NmEzYTU5Njc4NzVkMWZkNjE0MDFjMDQ5NTFlM2YiLCJzaXplIjozMDY2MjY5NjJ9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiI5NTM2ZDMwYjk1NTExMWZhNmJmYjFmMzM4MTBhMmQ3Mjc2NDY2NmU3YWQ1YzBiMWUyNWU1MDNjOWYzMWQ0ZGI0Iiwic2l6ZSI6MTkyMTQwNTEyLCJ0YXJnZXQiOiJ3aW5kb3dzLXg4Nl82NC1jcHUtbmF0aXZlIiwidW5wYWNrZWRfc2l6ZSI6MTcwMzczNjY5NCwidmVyc2lvbiI6IjAuNS4yLWJldGEifQ==",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTNzYmJsdmpUNkczM2U3L3o5dExhU1ZvbHlESUVoTW9HOUJORG5pb0Y1MFJEamxhNE9hZExqY2Y0eTJqd2oyWm1DeXVXemZ4NVlIUWFiTHpVL2hOSmdRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAxCWZpbGU6d2luZG93cy14ODZfNjQtY3B1LW5hdGl2ZS5zdGF0ZW1lbnQtdjIuanNvbgpZUHVobU5yeHkreFNybFU4REZTYVZwYmdibG9jbXVCT2poR2lWckJuRkxHQS9IcUJsQk9Dakc4QkRnTUVsdUM1RllSMkxSc3Y2ZXBUL0tpNlJEc2ZDUT09Cg=="
       }
     },
     "windows-x86_64-directml-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-DirectML-x86_64.exe",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJ5dHFFSzJWY3hkUjNBR0c1Z0NuVmRpdFhYZHhmaTBGR1RBMk9kUWlKSHI2dHFGaytlV3U1M1cwOUd4cFRNRTNVdjI2ZjNxS0RJbWFxbDhFSzlhZVFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQyCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5leGUKcUZ6ZTlhTFBvd1I1c3M5dytjVUZIK0FQcmdMczZBTkdSc2xpVjBoQldJMU5kNEkyVEJxSzR5OFVaY21JQ1A5OVdJek90R3JXMEhtQW5MTkJMeER6Qnc9PQo=",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJZUjFxZ2JBL1pYaDliQTFXdlR4SXR2SjJNNnVtcFp1WEo0U2NOSGdxQUlLU3k0ZnZKRlR5YUdzWnh0ajBxenVkMTBYbEdPbmNoZ1picXJhNmJFUHdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAxCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5leGUKdWxZZWN3dUFCRGgzTnJhWjBWekdLVlhESmxvSUtaMlBvRFpKZzZZRVlVRlg0Uzl4aXR2VGNUVGY2MWRzSjYyUFE5LzA0endiSjVqNUNwNFg1anNLQ1E9PQo=",
       "localsr": {
         "channel": "beta",
         "backend": "directml",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "windows-x86_64-directml-684ba5f4d2211a064aa4e13e2d3e0b6c0cb4988f2116b2c55d379cf7b9dfa366",
-        "size": 258477563,
-        "unpacked_size": 2334534579,
-        "sha256": "1c9e63c791d474a42b52484092e48b111d32f17734a369db438260a86255cb3b",
+        "engine_id": "windows-x86_64-directml-229658dc3266b8168033c1bf55bf0b04a6dee15040fd3f68308ff71d55a70112",
+        "size": 258909997,
+        "unpacked_size": 2335108337,
+        "sha256": "84096a9419c251e72800bf5724e7e1e922341a5c3da2225216d8894d92b8ce48",
         "engine": {
-          "id": "windows-x86_64-directml-684ba5f4d2211a064aa4e13e2d3e0b6c0cb4988f2116b2c55d379cf7b9dfa366",
+          "id": "windows-x86_64-directml-229658dc3266b8168033c1bf55bf0b04a6dee15040fd3f68308ff71d55a70112",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Windows-DirectML-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-DirectML-x86_64.engine-payload.json",
-            "size": 375,
-            "sha256": "94407ce983505ffcdb32e0f4044ba259dc6f543ac2640899861c89300904e9d4",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTRPeWpOYzdQdXdvSXdsUzVTS282OTZRZ01NMU9KZVlIYkQ1YmtydUUwemtmaEhQYUJiNFhhMVFOYnVveUk3b2N3NmRxWUtjMEVpRUVzVE1oRjdYNlFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQzCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uCjliQk1TaEV6TnBKYk1QUWtRWG0ya3FFYlN3dWl5RHgva1ZNL2ZhWXdnY1lVc3pibHVQaXBrbW8waFU3cVUrbldIUjU5bVNCMGNvUWtDMmF2OWRxK0R3PT0K"
+            "name": "LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.engine-payload.json",
+            "size": 578,
+            "sha256": "b9f095fd17506c98112b2e8739a5c6ad129e0e5cd38135206e6e64ad6ef80cf8",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS9aS1p6NjVXdjZ1YlZYVGpncm5Ca25iUzUrRnM4NWd0K0RQeU9iRW9BZXVVVXZxYmpKNXljWDZVVkx2bVJvZnRlUkVrWkpLT1pIUG8yOFZxcnJicGdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAyCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uClJmRlpmSVFZZFRPUmQxNGtFOWNHZDhLbU1mZ0FvbDVuUklrcEl1eHVVUFc1NWM5SkVnTHBwYzNHRDBWMDdBSFlrWnpuMEY4OUtmUHBSZ05EMG1pY0RRPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Windows-DirectML-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Windows-DirectML-x86_64.engine.tar.gz.part-0001",
-              "size": 416670308,
-              "sha256": "bc9f4728847faf051f5aa4220a747fe27cd6d5a42a017a2aa1092ef78b9f3be1",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdFS2VDdTlFdHBjcyt2WmViWmlhOTB5ZkdKTWMyYVlkQ2dPV1pLQ3hGeTU5YysvRHRGRDMySlg0ek1TV1ova0xIR0ZBVVF4WkhaMVFxNkR1UndwZFE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ0CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQo1OWtvNTgyTklFa1lYcVd2TFRTeW9qL1hTRFdOaHdHaStmNG1wL1N2T2JhdW8yTnF0MmVhSm80TCtQdGc5WGlPNjdKdU01YTF6R3FaZ2IwU0I4QTBEdz09Cg=="
+              "name": "LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.engine.tar.gz.part-0001",
+              "size": 416731220,
+              "sha256": "24f6a4631d0ad82a07bf13ee50c467af1d073528a08c7a50472985bf3cff8055",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZXSExjUTJyZ21rWWZNS01lSmNqdkhMejJEcVB1b1N1TnFYTG5lV0ZCbTREZlcycUp1STRETENqdW1jZjZnN3BkcmtkdVBYRDBSNzdyU01uMnlTOEFBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzAzCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1XaW5kb3dzLURpcmVjdE1MLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpjb1FvWCs0UlRBaERSRTBBcExlUVJXeHJRWGloSlFtbndaeExtdzNkUVhFZGNZd3o4WStNeWV2NjNYK1BDWVA2Y2J0OUgxU1gvcmViQUNJN2FVZUJEdz09Cg=="
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoiZGlyZWN0bWwiLCJjaGFubmVsIjoiYmV0YSIsImVuZ2luZV9pZCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLTY4NGJhNWY0ZDIyMTFhMDY0YWE0ZTEzZTJkM2UwYjZjMGNiNDk4OGYyMTE2YjJjNTVkMzc5Y2Y3YjlkZmEzNjYiLCJlbmdpbmVfbWFuaWZlc3Rfc2hhMjU2IjoiOTQ0MDdjZTk4MzUwNWZmY2RiMzJlMGY0MDQ0YmEyNTlkYzZmNTQzYWMyNjQwODk5ODYxYzg5MzAwOTA0ZTlkNCIsImtpbmQiOiJuYXRpdmUiLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjEsInNoYTI1NiI6IjFjOWU2M2M3OTFkNDc0YTQyYjUyNDg0MDkyZTQ4YjExMWQzMmYxNzczNGEzNjlkYjQzODI2MGE4NjI1NWNiM2IiLCJ0YXJnZXQiOiJ3aW5kb3dzLXg4Nl82NC1kaXJlY3RtbC1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoyMzM0NTM0NTc5LCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTA5QWFUaG9KajhQQ0p0dUhoWFJTWGl1QkhNV1pOUE5rTklsV1hQVVJhS2N5aHVwTkdPREpvQUZDVFQ1dW9OdzkveWdIdlFDd1dWU25TVG55MzFpWUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ0CWZpbGU6d2luZG93cy14ODZfNjQtZGlyZWN0bWwtbmF0aXZlLnN0YXRlbWVudC5qc29uCm92ZmZBd3Q2RUFHdGVlRklicEFoK3NEMWxvSFVJdi9BRGZHK3I2WDBJbWpseUNEOW1FVTVLVEh5QnNURjl2WUo5eHhhUFZ1ei9pYldITXUrcjl2QURBPT0K",
-        "statement_v2": "eyJiYWNrZW5kIjoiZGlyZWN0bWwiLCJjaGFubmVsIjoiYmV0YSIsImVuZ2luZV9pZCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLTY4NGJhNWY0ZDIyMTFhMDY0YWE0ZTEzZTJkM2UwYjZjMGNiNDk4OGYyMTE2YjJjNTVkMzc5Y2Y3YjlkZmEzNjYiLCJlbmdpbmVfbWFuaWZlc3QiOnsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtV2luZG93cy1EaXJlY3RNTC14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6Ijk0NDA3Y2U5ODM1MDVmZmNkYjMyZTBmNDA0NGJhMjU5ZGM2ZjU0M2FjMjY0MDg5OTg2MWM4OTMwMDkwNGU5ZDQiLCJzaXplIjozNzV9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLVdpbmRvd3MtRGlyZWN0TUwteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxIiwic2hhMjU2IjoiYmM5ZjQ3Mjg4NDdmYWYwNTFmNWFhNDIyMGE3NDdmZTI3Y2Q2ZDVhNDJhMDE3YTJhYTEwOTJlZjc4YjlmM2JlMSIsInNpemUiOjQxNjY3MDMwOH1dLCJraW5kIjoibmF0aXZlIiwicGFydHMiOltdLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjIsInNoYTI1NiI6IjFjOWU2M2M3OTFkNDc0YTQyYjUyNDg0MDkyZTQ4YjExMWQzMmYxNzczNGEzNjlkYjQzODI2MGE4NjI1NWNiM2IiLCJzaXplIjoyNTg0Nzc1NjMsInRhcmdldCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjIzMzQ1MzQ1NzksInZlcnNpb24iOiIwLjUuMC1iZXRhIn0=",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpNMzA4OTY5Z2VNM3VHbCtUTEN1VTJHeHN0b2kzUlJJdVZxbVVHOTNmZEVFeW81Sk5WQ3J4NVBHcFlLNy9LYWNpUEhVRjd0MGsxa2o5OUVwOXFncFEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ1CWZpbGU6d2luZG93cy14ODZfNjQtZGlyZWN0bWwtbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uCjd4MXV2cW5WdUFkN3BLdmhrckdLS1Y5Q0djR0hzVWU4d0JxNk1XV2xQSCtXeGVFd2YwMlZKUDV4RE5NWnNGc3pLQUZFV0M2N2t3NXhrc0pCcmFZdURnPT0K"
+        "statement": "eyJiYWNrZW5kIjoiZGlyZWN0bWwiLCJjaGFubmVsIjoiYmV0YSIsImVuZ2luZV9pZCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLTIyOTY1OGRjMzI2NmI4MTY4MDMzYzFiZjU1YmYwYjA0YTZkZWUxNTA0MGZkM2Y2ODMwOGZmNzFkNTVhNzAxMTIiLCJlbmdpbmVfbWFuaWZlc3Rfc2hhMjU2IjoiYjlmMDk1ZmQxNzUwNmM5ODExMmIyZTg3MzlhNWM2YWQxMjllMGU1Y2QzODEzNTIwNmU2ZTY0YWQ2ZWY4MGNmOCIsImtpbmQiOiJuYXRpdmUiLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjEsInNoYTI1NiI6Ijg0MDk2YTk0MTljMjUxZTcyODAwYmY1NzI0ZTdlMWU5MjIzNDFhNWMzZGEyMjI1MjE2ZDg4OTRkOTJiOGNlNDgiLCJ0YXJnZXQiOiJ3aW5kb3dzLXg4Nl82NC1kaXJlY3RtbC1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoyMzM1MTA4MzM3LCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZTY3pWbXpUK0dpNkRqZnhad0kvejZYTEZ6aGtIVjVhcEx0NitHN1I4aVllN2sydTFwV1daWGV2WkJRWG9ndmszclhYbDVENExGQnQyT0pCNHJtTVF3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA0CWZpbGU6d2luZG93cy14ODZfNjQtZGlyZWN0bWwtbmF0aXZlLnN0YXRlbWVudC5qc29uCkpRa0J2eG1nRUdWcFVrUHQ2b0JXcjhkcEozL3NrWHhSMGFBRXhSZkNNeDI5alVKZEY3UlJsQUF4aDRQZ2l5akNWVHVmaHhNS3IvRGJqaEdEQWhBUENnPT0K",
+        "statement_v2": "eyJiYWNrZW5kIjoiZGlyZWN0bWwiLCJjaGFubmVsIjoiYmV0YSIsImVuZ2luZV9pZCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLTIyOTY1OGRjMzI2NmI4MTY4MDMzYzFiZjU1YmYwYjA0YTZkZWUxNTA0MGZkM2Y2ODMwOGZmNzFkNTVhNzAxMTIiLCJlbmdpbmVfbWFuaWZlc3QiOnsibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtV2luZG93cy1EaXJlY3RNTC14ODZfNjQuZW5naW5lLXBheWxvYWQuanNvbiIsInNoYTI1NiI6ImI5ZjA5NWZkMTc1MDZjOTgxMTJiMmU4NzM5YTVjNmFkMTI5ZTBlNWNkMzgxMzUyMDZlNmU2NGFkNmVmODBjZjgiLCJzaXplIjo1Nzh9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLVdpbmRvd3MtRGlyZWN0TUwteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxIiwic2hhMjU2IjoiMjRmNmE0NjMxZDBhZDgyYTA3YmYxM2VlNTBjNDY3YWYxZDA3MzUyOGEwOGM3YTUwNDcyOTg1YmYzY2ZmODA1NSIsInNpemUiOjQxNjczMTIyMH1dLCJraW5kIjoibmF0aXZlIiwicGFydHMiOltdLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjIsInNoYTI1NiI6Ijg0MDk2YTk0MTljMjUxZTcyODAwYmY1NzI0ZTdlMWU5MjIzNDFhNWMzZGEyMjI1MjE2ZDg4OTRkOTJiOGNlNDgiLCJzaXplIjoyNTg5MDk5OTcsInRhcmdldCI6IndpbmRvd3MteDg2XzY0LWRpcmVjdG1sLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjIzMzUxMDgzMzcsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZThtODh2L2JCWWN0NlYyUVRENEx4R05oQWI3Q3UzR2s5STRXNm5SeWQzVzN4Z29VUDJSMm9FU0thWlNoQnk4NFZuVFZPM2xMUFlDck9GSTh2RSsyaUFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA0CWZpbGU6d2luZG93cy14ODZfNjQtZGlyZWN0bWwtbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uCjhoMVhESGQvRkVxU3F6cWVoZmlRMm9IbmFGc3RyaW1xaTRtK3RYQkpPZ2d5OXBCUzhqNVNHd1F3TTgrem5NbE5lWjdoQWdUbjh0NHg3Yis2YnZGWkJRPT0K"
       }
     },
     "linux-x86_64-cpu-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CPU-x86_64.AppImage",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTEvRWJzYXhLb3BoMTRuRFIveDg4c0xMbE1lYWZSQkpZbS9SRGhLRzU2ZHhmVTVtS05RQVJDWWQ2aHZxRkdPY3FCc3BsTVBMR09mYXhhZFpTWGRXR1FnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ1CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DUFUteDg2XzY0LkFwcEltYWdlCkdUNVFsZUQxTlBucFJRK0JPRk9WL2pEQjVmL2RPMGZhZjRycHp4VGovaTIvZThLTmhqUTVqZlk3bDlkUDVIQXV0a2ZmekVBNTJsOEcxMDBNS2dacEFRPT0K",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CPU-x86_64.AppImage",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZSs1K1phZFNuaFdSN2xmWHJ5aWhvNklJY1RIcE1Rci9zdE9lWEVoZy9FNVFiVUJxVWpGUVBLc1ZROEovdndQekg3cHNDVFdvclJtam1WSG9aMHhCNGdJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA1CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DUFUteDg2XzY0LkFwcEltYWdlCkdFQ3UvcDVxR0ptbU5iblJ6Q1ppeEhZZUtNOTBPOEZrSExjNTNqWUNvb3V5WE1QMHpNaVg0aHlGSmszNk9wRWhDTHJpMmdLS2h2a2R3c1Nrc0c0T0J3PT0K",
       "localsr": {
         "channel": "beta",
         "backend": "cpu",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "linux-x86_64-cpu-5f0299b366f357d1feefbd6ba0dccc7ef557487e7ab7d6ef4f7c9d764db649f1",
-        "size": 565975544,
-        "unpacked_size": 1904523054,
-        "sha256": "35e2784e1e36ec9c2e3b17cb7cbb21498992f548426d439c8e626d2d0e48aef6",
+        "engine_id": "linux-x86_64-cpu-95050127cbd522339c2fb60f6dd30cf823b222e2216d9963be5b1ff521256ddd",
+        "size": 560368120,
+        "unpacked_size": 1886187724,
+        "sha256": "6ac68af601e8b93a5e0692caa3401d22ba8af9608665638cd9b5cee24005b234",
         "engine": {
-          "id": "linux-x86_64-cpu-5f0299b366f357d1feefbd6ba0dccc7ef557487e7ab7d6ef4f7c9d764db649f1",
+          "id": "linux-x86_64-cpu-95050127cbd522339c2fb60f6dd30cf823b222e2216d9963be5b1ff521256ddd",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Linux-CPU-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CPU-x86_64.engine-payload.json",
-            "size": 349,
-            "sha256": "fe8e84cab7df154f55159ec2f4447c1d14463542b95dcfecda6f374e640ef959",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFNWDc5UG5ocnlHQ01TdnhpZm1SS1hveVdwL0pGRUlOSjNmS2lUYS9ucnQxd1l3S2YrUGNOZnBqeTkrUlFIaERzSVNyaUhwaHI2dm11TW9pTVIvNVFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ3CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DUFUteDg2XzY0LmVuZ2luZS1wYXlsb2FkLmpzb24KWkdXVUFSdTQ1dHhKc3g1UEhBbEcwQWNCRGc2VFBZSlVsVHJuWXZIUlpTWnMzVWpGa1RIcGQvZTVLRXM5L3BDMmVsOXZKbjRuaU1YWHFhMm5oVWtFQ1E9PQo="
+            "name": "LocalSR-v0.5.2-beta-Linux-CPU-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CPU-x86_64.engine-payload.json",
+            "size": 537,
+            "sha256": "292e5b87f075a10c2cd238470ddf961d7cb6a2f1f31c344075f4bb2ac14208e9",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTM2Unc2SEFjUzUvNDFiV3B0V0dyQjVkVDJrVUpiVWtkSS9uSjZ5c1QxT0JXYTgxd2EzdWEzbFVoVGJsNklqRlgxaTZMbzk3WE5VT1M1dWxYcVhNc3d3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA2CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DUFUteDg2XzY0LmVuZ2luZS1wYXlsb2FkLmpzb24KT0J3Qk9IQnQ3RWt5WEt1KzNpdCttc0dkN05YLzlUMzZoczEvMUtNbjlWUjMyL2tjMW9xT1NOakF0U0hoSE9sUjlSYmZod2FBR0pvN25XWGMzbVdRQlE9PQo="
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-CPU-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CPU-x86_64.engine.tar.gz.part-0001",
-              "size": 499685665,
-              "sha256": "a432042a0be9bd83426c7ad0fd1de85c3e67131e64a0757dd0423ee5bad4e694",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXdQU1IvRGxCdkVPVlZkZFNVVlJFRVBmeU1CZCtBMmg2YkdnYURhNDUwY25iRjc5SitPRnNFc2FTYW90V1UzODFBYTlvT1dVRDUwTVYvTGpZT1dyMkFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ3CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DUFUteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxCjk0aklPYVByK2xWRGpZZUdYc1hYZ3pKbG9wMDhyYUt3Wm9EcEJJbnJacUdZdVVQYUVMWFpCdzU4ZmVTOW5RT0wxSVNFTFhsQTNSMWRjK1hJWjh3a0NRPT0K"
+              "name": "LocalSR-v0.5.2-beta-Linux-CPU-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CPU-x86_64.engine.tar.gz.part-0001",
+              "size": 493240313,
+              "sha256": "5cfb730d667f5c69a770ba06a16d5ec4ba1e6625ac082d34b136e08b28d52639",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZSsyTGYzZE1wcVdGMjltSUVkVk1iSDUwZDI0Wk5tdWdSS2VQNDIrV2hIOTQrMnBZK1Y1S3ZqU3JqVzMyaUZLdkM4VTZuQ3A4cmNsL3dBNWJYTVRiaHc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA2CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DUFUteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxCksvVmJxczkzRzNVbnZCNEVHdlZzeEhuek5nYlVBMWZYdjVtejVrM3VlSkZsZjdSaDFRZm5uaitvZ1l0TnpUcyt4dTFrU2lKVy9wTzlwQWRJdUsvL0JRPT0K"
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJsaW51eC14ODZfNjQtY3B1LTVmMDI5OWIzNjZmMzU3ZDFmZWVmYmQ2YmEwZGNjYzdlZjU1NzQ4N2U3YWI3ZDZlZjRmN2M5ZDc2NGRiNjQ5ZjEiLCJlbmdpbmVfbWFuaWZlc3Rfc2hhMjU2IjoiZmU4ZTg0Y2FiN2RmMTU0ZjU1MTU5ZWMyZjQ0NDdjMWQxNDQ2MzU0MmI5NWRjZmVjZGE2ZjM3NGU2NDBlZjk1OSIsImtpbmQiOiJuYXRpdmUiLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjEsInNoYTI1NiI6IjM1ZTI3ODRlMWUzNmVjOWMyZTNiMTdjYjdjYmIyMTQ5ODk5MmY1NDg0MjZkNDM5YzhlNjI2ZDJkMGU0OGFlZjYiLCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtY3B1LW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjE5MDQ1MjMwNTQsInZlcnNpb24iOiIwLjUuMC1iZXRhIn0=",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXdvV3hVM1B6VjBXc3BwUGZ2Rk5wTlhiZGRoQ0Rob28rK1hBaERsZjJWT3V5aitWWWVHL2oveEJXU2llSW5QNzFqVG9RakpWd3hFZW01RkRhSi9SOXdZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ4CWZpbGU6bGludXgteDg2XzY0LWNwdS1uYXRpdmUuc3RhdGVtZW50Lmpzb24KT3Ftd3p3cHhaRkZBdWhpL2VLTlZObDFqQzZaVUtEM2FDbGJ2eitwMmo0TTFsZFJYNFg4UE9CdjRKdXgwN0VkS3JoZzVZMllsYnlDRitHZ2ZKc2wvQ2c9PQo=",
-        "statement_v2": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJsaW51eC14ODZfNjQtY3B1LTVmMDI5OWIzNjZmMzU3ZDFmZWVmYmQ2YmEwZGNjYzdlZjU1NzQ4N2U3YWI3ZDZlZjRmN2M5ZDc2NGRiNjQ5ZjEiLCJlbmdpbmVfbWFuaWZlc3QiOnsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtQ1BVLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiZmU4ZTg0Y2FiN2RmMTU0ZjU1MTU5ZWMyZjQ0NDdjMWQxNDQ2MzU0MmI5NWRjZmVjZGE2ZjM3NGU2NDBlZjk1OSIsInNpemUiOjM0OX0sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtQ1BVLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMSIsInNoYTI1NiI6ImE0MzIwNDJhMGJlOWJkODM0MjZjN2FkMGZkMWRlODVjM2U2NzEzMWU2NGEwNzU3ZGQwNDIzZWU1YmFkNGU2OTQiLCJzaXplIjo0OTk2ODU2NjV9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiIzNWUyNzg0ZTFlMzZlYzljMmUzYjE3Y2I3Y2JiMjE0OTg5OTJmNTQ4NDI2ZDQzOWM4ZTYyNmQyZDBlNDhhZWY2Iiwic2l6ZSI6NTY1OTc1NTQ0LCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtY3B1LW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjE5MDQ1MjMwNTQsInZlcnNpb24iOiIwLjUuMC1iZXRhIn0=",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTEvY2FRa2J3Rk9IRThjMEFXWXJRcWx2TW9RN3NzTGJMZDB2MHpFQlU5OWJ0anZ6Q2w0aDhlOXlTT2NxVldZNTBsWWRZU3plYUk0TldFOUxEY1dJK3dJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODQ5CWZpbGU6bGludXgteDg2XzY0LWNwdS1uYXRpdmUuc3RhdGVtZW50LXYyLmpzb24KcFdDOU9lRWNiNGxDeER5SXhRWUl4U3Z1V0o4aUIyVUh3ZXNMUUlpNE9WUWVvcHpIZ2tMa3BWUWREQlhYM2k3aDhKWnZNcU1oZ2FZdjJwVTF6dnFqRGc9PQo="
+        "statement": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJsaW51eC14ODZfNjQtY3B1LTk1MDUwMTI3Y2JkNTIyMzM5YzJmYjYwZjZkZDMwY2Y4MjNiMjIyZTIyMTZkOTk2M2JlNWIxZmY1MjEyNTZkZGQiLCJlbmdpbmVfbWFuaWZlc3Rfc2hhMjU2IjoiMjkyZTViODdmMDc1YTEwYzJjZDIzODQ3MGRkZjk2MWQ3Y2I2YTJmMWYzMWMzNDQwNzVmNGJiMmFjMTQyMDhlOSIsImtpbmQiOiJuYXRpdmUiLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjEsInNoYTI1NiI6IjZhYzY4YWY2MDFlOGI5M2E1ZTA2OTJjYWEzNDAxZDIyYmE4YWY5NjA4NjY1NjM4Y2Q5YjVjZWUyNDAwNWIyMzQiLCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtY3B1LW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjE4ODYxODc3MjQsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXo2THJIUzJRZWhVNjZBMWZGMEJ2VmUwOHZPcDNSMEFUVmNFdDhVbnNIQ3VNVjdWalU1ZEtTTUd6UW9MT0pacElQRXJoZ3Fic0NMVEQwTnpzem5SNndrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA3CWZpbGU6bGludXgteDg2XzY0LWNwdS1uYXRpdmUuc3RhdGVtZW50Lmpzb24KZjdkSzlzR3VNa2VrMDl6YlhMZS82QWQzSUxCSGJDMkxVeS9RTFU0Lzk4OHNrTEM2L21JU3RhRnd0QjdyVkhsbVJsanNyQ3l0Z0crejVxbnlJOGdlQ0E9PQo=",
+        "statement_v2": "eyJiYWNrZW5kIjoiY3B1IiwiY2hhbm5lbCI6ImJldGEiLCJlbmdpbmVfaWQiOiJsaW51eC14ODZfNjQtY3B1LTk1MDUwMTI3Y2JkNTIyMzM5YzJmYjYwZjZkZDMwY2Y4MjNiMjIyZTIyMTZkOTk2M2JlNWIxZmY1MjEyNTZkZGQiLCJlbmdpbmVfbWFuaWZlc3QiOnsibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtQ1BVLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiMjkyZTViODdmMDc1YTEwYzJjZDIzODQ3MGRkZjk2MWQ3Y2I2YTJmMWYzMWMzNDQwNzVmNGJiMmFjMTQyMDhlOSIsInNpemUiOjUzN30sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtQ1BVLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMSIsInNoYTI1NiI6IjVjZmI3MzBkNjY3ZjVjNjlhNzcwYmEwNmExNmQ1ZWM0YmExZTY2MjVhYzA4MmQzNGIxMzZlMDhiMjhkNTI2MzkiLCJzaXplIjo0OTMyNDAzMTN9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbXSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiI2YWM2OGFmNjAxZThiOTNhNWUwNjkyY2FhMzQwMWQyMmJhOGFmOTYwODY2NTYzOGNkOWI1Y2VlMjQwMDViMjM0Iiwic2l6ZSI6NTYwMzY4MTIwLCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtY3B1LW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjE4ODYxODc3MjQsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZ6MVhuWGgwWGxrbm5SQWhkTVhwYWYwd2FjUVo4QjlWQWFFR0VCL2VpNEZ4WjFuM2hwcHUzdDBKVUJTdWlUQWtzbmJCaUFDNEw4emRMUm15TEJwSlFZPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzA4CWZpbGU6bGludXgteDg2XzY0LWNwdS1uYXRpdmUuc3RhdGVtZW50LXYyLmpzb24KUXl2ZWR4am00MEYyTFFYSk1ZTWRxK1FMMEJiVDNrWkhtc1BtUzNGQ0xCZEVnc2ZKenhReEdVUXJkN3BDZTBSRThucjMrNXg0Q1g3cTYxZlc2aytFRGc9PQo="
       }
     },
     "linux-x86_64-cuda-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0001",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTZ1ZkFuMHFlOElEWGkxUXVmd2I5Nm5QY24rVmhPaHFhUVc2N3I1a0dNRWgyR040S2FGa3VKa3QyT25COEYvdDgzMW1NV1dSc2k2RXZ1ZnZqVTdXbVFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODY4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZQpEbDAvTGUzWnArb0MvVmRGc1FsbWJ6SG9zK0tlbncxaUl4UlEyajViOVd1c2dCYnRWeEtkT0RYTGRyY1FDcG5lLzIwZHpaZURpMDFXc3hOYzNwdEZDdz09Cg==",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage.part-0001",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJjUW01Z09ld0pyc1UvRUxwRC9ha3lydm0rZXdxUDJvUFVzSlo0WkdvVFJ1L0hhMEN5UVd0ckgybFpjc3FYbUVpTUwycGVYRTZqS3RTc2VqYzZTOGcwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzIzCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZQo2MU51R294N2dqVzhLZkloeDZJc2F2dzErNnZBZFNKME91NHo3d0Z0RjgwanpqNmxjNnl2Z0pLc01zdVl4blQ5eW9FaFBqeUozSlVDMlIxTWw3YndBUT09Cg==",
       "localsr": {
         "channel": "beta",
         "backend": "cuda",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "linux-x86_64-cuda-7225f75deeedc954df86f3acbc89b25875a122ebf9c599a5364d4aef6e4c96c4",
-        "size": 5035465208,
-        "unpacked_size": 12968317487,
-        "sha256": "1fb26d85b2845a3c4b4e198bcd270e9bc7ada3b8b0a88845a6fb3a3726cc09ce",
+        "engine_id": "linux-x86_64-cuda-bf3e422da6fa3228e3e59d07b6d323f35744066e72c8c38ea1abf1515b082e7a",
+        "size": 3968616952,
+        "unpacked_size": 9955263713,
+        "sha256": "ba50126875ef8d53311aa4ce6c2331813bf9f392cd34176045b7e52b94fe44f9",
         "parts": [
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0001",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0001",
+            "name": "LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage.part-0001",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage.part-0001",
             "size": 1992294400,
-            "sha256": "6acf4e85e047c100f6e192e66603b5985877d9a277ebeefe327aa723ae168835",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTF0V0dGa1lTOGZucE9PV2NZZmdKY3pyNThhR1c5UGpmSW1wV0ZueXd2S0JjakkxRloxTTBMRDhsYnduV2hXYnNMQXJob0xHd0ZMQTQ3WHB0WW5YVWdNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODU2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDEKcnlqcjRyMllCWDNtOC9jM0ZPV0YxUFVsOTkxdHZoWFVLZUN5b0FCTE9KaDFwZysxMDNFOVR1RGcraHcvSFRWVFRvR2ROU0xMV0Q5c2FlMElCVWxTQnc9PQo="
+            "sha256": "8adc532fe3680132af4b1bf5c93c849b2a9d60a203439e1ce17470f222476f8b",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTU4N3hnVVpxVHl5bUh3NzBrR09zMmlTc014clROTnN0UHdHU2V0QS9tTkt3eCtDZTVweFc1U1FuRW9yYzQvUlpCNTUwMkwyZWlmY0RYYWcyelJFNGdnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzE0CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDEKQngwS0RCQjdsOTZVaS90YWZtOUxteDlxREZ0NGJxMTJ1Q1U3WFZlUm9tRjBYczRONlQ2TjROT0xrZitNN0VTOGY2OW52NEFPbjA3dkVtU28rT2xGQnc9PQo="
           },
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0002",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0002",
-            "size": 1992294400,
-            "sha256": "e82fdfba04b256941c4dad74ac6529da0a1edf68daf824d6b5264fc0a4b99f50",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTQxdm0vd1NrdEVxVThVL3Q2NHZKRk9Rc0xEWHBQakhBR3hEeUNjMG9tWWVIRVArdUlnSCs2Qm44cFplS3dxMkxSQUNiU0FFZHFsbUxLMThKM1VtRHc0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODYyCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDIKMUZLR0FkVUxBTXdzZWVNTFJKZWg4ZHBwSlJPMDN3UldOTHRwaHFVNEc0RVdZVlE3dzcvYjM0bElwTlZyT29JK2VEUzV5QkJHNFljZ2xTZHJaQUQ1RGc9PQo="
-          },
-          {
-            "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0003",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.AppImage.part-0003",
-            "size": 1050876408,
-            "sha256": "546feb760a01784daa749787d032faacb8db3a5667689fb92c70c1108edfc0fa",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFiRy9lOW1SSzdPdCtSYmlIZGZNKysxMFNJNG9BWVVTODZ2dFpZQkRYY2FKKzZRNC8yQVYyMzQxa21rRTlUWHdjU2NzeUdxSXBVdDFsMEFJZUNIdkEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODY2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDMKRkorZlBCSE5ZUDVVa3F5bVNvNUFyR0xoN2RvS0txNGtyRUhEdEhLS29wT3hoTXd0OENtSHoyTHZtVjc1alFnNGE1WE9icnN3cWFicWl6YTI0SkM1QXc9PQo="
+            "name": "LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage.part-0002",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage.part-0002",
+            "size": 1976322552,
+            "sha256": "f5aca4e44819ff197ffe091c14da514da97676f7004d36204425910364c5ce26",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJac3RDU256K2JvNUhzNVdaemJnZlUxc2g3dkN5ZmJQeEZ3RXZkVkU1Ym45VXFMR2hJODhiWUtvTDJnQUR2N3Q4bklESGVzK1l4VWhMdGtLNWZBcVFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzIwCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDIKa1ZkSmZGYlY5VTJXUTFQQjh4K0hGMy9qK0dWRUhWdVZsOWd0VXdTV2R6ZFRYcTBFRDd4M0tRb0lNT3lPN2lCbnIxZ1VJOHlqWFkyK0o2K1E2SVVVQWc9PQo="
           }
         ],
         "engine": {
-          "id": "linux-x86_64-cuda-7225f75deeedc954df86f3acbc89b25875a122ebf9c599a5364d4aef6e4c96c4",
+          "id": "linux-x86_64-cuda-bf3e422da6fa3228e3e59d07b6d323f35744066e72c8c38ea1abf1515b082e7a",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine-payload.json",
-            "size": 761,
-            "sha256": "f9e4d645a0578c57e73397739db4c6dd98eb0868a6424f5e9b87f3639b1b15a8",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTV4Q3R3VFZtYjVCZUxsSWNMcHhzdk9nYVprZG9CRlNKNDJxTktSSHpvWHJuaVFuTHpneFlOOUdBZHZNNlFJcXc1cG9TVFRkQkVLejVJTytYWnNoK0FnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODc2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uCmxld25GQnhNZElVSC9Od01tMDBCNHgxRTZGV3g3OTM3QlBxalJnRlU3ckE0czhJWE9XcWpIQlZMRER1RXlLYjIrQm5CRldNalZ0Zm55NEErbmlMZEN3PT0K"
+            "name": "LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine-payload.json",
+            "size": 746,
+            "sha256": "0ede9c52022ec559b32cc3b9463d44e99567881b61e094e758e2a480619c0ac2",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXkyQjJwMHN2UzNFRk94NEQ1NDR5MW4xcGsvL2lobitsdytENDV5WXNySUpDTEJnWU4yRnhwc3k3alJUN05WYVpFZWFwc3ovSGk4eHBHM1dzL2lERVFjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzI5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uCnlhOE8zaEFHUkFQSVprVEtqUWtUWmFhSm9aNDR2NHA1YU16RjREWmNhc2hKUjlpeEQ0cE1PbFptRmt0aWpDRmVYWDgxM0lKVXJ6QTdJVVBSbThCRUNRPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0001",
+              "name": "LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0001",
               "size": 1992294400,
-              "sha256": "6ae9289f6ae7a983f118a338bf4204c511864616d466f6f5800b401c55db5726",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZThjdzh1bk9qU1pSdXdMeVB3ZmpjeUJlNU1qd3IyNjVxUmVMeUJEL1F3NGUxcXRldEYybksrbWxsZkhYNVZrbjR5Y2RQbnk0YkR3V1Y5aE9hTTRES1FnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODc5CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpRQzl0NUxhMEtIb2Y1Vmw4ZFNRR0pMcVo3MWV6a3FYTENHMG9YODVxV3FPZlRKdm9NcGJIdjBkOW41TmJYMWV4T2VBNlBjNk43Z2kybjBnMjZ6aC9DUT09Cg=="
+              "sha256": "53ab3c59ebbb355689fa57f55e62d210d8d9af98bc1c08c801115814d0c1ac10",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXpOQjNhV3JaRDUveVU4OExHSjMrSUR2bVpBOVMwekhBQno2V3dnNTVmSnVVWXo2d292SHBsb1hIMEtVU29Falg4TXd5RDh3QW43R3N5R1I1UGQya1FvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzMyCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQpFQVYvRjB0WGNYOVFadlluazgwcm4ram8yWkY5MDBtNjA5YUM5MEVGS2JvQ0xRTTdGWENDOXpIMHg5SzBheFREWnJvV2poblVIQmxvNmFPWHA1VUFDZz09Cg=="
             },
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0002",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0002",
-              "size": 1992294400,
-              "sha256": "fa35e16e3c9ad1cc37c25b734da64b1bc4409c4ab8707ef546cfa92212ca2d57",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXorZFg5UE1ZUFYxMTJ5Ylk5cW1FUm5NY1ovTENIMURtY1BWWmFaanhySncvRTgwT0hIWDNNdEpvWHBVaThleC83SXh5L2pTNVNBc2VXWUx2ZXNVVUFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODg0CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMgpzNGZ4U2FlZytDRmpoY0RzdDJzNkFFRUw3V0NkMk1xVytneTY5amd0YUJaM0k5QjRRa1BxUnNFVXNhRlhwcC92NWJDU2xxQkc1SW1ZMTFpUVdLbnBDdz09Cg=="
-            },
-            {
-              "name": "LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0003",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0003",
-              "size": 1074028247,
-              "sha256": "34a30b117fcff27ea29563fb8b21160467703d2d9f7eeead2ae3ed79e13654f9",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXcycFBYOHhrMHpmWTUyVFpaOG1tNHNPeHdDclFXQlR0MnFLRG1iUkVYR1NBRTVIU1c1cXJiaDlGOGYvNThWRE5xWEw2L0VZbGRHQnovMmxLZzJRQUEwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODg4CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMwpVV1VBQ0diUjY1dEFOZEFMNXduSkJDZkRYVGdiVzJxdEZ0ZXBZRlEvVXM2LzZseGlyRmttSWZXL1VDbnhFVzNQWWMybkY1WnBXT3ovMlluNEpja1lEdz09Cg=="
+              "name": "LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0002",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.engine.tar.gz.part-0002",
+              "size": 1966058373,
+              "sha256": "690fed976065b30130e617da829a3dc22b854cd1d935b2e65d8cec5c7baf18be",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBGc0JSbFVqL0YwTXo5RS9DMDJRaFltVU9RRzhXZWZVblkwTWFObzlZQ1VvVVJha3ZqTWNMSm9iMnpUUGdMVWNmUitsazdyRkJIMDRra0NXSkNNc1FRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzM3CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMgpVLzZHajd5VERMMTBZMVF2bmtoaGxPK3d4dTVmU2dVbks0RVpXY1NMRTZwK3AyMnNxR2ZjL1ovOWJxMlVhZklqbW12N3ZoK0psQ1VjNTdwV0V2RE5BQT09Cg=="
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LWN1ZGEtNzIyNWY3NWRlZWVkYzk1NGRmODZmM2FjYmM4OWIyNTg3NWExMjJlYmY5YzU5OWE1MzY0ZDRhZWY2ZTRjOTZjNCIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiJmOWU0ZDY0NWEwNTc4YzU3ZTczMzk3NzM5ZGI0YzZkZDk4ZWIwODY4YTY0MjRmNWU5Yjg3ZjM2MzliMWIxNWE4Iiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiMWZiMjZkODViMjg0NWEzYzRiNGUxOThiY2QyNzBlOWJjN2FkYTNiOGIwYTg4ODQ1YTZmYjNhMzcyNmNjMDljZSIsInRhcmdldCI6ImxpbnV4LXg4Nl82NC1jdWRhLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjEyOTY4MzE3NDg3LCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTVLWlUrNXBRU21vOGJ4NXBvMExrendOWDc5eDAxTm91RjlVamNVR01SSmZjWDRZdnBYV1pMUGlQK0t1akNIbFVDTVdhRXIzOFJ5ckhDUEVFSlZVN0EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODkwCWZpbGU6bGludXgteDg2XzY0LWN1ZGEtbmF0aXZlLnN0YXRlbWVudC5qc29uCm9hbHBjV0RvdnZRRzkwVzE5Z0Exb2FXaWdxTDAvcDExZk1QVGhEbXVxbGxMMTRmSGVYa1R0b09KeUhWeEY4WStVazJJSzQ0cDVWYmVOUnh1Y3NpSkJ3PT0K",
-        "statement_v2": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LWN1ZGEtNzIyNWY3NWRlZWVkYzk1NGRmODZmM2FjYmM4OWIyNTg3NWExMjJlYmY5YzU5OWE1MzY0ZDRhZWY2ZTRjOTZjNCIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiZjllNGQ2NDVhMDU3OGM1N2U3MzM5NzczOWRiNGM2ZGQ5OGViMDg2OGE2NDI0ZjVlOWI4N2YzNjM5YjFiMTVhOCIsInNpemUiOjc2MX0sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtQ1VEQS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI2YWU5Mjg5ZjZhZTdhOTgzZjExOGEzMzhiZjQyMDRjNTExODY0NjE2ZDQ2NmY2ZjU4MDBiNDAxYzU1ZGI1NzI2Iiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMiIsInNoYTI1NiI6ImZhMzVlMTZlM2M5YWQxY2MzN2MyNWI3MzRkYTY0YjFiYzQ0MDljNGFiODcwN2VmNTQ2Y2ZhOTIyMTJjYTJkNTciLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLUxpbnV4LUNVREEteDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAzIiwic2hhMjU2IjoiMzRhMzBiMTE3ZmNmZjI3ZWEyOTU2M2ZiOGIyMTE2MDQ2NzcwM2QyZDlmN2VlZWFkMmFlM2VkNzllMTM2NTRmOSIsInNpemUiOjEwNzQwMjgyNDd9XSwia2luZCI6Im5hdGl2ZSIsInBhcnRzIjpbeyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI2YWNmNGU4NWUwNDdjMTAwZjZlMTkyZTY2NjAzYjU5ODU4NzdkOWEyNzdlYmVlZmUzMjdhYTcyM2FlMTY4ODM1Iiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDIiLCJzaGEyNTYiOiJlODJmZGZiYTA0YjI1Njk0MWM0ZGFkNzRhYzY1MjlkYTBhMWVkZjY4ZGFmODI0ZDZiNTI2NGZjMGE0Yjk5ZjUwIiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1DVURBLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDMiLCJzaGEyNTYiOiI1NDZmZWI3NjBhMDE3ODRkYWE3NDk3ODdkMDMyZmFhY2I4ZGIzYTU2Njc2ODlmYjkyYzcwYzExMDhlZGZjMGZhIiwic2l6ZSI6MTA1MDg3NjQwOH1dLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjIsInNoYTI1NiI6IjFmYjI2ZDg1YjI4NDVhM2M0YjRlMTk4YmNkMjcwZTliYzdhZGEzYjhiMGE4ODg0NWE2ZmIzYTM3MjZjYzA5Y2UiLCJzaXplIjo1MDM1NDY1MjA4LCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtY3VkYS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoxMjk2ODMxNzQ4NywidmVyc2lvbiI6IjAuNS4wLWJldGEifQ==",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhkV2luYU8xbGdQdm5zZ1BwNkF5SWJ4aHlUcStoVnlzWHhUS2JvWGdmcnZyUERkOXo4elMvUnA1WnpYWWFqREx5MUZ4RmlGcUw2V1JjQUlTTEJwalFRPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzODkwCWZpbGU6bGludXgteDg2XzY0LWN1ZGEtbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uCkxSY1RjRnczYXIrUWljZmhvWUFpZXZ0b21qS0FkUENUWldiQm1RMy9DV0tVRXVDZFJ5ZVVVeC9jTVpwVUJtcWIvMEkvTDZBNnBGaFF0UUFHWUVjakRBPT0K"
+        "statement": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LWN1ZGEtYmYzZTQyMmRhNmZhMzIyOGUzZTU5ZDA3YjZkMzIzZjM1NzQ0MDY2ZTcyYzhjMzhlYTFhYmYxNTE1YjA4MmU3YSIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiIwZWRlOWM1MjAyMmVjNTU5YjMyY2MzYjk0NjNkNDRlOTk1Njc4ODFiNjFlMDk0ZTc1OGUyYTQ4MDYxOWMwYWMyIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiYmE1MDEyNjg3NWVmOGQ1MzMxMWFhNGNlNmMyMzMxODEzYmY5ZjM5MmNkMzQxNzYwNDViN2U1MmI5NGZlNDRmOSIsInRhcmdldCI6ImxpbnV4LXg4Nl82NC1jdWRhLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjk5NTUyNjM3MTMsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdlQkZodVFjTjdSNllodm56QXp6aXdrNHNHYUZtRGZTeEg1MzZ4RXV5cVI0RTk5TmpQdW1EWE1obmtmRUdKRlBjY25LUzRsWlVVRnBLdlJiRDdCaXc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzQwCWZpbGU6bGludXgteDg2XzY0LWN1ZGEtbmF0aXZlLnN0YXRlbWVudC5qc29uCjV1RldvZXpQVGhGTWFiYVRac3RiK3l1Umx3dEhXQjg4Q3Q3WXl1Q1VybHlTdXNUWHExSW80QTR5d28xUG5wY0JZakhudnNWZ2xSKzZGYmlWYWFsYkNRPT0K",
+        "statement_v2": "eyJiYWNrZW5kIjoiY3VkYSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LWN1ZGEtYmYzZTQyMmRhNmZhMzIyOGUzZTU5ZDA3YjZkMzIzZjM1NzQ0MDY2ZTcyYzhjMzhlYTFhYmYxNTE1YjA4MmU3YSIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiMGVkZTljNTIwMjJlYzU1OWIzMmNjM2I5NDYzZDQ0ZTk5NTY3ODgxYjYxZTA5NGU3NThlMmE0ODA2MTljMGFjMiIsInNpemUiOjc0Nn0sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtQ1VEQS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiI1M2FiM2M1OWViYmIzNTU2ODlmYTU3ZjU1ZTYyZDIxMGQ4ZDlhZjk4YmMxYzA4YzgwMTExNTgxNGQwYzFhYzEwIiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1DVURBLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMiIsInNoYTI1NiI6IjY5MGZlZDk3NjA2NWIzMDEzMGU2MTdkYTgyOWEzZGMyMmI4NTRjZDFkOTM1YjJlNjVkOGNlYzVjN2JhZjE4YmUiLCJzaXplIjoxOTY2MDU4MzczfV0sImtpbmQiOiJuYXRpdmUiLCJwYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtQ1VEQS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDAxIiwic2hhMjU2IjoiOGFkYzUzMmZlMzY4MDEzMmFmNGIxYmY1YzkzYzg0OWIyYTlkNjBhMjAzNDM5ZTFjZTE3NDcwZjIyMjQ3NmY4YiIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtQ1VEQS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDAyIiwic2hhMjU2IjoiZjVhY2E0ZTQ0ODE5ZmYxOTdmZmUwOTFjMTRkYTUxNGRhOTc2NzZmNzAwNGQzNjIwNDQyNTkxMDM2NGM1Y2UyNiIsInNpemUiOjE5NzYzMjI1NTJ9XSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiJiYTUwMTI2ODc1ZWY4ZDUzMzExYWE0Y2U2YzIzMzE4MTNiZjlmMzkyY2QzNDE3NjA0NWI3ZTUyYjk0ZmU0NGY5Iiwic2l6ZSI6Mzk2ODYxNjk1MiwidGFyZ2V0IjoibGludXgteDg2XzY0LWN1ZGEtbmF0aXZlIiwidW5wYWNrZWRfc2l6ZSI6OTk1NTI2MzcxMywidmVyc2lvbiI6IjAuNS4yLWJldGEifQ==",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTU5dUF3Ylg0OWJXVWZFOFRHc05RQkoyS0gwVVl3cFhldnl1WlgwbEx2UkRyTk1xc3pEak5YRWVsSVEzd0ZPdHIwdlZrR0piVzlWZVducFM2R05tRkE0PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzQwCWZpbGU6bGludXgteDg2XzY0LWN1ZGEtbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uCmQ3NC8yMmJJeVhUaEQ1R3BRaVlMSjZtRTJaakpnR09MdjFPUk0raWVkQmUxcmNpNVFReFl5VXp6WkVQaGZWckNXeG0xQ201Tm04akV5NjZCM1JuaEJ3PT0K"
       }
     },
     "linux-x86_64-rocm-native": {
-      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0001",
-      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZStXd3VsUTE3WVlnMGJxSGtYWnIyb1VhaGlHWEthZ3pRMU1VK2FiOWVjNC96d240RGdpQnpWVkxiM21kOU1oRTNCMkl6YnVQdDJhdkNMOVVUWlFINVFrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTE2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZQpHZG5YUkVBbHAzU3h5SnJjcjFuSURzS2ZCRzZEV0lHbCtWNjBxK1JJU2pJa0tjRWFYcGMwcGUxajVibHpiWXdRT1UzaitpK0I5SFZxQXh5U1NaWDZEdz09Cg==",
+      "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0001",
+      "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdLWHdUK2J6V1pFc1BzTzNpSXRuQUtMMHJNN1dHTXRQM2lOUldGY0NSdUhJWDY1cE1wWUJrN01lRTlLRWptNjFodzZoS2dPTDNaRlR1dVU0dkozcHdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzY4CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZQp1MWd3aTQwUlBpa0tNWm13M0RNWTcvbCt0VVBqcEtEalhtZWJoTGVFeURqS0dDYVhoVXpQSUs1SkxQZUcvY1ZEMzl2aW1iTEFuL0F6elpKQzJaWDRDZz09Cg==",
       "localsr": {
         "channel": "beta",
         "backend": "rocm",
         "kind": "native",
         "protocol": 1,
-        "engine_id": "linux-x86_64-rocm-fa394a32abdaeb6dfd646db16795cddf3de31781d7340e9f0facc55530bd9dcf",
-        "size": 6594021880,
-        "unpacked_size": 21412230558,
-        "sha256": "2232fe9f86c2ff0bd1cfbea6f1cb46062ceeaa9ee3f2fe06f7e4c8cdf3ac7a0d",
+        "engine_id": "linux-x86_64-rocm-b14c33291a799713bc74a387255b721266c001e7d93f471ee254ee042ae5b7b5",
+        "size": 6594419192,
+        "unpacked_size": 21412698293,
+        "sha256": "d2336a8f40786b02a6a9de7425fccba9d5e1c80a9f72d929f040e29429e76ad6",
         "parts": [
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0001",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0001",
+            "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0001",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0001",
             "size": 1992294400,
-            "sha256": "18972e3b39601fe5b7b22f34bff627726e3f81b1a78315113a009d0140e9fd63",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhXZjRNUk9XUVNUdVhHZjFmbG1LQW5uNjJZeDhXQlducGhQZ2cwUFF0N3JndE50ZFplT1lTOWppdGpDOFZIaWRRUHVrNEFxUUVyZVFWTCs2cDM3eEFnPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTAwCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDEKRXJaVVZOb2tGTm13MzhUbExaUlgxU3VvbkI0ZmppYi9RQ1g2N050MnI5NXFEUDduMlVFN0Rlb01HMXJrS1Z2VUFJZ2NLeFRPY0orbDFTR1VBZUFiRFE9PQo="
+            "sha256": "98a75aade561a961494f8a01e5629df48fc58d7e55986b3be4bc0ac3e8b87d6d",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJXYTBYWGlIZ1RqTllBZ3JKbXlKanlZRFEwUGhUVHFFbkVGK1kxbHphOFJsMEN1OHc1eHdmeWZ2YjBSc2QrbUdmeU1OUlpXdjBSTnQ5dnM4S1ZSMHdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzUxCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDEKeDVvZW55U0ZsS3pxVHBXL0pBa3V0NnVSNDFadUVKY1NzQVpqNW9UWmMrQndaUGZ1WVNsODlTdVpMSjQzSUppbXdtdEJMYlZoK2xaQncxZWJmVmQxQ0E9PQo="
           },
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0002",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0002",
+            "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0002",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0002",
             "size": 1992294400,
-            "sha256": "d791267e340421d5a46785d0c09610839b404c35986850960fec2355ce11671c",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTN5T1hQVFdLVEtJaXZoMjRvcjhJelA1aXRPc1NWSzA5QUkrRXFrZFE4dVJ1a2s2TG5VcDk4WHZEUkNTL28zNXdML1hyeTVWelRYaFprZU0zbEc1QWdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTA2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDIKdGgvSjhVUjFPL2dmTnhSOVorZXJIbUptdGVxRWlHUTQ1aE55NG9IdE50a2Zna2xFazRSd1lpbDJYdWxWRE9FN2VBVmdjcXJ4aWJHRmZPN2FKY3U5QVE9PQo="
+            "sha256": "cb242d16d7a453237a515f8964b2d354e6db18b0d742f1bd299329f221398366",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTVJZVNJZElnYXdtYW1aOXlpbS9GaVN3bGljcXNJeG15Y0FTSTUzdFdlN1JaeHFITDBuejJ1SmgzdHRYRkx0Q1JnTHZMRG9iL2o4MFFlUWVqbU9hRWdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzU3CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDIKQ0xDNUtQcHhxdHlLcmw4T0VxSzREOEhOeVlIa0ZybEt0Vmo3Tk1mVHQ4V1dzWGUrQVFDaDdqdWczMVI2emxyQnJqSkVNaUdoUmw0TUExYmw1eDR2QkE9PQo="
           },
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0003",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0003",
+            "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0003",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0003",
             "size": 1992294400,
-            "sha256": "cc99ed984bbcd7bdebf3f35a853fdb7ee978ca9d5971450f8d89f9540914eee5",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBQREFGdTJsaWdyWklhQlFEM0VBK3R2cEpka1c4YSsxcWdsaDBoa0V6K0FjbHRTTjRwU1BsdzhYaXprVkpzZ3BUWGZmWmhZazBrRndUTzhpZUYrNXdVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTExCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDMKOXV1ZnFSbmlpU0pzQ004TW0xMXpJeWdxbkRCUnhHVUFqdUJWakJJYnU5QkJLT0N2YllLZkV1cHdWaDdVM09jVWxEQythdDJMMmJpQjhMVEdIUWNoQ0E9PQo="
+            "sha256": "b06b7e5b0cc052ad06a890cfd6d0d7f4ca67522e6eb29ce6835de83960f9ef2b",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXkrdnFVbHdQdWJZZFdFTHRRZjN2YjlSTmNxWHJWR3BxRjlyaVdFTkVaSFNjbUVTU2I2RmRlVUFXTlZDMTlpRmtjUWRhektGa1FzRW5MWnE3dmJGNGdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzYzCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDMKbGxZVldRU2swME80VmJZQkg3cVVpdFExcmhoSmhMc2U1cGs2cFhkeHpIS2F6aVl6c3NjOFNWUzJzb3QxWFh0c1MzaU5UQ3FJbjJDSXBxV252eHJEQVE9PQo="
           },
           {
-            "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0004",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.AppImage.part-0004",
-            "size": 617138680,
-            "sha256": "a04196d97bbe88819c907ba4f249b3c63289012e9f4cf559b2d4ad677d7e2290",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXhiT2dEQk1PL0JsUnZhZFJtdkZoN0FLY0FSbkV1YytHMmtYU2txSlJwY3F6dUZheFg3ZzhuZTVvSXpMQlpoUk80QXVxTlZrR3lNckJQaVAyV0ZkVEFNPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTE1CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDQKQkYxTkV6MURXOWJ3OEx3N01oa2dsTlpKK2x2QVdaSjNsU09xWU5na25DY3dVWGlIbjRJdHhIYWpjeXRPZURlNkhkekNrSUVJOElsWGorVHRDeUtiQXc9PQo="
+            "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0004",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.AppImage.part-0004",
+            "size": 617535992,
+            "sha256": "cf8a7bf23fb409000ac62fd118979f744fbc61b3563f0783838a2f3e6a41a88f",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdhMnJzU0lkUjJHOWZ1ZDRWUCt5YXhMV2R5REV0cGx2T0xRaTgvRTZpd0M5NDdaRCtPbVZaa1REN0YwRW1PSnIvbU9BaDRibWh2anpGdlhsbGxXUGc4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzY3CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5BcHBJbWFnZS5wYXJ0LTAwMDQKM0tZZmEycWYvY00vTjFlQW1COS94enY3L2pWN05rTmFxbVlrcFg3TXN4eFUxQzhCQ3ZpblhXRkhISWRMbm1MY0tvRnh2UUJnLzYzR3RENDQ0TWdWRHc9PQo="
           }
         ],
         "engine": {
-          "id": "linux-x86_64-rocm-fa394a32abdaeb6dfd646db16795cddf3de31781d7340e9f0facc55530bd9dcf",
+          "id": "linux-x86_64-rocm-b14c33291a799713bc74a387255b721266c001e7d93f471ee254ee042ae5b7b5",
           "manifest": {
-            "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine-payload.json",
-            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine-payload.json",
-            "size": 967,
-            "sha256": "f75e0a0e7b49d8d3c7438af88ac7614021790d835eb03904ed0e574647d19c3e",
-            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZXk0aEpEV3k0bENOUE1yeU5zTjRKdWNuMlpnVGVoQVJSYnJzaFVkYlk0OXdsYWZTamVnK2dqVEVTbXpLSkJCMzlUTVcwZXp1SzBGZ3VtcHBXZTVFRmdBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTI2CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uCnRKZktsVEJGYm1CSzNHZEpHRXFCRGgxdTB5WjhsQldkYUgzb3hNb0ZiMXRXODRzVXo3SndwOGFhQ05nZTlkVDhKU2hjY1NBNnNMVXZLQ2Q1d0RwWkF3PT0K"
+            "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine-payload.json",
+            "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine-payload.json",
+            "size": 1157,
+            "sha256": "d2e3f2da464c88538209d0fb921f82952eb7be7cd6185f34b06ebf8cee25d0c3",
+            "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTJ4L2FtZHB0KzVrSG5rOVNQY3ZQelNvN1R5NUlOdU8xS3NRVnlEVHp4bVpYc3g2anhhQmJlTnBBWVZaeFBGa29rZGFIeTBtWDc3QXFwQ3VLM1hTaEFzPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Nzc5CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uCk5lc1hTVUdVQUxYeFlSTWhGOFAwV1J4TFNZZ0lWMndNVUFGZHJVK1ozZEZySXEyaXcwZ2M3OVpNcFJ1M212N3NzRmxJRzVwREpKK3RvT0VTempHOENnPT0K"
           },
           "parts": [
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0001",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0001",
+              "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0001",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0001",
               "size": 1992294400,
-              "sha256": "f52edc94f05c1149d3efa28f41297cc31e6265de566fd1b30f5640e98f9714a9",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTczSmx5dG9aVnV6QWFSaGdMcWZadk9xV1RLNFJvTnUxSThSdnBRWE1BbDdleW9ubjVySFZwZVBGdGJjYjlFLzhhUXlvT0sxVEp6N016TlNhRWJvaXdjPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTI5CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQo3NlZqNVJraGE2ajVwMXlyZ3h3ZmlSZUZUYUtleXdvUkM1OEpaaTRrU2xhRDZmYTIxL2c3RlJnMXhES3pWekpSRFFJKzEyL1h3UEo3RjZhMHZhNXFDUT09Cg=="
+              "sha256": "f461000b73c9ceaecdba0fdd6dc5b9497440e0b8248a385a3bd96d9f1643b537",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTNYVURUSDFkeFZnUlExQTVlNlRXSWYwWmFaWVhGOGpRTFFHUnk3b3gwemRtYS96UDVCRHgwaDFTMU9SSDFuWDdGWGJidE5MZ29hY2Rva1JPK21zTndVPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzgxCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMQphSXFBdTR2ZWNFcG43ajhsSnIrbDFtMTFQcks1UlNRV3c1SGN2MUFDNkZmbnFodGE2UlBNbmdrR3RCdmNBNHhlKzRRZ0czdTBoSFBtNDNnNTlTbDFDZz09Cg=="
             },
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0002",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0002",
+              "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0002",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0002",
               "size": 1992294400,
-              "sha256": "348a6300370a520c2d8400584b40ffe79ebfa8804862997cb432f9549e5dff42",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTRTL0hibk1IN2J5akZpZjg2b1p1V2xFb29uZiswL1d3ZldHN00zdVlKc2c1Rnh0c29FTWxhemFiSG9aVWtHbHhrV2dqNkgrbHNPUmYxU1FIVGkyNWd3PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTM0CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMgp6QVB2UUk0ZXBFZ0E1OUZFQXNua1poT253eGovSTZvY1pOOFdGV01lUVJJbmJRcGdhSkVXNXhmcVluLzhLSDVzeS9QUXhSY1hWWGJvYk5tQlp0aThEQT09Cg=="
+              "sha256": "39329f87e020bb89d63be178c4c3fa5ff2190ce93e2285a13084c502bc24525a",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTF2RVA1WTgrM3FuU1RickxaNXBvM0IxMS9uM0hTM2lBNUt4N0h6ekUvT05MNHd2TFRKZEtNekZySzhMVnI4ZmlQQ1ZueVljbVB5SnZoM3NKa1RqZkFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Nzg3CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMgpsMzhVcGNLK3ZXcXdvdGlubVZCQUZrbmU0dlZUYjhIMVYvTkhWZGxYcjcwK0JFOUtUS1MxZDlyTUZXVGVvMU9GN1VRb2lxVlM4RnA4UVNsbG95QjFCQT09Cg=="
             },
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0003",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0003",
+              "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0003",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0003",
               "size": 1992294400,
-              "sha256": "f6b97b4a7f2bcb6dc329ae215896dca6128d6bfdfcced18644be842428158b94",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTFlTjZjSVRiNzFnNWpMQ1hRancvOEFMRUZ1UGFCVEQzSG8xaS92RTRKUDY2Nm8raEpvVmlzbGx2UXZVL0k4cW50RDRpN1A2bzB0bTVWRk53V1JnaVFJPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTM5CWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMwpZV21WaTc0cFFWRVVhTTN3U0QxMDVhblY1VExlWkZUUFJudHJRVkowVWkrMWxzK2Z3SEVxRDh3UmhQNnEvS0lDYlYwUCt3NmhxeEZsRm9VL2pxT01CZz09Cg=="
+              "sha256": "f061d56d5190eb3e922e213b62f48cb35a7a04177f4047ddf437341f17721166",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTdEeFY3UGZZamhMcXhVM25BbnR6VHVwWEp3b0J0cm9na0h5RFRPYkVSYkhtMlBZb2x2Qlo0Ujd1dU1XZGIzTkVMWmNZdnVpeUJVSDZaZnNqakU1bHdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2NzkzCWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMwpuM21RV3ptckpBWWt3Ykw3ZkZuYTFlNDluSG5kYWNyMEhuWGU2aGtucGVZdktYaXZaVVJtUTFwV2g3bVV1amIzZmhrTUlvM3dCZlBqQ2p1U2hGaTdCQT09Cg=="
             },
             {
-              "name": "LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0004",
-              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.0-beta/LocalSR-v0.5.0-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0004",
-              "size": 769030405,
-              "sha256": "557b1caa1efa155a1746b037493b99e3e15866825507198f6c51a865cd998296",
-              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTV2cnJwVE51eDQ2SHRwM0xpcVRtVjVUS21UR1NLWElGU1liaWMzZC9PSHN5RDF5UUxEL0t6UXg4clA2bDBMeFd5SUhXaS9rR0NWc2NwY1hDU1lqU3c4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTQzCWZpbGU6TG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwNApPK2RLSC9WcGZGbFV4UGtyL3lQanNtSlV4dkx1dmhVeklnSVVYR3A0MU1Za0hqOTA2MDZlcDJNWmhMV2ZhSDViNXRDdStqdjlrVVRQWVNRQlNpb29Edz09Cg=="
+              "name": "LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0004",
+              "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-ROCm-x86_64.engine.tar.gz.part-0004",
+              "size": 769076848,
+              "sha256": "efd4980ff75d7e26eff5b7edd64c32c79d1981deb067d81ffae9029e731f5ad0",
+              "signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTVRSnZ2MmtDWS8wTjA1WWFDVGdac2hPZ3gycCtjNktNaHNRMTdTamxYNG5hdncwQWQ2MWlRSStzamkvOXAxTjloTXdTYXBtaUpnS1cvNG9UbmZpblFvPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Nzk3CWZpbGU6TG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwNApsSGZxWmlycjlEUGZsdTVnNE1NY2pRb3M2aHZ3cUVBYlBYTGdSZnJPcFFWMkdOdnl2bEphNDVKWDltYjdsNmFTTkR1VGQ2WDlIdFlWcXdjL2lOaUZDUT09Cg=="
             }
           ]
         },
-        "statement": "eyJiYWNrZW5kIjoicm9jbSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LXJvY20tZmEzOTRhMzJhYmRhZWI2ZGZkNjQ2ZGIxNjc5NWNkZGYzZGUzMTc4MWQ3MzQwZTlmMGZhY2M1NTUzMGJkOWRjZiIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiJmNzVlMGEwZTdiNDlkOGQzYzc0MzhhZjg4YWM3NjE0MDIxNzkwZDgzNWViMDM5MDRlZDBlNTc0NjQ3ZDE5YzNlIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiMjIzMmZlOWY4NmMyZmYwYmQxY2ZiZWE2ZjFjYjQ2MDYyY2VlYWE5ZWUzZjJmZTA2ZjdlNGM4Y2RmM2FjN2EwZCIsInRhcmdldCI6ImxpbnV4LXg4Nl82NC1yb2NtLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjIxNDEyMjMwNTU4LCJ2ZXJzaW9uIjoiMC41LjAtYmV0YSJ9",
-        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZStTUE9XNFYwYXFlWU5GN3ZCM0NaWVRjcEZWdXhad1FCN3dCeTF0b1RKbTMyNDhNUXh4b09PL0Jnb2tiQ2ZTS2g4VUVFUkpnU3VZQzd6VEJia3FVY0FBPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTQ1CWZpbGU6bGludXgteDg2XzY0LXJvY20tbmF0aXZlLnN0YXRlbWVudC5qc29uCmVjN3F5a1ZSK3pJdTczUVZNY2F2cDUxRXYvVk1wZW1lM0lQQlVidzVXbkVrU1pxaEdVcnk4Vk5QNElPZ29QUTdWSHZNejdHR0pLVDFVMGRVcVF4c0FRPT0K",
-        "statement_v2": "eyJiYWNrZW5kIjoicm9jbSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LXJvY20tZmEzOTRhMzJhYmRhZWI2ZGZkNjQ2ZGIxNjc5NWNkZGYzZGUzMTc4MWQ3MzQwZTlmMGZhY2M1NTUzMGJkOWRjZiIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiZjc1ZTBhMGU3YjQ5ZDhkM2M3NDM4YWY4OGFjNzYxNDAyMTc5MGQ4MzVlYjAzOTA0ZWQwZTU3NDY0N2QxOWMzZSIsInNpemUiOjk2N30sImVuZ2luZV9wYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDEiLCJzaGEyNTYiOiJmNTJlZGM5NGYwNWMxMTQ5ZDNlZmEyOGY0MTI5N2NjMzFlNjI2NWRlNTY2ZmQxYjMwZjU2NDBlOThmOTcxNGE5Iiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjAtYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMiIsInNoYTI1NiI6IjM0OGE2MzAwMzcwYTUyMGMyZDg0MDA1ODRiNDBmZmU3OWViZmE4ODA0ODYyOTk3Y2I0MzJmOTU0OWU1ZGZmNDIiLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMC1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAzIiwic2hhMjU2IjoiZjZiOTdiNGE3ZjJiY2I2ZGMzMjlhZTIxNTg5NmRjYTYxMjhkNmJmZGZjY2VkMTg2NDRiZTg0MjQyODE1OGI5NCIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDQiLCJzaGEyNTYiOiI1NTdiMWNhYTFlZmExNTVhMTc0NmIwMzc0OTNiOTllM2UxNTg2NjgyNTUwNzE5OGY2YzUxYTg2NWNkOTk4Mjk2Iiwic2l6ZSI6NzY5MDMwNDA1fV0sImtpbmQiOiJuYXRpdmUiLCJwYXJ0cyI6W3sibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDAxIiwic2hhMjU2IjoiMTg5NzJlM2IzOTYwMWZlNWI3YjIyZjM0YmZmNjI3NzI2ZTNmODFiMWE3ODMxNTExM2EwMDlkMDE0MGU5ZmQ2MyIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDAyIiwic2hhMjU2IjoiZDc5MTI2N2UzNDA0MjFkNWE0Njc4NWQwYzA5NjEwODM5YjQwNGMzNTk4Njg1MDk2MGZlYzIzNTVjZTExNjcxYyIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDAzIiwic2hhMjU2IjoiY2M5OWVkOTg0YmJjZDdiZGViZjNmMzVhODUzZmRiN2VlOTc4Y2E5ZDU5NzE0NTBmOGQ4OWY5NTQwOTE0ZWVlNSIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4wLWJldGEtTGludXgtUk9DbS14ODZfNjQuQXBwSW1hZ2UucGFydC0wMDA0Iiwic2hhMjU2IjoiYTA0MTk2ZDk3YmJlODg4MTljOTA3YmE0ZjI0OWIzYzYzMjg5MDEyZTlmNGNmNTU5YjJkNGFkNjc3ZDdlMjI5MCIsInNpemUiOjYxNzEzODY4MH1dLCJwcm90b2NvbCI6MSwic2NoZW1hX3ZlcnNpb24iOjIsInNoYTI1NiI6IjIyMzJmZTlmODZjMmZmMGJkMWNmYmVhNmYxY2I0NjA2MmNlZWFhOWVlM2YyZmUwNmY3ZTRjOGNkZjNhYzdhMGQiLCJzaXplIjo2NTk0MDIxODgwLCJ0YXJnZXQiOiJsaW51eC14ODZfNjQtcm9jbS1uYXRpdmUiLCJ1bnBhY2tlZF9zaXplIjoyMTQxMjIzMDU1OCwidmVyc2lvbiI6IjAuNS4wLWJldGEifQ==",
-        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZS9KUWJQWlg5dWRBY0RpYXhWMU5GVWNmWHZWWkozM0hOQm9TTm9SVlpUNkQzN294bkg3M2JrRDRhRHM1amhPdllYKzNLMUdlR0g5bXpIYm5hQ25tNXdrPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1MjEzOTQ1CWZpbGU6bGludXgteDg2XzY0LXJvY20tbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uClR3L2pEWkE1dVlsd0F2UTlWdk9Wa3pnc0NPZ2VvR1NuYldiT0l0MGVodkFzUHJTSjFrQldMSnhUQTVFdGo5Q2w3aFl0cWZPNTA4K1YxSmVrcGN4QUFBPT0K"
+        "statement": "eyJiYWNrZW5kIjoicm9jbSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LXJvY20tYjE0YzMzMjkxYTc5OTcxM2JjNzRhMzg3MjU1YjcyMTI2NmMwMDFlN2Q5M2Y0NzFlZTI1NGVlMDQyYWU1YjdiNSIsImVuZ2luZV9tYW5pZmVzdF9zaGEyNTYiOiJkMmUzZjJkYTQ2NGM4ODUzODIwOWQwZmI5MjFmODI5NTJlYjdiZTdjZDYxODVmMzRiMDZlYmY4Y2VlMjVkMGMzIiwia2luZCI6Im5hdGl2ZSIsInByb3RvY29sIjoxLCJzY2hlbWFfdmVyc2lvbiI6MSwic2hhMjU2IjoiZDIzMzZhOGY0MDc4NmIwMmE2YTlkZTc0MjVmY2NiYTlkNWUxYzgwYTlmNzJkOTI5ZjA0MGUyOTQyOWU3NmFkNiIsInRhcmdldCI6ImxpbnV4LXg4Nl82NC1yb2NtLW5hdGl2ZSIsInVucGFja2VkX3NpemUiOjIxNDEyNjk4MjkzLCJ2ZXJzaW9uIjoiMC41LjItYmV0YSJ9",
+        "statement_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTVyNXBybXkxZXo4TXFoeWtBVFpJK25Ca0JnYmhocnd5VWhZSFgrZHlvaFAxRzZtZ0VDalVqY2xsUlpkNWZzUS90Y0FRaFhyU2hkU2V2SGN5eEJlL1EwPQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Nzk4CWZpbGU6bGludXgteDg2XzY0LXJvY20tbmF0aXZlLnN0YXRlbWVudC5qc29uCmVKcmFBVkxQMmxWWGkxUnpZYjBoM1dYWm1Wc3p1azZDd0FITmdHdVhGcVo1d3UyU2RlcEJlWWNidzl5dzVjM0J5YnJaV3dqanFUaTVHQ3lFUTZUakR3PT0K",
+        "statement_v2": "eyJiYWNrZW5kIjoicm9jbSIsImNoYW5uZWwiOiJiZXRhIiwiZW5naW5lX2lkIjoibGludXgteDg2XzY0LXJvY20tYjE0YzMzMjkxYTc5OTcxM2JjNzRhMzg3MjU1YjcyMTI2NmMwMDFlN2Q5M2Y0NzFlZTI1NGVlMDQyYWU1YjdiNSIsImVuZ2luZV9tYW5pZmVzdCI6eyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUtcGF5bG9hZC5qc29uIiwic2hhMjU2IjoiZDJlM2YyZGE0NjRjODg1MzgyMDlkMGZiOTIxZjgyOTUyZWI3YmU3Y2Q2MTg1ZjM0YjA2ZWJmOGNlZTI1ZDBjMyIsInNpemUiOjExNTd9LCJlbmdpbmVfcGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDAxIiwic2hhMjU2IjoiZjQ2MTAwMGI3M2M5Y2VhZWNkYmEwZmRkNmRjNWI5NDk3NDQwZTBiODI0OGEzODVhM2JkOTZkOWYxNjQzYjUzNyIsInNpemUiOjE5OTIyOTQ0MDB9LHsibmFtZSI6IkxvY2FsU1ItdjAuNS4yLWJldGEtTGludXgtUk9DbS14ODZfNjQuZW5naW5lLnRhci5nei5wYXJ0LTAwMDIiLCJzaGEyNTYiOiIzOTMyOWY4N2UwMjBiYjg5ZDYzYmUxNzhjNGMzZmE1ZmYyMTkwY2U5M2UyMjg1YTEzMDg0YzUwMmJjMjQ1MjVhIiwic2l6ZSI6MTk5MjI5NDQwMH0seyJuYW1lIjoiTG9jYWxTUi12MC41LjItYmV0YS1MaW51eC1ST0NtLXg4Nl82NC5lbmdpbmUudGFyLmd6LnBhcnQtMDAwMyIsInNoYTI1NiI6ImYwNjFkNTZkNTE5MGViM2U5MjJlMjEzYjYyZjQ4Y2IzNWE3YTA0MTc3ZjQwNDdkZGY0MzczNDFmMTc3MjExNjYiLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LmVuZ2luZS50YXIuZ3oucGFydC0wMDA0Iiwic2hhMjU2IjoiZWZkNDk4MGZmNzVkN2UyNmVmZjViN2VkZDY0YzMyYzc5ZDE5ODFkZWIwNjdkODFmZmFlOTAyOWU3MzFmNWFkMCIsInNpemUiOjc2OTA3Njg0OH1dLCJraW5kIjoibmF0aXZlIiwicGFydHMiOlt7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LkFwcEltYWdlLnBhcnQtMDAwMSIsInNoYTI1NiI6Ijk4YTc1YWFkZTU2MWE5NjE0OTRmOGEwMWU1NjI5ZGY0OGZjNThkN2U1NTk4NmIzYmU0YmMwYWMzZThiODdkNmQiLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LkFwcEltYWdlLnBhcnQtMDAwMiIsInNoYTI1NiI6ImNiMjQyZDE2ZDdhNDUzMjM3YTUxNWY4OTY0YjJkMzU0ZTZkYjE4YjBkNzQyZjFiZDI5OTMyOWYyMjEzOTgzNjYiLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LkFwcEltYWdlLnBhcnQtMDAwMyIsInNoYTI1NiI6ImIwNmI3ZTViMGNjMDUyYWQwNmE4OTBjZmQ2ZDBkN2Y0Y2E2NzUyMmU2ZWIyOWNlNjgzNWRlODM5NjBmOWVmMmIiLCJzaXplIjoxOTkyMjk0NDAwfSx7Im5hbWUiOiJMb2NhbFNSLXYwLjUuMi1iZXRhLUxpbnV4LVJPQ20teDg2XzY0LkFwcEltYWdlLnBhcnQtMDAwNCIsInNoYTI1NiI6ImNmOGE3YmYyM2ZiNDA5MDAwYWM2MmZkMTE4OTc5Zjc0NGZiYzYxYjM1NjNmMDc4MzgzOGEyZjNlNmE0MWE4OGYiLCJzaXplIjo2MTc1MzU5OTJ9XSwicHJvdG9jb2wiOjEsInNjaGVtYV92ZXJzaW9uIjoyLCJzaGEyNTYiOiJkMjMzNmE4ZjQwNzg2YjAyYTZhOWRlNzQyNWZjY2JhOWQ1ZTFjODBhOWY3MmQ5MjlmMDQwZTI5NDI5ZTc2YWQ2Iiwic2l6ZSI6NjU5NDQxOTE5MiwidGFyZ2V0IjoibGludXgteDg2XzY0LXJvY20tbmF0aXZlIiwidW5wYWNrZWRfc2l6ZSI6MjE0MTI2OTgyOTMsInZlcnNpb24iOiIwLjUuMi1iZXRhIn0=",
+        "statement_v2_signature": "dW50cnVzdGVkIGNvbW1lbnQ6IHNpZ25hdHVyZSBmcm9tIHRhdXJpIHNlY3JldCBrZXkKUlVTS0lHUVZNQ0h6ZTBlWU5tZk9RN25SNzlmY0ZsWHR6aUo2RmM5VlA5OGVzQlorZ3lmemUyVEVERS9aYWkzc05wN1ZtcHVqQmRwclk0dUk0a3pTNStjNFFGK25JYUtZTFE4PQp0cnVzdGVkIGNvbW1lbnQ6IHRpbWVzdGFtcDoxNzk1NDA2Nzk5CWZpbGU6bGludXgteDg2XzY0LXJvY20tbmF0aXZlLnN0YXRlbWVudC12Mi5qc29uClFGMVgrc01NNzJyU1BGbXJOR1d3dEQwcXp4cGlBY1Vlb2xwS0xXZ1M5YzE5am1VL2xxaWc0LzVGOWRuMmhVWER3OXFOYVpidXB3eHh4OTFjSGloUkR3PT0K"
       }
     }
   }

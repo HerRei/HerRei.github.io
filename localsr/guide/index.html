@@ -17,26 +17,26 @@
     </div>
   </div>
 </header>
-<main id="main" class="wrap"><header class="document-hero"><p class="micro">User guide · LocalSR beta for macOS, Windows and Linux · 22 October 2026</p><h1>From first photo<br><em>to finished result.</em></h1><p>Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p></header>
+<main id="main" class="wrap"><header class="document-hero"><p class="micro">User guide · LocalSR 0.6 for macOS, Windows and Linux · 24 November 2026</p><h1>From first photo<br><em>to finished result.</em></h1><p>Everything you need to get good results from LocalSR, in the order you will need it. Reading the first three sections takes about five minutes.</p></header>
 <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#install">Install</a><a href="#window">The window</a><a href="#first-image">Your first image</a><a href="#edit">Edit with a prompt</a><a href="#results">Where results go</a><a href="#compare">Compare before and after</a><a href="#batch">Many files at once</a><a href="#models">Models, presets and recipes</a><a href="#video">Video</a><a href="#settings">Output and hardware settings</a><a href="#updates">Updates and privacy</a><a href="#finder">Finder (Mac) and the command line</a><a href="#troubleshooting">Troubleshooting</a></nav></aside><div class="document-body">
 
 <section id="install"><h2>Install</h2>
 <ol>
 <li><strong>Mac:</strong> Apple Silicon (M1 or newer) with macOS 14 or later. Download the DMG from the <a href="../download/">download page</a>, open it and drag <strong>LocalSR</strong> along the arrow onto the <strong>Applications</strong> folder beside it, then open it from Applications. You can also install it with <code>brew install --cask herrei/tap/localsr</code>. The app is signed and notarized by Apple, so macOS only asks you to confirm that you want to open something downloaded from the internet.</li>
 <li><strong>Windows 10 or 11:</strong> run the installer. It is not code-signed yet, so SmartScreen warns first: choose <em>More info</em>, then <em>Run anyway</em>.</li>
-<li><strong>Linux:</strong> make the AppImage executable (<code>chmod +x LocalSR-*.AppImage</code>) and run it.</li>
+<li><strong>Linux:</strong> make the AppImage executable (<code>chmod +x LocalSR-*.AppImage</code>) and run it, or on Ubuntu 22.04+ and Debian 12+ install the <code>.deb</code> with <code>sudo apt install ./LocalSR-*.deb</code>.</li>
 </ol>
-<p>More memory lets you use the larger models and bigger outputs. The standard Windows and Linux downloads run on the CPU, which is slower than a Mac's GPU. For a graphics card, pick the edition that matches it on the <a href="../download/">download page</a>: AMD ROCm on Linux, or NVIDIA CUDA and DirectML, which are still untested. The CUDA and ROCm editions come in parts: download every part into one folder, then follow the steps under <a href="../download/#parts">Downloads in parts</a>. The Mac app updates itself; on Windows and Linux, download new versions from the website for now.</p>
-<p>On the first launch a short welcome appears. It links back to this guide and mentions the anonymous update-check count and where to turn it off.</p>
+<p>More memory lets you use the larger models and bigger outputs. The standard Windows and Linux downloads start on the CPU. After setup, LocalSR recommends and downloads the faster engine for your graphics card (NVIDIA CUDA, DirectML for AMD and Intel on Windows, AMD ROCm on Linux); <strong>Advanced → Engine</strong> changes or removes it. For an offline install, the <a href="../download/#parts">download page</a> has the complete editions. LocalSR updates itself on all three systems; the Linux <code>.deb</code> reports a new version and you install it with <code>apt</code>.</p>
+<p>On the first launch a two-page setup appears. The first page is about privacy: automatic update checks, the anonymous count and crash reports, each with an explanation and a link to <a href="../privacy/">what LocalSR sends and why</a>. The second page sets the look of the app, the menu bar or tray icon and a sound when a file finishes. Nothing goes over the network before you choose <strong>Done</strong>, and every choice can be changed later in <strong>Settings</strong>.</p>
 </section>
 
 <section id="window"><h2>The window</h2>
 <ul>
 <li><strong>Media</strong> on the left: everything you added, with its status. The <strong>+</strong> button adds files. With two or more items, switch between <strong>Single</strong> and <strong>Batch</strong> at the top.</li>
 <li><strong>The preview</strong> in the middle: drop files here. Videos play here before they are upscaled. After processing it shows the before-and-after comparison.</li>
-<li><strong>Enhance</strong> on the right: what to do (the task), how (quality, content, what to fix first) and, under <strong>Advanced</strong>, output and hardware settings.</li>
+<li><strong>Enhance</strong> on the right: the task, the quality, what the image is, what to fix, the size and the models, and under <strong>Advanced</strong> the output format and the settings for this session.</li>
 <li><strong>The status bar</strong> at the bottom: what the next job will make (for example <em>600 × 400 → 2400 × 1600 · 4× · Neural Engine</em>), progress and time estimates, the start button, and <strong>Reveal</strong> and <strong>Open</strong> for the selected item’s result.</li>
-<li><strong>The menu bar</strong> has the rest: <strong>View → Models…</strong> (⇧⌘M, or Ctrl+Shift+M on Windows and Linux) opens the model library, <strong>View → Performance and Diagnostics…</strong> runs a benchmark, <strong>LocalSR → Check for Updates…</strong> handles updates, and <strong>Help → LocalSR User Guide</strong> opens this page.</li>
+<li><strong>The menu bar</strong> has the rest: <strong>View → Models…</strong> (⇧⌘M, or Ctrl+Shift+M on Windows and Linux) opens the model library, <strong>View → Performance and Diagnostics…</strong> runs a benchmark, <strong>LocalSR → Check for Updates…</strong> handles updates, <strong>LocalSR → Settings…</strong> (⌘, on a Mac; <strong>File → Settings…</strong> on Windows and Linux) holds every app-wide choice, and <strong>Help → LocalSR User Guide</strong> opens this page.</li>
 </ul>
 <p>There is no toolbar: the window buttons sit beside <strong>Media</strong>, and the pane headings form the top of the window. In a narrow window a slim bar switches between <strong>Media</strong>, <strong>Preview</strong> and <strong>Enhance</strong>.</p>
 </section>
@@ -44,10 +44,10 @@
 <section id="first-image"><h2>Your first image</h2>
 <ol>
 <li><strong>Add a photo.</strong> Drop it onto the preview, or click the preview to choose files. JPEG, PNG, WebP, TIFF, AVIF, GIF and camera RAW (DNG, Canon, Nikon, Sony, Fujifilm and more) work, and on a Mac also HEIC and JPEG XL, which macOS decodes.</li>
-<li><strong>Choose a task</strong> under Enhance: <strong>Upscale</strong> makes photos and artwork 2×, 3× or 4× larger; <strong>Restore</strong> removes noise, blur or JPEG artifacts without enlarging; <strong>Edit</strong> changes an image from a written instruction (see <a href="#edit">below</a>). Upscale also handles videos: select a clip and it switches to video.</li>
+<li><strong>Choose a task</strong> under Enhance: <strong>Upscale &amp; restore</strong> enlarges photos and artwork, cleans them up, or both; <strong>Edit</strong> changes an image from a written instruction (see <a href="#edit">below</a>). Upscale &amp; restore also handles videos: select a clip and it switches to video.</li>
 <li><strong>Choose the quality.</strong> <strong>Quick</strong> is fast and good for most photos. <strong>Best</strong> is slower and keeps finer texture. Models are not included in the installer; each card says how big its download is until it is on your computer.</li>
-<li><strong>Say what the image is.</strong> Pick <strong>Photo</strong> or <strong>Illustration</strong>, and under <strong>Fix first</strong> choose problems to clean up before enlarging, such as noise, JPEG artifacts or blur. <strong>Model</strong> underneath shows which model runs at each step; <strong>Change…</strong> opens the library.</li>
-<li><strong>Start</strong> with the button at the bottom right. It says <strong>Upscale selected</strong> or <strong>Restore selected</strong>, depending on the task. The first time, it says <strong>Download 4 MB, then upscale</strong>: it fetches the model, checks it, and starts. While it downloads, the same button cancels.</li>
+<li><strong>Say what the image is and what it needs.</strong> Pick <strong>Photo</strong> or <strong>Illustration</strong>. Under <strong>Fix</strong>, the chips <strong>Noise</strong>, <strong>Blur</strong>, <strong>JPEG artifacts</strong> and <strong>Colour</strong> clean up the picture first. <strong>Size</strong> sets the result: <strong>Same size</strong> only fixes, <strong>2×</strong>, <strong>3×</strong> or <strong>4×</strong> also enlarges. <strong>Model</strong> underneath shows which model runs at each step; <strong>Change…</strong> opens the library.</li>
+<li><strong>Start</strong> with the button at the bottom right. It says <strong>Upscale selected</strong>, or <strong>Restore selected</strong> at Same size. The first time, it says <strong>Download 2 MB, then upscale</strong>: it fetches the model, checks it, and starts. While it downloads, the same button cancels.</li>
 <li><strong>Check the result</strong> in the comparison, then press <strong>Open</strong> to view the file or <strong>Reveal</strong> to show it in its folder.</li>
 </ol>
 <p class="document-callout">Upscaling models invent plausible detail. Text, faces, eyes and fine patterns can look convincing and still be wrong, so look closely before you rely on a result. LocalSR never overwrites your original.</p>
@@ -91,28 +91,29 @@
 
 <section id="video"><h2>Video</h2>
 <ul>
-<li>Add a clip, choose <strong>Upscale</strong> and press <strong>Start selected video</strong>. Every frame goes through the image model, and the original timing, rotation and audio are kept.</li>
+<li>Add a clip and press <strong>Start selected video</strong>. By default every frame goes through an image model, and the original timing, rotation and audio are kept. The video models in the library, FlashVSR and SeedVR2, look at several frames at once instead (<strong>Labs</strong>, heavy, hours per clip).</li>
 <li>iPhone and camera videos (H.264, HEVC, AAC) open directly on a Mac. WMV, DivX, FLV and a few older formats need FFmpeg; LocalSR shows the install command when a file needs it and uses an installed FFmpeg automatically. On Windows and Linux, H.264 and HEVC need that FFmpeg too.</li>
 <li>Exports use the <strong>Automatic</strong> format by default: on a Mac, HEVC written by the Mac’s hardware encoder while the next frames are upscaled; MKV, HDR preservation and Windows and Linux use AV1. Under <strong>Advanced → Video format</strong> you can choose AV1, VP9, lossless FFV1, or H.264 and HEVC. macOS writes H.264 and HEVC with its own encoders into MP4, and those files play almost everywhere.</li>
 <li><strong>Video is slow on any computer.</strong> Minutes of footage can take hours. Start with a few seconds, check the result, then run the whole clip.</li>
-<li>HDR preservation, de-flicker and the SeedVR2 video models are marked <strong>Labs</strong>: they work, but their quality is not established yet.</li>
+<li><strong>De-flicker</strong> (under Advanced) evens out brightness flicker and the shimmer that upscaling adds in still areas, at about 40 ms per frame. The <strong>Colour</strong> fix colours black-and-white videos with steady colours. <strong>Cancel</strong> asks whether to keep the finished part; kept parts appear in Outputs marked Unfinished.</li>
+ <li>HDR preservation, FlashVSR and SeedVR2 are marked <strong>Labs</strong>: they work, but their quality is not established yet.</li>
 </ul>
 </section>
 
 <section id="settings"><h2>Output and hardware settings</h2><p>Windows supports DirectML, OpenVINO, Intel NPU and CUDA; Linux supports ROCm, OpenVINO and CUDA. See <a href="../compatibility/">Compatibility</a> for supported GPUs and setup.</p>
-<p>Open <strong>Advanced</strong> at the bottom of the Enhance panel.</p>
+<p><strong>Settings</strong> holds the defaults: appearance (theme, high contrast, viewer background, interface text), the default hardware, low priority, notifications and sound, the menu bar icon, the model folder and caches, updates and privacy. <strong>Advanced</strong> at the bottom of the Enhance panel holds the output and the choices for this session.</p>
 <ul>
-<li><strong>Output scale</strong> and <strong>Format</strong> (PNG, JPEG, TIFF or WebP) for images; <strong>Save to</strong> for the output folder.</li>
+<li><strong>Format</strong> (PNG, JPEG, TIFF or WebP) for images and <strong>Save to</strong> for the output folder; the size is the <strong>Size</strong> row in the panel.</li>
 <li><strong>Preserve safe metadata and color profile</strong> converts colors to sRGB with a matching profile and copies only the date, artist and copyright. Location, camera serial numbers and similar details are never copied.</li>
 <li><strong>Hardware</strong> chooses where models run. <strong>Neural Engine</strong>, the default on Apple Silicon, runs Quick, Real-ESRGAN and JPEG cleanup on the Neural Engine and Best through Core ML on the GPU, two to three times as fast with far less energy; other models use the GPU. The first job with a model prepares it once, which can take a minute. <strong>Apple GPU (Metal)</strong> keeps every model on the GPU, and <strong>CPU</strong> is the slowest.</li>
 <li><strong>Tile</strong>, <strong>Halo</strong> and <strong>Precision</strong> control how large images are split to fit in memory. Leave them alone unless you run out of memory; <strong>Safe memory mode</strong> is the simple switch for that.</li>
-<li><strong>Interface text</strong> makes the whole window larger.</li>
+<li><strong>Hardware</strong> and <strong>Low priority</strong> in Advanced apply to this session; the defaults are in Settings. After a GPU failure, <strong>Retry on CPU</strong> runs that job on the CPU once.</li>
 </ul>
 </section>
 
 <section id="updates"><h2>Updates and privacy</h2>
-<p>On a Mac, LocalSR checks for a newer beta each time it starts. When one is available, a notice offers <strong>Update Now</strong>: the update is downloaded, verified against LocalSR’s signing key, installed, and the app restarts. It waits until a running queue has finished. Settings, recipes and models are kept. <strong>LocalSR → Check for Updates…</strong> checks by hand.</p>
-<p>On Windows and Linux, download new versions from the download page for now. Your photos and videos never leave your computer. The Mac app’s update check sends an anonymous count (app version, platform and release channel, no identifiers). Turn it off under <strong>LocalSR → Check for Updates…</strong>, in the Software Update dialog. The <a href="../privacy/">privacy page</a> describes every connection the app makes.</p>
+<p>LocalSR checks for a newer beta each time it starts, on macOS, Windows and Linux. When one is available, a notice offers <strong>Update Now</strong>: the update is downloaded, verified against LocalSR’s signing key, installed, and the app restarts. It waits until a running queue has finished. Settings, recipes, models and an installed GPU engine are kept. <strong>Check for Updates…</strong> checks by hand. The Linux <code>.deb</code> says when a new version exists, and <code>apt</code> installs it.</p>
+<p>Your photos and videos never leave your computer. After an update check, LocalSR sends an anonymous count (app version, platform and release channel, no identifiers) so the developer knows which versions and platforms are in use. Turn it off, or the update check itself, in <strong>Settings → Privacy &amp; updates</strong>. The <a href="../privacy/">privacy page</a> describes every connection the app makes, and why.</p>
 </section>
 
 <section id="finder"><h2>Finder (Mac) and the command line</h2>

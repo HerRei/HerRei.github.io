@@ -80,7 +80,8 @@
       ],
       "size_bytes": 6594419192,
       "sha256": "d2336a8f40786b02a6a9de7425fccba9d5e1c80a9f72d929f040e29429e76ad6",
-      "download_url": "https://herrei.github.io/localsr/download/#parts"
+      "download_url": "https://herrei.github.io/localsr/download/#parts",
+      "offline": true
     },
     {
       "id": "windows-cuda",
@@ -106,7 +107,8 @@
           "sha256": "4312e69d95849f80385ecf1b657abc95d2c58410c355f0ced98e85132aa130f1",
           "url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002"
         }
-      ]
+      ],
+      "offline": true
     },
     {
       "id": "linux-cuda",
@@ -132,7 +134,8 @@
       ],
       "size_bytes": 3968616952,
       "sha256": "ba50126875ef8d53311aa4ce6c2331813bf9f392cd34176045b7e52b94fe44f9",
-      "download_url": "https://herrei.github.io/localsr/download/#parts"
+      "download_url": "https://herrei.github.io/localsr/download/#parts",
+      "offline": true
     },
     {
       "id": "windows-directml",
@@ -146,7 +149,8 @@
       "version": "v0.5.2-beta",
       "size_bytes": 258909997,
       "sha256": "84096a9419c251e72800bf5724e7e1e922341a5c3da2225216d8894d92b8ce48",
-      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe"
+      "download_url": "https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe",
+      "offline": true
     },
     {
       "id": "macos-013",

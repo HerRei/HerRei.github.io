@@ -35,6 +35,11 @@ def render_rows(release, *, direct):
             merged[pid] = {"current": None, "older": [], "pending": None}
             order.append(pid)
         entry = merged[pid]
+        if platform.get("offline"):
+            # GPU editions for computers without internet: listed under Offline installers.
+            if platform.get("available"):
+                entry.setdefault("offline", []).append(platform)
+            continue
         if platform.get("available"):
             if entry["current"] is None:
                 entry["current"] = platform
@@ -71,6 +76,9 @@ def render_rows(release, *, direct):
                 f'aria-label="Download LocalSR {version} for {name}, {size}">{label}</a>'
             )
             more = []
+            if entry.get("offline"):
+                more.append('<li>The only file you need: after setup, LocalSR offers the faster '
+                            'engine for your graphics card and downloads it.</li>')
             for older in entry["older"]:
                 if not direct and older.get("version", release["version"]) != current.get("version", release["version"]):
                     continue  # Older versions are listed on the download page only.
@@ -79,6 +87,8 @@ def render_rows(release, *, direct):
                 split = older.get("parts") or older.get("engine_parts")
                 o_href = parts_page if split else html.escape(older["download_url"], quote=True)
                 more.append(f'<li><a href="{o_href}">{o_label}</a> · {detail}</li>')
+            if entry.get("offline"):
+                more.append(f'<li><a href="{parts_page}">Offline installers</a> · for a computer without internet</li>')
             if pending is not None:
                 more.append(f'<li>{html.escape(pending.get("version", release["version"]))} is in preparation</li>')
             if more:
@@ -97,7 +107,7 @@ def render_downloads(release):
 def split_editions(release):
     return [
         item for item in release["platforms"] + release.get("archives", [])
-        if item.get("available") and (item.get("parts") or item.get("engine_parts"))
+        if item.get("available") and (item.get("offline") or item.get("parts") or item.get("engine_parts"))
     ]
 
 
@@ -116,6 +126,9 @@ def render_parts(release):
             how = (f'<p>Download the installer and {both} engine parts into one '
                    f'folder, keep their names, and run the installer. It checks each part\'s size and '
                    f'SHA-256 and unpacks the engine itself.</p>')
+        elif not item.get("parts"):
+            rows.append((item["download_url"], item["filename"], item["size_bytes"]))
+            how = '<p>Run the installer. It contains the engine, so nothing is downloaded later.</p>'
         else:
             rows += [(e["url"], e["url"].rsplit("/", 1)[-1], e["size_bytes"]) for e in item["parts"]]
             count = len(item["parts"])

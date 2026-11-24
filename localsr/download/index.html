@@ -39,14 +39,14 @@
               <p class="platform-req">Windows 10 / 11 · x86-64</p>
               <p>v0.5.2-beta · CPU backend · unsigned installer</p>
               <a class="btn btn-primary download-link" data-download="windows" href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CPU-x86_64.exe" aria-label="Download LocalSR v0.5.2-beta for Windows, 192 MB">Download .exe · 192 MB</a>
-              <ul class="platform-more"><li><a href="#parts">NVIDIA CUDA edition</a> · 3,501 MB: installer and 2 engine parts</li><li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe">DirectML edition</a> · 259 MB</li></ul>
+              <ul class="platform-more"><li>The only file you need: after setup, LocalSR offers the faster engine for your graphics card and downloads it.</li><li><a href="#parts">Offline installers</a> · for a computer without internet</li></ul>
             </article>
             <article class="platform" id="linux" data-platform="linux" data-size="560 MB" aria-labelledby="download-linux">
               <h3 id="download-linux">Linux</h3>
               <p class="platform-req">Linux · x86-64 · glibc 2.35+ (Ubuntu 22.04+)</p>
               <p>v0.5.2-beta · CPU backend · AppImage</p>
               <a class="btn btn-primary download-link" data-download="linux" href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Linux-CPU-x86_64.AppImage" aria-label="Download LocalSR v0.5.2-beta for Linux, 560 MB">Download .AppImage · 560 MB</a>
-              <ul class="platform-more"><li><a href="#parts">AMD ROCm edition</a> · 6,594 MB in 4 parts</li><li><a href="#parts">NVIDIA CUDA edition</a> · 3,969 MB in 2 parts</li></ul>
+              <ul class="platform-more"><li>The only file you need: after setup, LocalSR offers the faster engine for your graphics card and downloads it.</li><li><a href="#parts">Offline installers</a> · for a computer without internet</li></ul>
             </article>
         <!-- downloads:end -->
       </div>
@@ -56,7 +56,7 @@
         <div><h3>On Linux</h3><p>Make the AppImage executable with <code class="inline-code">chmod +x LocalSR-*.AppImage</code> and run it. It needs glibc 2.35 or later, as in Ubuntu 22.04. After the first start it offers to add itself to your applications menu, and it updates itself. On Ubuntu 22.04+ and Debian 12+ you can install the <code class="inline-code">.deb</code> instead: <code class="inline-code">sudo apt install ./LocalSR-*.deb</code>. It appears in the applications menu, tells you when a new version exists, and <code class="inline-code">apt</code> installs updates and removes it.</p></div>
       </div>
     </section>
-    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#know">What to know</a><a href="#parts">Downloads in parts</a><a href="#verify">Check your file</a><a href="#source">Source and licences</a></nav></aside><div class="document-body">
+    <div class="document-layout"><aside class="document-aside"><nav aria-label="On this page"><a href="#know">What to know</a><a href="#parts">Offline installers</a><a href="#verify">Check your file</a><a href="#source">Source and licences</a></nav></aside><div class="document-body">
 
       <section id="know"><h2>What to know first</h2>
         <ul>
@@ -71,8 +71,8 @@
         <p>More detail: the <a href="../guide/">user guide</a> walks through the app, the <a href="../models/">model guide</a> explains every model in plain words, and the <a href="../release-notes/">beta notes</a> cover what ships and what is still in development.</p>
       </section>
 
-      <section id="parts"><h2>Downloads in parts</h2>
-        <p>GitHub stores release files of up to 2&nbsp;GB, and the NVIDIA and AMD editions are larger, so they come in parts. Each part is listed in <a href="../SHA256SUMS">SHA256SUMS</a>.</p>
+      <section id="parts"><h2>Offline installers</h2>
+          <p>You do not need these if your computer is online: the standard download above sets LocalSR up, and after setup it offers the faster engine for your graphics card and downloads it by itself. These complete editions are for a computer without internet, or to install the GPU edition in one go. GitHub stores release files of up to 2&nbsp;GB, so the larger editions come in parts. Each file is listed in <a href="../SHA256SUMS">SHA256SUMS</a>.</p>
         <!-- parts:start -->
         <h3>Linux · AMD ROCm edition</h3>
           <p>Download all 4 parts into one folder, join them, check the result and make it executable:</p>
@@ -100,6 +100,11 @@ chmod +x LocalSR-v0.5.2-beta-Linux-CUDA-x86_64.AppImage</code></pre>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.exe">LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.exe</a> <span class="quiet">6 MB</span></li>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001">LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0001</a> <span class="quiet">1,992 MB</span></li>
             <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002">LocalSR-v0.5.2-beta-Windows-CUDA-x86_64.engine.tar.gz.part-0002</a> <span class="quiet">1,503 MB</span></li>
+          </ul>
+        <h3>Windows · DirectML edition</h3>
+          <p>Run the installer. It contains the engine, so nothing is downloaded later.</p>
+          <ul class="parts-list">
+            <li><a href="https://github.com/HerRei/local-upscale/releases/download/v0.5.2-beta/LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe">LocalSR-v0.5.2-beta-Windows-DirectML-x86_64.exe</a> <span class="quiet">259 MB</span></li>
           </ul>
         <!-- parts:end -->
       </section>

@@ -34,7 +34,7 @@
     {
       "id": "linux",
       "name": "Linux",
-      "requirements": "Linux · x86-64 · glibc 2.39+ (Ubuntu 24.04+)",
+      "requirements": "Linux · x86-64 · glibc 2.35+ (Ubuntu 22.04+)",
       "backend": "CPU backend · AppImage",
       "extension": ".AppImage",
       "filename": "LocalSR-v0.5.2-beta-Linux-CPU-x86_64.AppImage",

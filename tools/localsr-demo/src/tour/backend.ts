@@ -75,7 +75,7 @@ function emptyMediaResults(mediaId: string): MediaResults {
 
 function initialSnapshot(assets: DemoAssets): AppSnapshot {
   const snapshot = demoSnapshot();
-  const installed = new Set(['span_photo_x4', MODEL_ID]);
+  const installed = new Set(['localsr_quick_x4_v1', 'span_photo_x4', MODEL_ID]);
   for (const model of snapshot.catalog.models) model.installed = installed.has(model.model_id);
   snapshot.app_version = '0.6.0-beta';
   Object.assign(snapshot.settings, {
